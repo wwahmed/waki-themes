@@ -1,0 +1,205 @@
+/* ============================================================================
+ * Theme: neumorphism — Soft extruded UI
+ * ----------------------------------------------------------------------------
+ * Cards share the page's exact background colour and rely on dual
+ * shadows — one bright top-left, one dark bottom-right — to read as if
+ * the surface itself is extruded out of the page. No borders, no
+ * translucency, no blur. Hover inverts the shadow pair so the surface
+ * feels pressed inward, like a physical button.
+ *
+ * Light mode: a warm grey #e0e5ec (the "classic" neumorphism palette
+ * popularised by the early-2020 Behance trend).
+ * Dark mode:  a desaturated near-charcoal #2a2d3a so the dual shadows
+ * still read on a low-contrast surface.
+ * ============================================================================ */
+
+body {
+  background: #e0e5ec;
+  color: #1f2937;
+}
+html.dark body {
+  background: #2a2d3a;
+  color: #d1d5db;
+}
+
+/* ----- Surfaces --------------------------------------------------------- */
+/* The card colour matches the body — that's the whole point. The shape
+   is conjured by the shadow pair: a bright highlight from the top-left,
+   a dark drop from the bottom-right. Together they create the
+   "extruded plastic" look. */
+.glass {
+  background: #e0e5ec !important;
+  border: none;
+  border-radius: 1rem;
+  box-shadow:
+    -8px -8px 16px rgba(255, 255, 255, 0.85),
+    8px 8px 16px rgba(174, 174, 192, 0.4);
+  transition: box-shadow 200ms ease-out, background-color 200ms ease-out;
+}
+html.dark .glass {
+  background: #2a2d3a !important;
+  box-shadow:
+    -6px -6px 14px rgba(255, 255, 255, 0.04),
+    6px 6px 14px rgba(0, 0, 0, 0.5);
+}
+
+/* glass-elevated — same colour, deeper shadows so it reads as
+   "extruded farther out". On a neumorphism page, depth is shadow
+   distance, not brightness. */
+.glass-elevated {
+  background: #e0e5ec !important;
+  border: none;
+  border-radius: 1rem;
+  box-shadow:
+    -12px -12px 24px rgba(255, 255, 255, 0.9),
+    12px 12px 24px rgba(174, 174, 192, 0.5);
+  transition: box-shadow 200ms ease-out, background-color 200ms ease-out;
+}
+html.dark .glass-elevated {
+  background: #2a2d3a !important;
+  box-shadow:
+    -10px -10px 20px rgba(255, 255, 255, 0.05),
+    10px 10px 20px rgba(0, 0, 0, 0.6);
+}
+
+/* Hover: shrink the shadow pair so the card looks pressed in slightly.
+   Reads as "tappable" without flipping into full inset state — that
+   inset (active) treatment is below. */
+.glass:hover {
+  box-shadow:
+    -4px -4px 10px rgba(255, 255, 255, 0.85),
+    4px 4px 10px rgba(174, 174, 192, 0.45);
+}
+html.dark .glass:hover {
+  box-shadow:
+    -3px -3px 8px rgba(255, 255, 255, 0.05),
+    3px 3px 8px rgba(0, 0, 0, 0.55);
+}
+.glass-elevated:hover {
+  box-shadow:
+    -8px -8px 18px rgba(255, 255, 255, 0.9),
+    8px 8px 18px rgba(174, 174, 192, 0.5);
+}
+html.dark .glass-elevated:hover {
+  box-shadow:
+    -6px -6px 14px rgba(255, 255, 255, 0.05),
+    6px 6px 14px rgba(0, 0, 0, 0.6);
+}
+
+/* Active / pressed — inset shadows so the card reads as recessed. We
+   apply this on :active so a click momentarily pushes the surface
+   inward, completing the physical-button illusion. */
+.glass:active,
+.glass-elevated:active {
+  box-shadow:
+    inset 4px 4px 10px rgba(174, 174, 192, 0.4),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.85);
+}
+html.dark .glass:active,
+html.dark .glass-elevated:active {
+  box-shadow:
+    inset 4px 4px 10px rgba(0, 0, 0, 0.55),
+    inset -4px -4px 10px rgba(255, 255, 255, 0.04);
+}
+
+/* glass-bar: a flat strip with only a single subtle shadow at the
+   bottom, so the chrome reads as "above the page" without competing
+   with the deeper shadows on cards. */
+.glass-bar {
+  background: #e0e5ec !important;
+  border: none;
+  box-shadow: 0 4px 12px rgba(174, 174, 192, 0.35);
+}
+html.dark .glass-bar {
+  background: #2a2d3a !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.55);
+}
+
+/* Chips inset-style by default — they look "carved in" rather than
+   extruded. Different visual weight from the .glass cards keeps the
+   hierarchy readable. */
+.chip {
+  background: #e0e5ec;
+  border: none;
+  border-radius: 9999px;
+  box-shadow:
+    inset 2px 2px 5px rgba(174, 174, 192, 0.4),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.85);
+}
+html.dark .chip {
+  background: #2a2d3a;
+  box-shadow:
+    inset 2px 2px 5px rgba(0, 0, 0, 0.55),
+    inset -2px -2px 5px rgba(255, 255, 255, 0.04);
+}
+
+.divider-soft {
+  border-color: rgba(174, 174, 192, 0.35);
+}
+html.dark .divider-soft {
+  border-color: rgba(0, 0, 0, 0.4);
+}
+
+/* The dashboard uses .card (not .glass) for ~80% of its cards, so map
+   the same neumorphic shadow pair onto .card / .card-elevated as well.
+   The !important matches the safety-net pattern in index.css. */
+.card,
+.card-elevated {
+  background: #e0e5ec !important;
+  border: none !important;
+  border-radius: 1rem !important;
+  box-shadow:
+    -8px -8px 16px rgba(255, 255, 255, 0.85),
+    8px 8px 16px rgba(174, 174, 192, 0.4) !important;
+}
+html.dark .card,
+html.dark .card-elevated {
+  background: #2a2d3a !important;
+  box-shadow:
+    -6px -6px 14px rgba(255, 255, 255, 0.04),
+    6px 6px 14px rgba(0, 0, 0, 0.5) !important;
+}
+.card-elevated {
+  box-shadow:
+    -12px -12px 24px rgba(255, 255, 255, 0.9),
+    12px 12px 24px rgba(174, 174, 192, 0.5) !important;
+}
+html.dark .card-elevated {
+  box-shadow:
+    -10px -10px 20px rgba(255, 255, 255, 0.05),
+    10px 10px 20px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Surface-page covers the page-level wrapper. Match it to the body
+   colour so layered scroll containers stay flush. */
+.surface-page,
+.surface-1,
+.surface-2,
+.surface-3,
+.surface-muted {
+  background-color: #e0e5ec !important;
+}
+html.dark .surface-page,
+html.dark .surface-1,
+html.dark .surface-2,
+html.dark .surface-3,
+html.dark .surface-muted {
+  background-color: #2a2d3a !important;
+}
+
+/* Inputs on a neumorphism page get the inset look — like the chip, but
+   with the input field recessed for typing. */
+.input {
+  background: #e0e5ec !important;
+  border: none !important;
+  box-shadow:
+    inset 3px 3px 6px rgba(174, 174, 192, 0.45),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.85) !important;
+}
+html.dark .input {
+  background: #2a2d3a !important;
+  color: #e5e7eb;
+  box-shadow:
+    inset 3px 3px 6px rgba(0, 0, 0, 0.55),
+    inset -3px -3px 6px rgba(255, 255, 255, 0.04) !important;
+}

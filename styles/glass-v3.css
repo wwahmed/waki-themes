@@ -1,0 +1,144 @@
+/* ============================================================================
+ * Theme: glass-v3 — Aurora glass
+ * ----------------------------------------------------------------------------
+ * Coloured tinted glass over a multi-stop aurora-blob background. Heavier
+ * 20px blur than glass-v2 so the colours behind dissolve into a soft
+ * watercolour wash; cards carry a violet/cyan tint instead of pure
+ * white. Each card has a gradient border drawn via ::before so the
+ * outline reads as a thin ribbon of refracted light.
+ * ============================================================================ */
+
+/* ----- Page background — aurora blobs over a soft gradient -------------- */
+body {
+  background:
+    radial-gradient(ellipse at 12% 18%, rgba(168, 85, 247, 0.18), transparent 50%),
+    radial-gradient(ellipse at 88% 78%, rgba(34, 211, 238, 0.18), transparent 50%),
+    radial-gradient(ellipse at 50% 110%, rgba(236, 72, 153, 0.12), transparent 55%),
+    linear-gradient(135deg, #f4ecff 0%, #ecf6ff 50%, #fff5fb 100%);
+  background-attachment: fixed;
+  color: #1e1b4b;
+}
+html.dark body {
+  background:
+    radial-gradient(ellipse at 12% 18%, rgba(139, 92, 246, 0.32), transparent 50%),
+    radial-gradient(ellipse at 88% 78%, rgba(14, 165, 233, 0.30), transparent 50%),
+    radial-gradient(ellipse at 50% 110%, rgba(236, 72, 153, 0.22), transparent 55%),
+    linear-gradient(135deg, #0a0517 0%, #0a1424 50%, #110820 100%);
+  background-attachment: fixed;
+  color: #ede9fe;
+}
+
+/* ----- Surfaces --------------------------------------------------------- */
+/* Position relative so the gradient-border ::before positions correctly.
+   The bg uses a violet tint instead of pure white; with 20px blur the
+   colours behind the card mix into the violet for an aurora-haze
+   look. */
+.glass {
+  position: relative;
+  background: rgba(168, 85, 247, 0.08) !important;
+  backdrop-filter: blur(20px) saturate(200%);
+  -webkit-backdrop-filter: blur(20px) saturate(200%);
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  box-shadow: 0 8px 32px rgba(76, 29, 149, 0.15);
+  transition: background-color 200ms ease-out, box-shadow 200ms ease-out;
+}
+html.dark .glass {
+  background: rgba(168, 85, 247, 0.07) !important;
+  border-color: transparent;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+.glass-elevated {
+  position: relative;
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(24px) saturate(220%);
+  -webkit-backdrop-filter: blur(24px) saturate(220%);
+  border: 1px solid transparent;
+  border-radius: 1rem;
+  box-shadow: 0 16px 48px rgba(76, 29, 149, 0.18);
+  transition: background-color 200ms ease-out, box-shadow 200ms ease-out;
+}
+html.dark .glass-elevated {
+  background: rgba(139, 92, 246, 0.12) !important;
+  box-shadow: 0 16px 56px rgba(0, 0, 0, 0.6);
+}
+
+/* Gradient border via ::before. The mask-composite trick paints the
+   gradient only on the 1px frame — content area stays untouched. The
+   gradient cycles violet → cyan → pink so the border reads as
+   refracted aurora light. */
+.glass::before,
+.glass-elevated::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(168, 85, 247, 0.6) 0%,
+    rgba(34, 211, 238, 0.5) 50%,
+    rgba(236, 72, 153, 0.6) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+html.dark .glass::before,
+html.dark .glass-elevated::before {
+  background: linear-gradient(
+    135deg,
+    rgba(167, 139, 250, 0.5) 0%,
+    rgba(34, 211, 238, 0.4) 50%,
+    rgba(244, 114, 182, 0.5) 100%
+  );
+}
+
+.glass:hover {
+  background: rgba(168, 85, 247, 0.12) !important;
+  box-shadow: 0 12px 40px rgba(76, 29, 149, 0.22);
+}
+html.dark .glass:hover {
+  background: rgba(168, 85, 247, 0.12) !important;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.55);
+}
+.glass-elevated:hover {
+  box-shadow: 0 20px 56px rgba(76, 29, 149, 0.25);
+}
+html.dark .glass-elevated:hover {
+  box-shadow: 0 20px 64px rgba(0, 0, 0, 0.65);
+}
+
+.glass-bar {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+html.dark .glass-bar {
+  background: rgba(15, 12, 41, 0.6) !important;
+}
+
+.chip {
+  background: rgba(168, 85, 247, 0.08);
+  border: 1px solid rgba(168, 85, 247, 0.2);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+html.dark .chip {
+  background: rgba(167, 139, 250, 0.08);
+  border-color: rgba(167, 139, 250, 0.2);
+}
+
+.divider-soft {
+  border-color: rgba(76, 29, 149, 0.12);
+}
+html.dark .divider-soft {
+  border-color: rgba(167, 139, 250, 0.15);
+}
