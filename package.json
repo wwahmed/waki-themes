@@ -1,0 +1,19 @@
+{
+  "name": "waki-themes",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Three swappable web themes (flat, glass-v1, glass-v2) extracted from the 3dByPixel printer dashboard, with a single-page email-inbox demo to compare them side by side.",
+  "license": "MIT",
+  "scripts": {
+    "start": "python3 -m http.server 5500",
+    "open": "open http://localhost:5500"
+  },
+  "keywords": [
+    "theme",
+    "css",
+    "glassmorphism",
+    "frosted-glass",
+    "tailwind",
+    "design-system"
+  ]
+}
