@@ -10,7 +10,8 @@
  * ============================================================================ */
 
 const THEMES = [
-  "flat", "glass-v1", "glass-v2", "glass-v3", "neumorphism", "neon",
+  "flat", "glass-v1", "glass-v2", "glass-v3", "glass-extreme",
+  "neumorphism", "neon",
   "ocean", "sunset", "forest", "arctic", "lavender", "rose-gold",
   "midnight", "copper", "emerald", "sakura", "slate-modern", "nord",
 ];

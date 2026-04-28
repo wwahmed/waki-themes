@@ -1,0 +1,208 @@
+/* ============================================================================
+ * Theme: glass-extreme — iOS / macOS-style ultra-translucent vibrant glass
+ * ----------------------------------------------------------------------------
+ * The most translucent / heaviest-blur theme in the set. Tuned to feel
+ * like Big Sur Control Centre or an iOS lock-screen widget: cards
+ * disappear into the background until you almost can't tell where they
+ * end, but the heavy blur + saturate / brightness boost keeps the
+ * contents legible.
+ *
+ * Distinct from the other glass themes:
+ *   glass-v1 / v2  — 12-16px blur, opaque-ish white tints
+ *   glass-v3       — 20px blur, coloured aurora tints + gradient borders
+ *   glass-extreme  — 40px blur, near-invisible white, vibrancy bumped via
+ *                    saturate(200%) + brightness(110%), hairline 0.5px
+ *                    borders only, very wide soft shadows, generous
+ *                    rounded corners, slow 60s gradient drift
+ *
+ * No noise overlay, no glint pseudo-element — iOS doesn't use either.
+ * The vibrancy effect alone carries the look. */
+
+/* ----- Page background — iOS wallpaper-style multi-stop gradient ------- */
+/* Light mode: a soft sky-blue / pink / lavender wash. Dark mode: deep
+   navy → indigo → purple. Both bgs animate the gradient position over
+   60s so the colours behind the glass shift slowly — the cards refract
+   different tones during the day. */
+body {
+  background: linear-gradient(
+    135deg,
+    #c7d2fe 0%,
+    #ddd6fe 25%,
+    #fbcfe8 50%,
+    #c4b5fd 75%,
+    #a5b4fc 100%
+  );
+  background-attachment: fixed;
+  background-size: 240% 240%;
+  animation: glassExtremeDrift 60s ease-in-out infinite;
+  color: rgba(15, 23, 42, 0.9);
+}
+html.dark body {
+  background: linear-gradient(
+    135deg,
+    #0f172a 0%,
+    #1e1b4b 25%,
+    #3b0764 50%,
+    #1e1b4b 75%,
+    #0f172a 100%
+  );
+  background-attachment: fixed;
+  background-size: 240% 240%;
+  animation: glassExtremeDrift 60s ease-in-out infinite;
+  color: rgba(241, 245, 249, 0.9);
+}
+@keyframes glassExtremeDrift {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  body { animation: none !important; }
+}
+
+/* ----- Surfaces -------------------------------------------------------- */
+/* The 0.5px hairline borders are drawn via inset box-shadow rather than a
+   real `border` because iOS draws them sub-pixel and a real `border:
+   0.5px` has been observed to render as 1px on many displays. The
+   inset-shadow trick honours subpixel widths reliably. */
+.glass, .card {
+  background: rgba(255, 255, 255, 0.45) !important;
+  backdrop-filter: blur(40px) saturate(200%) brightness(110%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%) brightness(110%);
+  border: none !important;
+  border-radius: 1.25rem !important;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.5),
+    0 20px 60px -10px rgba(15, 23, 42, 0.12) !important;
+  transition: background-color 200ms ease-out, box-shadow 200ms ease-out, opacity 150ms ease-out;
+}
+html.dark .glass, html.dark .card {
+  background: rgba(255, 255, 255, 0.15) !important;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.18),
+    0 20px 60px -10px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* Hover: brightens the glass — opacity ticks up, hairline brightens.
+   No translateY, no scale; this should feel like the surface catching
+   more light, not bouncing. */
+.glass:hover, .card:hover {
+  background: rgba(255, 255, 255, 0.55) !important;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.65),
+    0 24px 70px -10px rgba(15, 23, 42, 0.18) !important;
+}
+html.dark .glass:hover, html.dark .card:hover {
+  background: rgba(255, 255, 255, 0.22) !important;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.28),
+    0 24px 70px -10px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Active: dims slightly so the surface looks "pressed" without the
+   sharp corner highlight that a real button would have. */
+.glass:active, .card:active {
+  background: rgba(255, 255, 255, 0.38) !important;
+}
+html.dark .glass:active, html.dark .card:active {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* glass-elevated sits visually on top of .glass — slightly stronger
+   tint + heavier blur so when stacked the layers feel distinct. iOS
+   Control Centre uses this exact "glass on glass on background" depth
+   trick. */
+.glass-elevated, .card-elevated {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(50px) saturate(220%) brightness(115%);
+  -webkit-backdrop-filter: blur(50px) saturate(220%) brightness(115%);
+  border: none !important;
+  border-radius: 1.25rem !important;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.6),
+    0 28px 80px -10px rgba(15, 23, 42, 0.15) !important;
+}
+html.dark .glass-elevated, html.dark .card-elevated {
+  background: rgba(255, 255, 255, 0.22) !important;
+  box-shadow:
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.25),
+    0 28px 80px -10px rgba(0, 0, 0, 0.5) !important;
+}
+.glass-elevated:hover, .card-elevated:hover {
+  background: rgba(255, 255, 255, 0.65) !important;
+}
+html.dark .glass-elevated:hover, html.dark .card-elevated:hover {
+  background: rgba(255, 255, 255, 0.28) !important;
+}
+
+/* glass-bar is the chrome strip — heaviest blur of all so the top /
+   bottom of the page reads as a permanent frosted band you scroll the
+   content under. */
+.glass-bar {
+  background: rgba(255, 255, 255, 0.55) !important;
+  backdrop-filter: blur(60px) saturate(180%) brightness(108%);
+  -webkit-backdrop-filter: blur(60px) saturate(180%) brightness(108%);
+  border-bottom: none !important;
+  box-shadow: inset 0 -0.5px 0 rgba(255, 255, 255, 0.4) !important;
+}
+html.dark .glass-bar {
+  background: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 -0.5px 0 rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Surface helpers — keep them transparent so the body gradient shows
+   through. Cards / chrome do all the depth work; the page wrapper
+   itself stays out of the way. */
+.surface-page, .surface-1, .surface-2, .surface-3, .surface-muted {
+  background-color: transparent !important;
+}
+
+/* iOS-style chip / pill — same hairline trick, same radius family. */
+.chip {
+  background: rgba(255, 255, 255, 0.4);
+  border: none;
+  border-radius: 9999px;
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.45);
+}
+html.dark .chip {
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.18);
+}
+
+/* iOS grouped-table-view divider — hairline 0.5px line, sits on top of
+   the card so it doesn't break the rounded outline. */
+.divider-soft {
+  border-color: rgba(15, 23, 42, 0.08);
+  border-width: 0.5px;
+}
+html.dark .divider-soft {
+  border-color: rgba(255, 255, 255, 0.1);
+  border-width: 0.5px;
+}
+
+.input {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border: none !important;
+  border-radius: 1rem !important;
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.5) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+}
+html.dark .input {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: rgba(241, 245, 249, 0.95);
+  box-shadow: inset 0 0 0 0.5px rgba(255, 255, 255, 0.2) !important;
+}
+.input:focus {
+  background: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: inset 0 0 0 0.5px rgba(99, 102, 241, 0.6) !important;
+}
+html.dark .input:focus {
+  background: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: inset 0 0 0 0.5px rgba(165, 180, 252, 0.7) !important;
+}
+
+/* Body text tones — slightly transparent so headings get the contrast
+   advantage. iOS typography spec uses 90% / 60% / 30% alpha tiers. */
+html.dark .text-body, html.dark .text-subtle, html.dark p {
+  color: rgba(241, 245, 249, 0.9);
+}
