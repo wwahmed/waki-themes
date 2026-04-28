@@ -41,12 +41,18 @@ html.dark { color-scheme: dark; }
   z-index: 60;
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
   gap: 0.25rem;
   padding: 0.3rem 0.4rem;
-  border-radius: 9999px;
+  border-radius: 1.25rem;
   font-size: 0.75rem;
   font-weight: 500;
   user-select: none;
+  /* Cap the width so 18 theme buttons wrap to 2-3 rows instead of
+     extending across the whole viewport. The pill stays anchored
+     top-right and grows downward. */
+  max-width: min(540px, calc(100vw - 1.5rem));
 }
 .switcher button {
   appearance: none;

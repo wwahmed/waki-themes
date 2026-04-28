@@ -9,7 +9,11 @@
  *   feels alive without dragging in a framework
  * ============================================================================ */
 
-const THEMES = ["flat", "glass-v1", "glass-v2", "glass-v3", "neumorphism", "neon"];
+const THEMES = [
+  "flat", "glass-v1", "glass-v2", "glass-v3", "neumorphism", "neon",
+  "ocean", "sunset", "forest", "arctic", "lavender", "rose-gold",
+  "midnight", "copper", "emerald", "sakura", "slate-modern", "nord",
+];
 const MODES = ["light", "dark"];
 const STORAGE_THEME = "waki-theme";
 const STORAGE_MODE = "waki-mode";

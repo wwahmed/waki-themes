@@ -1,0 +1,119 @@
+/* ============================================================================
+ * Theme: slate-modern — Sharp / angular / terminal-style
+ * ----------------------------------------------------------------------------
+ * Structurally: zero border-radius. Bold high-contrast borders. Sharp
+ * shadows. Grid-precision feel — Bloomberg terminal meets modern web
+ * design. Pure neutral greys, no colour tints. The opposite of every
+ * glass/sakura/aurora theme: precision over softness.
+ * ============================================================================ */
+
+body {
+  background: linear-gradient(180deg, #ffffff 0%, #f1f5f9 100%);
+  background-attachment: fixed;
+  color: #0f172a;
+}
+html.dark body {
+  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+  background-attachment: fixed;
+  color: #f1f5f9;
+}
+
+/* Subtle 1px grid overlay — pure 90deg + 0deg lines so the page feels
+   like a coordinate plane. Very low opacity. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.04;
+  background:
+    linear-gradient(90deg, currentColor 1px, transparent 1px) 0 0 / 32px 32px,
+    linear-gradient(0deg, currentColor 1px, transparent 1px) 0 0 / 32px 32px;
+  color: #0f172a;
+}
+html.dark body::before {
+  color: #f1f5f9;
+  opacity: 0.05;
+}
+
+.glass, .card {
+  background: #ffffff !important;
+  border: 2px solid #0f172a !important;
+  border-radius: 0 !important;
+  box-shadow: 4px 4px 0 #0f172a !important;
+  color: #0f172a;
+  transition: transform 100ms ease-out, box-shadow 100ms ease-out;
+}
+html.dark .glass, html.dark .card {
+  background: #0f172a !important;
+  border-color: #f1f5f9 !important;
+  box-shadow: 4px 4px 0 #f1f5f9 !important;
+  color: #f1f5f9;
+}
+
+/* Hover snaps the offset shadow flat — like the card jumps forward. */
+.glass:hover, .card:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 #0f172a !important;
+}
+html.dark .glass:hover, html.dark .card:hover {
+  box-shadow: 2px 2px 0 #f1f5f9 !important;
+}
+
+.glass-elevated, .card-elevated {
+  background: #ffffff !important;
+  border: 2px solid #0f172a !important;
+  border-radius: 0 !important;
+  box-shadow: 6px 6px 0 #0f172a !important;
+  color: #0f172a;
+}
+html.dark .glass-elevated, html.dark .card-elevated {
+  background: #1e293b !important;
+  border-color: #f1f5f9 !important;
+  box-shadow: 6px 6px 0 #f1f5f9 !important;
+}
+
+.glass-bar {
+  background: #ffffff !important;
+  border-bottom: 2px solid #0f172a !important;
+  border-radius: 0;
+}
+html.dark .glass-bar {
+  background: #0f172a !important;
+  border-color: #f1f5f9 !important;
+}
+
+.surface-page, .surface-1, .surface-2, .surface-3, .surface-muted {
+  background-color: #ffffff !important;
+}
+html.dark .surface-page, html.dark .surface-1, html.dark .surface-2,
+html.dark .surface-3, html.dark .surface-muted {
+  background-color: #0f172a !important;
+}
+
+.chip {
+  background: transparent;
+  border: 1.5px solid #0f172a;
+  border-radius: 0;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+html.dark .chip {
+  border-color: #f1f5f9;
+}
+.divider-soft { border-color: #0f172a; border-width: 1.5px; }
+html.dark .divider-soft { border-color: #f1f5f9; }
+.input {
+  background: #ffffff !important;
+  border: 2px solid #0f172a !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: "JetBrains Mono", "Menlo", monospace;
+}
+html.dark .input {
+  background: #0f172a !important;
+  border-color: #f1f5f9 !important;
+  color: #f1f5f9;
+}

@@ -1,0 +1,172 @@
+/* ============================================================================
+ * Theme: rose-gold — Brushed-metal sheen, copper top edge
+ * ----------------------------------------------------------------------------
+ * Structurally: cards have a vertical multi-stop gradient that mimics
+ * brushed rose-gold metal — narrow alternating warm tones running
+ * top to bottom. A bright copper highlight stripe along the top edge
+ * (1.5px ::before) catches the light. Premium, luxurious, jewellery-
+ * counter feel.
+ * ============================================================================ */
+
+body {
+  background: linear-gradient(135deg, #fff7ed 0%, #fef2f2 50%, #fefce8 100%);
+  background-attachment: fixed;
+  color: #500724;
+}
+html.dark body {
+  background: linear-gradient(135deg, #1c0808 0%, #422006 50%, #1c1917 100%);
+  background-attachment: fixed;
+  color: #fce7f3;
+}
+
+/* Brushed-metal vertical gradient. Each stop is a slightly different
+   rose/gold tone so the strip "shimmers" subtly when the eye runs
+   across it. */
+.glass, .card {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    #fef3c7 0%,
+    #fde2cf 18%,
+    #f5d0c5 38%,
+    #fde2cf 60%,
+    #fef3c7 78%,
+    #fde9d4 100%
+  ) !important;
+  border: 1px solid rgba(180, 83, 9, 0.3);
+  border-radius: 0.75rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.6) inset,
+    0 6px 18px rgba(180, 83, 9, 0.18);
+  color: #500724;
+  overflow: hidden;
+}
+html.dark .glass, html.dark .card {
+  background: linear-gradient(
+    180deg,
+    #4a0d0d 0%,
+    #5b2519 18%,
+    #422006 38%,
+    #5b2519 60%,
+    #4a0d0d 78%,
+    #3f1d1d 100%
+  ) !important;
+  border-color: rgba(244, 114, 182, 0.3);
+  box-shadow:
+    0 1px 0 rgba(244, 114, 182, 0.15) inset,
+    0 6px 22px rgba(0, 0, 0, 0.5);
+  color: #fce7f3;
+}
+
+/* Copper highlight stripe — a bright thin line along the top edge that
+   reads as light catching the metal. */
+.glass::before, .card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(217, 119, 6, 0.7) 20%,
+    rgba(251, 191, 36, 0.9) 50%,
+    rgba(217, 119, 6, 0.7) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+html.dark .glass::before, html.dark .card::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(244, 114, 182, 0.6) 20%,
+    rgba(251, 191, 36, 0.8) 50%,
+    rgba(244, 114, 182, 0.6) 80%,
+    transparent 100%
+  );
+}
+
+.glass:hover, .card:hover {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 10px 26px rgba(180, 83, 9, 0.25);
+}
+html.dark .glass:hover, html.dark .card:hover {
+  box-shadow:
+    0 1px 0 rgba(244, 114, 182, 0.2) inset,
+    0 10px 30px rgba(0, 0, 0, 0.6);
+}
+
+.glass-elevated, .card-elevated {
+  position: relative;
+  background: linear-gradient(
+    180deg,
+    #fef3c7 0%,
+    #fbcfe8 25%,
+    #fda4af 50%,
+    #fbcfe8 75%,
+    #fef3c7 100%
+  ) !important;
+  border: 1px solid rgba(190, 24, 93, 0.35);
+  border-radius: 0.75rem;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.7) inset,
+    0 12px 28px rgba(190, 24, 93, 0.25);
+  overflow: hidden;
+}
+html.dark .glass-elevated, html.dark .card-elevated {
+  background: linear-gradient(
+    180deg,
+    #500724 0%,
+    #831843 25%,
+    #9d174d 50%,
+    #831843 75%,
+    #500724 100%
+  ) !important;
+  border-color: rgba(244, 114, 182, 0.35);
+  box-shadow:
+    0 1px 0 rgba(244, 114, 182, 0.2) inset,
+    0 12px 32px rgba(0, 0, 0, 0.55);
+}
+
+.glass-bar {
+  background: linear-gradient(180deg, rgba(255, 247, 237, 0.95), rgba(254, 243, 199, 0.85)) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(180, 83, 9, 0.3);
+}
+html.dark .glass-bar {
+  background: linear-gradient(180deg, rgba(28, 8, 8, 0.95), rgba(66, 32, 6, 0.88)) !important;
+  border-color: rgba(244, 114, 182, 0.3);
+}
+
+.surface-page, .surface-1, .surface-2, .surface-3, .surface-muted {
+  background-color: rgba(255, 247, 237, 0.5) !important;
+}
+html.dark .surface-page, html.dark .surface-1, html.dark .surface-2,
+html.dark .surface-3, html.dark .surface-muted {
+  background-color: rgba(28, 8, 8, 0.6) !important;
+}
+
+.chip {
+  background: linear-gradient(180deg, #fef3c7, #fde2cf);
+  border: 1px solid rgba(180, 83, 9, 0.35);
+  border-radius: 9999px;
+}
+html.dark .chip {
+  background: linear-gradient(180deg, #4a0d0d, #422006);
+  border-color: rgba(244, 114, 182, 0.35);
+}
+.divider-soft { border-color: rgba(180, 83, 9, 0.18); }
+html.dark .divider-soft { border-color: rgba(244, 114, 182, 0.22); }
+.input {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(180, 83, 9, 0.35) !important;
+}
+html.dark .input {
+  background: rgba(28, 8, 8, 0.6) !important;
+  border-color: rgba(244, 114, 182, 0.35) !important;
+  color: #fce7f3;
+}

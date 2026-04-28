@@ -1,0 +1,121 @@
+/* ============================================================================
+ * Theme: lavender — Soft radial mesh gradient cards
+ * ----------------------------------------------------------------------------
+ * Structurally: cards carry a stack of overlapping radial gradients in
+ * pastel violets / pinks, blended low-opacity so the surface looks like
+ * a soft mesh of flowing colour rather than a solid panel. Body bg
+ * does the same trick at larger scale. Dreamy, ethereal — like a soft
+ * lava lamp.
+ * ============================================================================ */
+
+body {
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(196, 181, 253, 0.55), transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(244, 114, 182, 0.35), transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(167, 139, 250, 0.45), transparent 55%),
+    linear-gradient(135deg, #faf5ff 0%, #fdf4ff 50%, #fce7f3 100%);
+  background-attachment: fixed;
+  color: #3b0764;
+}
+html.dark body {
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(139, 92, 246, 0.45), transparent 50%),
+    radial-gradient(ellipse at 85% 15%, rgba(217, 70, 239, 0.35), transparent 50%),
+    radial-gradient(ellipse at 60% 80%, rgba(167, 139, 250, 0.4), transparent 55%),
+    linear-gradient(135deg, #1e1b4b 0%, #2e1065 50%, #18181b 100%);
+  background-attachment: fixed;
+  color: #ede9fe;
+}
+
+/* Mesh-gradient cards. Three radial gradients stacked over a base
+   tint give each card a soft watercolour bloom — different parts of
+   the card lean different colours. */
+.glass, .card {
+  background:
+    radial-gradient(ellipse at 20% 25%, rgba(196, 181, 253, 0.5), transparent 55%),
+    radial-gradient(ellipse at 80% 75%, rgba(244, 114, 182, 0.35), transparent 55%),
+    rgba(250, 245, 255, 0.85) !important;
+  border: 1px solid rgba(167, 139, 250, 0.25);
+  border-radius: 1rem;
+  box-shadow: 0 8px 24px rgba(76, 29, 149, 0.1);
+  color: #3b0764;
+}
+html.dark .glass, html.dark .card {
+  background:
+    radial-gradient(ellipse at 20% 25%, rgba(139, 92, 246, 0.3), transparent 55%),
+    radial-gradient(ellipse at 80% 75%, rgba(217, 70, 239, 0.22), transparent 55%),
+    rgba(46, 16, 101, 0.55) !important;
+  border-color: rgba(167, 139, 250, 0.25);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  color: #ede9fe;
+}
+
+.glass-elevated, .card-elevated {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(217, 70, 239, 0.4), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.5), transparent 55%),
+    rgba(253, 244, 255, 0.9) !important;
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  border-radius: 1rem;
+  box-shadow: 0 14px 36px rgba(76, 29, 149, 0.16);
+  color: #3b0764;
+}
+html.dark .glass-elevated, html.dark .card-elevated {
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(217, 70, 239, 0.32), transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(139, 92, 246, 0.36), transparent 55%),
+    rgba(46, 16, 101, 0.65) !important;
+  border-color: rgba(167, 139, 250, 0.32);
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5);
+}
+
+.glass:hover, .card:hover {
+  box-shadow: 0 12px 30px rgba(76, 29, 149, 0.16);
+}
+html.dark .glass:hover, html.dark .card:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+}
+
+.glass-bar {
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(196, 181, 253, 0.45), transparent 60%),
+    rgba(250, 245, 255, 0.85) !important;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(167, 139, 250, 0.25);
+}
+html.dark .glass-bar {
+  background:
+    radial-gradient(ellipse at 50% 100%, rgba(139, 92, 246, 0.3), transparent 60%),
+    rgba(30, 27, 75, 0.85) !important;
+  border-color: rgba(167, 139, 250, 0.25);
+}
+
+.surface-page, .surface-1, .surface-2, .surface-3, .surface-muted {
+  background-color: rgba(250, 245, 255, 0.5) !important;
+}
+html.dark .surface-page, html.dark .surface-1, html.dark .surface-2,
+html.dark .surface-3, html.dark .surface-muted {
+  background-color: rgba(30, 27, 75, 0.6) !important;
+}
+
+.chip {
+  background: rgba(196, 181, 253, 0.25);
+  border: 1px solid rgba(167, 139, 250, 0.35);
+  border-radius: 9999px;
+}
+html.dark .chip {
+  background: rgba(139, 92, 246, 0.18);
+  border-color: rgba(167, 139, 250, 0.35);
+}
+.divider-soft { border-color: rgba(76, 29, 149, 0.1); }
+html.dark .divider-soft { border-color: rgba(167, 139, 250, 0.2); }
+.input {
+  background: rgba(255, 255, 255, 0.7) !important;
+  border-color: rgba(167, 139, 250, 0.4) !important;
+}
+html.dark .input {
+  background: rgba(30, 27, 75, 0.6) !important;
+  border-color: rgba(167, 139, 250, 0.4) !important;
+  color: #ede9fe;
+}

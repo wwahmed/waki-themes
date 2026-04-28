@@ -1,0 +1,182 @@
+/* ============================================================================
+ * Theme: ocean — Layered cards with wave-crest top edges
+ * ----------------------------------------------------------------------------
+ * Structurally: cards carry a translucent gradient highlight along the top
+ * edge (the "wave crest"), stacked shadows so each card looks like it's
+ * floating above the previous wave, and a slow horizontal drift on the
+ * page gradient that mimics water flow. Not just blue — the cards
+ * actually look layered.
+ * ============================================================================ */
+
+body {
+  background:
+    linear-gradient(135deg, #e0f2fe 0%, #cffafe 35%, #a7f3d0 100%);
+  background-size: 200% 100%;
+  background-attachment: fixed;
+  animation: oceanFlow 24s ease-in-out infinite;
+  color: #082f49;
+}
+html.dark body {
+  background:
+    linear-gradient(135deg, #042f2e 0%, #082f49 50%, #0c4a6e 100%);
+  background-size: 200% 100%;
+  background-attachment: fixed;
+  animation: oceanFlow 24s ease-in-out infinite;
+  color: #cffafe;
+}
+@keyframes oceanFlow {
+  0%, 100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+@media (prefers-reduced-motion: reduce) { body { animation: none !important; } }
+
+/* Stacked-shadow recipe: three offset shadows cascade downward, creating
+   the look of cards layered like waves rolling onto a beach. */
+.glass {
+  position: relative;
+  background: rgba(165, 243, 252, 0.35) !important;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(34, 211, 238, 0.4);
+  border-radius: 0.75rem;
+  box-shadow:
+    0 2px 6px rgba(8, 47, 73, 0.06),
+    0 8px 18px rgba(8, 47, 73, 0.08),
+    0 18px 36px rgba(8, 47, 73, 0.10);
+  overflow: hidden;
+  transition: box-shadow 200ms ease-out;
+}
+html.dark .glass {
+  background: rgba(34, 211, 238, 0.06) !important;
+  border-color: rgba(56, 189, 248, 0.25);
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    0 8px 18px rgba(0, 0, 0, 0.35),
+    0 18px 36px rgba(0, 0, 0, 0.5);
+}
+
+/* Wave-crest highlight along the top edge of every card. The ::before
+   sits inside the card (overflow:hidden on parent), occupies the top
+   third, and fades from a lighter cyan into transparent so the card
+   reads as "the surface of a wave with light catching the top". */
+.glass::before,
+.card::before,
+.glass-elevated::before,
+.card-elevated::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(165, 243, 252, 0.15) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+html.dark .glass::before,
+html.dark .card::before,
+html.dark .glass-elevated::before,
+html.dark .card-elevated::before {
+  background: linear-gradient(
+    180deg,
+    rgba(56, 189, 248, 0.18) 0%,
+    rgba(34, 211, 238, 0.08) 60%,
+    transparent 100%
+  );
+}
+
+/* Hover deepens the cascade so the wave swells. */
+.glass:hover {
+  box-shadow:
+    0 4px 8px rgba(8, 47, 73, 0.08),
+    0 12px 22px rgba(8, 47, 73, 0.12),
+    0 24px 48px rgba(8, 47, 73, 0.14);
+}
+html.dark .glass:hover {
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.3),
+    0 12px 22px rgba(0, 0, 0, 0.45),
+    0 24px 48px rgba(0, 0, 0, 0.6);
+}
+
+.glass-elevated {
+  position: relative;
+  background: rgba(207, 250, 254, 0.55) !important;
+  backdrop-filter: blur(14px) saturate(170%);
+  -webkit-backdrop-filter: blur(14px) saturate(170%);
+  border: 1px solid rgba(34, 211, 238, 0.5);
+  border-radius: 0.75rem;
+  box-shadow:
+    0 4px 10px rgba(8, 47, 73, 0.10),
+    0 14px 26px rgba(8, 47, 73, 0.14),
+    0 28px 52px rgba(8, 47, 73, 0.18);
+  overflow: hidden;
+}
+html.dark .glass-elevated {
+  background: rgba(56, 189, 248, 0.12) !important;
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.3),
+    0 14px 26px rgba(0, 0, 0, 0.45),
+    0 28px 52px rgba(0, 0, 0, 0.6);
+}
+
+.glass-bar {
+  background: rgba(207, 250, 254, 0.7) !important;
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-bottom: 1px solid rgba(34, 211, 238, 0.35);
+}
+html.dark .glass-bar {
+  background: rgba(8, 47, 73, 0.75) !important;
+  border-color: rgba(56, 189, 248, 0.35);
+}
+
+.card, .card-elevated {
+  position: relative;
+  background: rgba(207, 250, 254, 0.45) !important;
+  backdrop-filter: blur(10px) saturate(150%);
+  -webkit-backdrop-filter: blur(10px) saturate(150%);
+  border: 1px solid rgba(34, 211, 238, 0.35) !important;
+  border-radius: 0.75rem !important;
+  box-shadow:
+    0 2px 6px rgba(8, 47, 73, 0.06),
+    0 8px 18px rgba(8, 47, 73, 0.08),
+    0 18px 36px rgba(8, 47, 73, 0.10) !important;
+  overflow: hidden;
+}
+html.dark .card, html.dark .card-elevated {
+  background: rgba(34, 211, 238, 0.08) !important;
+  border-color: rgba(56, 189, 248, 0.28) !important;
+  box-shadow:
+    0 2px 6px rgba(0, 0, 0, 0.25),
+    0 8px 18px rgba(0, 0, 0, 0.35),
+    0 18px 36px rgba(0, 0, 0, 0.5) !important;
+}
+
+.surface-page, .surface-1, .surface-2, .surface-3, .surface-muted {
+  background-color: rgba(207, 250, 254, 0.3) !important;
+}
+html.dark .surface-page, html.dark .surface-1, html.dark .surface-2,
+html.dark .surface-3, html.dark .surface-muted {
+  background-color: rgba(8, 47, 73, 0.55) !important;
+}
+
+.chip { background: rgba(34, 211, 238, 0.15); border: 1px solid rgba(34, 211, 238, 0.4); }
+html.dark .chip { background: rgba(56, 189, 248, 0.15); border-color: rgba(56, 189, 248, 0.35); }
+.divider-soft { border-color: rgba(8, 47, 73, 0.15); }
+html.dark .divider-soft { border-color: rgba(56, 189, 248, 0.25); }
+.input {
+  background: rgba(255, 255, 255, 0.55) !important;
+  border-color: rgba(34, 211, 238, 0.4) !important;
+}
+html.dark .input {
+  background: rgba(8, 47, 73, 0.5) !important;
+  border-color: rgba(56, 189, 248, 0.35) !important;
+  color: #cffafe;
+}
