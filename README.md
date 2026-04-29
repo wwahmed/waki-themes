@@ -1,8 +1,28 @@
 # waki-themes
 
-Three swappable web themes — **flat**, **glass-v1**, **glass-v2** — bundled with a single-page email-inbox demo (WakiMail) so you can compare them side by side and drop the one you like into any project.
+Shared theme tokens for Waqas's apps. Consuming apps remain private; this repo contains only design tokens, no business logic or secrets.
 
-Extracted from the 3dByPixel printer-shop dashboard's themes (commit history at the printer-dashboard repo, tagged `flat-v1` / `glass-v1` / `glass-v2`).
+Twenty swappable web themes (flat, glass-v1, glass-v2, glass-v3, glass-extreme, frosted-glass, neumorphism, neon, ocean, sunset, forest, sakura, arctic, lavender, rose-gold, midnight, copper, emerald, slate-modern, nord) plus a single-page email-inbox demo so you can compare them side by side. Light + dark variants for every theme, with chroma preserved in dark mode (no convergence to identical near-black).
+
+Originally extracted from the 3dByPixel printer-shop dashboard's themes; now the canonical source for waki-brain, printer-dashboard, and future apps.
+
+## Cross-app consumption
+
+The canonical bundle lives at:
+
+```
+https://raw.githubusercontent.com/wwahmed/waki-themes/main/dist/themes.json
+```
+
+Schema:
+
+```
+{ schemaVersion, pkgVersion, gitSha, builtAt, base, themes: { id: { name, description, vibe, css } } }
+```
+
+GitHub Actions auto-rebuilds the bundle on every push to main (filtered to `styles/`, `scripts/`, `package.json`) so the embedded `gitSha` stays in sync with HEAD. Consumers fetch on boot, cache locally, refetch every ~6 hours, and apply the latest CSS at runtime without rebuilding.
+
+Bump `package.json` version when the schema or CSS contract changes; consumers can read `pkgVersion` to decide whether to invalidate their local cache.
 
 ## Quick start
 
