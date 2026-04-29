@@ -15,7 +15,9 @@ body {
   color: #0f172a;
 }
 html.dark body {
-  background: #243550;
+  /* Punchier royal-blue dark to keep flat from reading as the same
+     desaturated slate as arctic / slate-modern. Was #243550. */
+  background: #1e3a6e;
   color: #f1f5f9;
 }
 
@@ -33,15 +35,15 @@ html.dark body {
   transition: background-color 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out;
 }
 html.dark .glass {
-  background: #324663;
-  border-color: #475569;
+  background: #2c4a82;
+  border-color: #4061a3;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 .glass:hover {
   box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
 }
 html.dark .glass:hover {
-  background: #3a4a60;
+  background: #345595;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
 }
 
@@ -53,8 +55,8 @@ html.dark .glass:hover {
   transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
 }
 html.dark .glass-elevated {
-  background: #3a4a60;
-  border-color: #64748b;
+  background: #355aa3;
+  border-color: #4d7dc8;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 .glass-elevated:hover {
@@ -66,8 +68,8 @@ html.dark .glass-elevated {
   border-bottom: 1px solid #e2e8f0;
 }
 html.dark .glass-bar {
-  background: #1a2536;
-  border-color: #334155;
+  background: #16294e;
+  border-color: #2c4a82;
 }
 
 /* Helpers used by the demo's chip rows / sidebar entries — kept on the
@@ -78,13 +80,13 @@ html.dark .glass-bar {
   border: 1px solid #cbd5e1;
 }
 html.dark .chip {
-  background: #324663;
-  border-color: #475569;
+  background: #2c4a82;
+  border-color: #4061a3;
 }
 
 .divider-soft {
   border-color: #e2e8f0;
 }
 html.dark .divider-soft {
-  border-color: #475569;
+  border-color: #4061a3;
 }

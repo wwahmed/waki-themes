@@ -1,12 +1,13 @@
 {
   "name": "waki-themes",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
-  "description": "Three swappable web themes (flat, glass-v1, glass-v2) extracted from the 3dByPixel printer dashboard, with a single-page email-inbox demo to compare them side by side.",
+  "description": "Twenty swappable web themes with a versioned JSON bundle for cross-app consumption (waki-brain, printer-dashboard, etc) via the dist/themes.json contract.",
   "license": "MIT",
   "scripts": {
     "start": "python3 -m http.server 5500",
-    "open": "open http://localhost:5500"
+    "open": "open http://localhost:5500",
+    "build": "node scripts/build-bundle.mjs"
   },
   "keywords": [
     "theme",

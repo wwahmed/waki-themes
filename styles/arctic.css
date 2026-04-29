@@ -12,7 +12,9 @@ body {
   color: #0f172a;
 }
 html.dark body {
-  background: #0f172a;
+  /* Glacial: subtly cooler than slate-modern so the two read as
+     distinct themes in dark mode. Was #0f172a, identical to slate. */
+  background: #0a1424;
   color: #e2e8f0;
 }
 
@@ -28,8 +30,11 @@ html.dark body {
   box-shadow: none;
 }
 html.dark .glass {
-  background: #0f172a !important;
-  border-color: #1e293b;
+  /* Panel one step lighter than body so hairlines still read as the
+     identity but the panel itself isn't invisible. Sky-cyan border
+     tint preserves arctic's glacial feel. */
+  background: #0f1c30 !important;
+  border-color: rgba(56, 189, 248, 0.22);
 }
 
 .glass-elevated {
@@ -39,8 +44,8 @@ html.dark .glass {
   box-shadow: none;
 }
 html.dark .glass-elevated {
-  background: #0f172a !important;
-  border-color: #334155;
+  background: #122340 !important;
+  border-color: rgba(56, 189, 248, 0.3);
 }
 
 /* Hover surfaces a SLIGHTLY darker line — the only feedback. No
@@ -65,8 +70,8 @@ html.dark .glass-elevated:hover {
   border-bottom: 1px solid #e2e8f0;
 }
 html.dark .glass-bar {
-  background: rgba(15, 23, 42, 0.92) !important;
-  border-color: #1e293b;
+  background: rgba(10, 20, 36, 0.92) !important;
+  border-color: rgba(56, 189, 248, 0.18);
 }
 
 .card {
@@ -76,8 +81,8 @@ html.dark .glass-bar {
   box-shadow: none !important;
 }
 html.dark .card {
-  background: #0f172a !important;
-  border-color: #1e293b !important;
+  background: #0f1c30 !important;
+  border-color: rgba(56, 189, 248, 0.22) !important;
 }
 .card-elevated {
   background: #f8fafc !important;
@@ -86,8 +91,8 @@ html.dark .card {
   box-shadow: none !important;
 }
 html.dark .card-elevated {
-  background: #0f172a !important;
-  border-color: #334155 !important;
+  background: #122340 !important;
+  border-color: rgba(56, 189, 248, 0.3) !important;
 }
 
 .surface-page, .surface-1, .surface-2, .surface-3, .surface-muted {
@@ -95,7 +100,7 @@ html.dark .card-elevated {
 }
 html.dark .surface-page, html.dark .surface-1, html.dark .surface-2,
 html.dark .surface-3, html.dark .surface-muted {
-  background-color: #0f172a !important;
+  background-color: #0a1424 !important;
 }
 
 .chip {

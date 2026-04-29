@@ -22,7 +22,10 @@ body {
   color: #0f172a;
 }
 html.dark body {
-  background: linear-gradient(135deg, #0c1220 0%, #162033 30%, #1a2744 60%, #0f1a2e 100%);
+  /* Violet/indigo undertone in dark mode so glass-v1 reads as warmer
+     than glass-v2's cool blue baseline. Same brightness floor; the
+     difference is hue, not luminosity. */
+  background: linear-gradient(135deg, #170c2a 0%, #251447 30%, #1f1240 60%, #14092a 100%);
   background-attachment: fixed;
   color: #f1f5f9;
 }
@@ -38,8 +41,10 @@ html.dark body {
   transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
 }
 html.dark .glass {
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.1);
+  /* Violet-tinted panel chroma so v1 stays visibly its own theme even
+     in dark mode. Was rgba(255,255,255,0.06) which converged with v2. */
+  background: rgba(168, 85, 247, 0.09);
+  border-color: rgba(168, 85, 247, 0.22);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
@@ -53,8 +58,8 @@ html.dark .glass {
   transition: background-color 150ms ease-out, box-shadow 150ms ease-out;
 }
 html.dark .glass-elevated {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.15);
+  background: rgba(168, 85, 247, 0.13);
+  border-color: rgba(168, 85, 247, 0.3);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
 }
 
@@ -67,7 +72,7 @@ html.dark .glass-elevated {
   -webkit-backdrop-filter: blur(18px) saturate(160%);
 }
 html.dark .glass-bar {
-  background: rgba(15, 23, 42, 0.55);
+  background: rgba(31, 18, 64, 0.6);
 }
 
 .chip {
@@ -77,8 +82,8 @@ html.dark .glass-bar {
   -webkit-backdrop-filter: blur(8px);
 }
 html.dark .chip {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(168, 85, 247, 0.1);
+  border-color: rgba(168, 85, 247, 0.22);
 }
 
 .divider-soft {
