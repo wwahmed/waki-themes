@@ -34,12 +34,15 @@ jobs:
 
       - name: Commit rebuilt bundle if changed
         run: |
-          if [ -n "$(git status --porcelain dist/themes.json)" ]; then
+          if git diff --quiet dist/themes.json; then
+            echo "No changes to dist/themes.json; nothing to publish."
+          else
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add dist/themes.json
-            git commit -m "build(bundle): auto-rebuild dist/themes.json"
+            # [skip ci] keeps this commit from re-triggering the workflow
+            # in a loop. The bot's auto-commit is bundle-only; nothing
+            # else needs CI to react to it.
+            git commit -m "chore: publish dist/themes.json [skip ci]"
             git push
-          else
-            echo "No bundle changes; nothing to commit."
           fi
