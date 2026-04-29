@@ -48,7 +48,8 @@ function pkgVersion() {
 // AVAILABLE_THEMES so consumers don't have to maintain a parallel
 // metadata table. Edit this when adding a new theme file.
 const META = {
-  "glass-v2": { name: "Glass", description: "Frosted glass + drift, default", vibe: "glass" },
+  "glass-plus": { name: "Glass Plus", description: "Glass with the dial turned up - violet wash, default", vibe: "glass" },
+  "glass-v2": { name: "Glass", description: "Frosted glass + drift, calmer alternative", vibe: "glass" },
   "glass-v1": { name: "Glass Lite", description: "Frosted glass with violet undertone in dark", vibe: "glass" },
   "glass-v3": { name: "Aurora", description: "Tinted glass on aurora blobs", vibe: "glass" },
   "glass-extreme": { name: "Glass Extreme", description: "Ultra-translucent iOS look", vibe: "glass" },
