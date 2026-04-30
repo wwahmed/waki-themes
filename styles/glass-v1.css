@@ -92,3 +92,101 @@ html.dark .chip {
 html.dark .divider-soft {
   border-color: rgba(255, 255, 255, 0.08);
 }
+
+/* ----- Action buttons --------------------------------------------------- */
+/* Required by SCHEMA.md (v0.4.0). Theme CSS loads after waki-shell
+ * utilities.css so equal-specificity rules win without !important. */
+.btn-primary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  color: #ffffff;
+  border: 1px solid #7c3aed80;
+  box-shadow: 0 4px 14px #8b5cf650;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #7c3aed 0%, #7c3aed 100%);
+}
+html.dark .btn-primary {
+  background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+  color: #0a0e1a;
+  box-shadow: 0 4px 14px #a78bfa55;
+}
+html.dark .btn-primary:hover {
+  background: linear-gradient(135deg, #8b5cf6 0%, #8b5cf6 100%);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.7);
+  color: #0f172a;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.7);
+  filter: brightness(1.05);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+html.dark .btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: #f1f5f9;
+  border-color: rgba(255, 255, 255, 0.14);
+}
+html.dark .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+  filter: brightness(1.15);
+}
+
+.btn-warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: #ffffff;
+  border: 1px solid rgba(217, 119, 6, 0.5);
+  box-shadow: 0 4px 14px rgba(217, 119, 6, 0.3);
+}
+.btn-warning:hover {
+  background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+}
+html.dark .btn-warning {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: #1a0f00;
+  box-shadow: 0 4px 14px rgba(251, 191, 36, 0.35);
+}
+html.dark .btn-warning:hover {
+  background: linear-gradient(135deg, #fcd34d 0%, #fbbf24 100%);
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+  border: 1px solid rgba(220, 38, 38, 0.5);
+  box-shadow: 0 4px 14px rgba(220, 38, 38, 0.3);
+}
+.btn-danger:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+}
+html.dark .btn-danger {
+  background: linear-gradient(135deg, #f87171 0%, #ef4444 100%);
+  color: #1a0000;
+  box-shadow: 0 4px 14px rgba(248, 113, 113, 0.35);
+}
+html.dark .btn-danger:hover {
+  background: linear-gradient(135deg, #fca5a5 0%, #f87171 100%);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: #0f172a;
+  border: 1px solid transparent;
+}
+.btn-ghost:hover {
+  background: rgba(139, 92, 246, 0.08);
+  border-color: rgba(139, 92, 246, 0.18);
+}
+html.dark .btn-ghost {
+  color: #f1f5f9;
+}
+html.dark .btn-ghost:hover {
+  background: rgba(139, 92, 246, 0.14);
+  border-color: rgba(139, 92, 246, 0.24);
+}
+

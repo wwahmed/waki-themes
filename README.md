@@ -2,26 +2,42 @@
 
 Shared theme tokens for Waqas's apps. Consuming apps remain private; this repo contains only design tokens, no business logic or secrets.
 
-Twenty-one swappable web themes (flat, glass-v1, glass-v2, glass-v3 / Aurora, glass-plus / Glass Plus default, glass-extreme, frosted-glass, neumorphism, neon, ocean, sunset, forest, sakura, arctic, lavender, rose-gold, midnight, copper, emerald, slate-modern, nord) plus a single-page email-inbox demo so you can compare them side by side. Light + dark variants for every theme, with chroma preserved in dark mode (no convergence to identical near-black).
+Curated catalog of 20 themes organised under 5 structural families (Glass, Aurora, Clean, Editorial, Neon) since v0.4.0. Light + dark variants for every theme, with chroma preserved in dark mode. See [CURATION.md](CURATION.md) for the audit, [SCHEMA.md](SCHEMA.md) for the per-theme token contract, [CHANGELOG.md](CHANGELOG.md) for the migration history.
 
 Originally extracted from the 3dByPixel printer-shop dashboard's themes; now the canonical source for waki-brain, printer-dashboard, and future apps.
 
+## Two surfaces
+
+The repo serves two surfaces with different access policies:
+
+| Surface | URL | Access | Purpose |
+|---|---|---|---|
+| **Theme Studio** (the editor / gallery) | `https://themes.wakilabs.dev` | Google-OAuth gated, family allowlist | Browse, edit, create themes |
+| **Foundation CDN** (the published artifact) | `https://cdn.wakilabs.dev/waki-themes/themes.json` | Anonymous read | Consumer apps fetch the bundle |
+
+The Studio is private because authoring belongs to a small allowlist; the CDN is public because every consumer app, public or private, needs the bundle to render. This is the canonical pattern for foundation-level resources at wakilabs.dev: gated authoring tools at `<thing>.wakilabs.dev`, public artifacts at `cdn.wakilabs.dev/<thing>/`. Future foundation projects (waki-shell, etc.) follow the same convention.
+
+Build pipeline + Cloudflare Pages setup for both surfaces lives in [docs/DEPLOY.md](docs/DEPLOY.md).
+
 ## Theme Studio
 
-Live demo + interactive editor: **https://themes.3dbypixel.com**
+Studio source lives in [app/](app/).
 
-- Browse every theme with live mini previews (light + dark).
-- Open any theme into a live preview pane with a sample dashboard.
-- Edit colours, panel surface, border radius, backdrop blur with sliders. Override layer is live; preview updates as you drag.
-- Create new themes from blank or by duplicating an existing one.
-- WCAG AA contrast checker on each pair (text on panel, text on bg, accent on panel) for both modes. Warns, never blocks.
-- Export as standalone CSS, token JSON, or copy CSS to clipboard. To make a saved theme an official built-in, drop the CSS into `styles/` and register it in `scripts/build-bundle.mjs`. See [docs/CREATING-THEMES.md](docs/CREATING-THEMES.md).
-
-The studio source lives in [app/](app/). Build pipeline + Cloudflare Pages config in [docs/DEPLOY.md](docs/DEPLOY.md).
+- Two-step picker: pick a family (5 cards), then pick a variant (4 tiles per family).
+- Live preview pane with a sample dashboard (KPI cards, activity list, form, typography). Both modes toggle.
+- Editor: family-level tab edits radius / blur and propagates to all variants in the family. Variant-level tab edits per-tile palette.
+- WCAG AA contrast checker on each pair. Warns, never blocks.
+- Export as standalone CSS, token JSON, or copy CSS to clipboard. See [docs/CREATING-THEMES.md](docs/CREATING-THEMES.md) for the full create-a-theme flow.
 
 ## Cross-app consumption
 
-The canonical bundle lives at:
+Canonical bundle URL (post-v0.4.0):
+
+```
+https://cdn.wakilabs.dev/waki-themes/themes.json
+```
+
+Backward-compat fallback during the migration window:
 
 ```
 https://raw.githubusercontent.com/wwahmed/waki-themes/main/dist/themes.json

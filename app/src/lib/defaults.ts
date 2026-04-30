@@ -70,7 +70,7 @@ export const THEME_OVERRIDES: Record<string, OverrideTokens> = {
     radiusPx: 12,
     blurPx: 12,
   },
-  "glass-v3": {
+  "aurora-twilight": {
     bgFromLight: "#e0eaff",
     bgToLight: "#fce7f3",
     bgFromDark: "#0a1428",

@@ -24,6 +24,14 @@ import { FAMILIES, VARIANT_BY_THEME_ID } from "../src/themes/families.mjs";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, "..");
 
+// Schema validation must pass before we emit a bundle. A failing
+// validator throws and the build aborts with a non-zero exit code.
+console.log("[build-bundle] running schema validation...");
+execFileSync("node", [resolve(__dirname, "validate-themes.mjs")], {
+  cwd: repoRoot,
+  stdio: "inherit",
+});
+
 function gitSha() {
   try {
     return execFileSync("git", ["rev-parse", "HEAD"], {
@@ -46,32 +54,22 @@ function pkgVersion() {
   }
 }
 
-// id -> { name, description, vibe }. Mirrors waki-brain's
-// AVAILABLE_THEMES so consumers don't have to maintain a parallel
-// metadata table. Edit this when adding a new theme file.
-const META = {
-  "glass-plus": { name: "Glass Plus", description: "Glass with the dial turned up - violet wash, default", vibe: "glass" },
-  "glass-v2": { name: "Glass", description: "Frosted glass + drift, calmer alternative", vibe: "glass" },
-  "glass-v1": { name: "Glass Lite", description: "Frosted glass with violet undertone in dark", vibe: "glass" },
-  "glass-v3": { name: "Aurora", description: "Tinted glass on aurora blobs", vibe: "glass" },
-  "glass-extreme": { name: "Glass Extreme", description: "Ultra-translucent iOS look", vibe: "glass" },
-  "frosted-glass": { name: "Frosted", description: "Heavy teal/cyan frost", vibe: "glass" },
-  midnight: { name: "Midnight", description: "Glowing-edge dark cards", vibe: "neon" },
-  neon: { name: "Neon", description: "Cyberpunk neon outlines + glow", vibe: "neon" },
-  ocean: { name: "Ocean", description: "Layered wave-crest cards", vibe: "matte" },
-  sunset: { name: "Sunset", description: "Warm gradient cards", vibe: "matte" },
-  forest: { name: "Forest", description: "Paper texture, organic edges", vibe: "nature" },
-  sakura: { name: "Sakura", description: "Hand-drawn dashed borders", vibe: "nature" },
-  arctic: { name: "Arctic", description: "Glacial hairlines, sky-cyan accent", vibe: "matte" },
-  lavender: { name: "Lavender", description: "Soft mesh-gradient cards", vibe: "soft" },
-  "rose-gold": { name: "Rose Gold", description: "Brushed-metal sheen", vibe: "metal" },
-  copper: { name: "Copper", description: "Embossed bronze", vibe: "metal" },
-  emerald: { name: "Emerald", description: "Floating-island cards", vibe: "soft" },
-  neumorphism: { name: "Soft UI", description: "Extruded dual-shadow surfaces", vibe: "soft" },
-  "slate-modern": { name: "Slate", description: "Sharp angular precision", vibe: "matte" },
-  nord: { name: "Nord", description: "Muted Nordic, cozy", vibe: "matte" },
-  flat: { name: "Flat", description: "Royal-blue solid panels", vibe: "matte" },
-};
+// id -> { name, description, vibe }. Derived from FAMILIES so the META
+// table can't drift out of sync with the family registry. `vibe` is the
+// familyId for built-in themes.
+//
+// To add a new theme, add it to src/themes/families.mjs and the META
+// table is regenerated automatically.
+const META = {};
+for (const [familyId, family] of Object.entries(FAMILIES)) {
+  for (const variant of family.variants) {
+    META[variant.themeId] = {
+      name: `${family.name} ${variant.name}`,
+      description: variant.description,
+      vibe: familyId,
+    };
+  }
+}
 
 const stylesDir = resolve(repoRoot, "styles");
 const baseCss = readFileSync(resolve(stylesDir, "base.css"), "utf8");
