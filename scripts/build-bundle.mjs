@@ -141,3 +141,12 @@ writeFileSync(out, JSON.stringify(bundle, null, 2));
 console.log(
   `[ok] wrote ${out} (${Object.keys(themes).length} themes across ${Object.keys(families).length} families, ${(JSON.stringify(bundle).length / 1024).toFixed(1)} KB)`,
 );
+
+// Integrity test on the freshly written bundle. A failure here means
+// the catalog or CSS contract drifted; aborts the build so a broken
+// bundle doesn't ship.
+console.log("[build-bundle] running bundle integrity test...");
+execFileSync("node", [resolve(__dirname, "test-bundle.mjs")], {
+  cwd: repoRoot,
+  stdio: "inherit",
+});

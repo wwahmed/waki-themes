@@ -202,6 +202,16 @@ export function App() {
     setFamilyOverrides((prev) => ({ ...prev, [familyId]: { radiusPx, blurPx } }));
   };
 
+  const handleDeleteCustom = (id: string) => {
+    setSessionThemes((prev) => prev.filter((t) => t.id !== id));
+    if (screen.kind === "preview" && screen.id === id) {
+      setScreen({ kind: "families" });
+    }
+    if (screen.kind === "edit" && screen.id === id) {
+      setScreen({ kind: "families" });
+    }
+  };
+
   if (error) {
     return (
       <div className="studio-bg min-h-screen flex items-center justify-center p-6">
@@ -347,6 +357,7 @@ export function App() {
             onPickFamily={(id) => setScreen({ kind: "variants", familyId: id })}
             onPickCustom={(id) => setScreen({ kind: "preview", id })}
             onNewTheme={handleNewTheme}
+            onDeleteCustom={handleDeleteCustom}
           />
         )}
 

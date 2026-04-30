@@ -1,5 +1,5 @@
 import { useMemo } from "react";
-import { Plus } from "lucide-react";
+import { Plus, Trash2 } from "lucide-react";
 import { PreviewFrame } from "./PreviewFrame";
 import { MINIATURE_HTML } from "../lib/sample";
 import type { BundleFamily, StudioTheme } from "../lib/types";
@@ -12,6 +12,7 @@ interface FamilyGalleryProps {
   onPickFamily: (familyId: string) => void;
   onPickCustom: (id: string) => void;
   onNewTheme: () => void;
+  onDeleteCustom: (id: string) => void;
 }
 
 // Step 1 of the picker. Each family gets one large card showing a
@@ -29,6 +30,7 @@ export function FamilyGallery({
   onPickFamily,
   onPickCustom,
   onNewTheme,
+  onDeleteCustom,
 }: FamilyGalleryProps) {
   const familyEntries = useMemo(
     () =>
@@ -57,26 +59,40 @@ export function FamilyGallery({
           </div>
           <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {customThemes.map((t) => (
-              <button
-                key={t.id}
-                onClick={() => onPickCustom(t.id)}
-                className="group rounded-2xl overflow-hidden ring-1 ring-violet-500/15 hover:ring-violet-500/40 transition-all text-left"
-              >
-                <div className="aspect-[4/3] w-full relative">
-                  <PreviewFrame
-                    baseCss={t.baseCss}
-                    html={MINIATURE_HTML}
-                    mode={mode}
-                    scale={0.7}
-                    ariaLabel={t.name}
-                  />
-                  <span className="absolute top-2 left-2 studio-chip">custom</span>
-                </div>
-                <div className="studio-panel rounded-none border-x-0 border-b-0 px-3 py-2">
-                  <div className="font-semibold text-sm truncate">{t.name}</div>
-                  <div className="text-[11px] opacity-65 truncate">{t.description}</div>
-                </div>
-              </button>
+              <div key={t.id} className="relative group">
+                <button
+                  onClick={() => onPickCustom(t.id)}
+                  className="w-full rounded-2xl overflow-hidden ring-1 ring-violet-500/15 hover:ring-violet-500/40 transition-all text-left"
+                >
+                  <div className="aspect-[4/3] w-full relative">
+                    <PreviewFrame
+                      baseCss={t.baseCss}
+                      html={MINIATURE_HTML}
+                      mode={mode}
+                      scale={0.7}
+                      ariaLabel={t.name}
+                    />
+                    <span className="absolute top-2 left-2 studio-chip">custom</span>
+                  </div>
+                  <div className="studio-panel rounded-none border-x-0 border-b-0 px-3 py-2">
+                    <div className="font-semibold text-sm truncate">{t.name}</div>
+                    <div className="text-[11px] opacity-65 truncate">{t.description}</div>
+                  </div>
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    if (confirm(`Delete "${t.name}" from this session?`)) {
+                      onDeleteCustom(t.id);
+                    }
+                  }}
+                  className="absolute top-2 right-2 p-1.5 rounded-lg bg-red-500/15 text-red-700 dark:text-red-400 hover:bg-red-500/30 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity"
+                  title="Delete this custom theme"
+                  aria-label={`Delete ${t.name}`}
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                </button>
+              </div>
             ))}
           </div>
         </section>
