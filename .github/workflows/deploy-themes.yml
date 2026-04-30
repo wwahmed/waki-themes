@@ -72,6 +72,42 @@ jobs:
           npm run sync-bundle
           npm run build
 
+      - name: Bundle size summary
+        # Workflow-only bundle telemetry. Captures size of both shipped
+        # surfaces (studio app + cdn bundle) so regressions show up in
+        # the run summary plus the artifact archive.
+        run: |
+          {
+            echo "# waki-themes bundle (sha ${GITHUB_SHA::7})"
+            echo
+            echo "## Studio (app/dist)"
+            echo
+            echo '```'
+            du -sh app/dist
+            (cd app/dist && find . -type f -printf '%s %p\n' 2>/dev/null \
+              || find app/dist -type f -exec stat -f '%z %N' {} \;) \
+              | sort -rn | head -20
+            echo '```'
+            echo
+            echo "## CDN (dist/cdn)"
+            echo
+            echo '```'
+            du -sh dist/cdn
+            (cd dist/cdn && find . -type f -printf '%s %p\n' 2>/dev/null \
+              || find dist/cdn -type f -exec stat -f '%z %N' {} \;) \
+              | sort -rn | head -20
+            echo '```'
+          } > dist-stats.md
+          cat dist-stats.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload bundle stats artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: waki-themes-bundle-stats-${{ github.sha }}
+          path: dist-stats.md
+          retention-days: 30
+          if-no-files-found: warn
+
       - name: Deploy app/dist to waki-themes-studio (themes.wakilabs.dev)
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
