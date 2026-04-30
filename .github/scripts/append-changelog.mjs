@@ -65,37 +65,31 @@ function parseBlock(message) {
 }
 
 const fields = parseBlock(msg);
-if (!fields.label || !fields.description) {
-  console.log("[changelog] no Changelog block in commit; skipping");
-  process.exit(0);
-}
+const hasNewEntry = !!(fields.label && fields.description);
 
-let version = sha.slice(0, 7);
-if (pkgPath) {
-  try {
-    const pkg = JSON.parse(readFileSync(pkgPath, "utf8"));
-    if (pkg.version && typeof pkg.version === "string") version = pkg.version;
-  } catch (e) {
-    console.log(`[changelog] could not read ${pkgPath}: ${e.message}`);
-  }
-}
-
-const entry = {
-  version,
-  label: fields.label,
-  description: fields.description,
-  commit_sha: sha,
-  deployed_at: new Date().toISOString(),
-};
-
+// Always fetch the live changelog FIRST. We need it whether or not this
+// commit adds a new entry, so that no-block commits (the common case)
+// preserve existing history in the new dist instead of wiping it.
 let existing = [];
 if (liveUrl) {
   try {
     const res = await fetch(liveUrl, { redirect: "follow" });
     if (res.ok) {
-      const data = await res.json();
-      if (Array.isArray(data)) existing = data;
-      else console.log("[changelog] live URL returned non-array; starting fresh");
+      const ct = (res.headers.get("content-type") || "").toLowerCase();
+      // CF Pages serves SPA fallback HTML for missing JSON paths with
+      // content-type: application/json; sniff the body to be safe.
+      const text = await res.text();
+      if (text.trimStart().startsWith("[")) {
+        try {
+          const data = JSON.parse(text);
+          if (Array.isArray(data)) existing = data;
+          else console.log("[changelog] live URL parsed but non-array; starting fresh");
+        } catch (e) {
+          console.log(`[changelog] live URL not valid JSON (${e.message}); starting fresh`);
+        }
+      } else {
+        console.log("[changelog] live URL body looks like HTML (SPA fallback); starting fresh");
+      }
     } else if (res.status !== 404) {
       console.log(`[changelog] live URL HTTP ${res.status}; starting fresh`);
     }
@@ -104,15 +98,40 @@ if (liveUrl) {
   }
 }
 
-if (existing[0] && existing[0].commit_sha === entry.commit_sha) {
-  console.log(`[changelog] entry for ${entry.commit_sha.slice(0, 7)} already at top; skipping`);
-  process.exit(0);
+let next = existing;
+
+if (hasNewEntry) {
+  let version = sha.slice(0, 7);
+  if (pkgPath) {
+    try {
+      const pkg = JSON.parse(readFileSync(pkgPath, "utf8"));
+      if (pkg.version && typeof pkg.version === "string") version = pkg.version;
+    } catch (e) {
+      console.log(`[changelog] could not read ${pkgPath}: ${e.message}`);
+    }
+  }
+
+  const entry = {
+    version,
+    label: fields.label,
+    description: fields.description,
+    commit_sha: sha,
+    deployed_at: new Date().toISOString(),
+  };
+
+  if (existing[0] && existing[0].commit_sha === entry.commit_sha) {
+    console.log(`[changelog] entry for ${entry.commit_sha.slice(0, 7)} already at top; preserving as-is`);
+  } else {
+    next = [entry, ...existing];
+    console.log(`[changelog] appended: "${entry.label}" (version=${version} sha=${sha.slice(0, 7)})`);
+  }
+} else {
+  console.log("[changelog] no Changelog block in commit; preserving existing entries");
 }
 
-const next = [entry, ...existing];
-
+// Always write to dist. If `next` is empty AND the file would not exist
+// otherwise, the SPA fetches return 404 (or SPA fallback). If the file
+// has prior entries, those are now preserved across this deploy.
 mkdirSync(dirname(distPath), { recursive: true });
 writeFileSync(distPath, JSON.stringify(next, null, 2) + "\n");
-
-console.log(`[changelog] appended: "${entry.label}" (version=${version} sha=${sha.slice(0, 7)})`);
-console.log(`[changelog] total entries: ${next.length}`);
+console.log(`[changelog] dist written: ${distPath} (${next.length} entries)`);
