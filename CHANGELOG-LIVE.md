@@ -43,7 +43,14 @@ Cut release. Curated 5x4 catalog (20 themes), token schema + build-time validati
 
 ## Pending (overnight queue)
 
-- Cloudflare Pages projects + DNS (blocked on `CLOUDFLARE_API_TOKEN`; see `MORNING_BRIEF.md`)
-- Recommended-token coverage (`.btn-success`, `.status-*`, `.input`) across the 20 themes; validator currently warns, doesn't block.
+- ~~Cloudflare Pages projects + DNS~~ **DONE 2026-04-30**. Both `themes.wakilabs.dev` and `cdn.wakilabs.dev` resolve and return 200 via Cloudflare proxy. CDN `pkgVersion 0.4.0`, 20 themes, 5 families verified live.
+- **TODO: Cloudflare Access policy on `themes.wakilabs.dev`**. Manual Zero Trust dashboard step (token scopes don't cover Access app creation). Steps:
+  1. Cloudflare dashboard -> Zero Trust -> Access -> Applications -> Add application
+  2. Self-hosted, name `Theme Studio`, domain `themes.wakilabs.dev`
+  3. Policy: include emails matching the family-Gmail allowlist (same as Memso: `wwahmed@gmail.com`, `salmac145@gmail.com`)
+  4. Identity provider: Google (already configured for waki-brain OAuth)
+  5. Session duration: 24h
+  Until this is on, the in-app `AccessGate` (passphrase via `VITE_STUDIO_PASSPHRASE`) is the only gate. Set the env var in the waki-themes-studio Pages project (Settings -> Environment variables -> Production) to a shared passphrase. Empty env var = gate disabled = anonymous-readable Studio.
+- Recommended-token coverage (`.btn-success`, `.status-*`, `.input`) across the 20 themes; validator currently warns, doesn't block. (Note: v0.4.1 `b83e2c2` already promoted these to required and updated all 20 themes; this line is stale.)
 - Full consumer catalog refresh: drop the local CSS files for dropped ids in printer-dashboard + brain-v2; sync the new aurora/clean/editorial/neon CSS files in.
 - Studio in-app Google OAuth flow (Cloudflare Access at the hostname is the primary gate; in-app flow is fine-grained UX).
