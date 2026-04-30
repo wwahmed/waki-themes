@@ -36,6 +36,15 @@ export const REQUIRED_SELECTORS = [
   ".btn-warning",
   ".btn-danger",
   ".btn-ghost",
+
+  // Status + form contract (promoted from recommended in v0.4.1 once
+  // every theme covered them).
+  ".btn-success",
+  ".status-success",
+  ".status-warning",
+  ".status-error",
+  ".status-info",
+  ".input",
 ];
 
 // REQUIRED root rules. Every theme must paint the page body in both
@@ -51,12 +60,8 @@ export const REQUIRED_ROOT_PATTERNS = [
   },
 ];
 
-// SELECTORS we recommend but don't fail on. Useful for completeness checks.
-export const RECOMMENDED_SELECTORS = [
-  ".btn-success",
-  ".status-success",
-  ".status-warning",
-  ".status-error",
-  ".status-info",
-  ".input",
-];
+// SELECTORS we recommend but don't fail on. Useful for completeness
+// checks. Empty as of v0.4.1; everything previously here was promoted
+// to REQUIRED. Future tokens (.toast, .tooltip, etc.) land here first
+// and get promoted once every theme covers them.
+export const RECOMMENDED_SELECTORS = [];

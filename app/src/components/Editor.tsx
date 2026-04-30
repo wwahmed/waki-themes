@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowLeft, Copy, Download, Save, Sun, Moon, FileCode, Palette, Layers } from "lucide-react";
+import { ArrowLeft, Copy, Download, Save, Sun, Moon, FileCode, Palette, Layers, RotateCcw } from "lucide-react";
 import type { BundleFamily, OverrideTokens, StudioTheme } from "../lib/types";
 import { buildOverrideCss, buildStandaloneThemeCss } from "../lib/overrideCss";
 import { reportContrasts } from "../lib/contrast";
@@ -77,6 +77,11 @@ export function Editor({
   const update = <K extends keyof OverrideTokens>(k: K, v: OverrideTokens[K]) => {
     setOverrides((prev) => ({ ...prev, [k]: v }));
     setSavedHint(null);
+  };
+
+  const handleReset = () => {
+    setOverrides(initialOverrides);
+    setSavedHint("Reset to the variant's seed values.");
   };
 
   const slugify = (s: string) =>
@@ -325,6 +330,14 @@ export function Editor({
               <button onClick={copyCss} className="studio-button" title="Copy CSS to clipboard">
                 <Copy className="w-4 h-4" />
                 Copy
+              </button>
+              <button
+                onClick={handleReset}
+                className="studio-button"
+                title="Reset overrides to the variant's seed values"
+              >
+                <RotateCcw className="w-4 h-4" />
+                Reset
               </button>
             </div>
           </>

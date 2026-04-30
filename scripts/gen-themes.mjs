@@ -119,6 +119,89 @@ html.dark .btn-ghost:hover {
   background: ${ghostDarkBg};
   border-color: ${ghostDarkBorder};
 }
+
+/* ----- Status + success button + input (SCHEMA.md recommended) --------- */
+.btn-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border: 1px solid rgba(5, 150, 105, 0.55);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+}
+.btn-success:hover {
+  background: linear-gradient(135deg, #059669 0%, #047857 100%);
+}
+html.dark .btn-success {
+  background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+  color: #022c22;
+  box-shadow: 0 4px 14px rgba(52, 211, 153, 0.35);
+}
+
+.status-success {
+  background: rgba(16, 185, 129, 0.12);
+  color: #047857;
+  border: 1px solid rgba(16, 185, 129, 0.32);
+}
+html.dark .status-success {
+  background: rgba(52, 211, 153, 0.16);
+  color: #6ee7b7;
+  border-color: rgba(52, 211, 153, 0.36);
+}
+
+.status-warning {
+  background: rgba(245, 158, 11, 0.12);
+  color: #b45309;
+  border: 1px solid rgba(245, 158, 11, 0.32);
+}
+html.dark .status-warning {
+  background: rgba(251, 191, 36, 0.16);
+  color: #fcd34d;
+  border-color: rgba(251, 191, 36, 0.36);
+}
+
+.status-error {
+  background: rgba(239, 68, 68, 0.12);
+  color: #b91c1c;
+  border: 1px solid rgba(239, 68, 68, 0.32);
+}
+html.dark .status-error {
+  background: rgba(248, 113, 113, 0.16);
+  color: #fca5a5;
+  border-color: rgba(248, 113, 113, 0.36);
+}
+
+.status-info {
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+  border: 1px solid rgba(59, 130, 246, 0.32);
+}
+html.dark .status-info {
+  background: rgba(96, 165, 250, 0.16);
+  color: #93c5fd;
+  border-color: rgba(96, 165, 250, 0.36);
+}
+
+.input {
+  background: ${secondaryLightBg};
+  color: ${textLight};
+  border: 1px solid ${secondaryLightBorder};
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+.input:focus {
+  border-color: ${accent};
+  box-shadow: 0 0 0 3px ${accent}25;
+}
+html.dark .input {
+  background: ${secondaryDarkBg};
+  color: ${textDark};
+  border-color: ${secondaryDarkBorder};
+}
+html.dark .input:focus {
+  border-color: ${accentDark};
+  box-shadow: 0 0 0 3px ${accentDark}30;
+}
 `;
 }
 
@@ -651,6 +734,99 @@ html.light .btn-ghost {
 }
 html.light .btn-ghost:hover {
   background: ${accent}10;
+}
+
+/* ----- Status + success + input (SCHEMA.md recommended) ---------------- */
+.btn-success {
+  background: #10b981;
+  color: #022c22;
+  border: 1px solid #10b981;
+  border-radius: 6px;
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.4);
+  font-weight: 700;
+}
+.btn-success:hover {
+  filter: brightness(1.1);
+  box-shadow: 0 0 24px rgba(16, 185, 129, 0.7);
+}
+
+.status-success {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid #10b98180;
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+html.light .status-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: #047857;
+}
+
+.status-warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border: 1px solid #f59e0b80;
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+html.light .status-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #b45309;
+}
+
+.status-error {
+  background: rgba(220, 38, 38, 0.15);
+  color: #f87171;
+  border: 1px solid #dc262680;
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+html.light .status-error {
+  background: rgba(220, 38, 38, 0.1);
+  color: #b91c1c;
+}
+
+.status-info {
+  background: ${accent}15;
+  color: ${accent};
+  border: 1px solid ${accent}50;
+  border-radius: 4px;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+html.light .status-info {
+  background: ${accent}10;
+}
+
+.input {
+  background: #0a0a0a;
+  color: #e5e5e5;
+  border: 1px solid #404040;
+  border-radius: 6px;
+  padding: 0.5rem 0.75rem;
+  font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
+  outline: none;
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
+}
+.input:focus {
+  border-color: ${accent};
+  box-shadow: 0 0 0 1px ${accent}, 0 0 12px ${accent}40;
+}
+html.light .input {
+  background: #ffffff;
+  color: #0a0a0a;
+  border-color: #d4d4d4;
 }
 `;
 }
