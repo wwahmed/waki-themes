@@ -1,0 +1,25 @@
+# Cloudflare Pages configuration reference. The dashboard is the
+# source of truth for build settings; this file documents the
+# expected values so they can be re-applied if the project is
+# recreated or migrated.
+#
+# Project: waki-themes
+# Production branch: main
+# Custom domain: themes.3dbypixel.com
+#
+# Build settings:
+#   Build command:        cd app && npm install && npm run build
+#   Build output dir:     app/dist
+#   Root dir:             /
+#   Node version:         20
+#   Environment vars:     none required for production
+#
+# What gets served:
+#   /                     -> studio SPA (index.html)
+#   /themes.json          -> consumer-facing bundle (mirrored from dist/themes.json)
+#   /dist/themes.json     -> consumer-facing bundle, /dist/ path preserved
+#   /build-info.json      -> studio build metadata (size + timestamp)
+#
+# The app/public/_headers file controls cache + CORS for the bundle.
+# The app/public/_redirects file enables SPA fallback for unknown
+# routes. Both are auto-applied by Cloudflare Pages on deploy.

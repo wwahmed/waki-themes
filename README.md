@@ -2,9 +2,22 @@
 
 Shared theme tokens for Waqas's apps. Consuming apps remain private; this repo contains only design tokens, no business logic or secrets.
 
-Twenty swappable web themes (flat, glass-v1, glass-v2, glass-v3, glass-extreme, frosted-glass, neumorphism, neon, ocean, sunset, forest, sakura, arctic, lavender, rose-gold, midnight, copper, emerald, slate-modern, nord) plus a single-page email-inbox demo so you can compare them side by side. Light + dark variants for every theme, with chroma preserved in dark mode (no convergence to identical near-black).
+Twenty-one swappable web themes (flat, glass-v1, glass-v2, glass-v3 / Aurora, glass-plus / Glass Plus default, glass-extreme, frosted-glass, neumorphism, neon, ocean, sunset, forest, sakura, arctic, lavender, rose-gold, midnight, copper, emerald, slate-modern, nord) plus a single-page email-inbox demo so you can compare them side by side. Light + dark variants for every theme, with chroma preserved in dark mode (no convergence to identical near-black).
 
 Originally extracted from the 3dByPixel printer-shop dashboard's themes; now the canonical source for waki-brain, printer-dashboard, and future apps.
+
+## Theme Studio
+
+Live demo + interactive editor: **https://themes.3dbypixel.com**
+
+- Browse every theme with live mini previews (light + dark).
+- Open any theme into a live preview pane with a sample dashboard.
+- Edit colours, panel surface, border radius, backdrop blur with sliders. Override layer is live; preview updates as you drag.
+- Create new themes from blank or by duplicating an existing one.
+- WCAG AA contrast checker on each pair (text on panel, text on bg, accent on panel) for both modes. Warns, never blocks.
+- Export as standalone CSS, token JSON, or copy CSS to clipboard. To make a saved theme an official built-in, drop the CSS into `styles/` and register it in `scripts/build-bundle.mjs`. See [docs/CREATING-THEMES.md](docs/CREATING-THEMES.md).
+
+The studio source lives in [app/](app/). Build pipeline + Cloudflare Pages config in [docs/DEPLOY.md](docs/DEPLOY.md).
 
 ## Cross-app consumption
 
