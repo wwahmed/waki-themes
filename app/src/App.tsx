@@ -1,11 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { Github, Moon, Palette, Sun } from "lucide-react";
+import { Github, Moon, Palette, Sun, Upload } from "lucide-react";
 import { loadBundle, bundleToStudioThemes } from "./lib/loader";
 import type { OverrideTokens, StudioTheme, ThemeBundle } from "./lib/types";
 import { FamilyGallery } from "./components/FamilyGallery";
 import { VariantGallery } from "./components/VariantGallery";
 import { PreviewPane } from "./components/PreviewPane";
 import { Editor } from "./components/Editor";
+import { ImportThemeDialog } from "./components/ImportThemeDialog";
 import { DEFAULT_OVERRIDES, getOverridesForTheme } from "./lib/defaults";
 import { buildStandaloneThemeCss } from "./lib/overrideCss";
 
@@ -48,6 +49,7 @@ export function App() {
     },
   );
   const [screen, setScreen] = useState<Screen>({ kind: "families" });
+  const [importOpen, setImportOpen] = useState(false);
   const [mode, setMode] = useState<"light" | "dark">(() => {
     const saved = localStorage.getItem(MODE_KEY);
     if (saved === "dark" || saved === "light") return saved;
@@ -144,6 +146,55 @@ export function App() {
       variantName: null,
     };
     setSessionThemes((prev) => [blank, ...prev]);
+    setScreen({ kind: "edit", id, isNew: true, tab: "variant" });
+  };
+
+  // Clone-from: stamp a new variant inside the same family using the
+  // source variant's palette as the seed. The result lives in
+  // sessionThemes (not a built-in) and inherits the source family's
+  // structure tokens automatically.
+  const handleCloneVariant = (sourceThemeId: string) => {
+    const source = themesById[sourceThemeId];
+    if (!source) return;
+    const id = `clone-${source.id}-${Date.now().toString(36)}`;
+    const clone: StudioTheme = {
+      id,
+      name: `${source.name} clone`,
+      description: source.description,
+      vibe: source.vibe,
+      baseCss: source.baseCss,
+      builtIn: false,
+      overrides: source.overrides ?? getOverridesForTheme(source.id),
+      familyId: source.familyId ?? null,
+      familyName: source.familyName ?? null,
+      variantSlot: source.variantSlot ? `${source.variantSlot}-clone` : null,
+      variantName: source.variantName ? `${source.variantName} clone` : null,
+    };
+    setSessionThemes((prev) => [clone, ...prev]);
+    setScreen({ kind: "edit", id, isNew: true, tab: "variant" });
+  };
+
+  const handleImportTheme = (
+    name: string,
+    description: string,
+    overrides: OverrideTokens,
+  ) => {
+    const id = `imported-${Date.now().toString(36)}`;
+    const imported: StudioTheme = {
+      id,
+      name,
+      description,
+      vibe: "custom",
+      baseCss: bundle?.base ?? "",
+      builtIn: false,
+      overrides,
+      familyId: null,
+      familyName: null,
+      variantSlot: null,
+      variantName: null,
+    };
+    setSessionThemes((prev) => [imported, ...prev]);
+    setImportOpen(false);
     setScreen({ kind: "edit", id, isNew: true, tab: "variant" });
   };
 
@@ -250,6 +301,15 @@ export function App() {
 
         <div className="flex items-center gap-1.5">
           <button
+            onClick={() => setImportOpen(true)}
+            className="studio-button text-xs"
+            aria-label="Import theme from JSON"
+            title="Import theme from JSON"
+          >
+            <Upload className="w-4 h-4" />
+            <span className="hidden sm:inline">Import</span>
+          </button>
+          <button
             onClick={() => setMode(mode === "light" ? "dark" : "light")}
             className="studio-button text-xs"
             aria-label="Toggle dark mode"
@@ -269,6 +329,13 @@ export function App() {
           </a>
         </div>
       </header>
+
+      {importOpen && (
+        <ImportThemeDialog
+          onClose={() => setImportOpen(false)}
+          onImport={handleImportTheme}
+        />
+      )}
 
       <main className="flex-1 px-4 py-4 max-w-[1400px] w-full mx-auto">
         {screen.kind === "families" && (
@@ -308,6 +375,7 @@ export function App() {
                 const first = family.variants[0]?.themeId;
                 if (first) setScreen({ kind: "edit", id: first, isNew: false, tab: "family" });
               }}
+              onClone={handleCloneVariant}
             />
           );
         })()}

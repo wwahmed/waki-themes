@@ -1,15 +1,23 @@
 #!/usr/bin/env node
 /**
  * Repackages dist/themes.json for the Foundation CDN at
- * cdn.wakilabs.dev/waki-themes/themes.json.
+ * cdn.wakilabs.dev/waki-themes/.
  *
- * The CDN's Cloudflare Pages project points at `dist/cdn/` as its
- * build output dir. Routing is by directory: anything under
- * `dist/cdn/waki-themes/` serves at `cdn.wakilabs.dev/waki-themes/`.
+ * Two output trees:
  *
- * Future foundation projects (waki-shell, etc.) emit into the same
- * dist/cdn root using the same convention so the single Pages project
- * serves all of them.
+ *   1. Local: `dist/cdn/waki-themes/`. Self-contained, used by anyone
+ *      who deploys waki-themes' own repo as a Cloudflare Pages site.
+ *
+ *   2. Foundation workspace: `~/workspaces/wakilabs-cdn/waki-themes/`,
+ *      which the wakilabs-cdn Pages project deploys from. Skipped
+ *      gracefully if the workspace doesn't exist (e.g. CI runners).
+ *      This is the canonical path per
+ *      `~/workspaces/waki-homelab/projects/foundation-hosting-migration.md`.
+ *
+ * Routes served at cdn.wakilabs.dev (post-deploy):
+ *   /waki-themes/themes.json        - shorthand path for new consumers
+ *   /waki-themes/dist/themes.json   - matches local /dist/ layout, kept
+ *                                     for parity with the GH-raw URL
  *
  * Run after build-bundle.mjs:
  *   node scripts/build-bundle.mjs && node scripts/build-cdn.mjs
@@ -17,6 +25,7 @@
 import { copyFileSync, mkdirSync, writeFileSync, existsSync, readFileSync } from "node:fs";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { homedir } from "node:os";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, "..");
@@ -27,11 +36,39 @@ if (!existsSync(src)) {
   process.exit(1);
 }
 
+// Output A: dist/cdn/waki-themes/ (self-contained for the repo's own
+// Pages project).
 const cdnDir = resolve(repoRoot, "dist", "cdn");
 const themesDir = resolve(cdnDir, "waki-themes");
 mkdirSync(themesDir, { recursive: true });
 
 copyFileSync(src, resolve(themesDir, "themes.json"));
+
+// Mirror the bundle into the /dist/ subpath too so consumers can pin
+// to `/waki-themes/dist/themes.json`. Lets the GH-raw URL pattern
+// flip cleanly to the CDN URL by changing the host.
+const distSubDir = resolve(themesDir, "dist");
+mkdirSync(distSubDir, { recursive: true });
+copyFileSync(src, resolve(distSubDir, "themes.json"));
+
+// Output B: ~/workspaces/wakilabs-cdn/waki-themes/. The wakilabs-cdn
+// Pages project's deploy command is `wrangler pages deploy
+// ~/workspaces/wakilabs-cdn ...`, so emitting here makes the bundle
+// part of the next cdn.wakilabs.dev deploy automatically.
+const cdnWorkspace = resolve(homedir(), "workspaces", "wakilabs-cdn", "waki-themes");
+if (existsSync(resolve(cdnWorkspace, ".."))) {
+  mkdirSync(cdnWorkspace, { recursive: true });
+  mkdirSync(resolve(cdnWorkspace, "dist"), { recursive: true });
+  copyFileSync(src, resolve(cdnWorkspace, "themes.json"));
+  copyFileSync(src, resolve(cdnWorkspace, "dist", "themes.json"));
+  console.log(
+    `[build-cdn] mirrored to ${cdnWorkspace}/{themes.json, dist/themes.json}`,
+  );
+} else {
+  console.log(
+    `[build-cdn] skipping wakilabs-cdn workspace mirror (not found at ${cdnWorkspace})`,
+  );
+}
 
 // Cloudflare Pages headers + redirects. Caches the bundle for 5
 // minutes at the edge (cheap to invalidate, safe for the 6-hour

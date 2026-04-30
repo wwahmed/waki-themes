@@ -84,6 +84,9 @@ export interface ContrastReport {
   ratio: number;
   aaNormal: boolean;
   aaLarge: boolean;
+  // Free-form hint for the user when the pair fails AA. Surfaces in
+  // the editor's WCAG panel so a glance tells them what to nudge.
+  suggest?: string;
 }
 
 // For the bg, we approximate the panel surface as the panel colour
@@ -129,12 +132,33 @@ export function reportContrasts(opts: {
     },
   ];
 
-  return ratios.map((r) => ({
-    pair: r.pair,
-    ratio: Number(r.ratio.toFixed(2)),
-    aaNormal: r.ratio >= 4.5,
-    aaLarge: r.ratio >= 3,
-  }));
+  return ratios.map((r) => {
+    const pass = r.ratio >= 4.5;
+    const aaLarge = r.ratio >= 3;
+    let suggest: string | undefined;
+    if (!pass) {
+      if (r.pair.startsWith("Accent")) {
+        suggest = aaLarge
+          ? "OK for large text only. For body text on accent backgrounds, deepen the accent hue (e.g. 600 -> 700) or lighten the panel."
+          : "Accent reads as decorative only at this contrast. Use a darker accent or higher panel contrast for legibility.";
+      } else if (r.pair.includes("text on panel")) {
+        suggest = aaLarge
+          ? "Headings only. For body copy, deepen the text color or raise the panel opacity."
+          : "Body text won't pass WCAG. Try a darker text color or a more opaque panel.";
+      } else {
+        suggest = aaLarge
+          ? "Headings only at this ratio."
+          : "Increase the bg / text gap; either darken the text or lighten the bg.";
+      }
+    }
+    return {
+      pair: r.pair,
+      ratio: Number(r.ratio.toFixed(2)),
+      aaNormal: pass,
+      aaLarge,
+      suggest,
+    };
+  });
 }
 
 function composeAlphaOnHex(maybeAlphaColor: string, hexBg: string): string {

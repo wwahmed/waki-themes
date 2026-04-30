@@ -1,4 +1,4 @@
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Copy } from "lucide-react";
 import { ThemeMiniature } from "./ThemeMiniature";
 import type { BundleFamily, StudioTheme } from "../lib/types";
 
@@ -11,6 +11,7 @@ interface VariantGalleryProps {
   onPick: (themeId: string) => void;
   onEdit: (themeId: string) => void;
   onEditFamily: () => void;
+  onClone: (themeId: string) => void;
 }
 
 // Step 2 of the picker. Variants of the chosen family, each shown as
@@ -24,6 +25,7 @@ export function VariantGallery({
   onPick,
   onEdit,
   onEditFamily,
+  onClone,
 }: VariantGalleryProps) {
   return (
     <div className="flex flex-col gap-4">
@@ -57,13 +59,25 @@ export function VariantGallery({
           const theme = themesById[v.themeId];
           if (!theme) return null;
           return (
-            <ThemeMiniature
-              key={v.themeId}
-              theme={theme}
-              mode={mode}
-              onClick={() => onPick(v.themeId)}
-              onEdit={() => onEdit(v.themeId)}
-            />
+            <div key={v.themeId} className="relative group">
+              <ThemeMiniature
+                theme={theme}
+                mode={mode}
+                onClick={() => onPick(v.themeId)}
+                onEdit={() => onEdit(v.themeId)}
+              />
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onClone(v.themeId);
+                }}
+                className="absolute top-2 right-2 studio-button text-[10px] px-1.5 py-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity"
+                title={`Clone ${v.name} as a new variant`}
+              >
+                <Copy className="w-3 h-3" />
+                Clone
+              </button>
+            </div>
           );
         })}
       </div>
