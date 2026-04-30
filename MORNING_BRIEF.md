@@ -4,6 +4,8 @@ Status as of 2026-04-30 (overnight shift, sleep handoff).
 
 ## What landed
 
+0. **v0.4.1 schema completeness + Studio polish** ([`b83e2c2`](https://github.com/wwahmed/waki-themes/commit/b83e2c2)). Promoted the recommended-token set to required across all 20 themes (`.btn-success`, `.status-*`, `.input`). Editor Reset button. Keyboard shortcuts (Esc / Cmd-S).
+
 1. **v0.4.0 cut release** ([`98e5319`](https://github.com/wwahmed/waki-themes/commit/98e5319)). 5 families x 4 variants = 20 themes (Glass / Aurora / Clean / Editorial / Neon). Token schema + build-time validation. Urgent Frosted Glass button-style fix patched into both consumer apps. Full notes in [`CHANGELOG.md`](CHANGELOG.md).
 
 2. **Studio UX iteration** ([`b5a4980`](https://github.com/wwahmed/waki-themes/commit/b5a4980)).

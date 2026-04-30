@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowLeft, Copy, Download, Save, Sun, Moon, FileCode, Palette, Layers, RotateCcw } from "lucide-react";
 import type { BundleFamily, OverrideTokens, StudioTheme } from "../lib/types";
 import { buildOverrideCss, buildStandaloneThemeCss } from "../lib/overrideCss";
@@ -83,6 +83,32 @@ export function Editor({
     setOverrides(initialOverrides);
     setSavedHint("Reset to the variant's seed values.");
   };
+
+  // Keyboard shortcuts. Esc -> back to gallery, Cmd/Ctrl-S -> save in
+  // session. We don't listen on the password / colour / range inputs
+  // by accident because the shortcut keys here aren't text-keys.
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        onBack();
+        return;
+      }
+      if ((e.metaKey || e.ctrlKey) && e.key === "s") {
+        e.preventDefault();
+        if (tab === "family" && family) {
+          handleSaveFamilyStructure();
+        } else {
+          handleSave();
+        }
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+    // We intentionally re-bind on every render so the captured closure
+    // sees the latest name/description/overrides state. Cheap; the
+    // event target is window and the handler is light.
+  });
 
   const slugify = (s: string) =>
     s

@@ -5,6 +5,15 @@ moves up; entries are append-only with newest at the top.
 
 ## v0.4.x (in flight, post-2026-04-30)
 
+### Schema + completeness
+
+- [`b83e2c2`](https://github.com/wwahmed/waki-themes/commit/b83e2c2) Promoted the recommended-token set to required: `.btn-success`, `.status-success/warning/error/info`, `.input`. All 20 themes now declare them; validator logs `OK: 20 theme(s) cover the required schema` with zero warnings. Bundle size grew 124.8 KB to 167.1 KB.
+
+### Studio polish
+
+- [`b83e2c2`](https://github.com/wwahmed/waki-themes/commit/b83e2c2) **Reset button** in the editor restores the variant's seed values without leaving the screen.
+- Keyboard shortcuts in the editor: **Esc** -> back, **Cmd/Ctrl-S** -> save (variant or family-structure depending on active tab).
+
 ### Studio UX
 
 - [`b5a4980`](https://github.com/wwahmed/waki-themes/commit/b5a4980) Studio gains:

@@ -33,22 +33,34 @@ Every theme CSS file MUST declare each of these. The validator parses each file 
 | `.btn-warning` | Cautious actions (Stop, Pause) | Amber fill |
 | `.btn-danger` | Destructive actions (Delete) | Red fill |
 | `.btn-ghost` | Low-prominence actions (Cancel in dialogs) | Transparent, subtle hover |
+| `.btn-success` | Positive confirm (promoted to required in v0.4.1) | Green fill |
 
 Themes load AFTER waki-shell's `utilities.css` in the cascade, so equal-specificity rules in the theme override the consumer's defaults without `!important`.
+
+### Status badge / toast contract (promoted to required in v0.4.1)
+
+| Selector | Intent |
+|---|---|
+| `.status-success` | Success notice |
+| `.status-warning` | Caution notice |
+| `.status-error` | Failure notice |
+| `.status-info` | Informational notice |
+
+### Form contract (promoted to required in v0.4.1)
+
+| Selector | Intent |
+|---|---|
+| `.input` | Form text inputs (focus ring uses theme accent) |
 
 ### Required root rules
 
 Every theme must paint:
-- `body` (light-mode page background and text colour)
-- `html.dark body` (dark-mode page background and text colour)
+- `body` (light-mode page background and text colour OR dark-canonical such as Neon)
+- `html.dark body` OR `html.light body` (the mode-flip rule, whichever is the non-canonical mode for the theme)
 
 ### Recommended (warned, not blocked)
 
-These improve coverage but the validator only warns if missing:
-
-- `.btn-success` (green-fill confirm action; defaults to `.btn-primary` if absent)
-- `.status-success`, `.status-warning`, `.status-error`, `.status-info` (toast / badge backgrounds)
-- `.input` (form inputs)
+The recommended list is currently empty as of v0.4.1. Future tokens (`.toast`, `.tooltip`, etc.) land here first and get promoted to required once every theme covers them.
 
 ## Validation
 
