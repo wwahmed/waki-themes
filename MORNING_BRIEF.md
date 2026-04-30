@@ -4,7 +4,11 @@ Status as of 2026-04-30 (overnight shift, sleep handoff).
 
 ## What landed
 
-0. **v0.4.1 schema completeness + Studio polish** ([`b83e2c2`](https://github.com/wwahmed/waki-themes/commit/b83e2c2)). Promoted the recommended-token set to required across all 20 themes (`.btn-success`, `.status-*`, `.input`). Editor Reset button. Keyboard shortcuts (Esc / Cmd-S).
+-2. **Full consumer catalog refresh** ([`printer-dashboard@c31cc81`](https://github.com/wwahmed/printer-dashboard/commit/c31cc81), [`brain-v2@8ffa595`](https://github.com/wwahmed/brain-v2/commit/8ffa595)). Both consumer apps now have the full 20-theme v0.4.0 catalog registered. AVAILABLE_THEMES rebuilt to surface the curated 5x4 catalog at the top, with 3 legacy themes (flat, glass-v3, glass-extreme) marked "(legacy)" at the bottom for users with existing localStorage values. Both apps still bundle every theme locally; the CDN-fetch migration is a separate task tracked in `~/workspaces/waki-homelab/projects/foundation-hosting-migration.md`.
+
+-1. **Studio polish iteration 2** ([`35382e9`](https://github.com/wwahmed/waki-themes/commit/35382e9)). Delete-custom-theme button on each session-saved theme tile. Bundle integrity test (`scripts/test-bundle.mjs`) wired into the build pipeline; asserts every theme covers all required selectors + every family.variants[].themeId resolves cleanly.
+
+0. **v0.4.1 schema completeness + Studio polish** ([`b83e2c2`](https://github.com/wwahmed/waki-themes/commit/b83e2c2), [`d6a577c`](https://github.com/wwahmed/waki-themes/commit/d6a577c)). Promoted the recommended-token set to required across all 20 themes (`.btn-success`, `.status-*`, `.input`). Editor Reset button. Keyboard shortcuts (Esc / Cmd-S).
 
 1. **v0.4.0 cut release** ([`98e5319`](https://github.com/wwahmed/waki-themes/commit/98e5319)). 5 families x 4 variants = 20 themes (Glass / Aurora / Clean / Editorial / Neon). Token schema + build-time validation. Urgent Frosted Glass button-style fix patched into both consumer apps. Full notes in [`CHANGELOG.md`](CHANGELOG.md).
 
@@ -90,6 +94,16 @@ After this is on, the in-app `AccessGate` becomes redundant; you can clear `VITE
 ### Step 5: smoke test
 
 Hand off the URLs back to Waqas to visually verify the Studio and the CDN. Per the no-Chrome-MCP rule for this shift, I cannot drive the browser myself.
+
+## Final shape (overnight totals)
+
+Across the three repos, this shift shipped (newest first):
+
+- **waki-themes**: 8 commits on main, tip `35382e9`. v0.4.0 cut + v0.4.1 polish. 20 themes across 5 families. Schema validation + integrity test gate the build. Two-surface deployment plumbing ready (`scripts/build-cdn.mjs`, `scripts/deploy-studio.sh`, `app/wrangler.toml`).
+- **printer-dashboard**: 3 commits on main, tip `3c7ec7d`. Urgent Frosted Glass button-style fix in production. Default flipped to `glass-plus`. DROPPED_REMAP forwards-migrates the 16 dropped IDs. Full v0.4.0 catalog registered in themeLoader. (One earlier commit accidentally tracked some local working files; followed up immediately with `3c7ec7d` to untrack + extend `.gitignore`.)
+- **brain-v2**: 3 commits on main, tip `8ffa595`. Mirror of the printer-dashboard migration.
+
+Total commits pushed: 14. No working tree dirty. All typechecks + builds green.
 
 ## What I deferred
 
