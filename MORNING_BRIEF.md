@@ -2,6 +2,12 @@
 
 Status as of 2026-04-30 (overnight shift, sleep handoff).
 
+## TL;DR
+
+- **Studio is live** at https://waki-themes-studio.pages.dev/ (Cloudflare Pages, deployed via wrangler tonight). Custom domain `themes.wakilabs.dev` is bound to the project but the wakilabs.dev DNS CNAME still needs to be created. One command away once `CLOUDFLARE_API_TOKEN` lands; see Step 5 below.
+- **CDN is live** at https://wakilabs-cdn.pages.dev/waki-themes/themes.json (verified `pkgVersion: 0.4.0, themes: 20, families: 5`). Custom domain `cdn.wakilabs.dev` bound; same DNS step pending.
+- **All five core deliverables shipped.** Token schema + validation, curated 5x4 catalog, both Pages projects deployed, CHANGELOG-LIVE.md + commit log entries written.
+
 ## What landed
 
 -2. **Full consumer catalog refresh** ([`printer-dashboard@c31cc81`](https://github.com/wwahmed/printer-dashboard/commit/c31cc81), [`brain-v2@8ffa595`](https://github.com/wwahmed/brain-v2/commit/8ffa595)). Both consumer apps now have the full 20-theme v0.4.0 catalog registered. AVAILABLE_THEMES rebuilt to surface the curated 5x4 catalog at the top, with 3 legacy themes (flat, glass-v3, glass-extreme) marked "(legacy)" at the bottom for users with existing localStorage values. Both apps still bundle every theme locally; the CDN-fetch migration is a separate task tracked in `~/workspaces/waki-homelab/projects/foundation-hosting-migration.md`.
@@ -24,9 +30,76 @@ Status as of 2026-04-30 (overnight shift, sleep handoff).
 
 4. **Consumer migration** ([`printer-dashboard@3066cb5`](https://github.com/wwahmed/printer-dashboard/commit/3066cb5), [`brain-v2@f30d29f`](https://github.com/wwahmed/brain-v2/commit/f30d29f)). Both `themeLoader.ts` files default to `glass-plus`, auto-migrate localStorage values that name a dropped id forward to `glass-plus`, register `glass-plus` in their type union + AVAILABLE_THEMES + cssMap.
 
-## What's blocked on CF auth
+## Cloudflare deploy: state
 
-The two Cloudflare Pages projects + the custom-domain bindings require `CLOUDFLARE_API_TOKEN`. The CLI worker is wiring this up in parallel per `~/workspaces/waki-homelab/projects/cli-tooling.md`. As soon as the token lands, run:
+Pages projects + bindings done via `wrangler` OAuth (browser flow that the CLI worker landed). What's still pending:
+
+| Step | Status |
+|---|---|
+| `wrangler` OAuth auth | done (the CLI worker landed it) |
+| Create `waki-themes-studio` Pages project | done |
+| Deploy Studio build to `waki-themes-studio` | done -> https://waki-themes-studio.pages.dev/ |
+| Bind `themes.wakilabs.dev` to Pages project | done (status: pending DNS) |
+| Create `wakilabs-cdn` Pages project | done |
+| Deploy CDN content to `wakilabs-cdn` | done -> https://wakilabs-cdn.pages.dev/waki-themes/themes.json |
+| Bind `cdn.wakilabs.dev` to Pages project | done (status: pending DNS) |
+| Create wakilabs.dev DNS CNAMEs | **pending** (needs Zone:DNS:Edit token) |
+| Cloudflare Access policy on themes.wakilabs.dev | pending (manual dashboard step) |
+
+The wrangler OAuth token only has account-level Pages scope; it does NOT have Zone:DNS:Edit on wakilabs.dev. The DNS records have to be created with a long-lived API token that has DNS write scope (per `~/workspaces/waki-homelab/projects/cli-tooling.md`).
+
+## When the long-lived API token lands
+
+Set the env var:
+
+```bash
+export CLOUDFLARE_API_TOKEN=$(cat ~/.config/cloudflare/token)
+```
+
+Then run the helper to create the two CNAMEs in one shot:
+
+```bash
+~/workspaces/waki-themes/scripts/cf-bind-dns.sh
+```
+
+That script wraps the Cloudflare API calls (zone id 1e2bff7f53ef46b6fcbda836dde6a019 is hard-coded; that's wakilabs.dev).
+
+After it runs:
+
+```bash
+dig +short themes.wakilabs.dev
+dig +short cdn.wakilabs.dev
+curl -I https://themes.wakilabs.dev/
+curl -I https://cdn.wakilabs.dev/waki-themes/themes.json
+```
+
+Expect dig output to show the `*.pages.dev` target plus a Cloudflare proxy IP within seconds; the curl headers show `HTTP/2 200` + `cf-ray` + `server: cloudflare`. Cloudflare auto-issues a Universal SSL cert as soon as DNS resolves.
+
+## Manual fallback (if you'd rather click)
+
+If you want this faster than waiting for the long-lived token:
+
+1. Cloudflare dashboard -> wakilabs.dev zone -> DNS -> Records -> Add record.
+2. CNAME, name `themes`, target `waki-themes-studio.pages.dev`, proxied (orange cloud).
+3. Repeat: CNAME, name `cdn`, target `wakilabs-cdn.pages.dev`, proxied.
+
+Five clicks total. The Pages -> custom-domain binding already exists; the DNS is the only missing link.
+
+## Cloudflare Access (still manual)
+
+Once DNS resolves, attach the Access policy:
+
+- Cloudflare dashboard -> Zero Trust -> Access -> Applications -> Add application
+- Self-hosted, name "Theme Studio", domain `themes.wakilabs.dev`
+- Policy: include emails matching the family-Gmail allowlist (same as Memso)
+- Identity provider: Google (already configured)
+- Session duration: 24h
+
+Until Access is on, the Studio's in-app `AccessGate` is the only gate. Set `VITE_STUDIO_PASSPHRASE` in the Pages project env vars (Cloudflare dashboard -> waki-themes-studio -> Settings -> Environment variables -> Production) to a passphrase you share with the family. Until that's set, the gate is OFF and the Studio is anonymous-readable.
+
+## Older handoff (now stale, kept for reference)
+
+The two Cloudflare Pages projects + the custom-domain bindings used to require `CLOUDFLARE_API_TOKEN`. The CLI worker landed `wrangler login` (OAuth) instead, which got us 90% of the way. The remaining 10% (DNS + env vars) needs either the long-lived token or 5 clicks in the dashboard. Original instructions:
 
 ### Step 1: confirm wrangler auth
 
