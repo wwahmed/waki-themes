@@ -25,6 +25,7 @@ on:
       - "app/**"
       - "package.json"
       - ".github/workflows/deploy-themes.yml"
+      - ".github/scripts/append-changelog.mjs"
   workflow_dispatch: {}
 
 concurrency:
@@ -71,6 +72,17 @@ jobs:
         run: |
           npm run sync-bundle
           npm run build
+
+      - name: Append changelog entry from commit message
+        # Studio surface only; CDN at cdn.wakilabs.dev intentionally has
+        # no changelog (it's a machine-readable artifact endpoint).
+        env:
+          COMMIT_MSG: ${{ github.event.head_commit.message }}
+          COMMIT_SHA: ${{ github.sha }}
+          CHANGELOG_LIVE_URL: https://themes.wakilabs.dev/changelog.json
+          CHANGELOG_DIST_PATH: app/dist/changelog.json
+          PACKAGE_JSON_PATH: app/package.json
+        run: node .github/scripts/append-changelog.mjs
 
       - name: Bundle size summary
         # Workflow-only bundle telemetry. Captures size of both shipped
