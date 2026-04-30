@@ -1,0 +1,71 @@
+name: deploy-themes
+
+# Auto-deploy waki-themes to two Cloudflare Pages projects on every push to main:
+#   - app/dist  -> waki-themes-studio (themes.wakilabs.dev)
+#   - dist/cdn  -> wakilabs-cdn       (cdn.wakilabs.dev)
+#
+# Both Pages projects are Direct Upload type. This workflow is the deploy
+# mechanism. Root has no npm deps; the studio app has its own lockfile under
+# `app/`. Build sequence: bundle -> studio.
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+      - "MORNING_BRIEF.md"
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Use Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: app/package-lock.json
+
+      - name: Build bundle (root, no deps)
+        run: node scripts/build-bundle.mjs
+
+      - name: Install studio deps
+        working-directory: app
+        run: npm ci
+
+      - name: Sync bundle into studio + build studio
+        working-directory: app
+        run: |
+          npm run sync-bundle
+          npm run build
+
+      - name: Deploy app/dist to waki-themes-studio (themes.wakilabs.dev)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4 pages deploy app/dist \
+            --project-name=waki-themes-studio \
+            --branch=main \
+            --commit-dirty=true \
+            --commit-hash=${{ github.sha }} \
+            --commit-message="${{ github.event.head_commit.message }}"
+
+      - name: Deploy dist/cdn to wakilabs-cdn (cdn.wakilabs.dev)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          npx --yes wrangler@4 pages deploy dist/cdn \
+            --project-name=wakilabs-cdn \
+            --branch=main \
+            --commit-dirty=true \
+            --commit-hash=${{ github.sha }} \
+            --commit-message="${{ github.event.head_commit.message }}"
