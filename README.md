@@ -19,6 +19,26 @@ The Studio is private because authoring belongs to a small allowlist; the CDN is
 
 Build pipeline + Cloudflare Pages setup for both surfaces lives in [docs/DEPLOY.md](docs/DEPLOY.md).
 
+## Deploy
+
+Production hostnames `themes.wakilabs.dev` (Studio) and `cdn.wakilabs.dev` (Foundation CDN) are served by Cloudflare Pages projects `waki-themes-studio` and `wakilabs-cdn`. Both are Direct Upload type, so deploys run from CI via [.github/workflows/deploy-themes.yml](.github/workflows/deploy-themes.yml) on every push to `main` that touches `src/themes/`, `styles/`, `scripts/`, `app/`, or the workflow itself. One run builds the bundle (`node scripts/build-bundle.mjs`), builds the studio (`npm run build` in `app/`), then ships both to their respective Pages projects in roughly a minute on warm cache.
+
+```sh
+# manual trigger:
+gh workflow run deploy-themes.yml --repo wwahmed/waki-themes
+
+# tail the latest run:
+gh run watch --repo wwahmed/waki-themes $(gh run list --repo wwahmed/waki-themes --workflow=deploy-themes.yml --limit 1 --json databaseId -q '.[0].databaseId')
+
+# local rebuild + deploy bypassing CI:
+node scripts/build-bundle.mjs
+cd app && npm ci && npm run sync-bundle && npm run build
+npx wrangler@4 pages deploy app/dist --project-name=waki-themes-studio --branch=main --commit-dirty=true
+cd .. && npx wrangler@4 pages deploy dist/cdn --project-name=wakilabs-cdn --branch=main --commit-dirty=true
+```
+
+Required GitHub secrets (already provisioned): `CLOUDFLARE_API_TOKEN` (Account > Cloudflare Pages > Edit), `CLOUDFLARE_ACCOUNT_ID`. The legacy `build-bundle.yml` workflow keeps auto-committing `dist/themes.json` (with `[skip ci]`) for non-CI consumers; it does not conflict with the deploy workflow.
+
 ## Theme Studio
 
 Studio source lives in [app/](app/).
