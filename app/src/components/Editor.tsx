@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
-import { ArrowLeft, Copy, Download, Save, Sun, Moon, FileCode } from "lucide-react";
-import type { OverrideTokens, StudioTheme } from "../lib/types";
+import { ArrowLeft, Copy, Download, Save, Sun, Moon, FileCode, Palette, Layers } from "lucide-react";
+import type { BundleFamily, OverrideTokens, StudioTheme } from "../lib/types";
 import { buildOverrideCss, buildStandaloneThemeCss } from "../lib/overrideCss";
 import { reportContrasts } from "../lib/contrast";
 import { PREVIEW_HTML } from "../lib/sample";
@@ -9,13 +9,16 @@ import { ContrastReport } from "./ContrastReport";
 
 interface EditorProps {
   theme: StudioTheme;
+  family?: BundleFamily;
   initialOverrides: OverrideTokens;
   mode: "light" | "dark";
   onBack: () => void;
   onSave: (id: string, name: string, description: string, overrides: OverrideTokens) => void;
+  onSaveFamilyStructure?: (familyId: string, radiusPx: number, blurPx: number) => void;
   onModeChange: (m: "light" | "dark") => void;
   defaultName?: string;
   isNew?: boolean;
+  startTab?: "family" | "variant";
 }
 
 const COLOR_FIELDS: Array<{ key: keyof OverrideTokens; label: string; group: "Light" | "Dark" | "Accent" }> = [
@@ -34,18 +37,22 @@ const COLOR_FIELDS: Array<{ key: keyof OverrideTokens; label: string; group: "Li
 
 export function Editor({
   theme,
+  family,
   initialOverrides,
   mode,
   onBack,
   onSave,
+  onSaveFamilyStructure,
   onModeChange,
   defaultName,
   isNew = false,
+  startTab = "variant",
 }: EditorProps) {
   const [overrides, setOverrides] = useState<OverrideTokens>(initialOverrides);
   const [name, setName] = useState(defaultName ?? `${theme.name}${isNew ? "" : " Custom"}`);
   const [description, setDescription] = useState(theme.description);
   const [savedHint, setSavedHint] = useState<string | null>(null);
+  const [tab, setTab] = useState<"family" | "variant">(family ? startTab : "variant");
 
   const overrideCss = useMemo(() => buildOverrideCss(overrides), [overrides]);
   const standaloneCss = useMemo(
@@ -86,6 +93,16 @@ export function Editor({
     setSavedHint(`Saved as "${name}" in this session.`);
   };
 
+  const handleSaveFamilyStructure = () => {
+    if (!family || !onSaveFamilyStructure) return;
+    const familyId = theme.familyId;
+    if (!familyId) return;
+    onSaveFamilyStructure(familyId, overrides.radiusPx, overrides.blurPx);
+    setSavedHint(
+      `Applied radius ${overrides.radiusPx}px + blur ${overrides.blurPx}px to all ${family.variants.length} ${family.name} variants.`,
+    );
+  };
+
   const downloadFile = (filename: string, content: string, mime: string) => {
     const blob = new Blob([content], { type: mime });
     const url = URL.createObjectURL(blob);
@@ -109,6 +126,8 @@ export function Editor({
       name,
       description,
       vibe: theme.vibe,
+      familyId: theme.familyId ?? null,
+      variantSlot: theme.variantSlot ?? null,
       overrides,
       generatedAt: new Date().toISOString(),
     };
@@ -126,10 +145,10 @@ export function Editor({
     Accent: COLOR_FIELDS.filter((f) => f.group === "Accent"),
   };
 
-  // Compose the live preview CSS: base CSS for built-in themes,
-  // standalone-generated CSS for new themes (since they have no base).
   const previewBase = isNew ? "" : theme.baseCss;
   const previewOverrides = isNew ? standaloneCss : overrideCss;
+
+  const showFamilyTab = !!family && !isNew;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[380px_1fr] gap-4 h-[calc(100vh-92px)]">
@@ -137,101 +156,190 @@ export function Editor({
         <div className="flex items-center gap-2">
           <button onClick={onBack} className="studio-button text-xs px-2 py-1.5">
             <ArrowLeft className="w-3.5 h-3.5" />
-            Gallery
+            Back
           </button>
           <span className="text-xs opacity-60 ml-auto">{isNew ? "New" : "Edit"}</span>
         </div>
 
-        <div>
-          <label className="block text-[11px] font-semibold opacity-70 uppercase tracking-wider mb-1">
-            Name
-          </label>
-          <input
-            className="studio-input"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label className="block text-[11px] font-semibold opacity-70 uppercase tracking-wider mb-1 mt-3">
-            Description
-          </label>
-          <input
-            className="studio-input"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
+        {showFamilyTab && (
+          <div className="flex gap-1 p-1 rounded-lg bg-violet-500/10">
+            <button
+              onClick={() => setTab("family")}
+              className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-md text-xs font-semibold transition-colors ${
+                tab === "family" ? "bg-violet-500 text-white" : "opacity-70 hover:opacity-100"
+              }`}
+            >
+              <Layers className="w-3.5 h-3.5" />
+              Family
+            </button>
+            <button
+              onClick={() => setTab("variant")}
+              className={`flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 rounded-md text-xs font-semibold transition-colors ${
+                tab === "variant" ? "bg-violet-500 text-white" : "opacity-70 hover:opacity-100"
+              }`}
+            >
+              <Palette className="w-3.5 h-3.5" />
+              Variant
+            </button>
+          </div>
+        )}
 
-        {(["Light", "Dark", "Accent"] as const).map((g) => (
-          <section key={g}>
-            <h3 className="text-xs font-semibold opacity-80 uppercase tracking-wider mb-2">
-              {g}
-            </h3>
-            <div className="space-y-2">
-              {grouped[g].map((field) => (
-                <ColorField
-                  key={field.key}
-                  label={field.label}
-                  value={overrides[field.key] as string}
-                  onChange={(v) => update(field.key, v as OverrideTokens[typeof field.key])}
-                />
-              ))}
+        {tab === "family" && family ? (
+          <>
+            <div className="rounded-lg bg-violet-500/8 px-3 py-2.5 text-xs">
+              <div className="font-bold mb-1">{family.name} family</div>
+              <p className="opacity-70 leading-relaxed">{family.description}</p>
+              <p className="opacity-60 mt-1.5 text-[11px]">
+                Family-level changes propagate to all {family.variants.length} variants.
+              </p>
             </div>
-          </section>
-        ))}
 
-        <section>
-          <h3 className="text-xs font-semibold opacity-80 uppercase tracking-wider mb-2">
-            Geometry
-          </h3>
-          <SliderField
-            label="Radius"
-            value={overrides.radiusPx}
-            onChange={(v) => update("radiusPx", v)}
-            min={0}
-            max={32}
-            unit="px"
-          />
-          <SliderField
-            label="Backdrop blur"
-            value={overrides.blurPx}
-            onChange={(v) => update("blurPx", v)}
-            min={0}
-            max={40}
-            unit="px"
-          />
-        </section>
+            <section>
+              <h3 className="text-xs font-semibold opacity-80 uppercase tracking-wider mb-2">
+                Structure (shared)
+              </h3>
+              <SliderField
+                label="Radius"
+                value={overrides.radiusPx}
+                onChange={(v) => update("radiusPx", v)}
+                min={0}
+                max={32}
+                unit="px"
+              />
+              <SliderField
+                label="Backdrop blur"
+                value={overrides.blurPx}
+                onChange={(v) => update("blurPx", v)}
+                min={0}
+                max={40}
+                unit="px"
+              />
+            </section>
 
-        <section>
-          <h3 className="text-xs font-semibold opacity-80 uppercase tracking-wider mb-2">
-            Contrast (WCAG AA)
-          </h3>
-          <ContrastReport reports={reports} />
-        </section>
+            <section className="rounded-lg bg-amber-500/10 px-3 py-2 text-xs leading-relaxed">
+              <div className="font-semibold mb-0.5">Read-only family knobs</div>
+              <div className="opacity-75">
+                Shadow, surface treatment, iconography and density are baked into each family's
+                hand-authored CSS today. Edit the source CSS to change them.
+              </div>
+            </section>
 
-        <div className="flex flex-wrap gap-2 pt-2 border-t border-violet-500/15">
-          <button onClick={handleSave} className="studio-button studio-button-primary flex-1">
-            <Save className="w-4 h-4" />
-            Save in session
-          </button>
-          <button onClick={exportCss} className="studio-button" title="Download CSS">
-            <FileCode className="w-4 h-4" />
-            CSS
-          </button>
-          <button onClick={exportJson} className="studio-button" title="Download token JSON">
-            <Download className="w-4 h-4" />
-            JSON
-          </button>
-          <button onClick={copyCss} className="studio-button" title="Copy CSS to clipboard">
-            <Copy className="w-4 h-4" />
-            Copy
-          </button>
-        </div>
+            <div className="flex flex-wrap gap-2 pt-2 border-t border-violet-500/15">
+              <button
+                onClick={handleSaveFamilyStructure}
+                className="studio-button studio-button-primary flex-1"
+              >
+                <Save className="w-4 h-4" />
+                Apply to all variants
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <div>
+              <label className="block text-[11px] font-semibold opacity-70 uppercase tracking-wider mb-1">
+                Name
+              </label>
+              <input
+                className="studio-input"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <label className="block text-[11px] font-semibold opacity-70 uppercase tracking-wider mb-1 mt-3">
+                Description
+              </label>
+              <input
+                className="studio-input"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+              />
+              {theme.familyId && theme.variantName && (
+                <p className="text-[11px] opacity-60 mt-2">
+                  Variant <span className="font-mono">{theme.variantName}</span> in the
+                  {" "}
+                  <span className="font-mono">{theme.familyName}</span> family.
+                </p>
+              )}
+            </div>
+
+            {(["Light", "Dark", "Accent"] as const).map((g) => (
+              <section key={g}>
+                <h3 className="text-xs font-semibold opacity-80 uppercase tracking-wider mb-2">
+                  {g}
+                </h3>
+                <div className="space-y-2">
+                  {grouped[g].map((field) => (
+                    <ColorField
+                      key={field.key}
+                      label={field.label}
+                      value={overrides[field.key] as string}
+                      onChange={(v) => update(field.key, v as OverrideTokens[typeof field.key])}
+                    />
+                  ))}
+                </div>
+              </section>
+            ))}
+
+            <section>
+              <h3 className="text-xs font-semibold opacity-80 uppercase tracking-wider mb-2">
+                Geometry (variant-specific)
+              </h3>
+              <SliderField
+                label="Radius"
+                value={overrides.radiusPx}
+                onChange={(v) => update("radiusPx", v)}
+                min={0}
+                max={32}
+                unit="px"
+              />
+              <SliderField
+                label="Backdrop blur"
+                value={overrides.blurPx}
+                onChange={(v) => update("blurPx", v)}
+                min={0}
+                max={40}
+                unit="px"
+              />
+            </section>
+
+            <section>
+              <h3 className="text-xs font-semibold opacity-80 uppercase tracking-wider mb-2">
+                Contrast (WCAG AA)
+              </h3>
+              <ContrastReport reports={reports} />
+            </section>
+
+            <div className="flex flex-wrap gap-2 pt-2 border-t border-violet-500/15">
+              <button onClick={handleSave} className="studio-button studio-button-primary flex-1">
+                <Save className="w-4 h-4" />
+                Save in session
+              </button>
+              <button onClick={exportCss} className="studio-button" title="Download CSS">
+                <FileCode className="w-4 h-4" />
+                CSS
+              </button>
+              <button onClick={exportJson} className="studio-button" title="Download token JSON">
+                <Download className="w-4 h-4" />
+                JSON
+              </button>
+              <button onClick={copyCss} className="studio-button" title="Copy CSS to clipboard">
+                <Copy className="w-4 h-4" />
+                Copy
+              </button>
+            </div>
+          </>
+        )}
+
         {savedHint && <p className="text-xs opacity-70">{savedHint}</p>}
       </aside>
 
       <main className="studio-panel overflow-hidden flex flex-col">
         <div className="flex items-center justify-between gap-2 px-3 py-2 border-b border-violet-500/15">
-          <div className="text-xs font-medium opacity-70">Live preview</div>
+          <div className="text-xs font-medium opacity-70">
+            {tab === "family" && family
+              ? `Family preview (${theme.variantName ?? theme.name})`
+              : "Live preview"}
+          </div>
           <div className="flex gap-1">
             <button
               onClick={() => onModeChange("light")}
@@ -272,9 +380,6 @@ function ColorField({
   value: string;
   onChange: (v: string) => void;
 }) {
-  // Convert rgba(...) to its solid hex equivalent for the native
-  // colour input, but let the user paste either form into the text
-  // field. The visible swatch shows the actual (alpha-aware) colour.
   const hexForPicker = toHexish(value);
   return (
     <label className="flex items-center gap-2">

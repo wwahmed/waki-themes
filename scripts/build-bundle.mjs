@@ -19,6 +19,8 @@ import { execFileSync } from "node:child_process";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
+import { FAMILIES, VARIANT_BY_THEME_ID } from "../src/themes/families.mjs";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const repoRoot = resolve(__dirname, "..");
 
@@ -78,15 +80,54 @@ const themes = {};
 for (const id of Object.keys(META)) {
   const filePath = resolve(stylesDir, `${id}.css`);
   try {
+    const variantInfo = VARIANT_BY_THEME_ID[id];
     themes[id] = {
       ...META[id],
       css: readFileSync(filePath, "utf8"),
+      // Each flat theme entry now carries family/variant cross-references
+      // alongside its existing fields. Field set is additive: existing
+      // consumers that read `name` / `description` / `vibe` / `css` keep
+      // working; new consumers can read `family` / `variantSlot` to render
+      // the grouped picker.
+      family: variantInfo ? variantInfo.familyId : null,
+      familyName: variantInfo ? variantInfo.familyName : null,
+      variantSlot: variantInfo ? variantInfo.slot : null,
+      variantName: variantInfo ? variantInfo.variantName : null,
     };
   } catch (err) {
     console.warn(`[skip] ${id}: ${err.message}`);
   }
 }
 
+// Build the grouped shape: families[familyId] -> { name, description,
+// structure, variants: [...] }. Each variant references its flat themeId so
+// the studio + future consumers can resolve a variant to its CSS without
+// duplicating it in this section.
+const families = {};
+for (const [familyId, family] of Object.entries(FAMILIES)) {
+  const variants = family.variants
+    .filter((v) => themes[v.themeId])
+    .map((v) => ({
+      slot: v.slot,
+      themeId: v.themeId,
+      name: v.name,
+      description: v.description,
+      palette: v.palette,
+    }));
+  if (!variants.length) continue;
+  families[familyId] = {
+    name: family.name,
+    description: family.description,
+    structure: family.structure,
+    variants,
+  };
+}
+
+// schemaVersion stays 1 because the existing fields are unchanged. Any
+// consumer can detect the new grouping by checking for the presence of
+// `families` in the bundle. pkgVersion in package.json bumps on each
+// schema-additive change so cache-aware consumers can refresh when the
+// new fields land.
 const bundle = {
   schemaVersion: 1,
   pkgVersion: pkgVersion(),
@@ -94,10 +135,11 @@ const bundle = {
   builtAt: new Date().toISOString(),
   base: baseCss,
   themes,
+  families,
 };
 
 const out = resolve(repoRoot, "dist", "themes.json");
 writeFileSync(out, JSON.stringify(bundle, null, 2));
 console.log(
-  `[ok] wrote ${out} (${Object.keys(themes).length} themes, ${(JSON.stringify(bundle).length / 1024).toFixed(1)} KB)`,
+  `[ok] wrote ${out} (${Object.keys(themes).length} themes across ${Object.keys(families).length} families, ${(JSON.stringify(bundle).length / 1024).toFixed(1)} KB)`,
 );

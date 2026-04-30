@@ -2,16 +2,27 @@ import { useEffect, useMemo, useState } from "react";
 import { Github, Moon, Palette, Sun } from "lucide-react";
 import { loadBundle, bundleToStudioThemes } from "./lib/loader";
 import type { OverrideTokens, StudioTheme, ThemeBundle } from "./lib/types";
-import { Gallery } from "./components/Gallery";
+import { FamilyGallery } from "./components/FamilyGallery";
+import { VariantGallery } from "./components/VariantGallery";
 import { PreviewPane } from "./components/PreviewPane";
 import { Editor } from "./components/Editor";
 import { DEFAULT_OVERRIDES, getOverridesForTheme } from "./lib/defaults";
 import { buildStandaloneThemeCss } from "./lib/overrideCss";
 
-type Screen = { kind: "gallery" } | { kind: "preview"; id: string } | { kind: "edit"; id: string; isNew: boolean };
+type Screen =
+  | { kind: "families" }
+  | { kind: "variants"; familyId: string }
+  | { kind: "preview"; id: string }
+  | { kind: "edit"; id: string; isNew: boolean; tab: "family" | "variant" };
 
 const MODE_KEY = "studio:mode";
 const SESSION_THEMES_KEY = "studio:session-themes";
+const FAMILY_OVERRIDES_KEY = "studio:family-overrides";
+
+interface FamilyOverride {
+  radiusPx: number;
+  blurPx: number;
+}
 
 export function App() {
   const [bundle, setBundle] = useState<ThemeBundle | null>(null);
@@ -25,7 +36,18 @@ export function App() {
     }
     return [];
   });
-  const [screen, setScreen] = useState<Screen>({ kind: "gallery" });
+  const [familyOverrides, setFamilyOverrides] = useState<Record<string, FamilyOverride>>(
+    () => {
+      try {
+        const raw = localStorage.getItem(FAMILY_OVERRIDES_KEY);
+        if (raw) return JSON.parse(raw) as Record<string, FamilyOverride>;
+      } catch {
+        /* ignore */
+      }
+      return {};
+    },
+  );
+  const [screen, setScreen] = useState<Screen>({ kind: "families" });
   const [mode, setMode] = useState<"light" | "dark">(() => {
     const saved = localStorage.getItem(MODE_KEY);
     if (saved === "dark" || saved === "light") return saved;
@@ -56,6 +78,10 @@ export function App() {
     localStorage.setItem(SESSION_THEMES_KEY, JSON.stringify(sessionThemes));
   }, [sessionThemes]);
 
+  useEffect(() => {
+    localStorage.setItem(FAMILY_OVERRIDES_KEY, JSON.stringify(familyOverrides));
+  }, [familyOverrides]);
+
   const builtInThemes = useMemo(
     () => (bundle ? bundleToStudioThemes(bundle) : []),
     [bundle],
@@ -64,8 +90,13 @@ export function App() {
     () => [...sessionThemes, ...builtInThemes],
     [sessionThemes, builtInThemes],
   );
+  const themesById = useMemo(() => {
+    const out: Record<string, StudioTheme> = {};
+    for (const t of allThemes) out[t.id] = t;
+    return out;
+  }, [allThemes]);
 
-  const findTheme = (id: string): StudioTheme | undefined => allThemes.find((t) => t.id === id);
+  const findTheme = (id: string): StudioTheme | undefined => themesById[id];
 
   const handleSaveTheme = (
     id: string,
@@ -86,6 +117,10 @@ export function App() {
       baseCss,
       builtIn: false,
       overrides,
+      familyId: baseExisting?.familyId ?? null,
+      familyName: baseExisting?.familyName ?? null,
+      variantSlot: baseExisting?.variantSlot ?? null,
+      variantName: baseExisting?.variantName ?? null,
     };
     setSessionThemes((prev) => {
       const without = prev.filter((t) => t.id !== id);
@@ -103,9 +138,17 @@ export function App() {
       baseCss: bundle?.base ?? "",
       builtIn: false,
       overrides: DEFAULT_OVERRIDES,
+      familyId: null,
+      familyName: null,
+      variantSlot: null,
+      variantName: null,
     };
     setSessionThemes((prev) => [blank, ...prev]);
-    setScreen({ kind: "edit", id, isNew: true });
+    setScreen({ kind: "edit", id, isNew: true, tab: "variant" });
+  };
+
+  const handleSaveFamilyStructure = (familyId: string, radiusPx: number, blurPx: number) => {
+    setFamilyOverrides((prev) => ({ ...prev, [familyId]: { radiusPx, blurPx } }));
   };
 
   if (error) {
@@ -133,13 +176,18 @@ export function App() {
     );
   }
 
+  const families = bundle.families ?? {};
+  const familyCount = Object.keys(families).length;
+
   const headerMeta = (
     <div className="text-xs opacity-65 hidden md:flex items-center gap-2">
       <span>v{bundle.pkgVersion}</span>
       <span>·</span>
       <span className="font-mono">{bundle.gitSha.slice(0, 7)}</span>
       <span>·</span>
-      <span>{Object.keys(bundle.themes).length} built-in</span>
+      <span>{familyCount} families</span>
+      <span>·</span>
+      <span>{Object.keys(bundle.themes).length} variants</span>
       {sessionThemes.length > 0 && (
         <>
           <span>·</span>
@@ -149,11 +197,43 @@ export function App() {
     </div>
   );
 
+  // Compose the editor's initial slider positions. Precedence (highest
+  // first):
+  //   1. family-tab + saved family override -> use the saved family values
+  //   2. family-tab + no saved override     -> use family.structure defaults
+  //   3. variant-tab + saved family override -> blend family radius/blur
+  //      onto the variant's tuned palette so per-variant edits start from
+  //      the same structural ground the family edit set
+  //   4. variant-tab + no override           -> variant's tuned palette
+  const computeInitialOverrides = (
+    theme: StudioTheme,
+    tab: "family" | "variant",
+  ): OverrideTokens => {
+    const variantOverride = theme.overrides ?? getOverridesForTheme(theme.id);
+    const familyId = theme.familyId;
+    const familyDef = familyId ? families[familyId] : undefined;
+
+    if (tab === "family" && familyDef) {
+      const saved = familyId ? familyOverrides[familyId] : undefined;
+      return {
+        ...variantOverride,
+        radiusPx: saved ? saved.radiusPx : familyDef.structure.radius,
+        blurPx: saved ? saved.blurPx : familyDef.structure.blur,
+      };
+    }
+
+    if (familyId && familyOverrides[familyId]) {
+      const fam = familyOverrides[familyId];
+      return { ...variantOverride, radiusPx: fam.radiusPx, blurPx: fam.blurPx };
+    }
+    return variantOverride;
+  };
+
   return (
     <div className="studio-bg min-h-screen flex flex-col">
       <header className="studio-bar sticky top-0 z-20 px-4 py-3 flex items-center justify-between gap-4">
         <button
-          onClick={() => setScreen({ kind: "gallery" })}
+          onClick={() => setScreen({ kind: "families" })}
           className="flex items-center gap-2.5 group min-w-0"
           aria-label="Theme Studio home"
         >
@@ -191,33 +271,73 @@ export function App() {
       </header>
 
       <main className="flex-1 px-4 py-4 max-w-[1400px] w-full mx-auto">
-        {screen.kind === "gallery" && (
-          <Gallery
-            themes={allThemes}
+        {screen.kind === "families" && (
+          <FamilyGallery
+            families={families}
+            themesById={themesById}
+            customThemes={sessionThemes}
             mode={mode}
-            activeId={null}
-            onPick={(id) => setScreen({ kind: "preview", id })}
-            onEdit={(id) => setScreen({ kind: "edit", id, isNew: false })}
+            onPickFamily={(id) => setScreen({ kind: "variants", familyId: id })}
+            onPickCustom={(id) => setScreen({ kind: "preview", id })}
             onNewTheme={handleNewTheme}
           />
         )}
+
+        {screen.kind === "variants" && (() => {
+          const family = families[screen.familyId];
+          if (!family) {
+            return (
+              <div className="studio-panel p-6">
+                Family not found.{" "}
+                <button className="studio-button" onClick={() => setScreen({ kind: "families" })}>
+                  Back
+                </button>
+              </div>
+            );
+          }
+          return (
+            <VariantGallery
+              family={family}
+              familyId={screen.familyId}
+              themesById={themesById}
+              mode={mode}
+              onBack={() => setScreen({ kind: "families" })}
+              onPick={(id) => setScreen({ kind: "preview", id })}
+              onEdit={(id) => setScreen({ kind: "edit", id, isNew: false, tab: "variant" })}
+              onEditFamily={() => {
+                const first = family.variants[0]?.themeId;
+                if (first) setScreen({ kind: "edit", id: first, isNew: false, tab: "family" });
+              }}
+            />
+          );
+        })()}
 
         {screen.kind === "preview" && (() => {
           const theme = findTheme(screen.id);
           if (!theme) {
             return (
-              <div className="studio-panel p-6">Theme not found. <button className="studio-button" onClick={() => setScreen({ kind: "gallery" })}>Back</button></div>
+              <div className="studio-panel p-6">
+                Theme not found.{" "}
+                <button className="studio-button" onClick={() => setScreen({ kind: "families" })}>
+                  Back
+                </button>
+              </div>
             );
           }
+          const backTarget: Screen = theme.familyId
+            ? { kind: "variants", familyId: theme.familyId }
+            : { kind: "families" };
           return (
             <div className="space-y-3">
-              <button onClick={() => setScreen({ kind: "gallery" })} className="studio-button text-xs">
-                ← Back to gallery
+              <button onClick={() => setScreen(backTarget)} className="studio-button text-xs">
+                ← Back
               </button>
               <PreviewPane
                 theme={theme}
                 mode={mode}
-                onEdit={() => setScreen({ kind: "edit", id: theme.id, isNew: false })}
+                onEdit={() =>
+                  setScreen({ kind: "edit", id: theme.id, isNew: false, tab: "variant" })
+                }
                 onModeChange={setMode}
               />
             </div>
@@ -228,20 +348,35 @@ export function App() {
           const theme = findTheme(screen.id);
           if (!theme) {
             return (
-              <div className="studio-panel p-6">Theme not found. <button className="studio-button" onClick={() => setScreen({ kind: "gallery" })}>Back</button></div>
+              <div className="studio-panel p-6">
+                Theme not found.{" "}
+                <button className="studio-button" onClick={() => setScreen({ kind: "families" })}>
+                  Back
+                </button>
+              </div>
             );
           }
-          const initialOverrides = theme.overrides ?? getOverridesForTheme(theme.id);
+          const family = theme.familyId ? families[theme.familyId] : undefined;
+          const initialOverrides = computeInitialOverrides(theme, screen.tab);
           return (
             <Editor
               theme={theme}
+              family={family}
               initialOverrides={initialOverrides}
               mode={mode}
               isNew={screen.isNew}
+              startTab={screen.tab}
               defaultName={screen.isNew ? theme.name : undefined}
               onModeChange={setMode}
-              onBack={() => setScreen({ kind: "gallery" })}
+              onBack={() =>
+                setScreen(
+                  theme.familyId
+                    ? { kind: "variants", familyId: theme.familyId }
+                    : { kind: "families" },
+                )
+              }
               onSave={handleSaveTheme}
+              onSaveFamilyStructure={handleSaveFamilyStructure}
             />
           );
         })()}

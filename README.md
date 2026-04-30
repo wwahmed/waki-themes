@@ -27,13 +27,19 @@ The canonical bundle lives at:
 https://raw.githubusercontent.com/wwahmed/waki-themes/main/dist/themes.json
 ```
 
-Schema:
+Schema (since v0.3.0):
 
 ```
-{ schemaVersion, pkgVersion, gitSha, builtAt, base, themes: { id: { name, description, vibe, css } } }
+{
+  schemaVersion, pkgVersion, gitSha, builtAt, base,
+  themes:   { id: { name, description, vibe, css, family, variantSlot, ... } },  // flat, existing contract
+  families: { id: { name, description, structure, variants: [{ slot, themeId, palette, ... }] } }  // new, additive
+}
 ```
 
-GitHub Actions auto-rebuilds the bundle on every push to main (filtered to `styles/`, `scripts/`, `package.json`) so the embedded `gitSha` stays in sync with HEAD. Consumers fetch on boot, cache locally, refetch every ~6 hours, and apply the latest CSS at runtime without rebuilding.
+The `themes` flat map is the original contract; existing consumers (printer-dashboard, brain-v2, waki-shell) read it unchanged and pick by flat id (`glass-v2`, `flat`, ...). The new `families` map groups themes by structural family (Glass, Flat, Soft, Bold, Organic) and exposes `structure` (radius, blur, shadow, surface, iconography, density) per family. New consumers can adopt the grouped picker on their own timeline.
+
+GitHub Actions auto-rebuilds the bundle on every push to main (filtered to `styles/`, `scripts/`, `src/themes/`, `package.json`) so the embedded `gitSha` stays in sync with HEAD. Consumers fetch on boot, cache locally, refetch every ~6 hours, and apply the latest CSS at runtime without rebuilding.
 
 Bump `package.json` version when the schema or CSS contract changes; consumers can read `pkgVersion` to decide whether to invalidate their local cache.
 

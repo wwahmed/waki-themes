@@ -30,5 +30,9 @@ export function bundleToStudioThemes(b: ThemeBundle): StudioTheme[] {
     vibe: t.vibe,
     baseCss: b.base + "\n" + t.css,
     builtIn: true,
+    familyId: t.family ?? null,
+    familyName: t.familyName ?? null,
+    variantSlot: t.variantSlot ?? null,
+    variantName: t.variantName ?? null,
   }));
 }

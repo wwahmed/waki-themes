@@ -1,0 +1,81 @@
+import { ArrowLeft } from "lucide-react";
+import { ThemeMiniature } from "./ThemeMiniature";
+import type { BundleFamily, StudioTheme } from "../lib/types";
+
+interface VariantGalleryProps {
+  family: BundleFamily;
+  familyId: string;
+  themesById: Record<string, StudioTheme>;
+  mode: "light" | "dark";
+  onBack: () => void;
+  onPick: (themeId: string) => void;
+  onEdit: (themeId: string) => void;
+  onEditFamily: () => void;
+}
+
+// Step 2 of the picker. Variants of the chosen family, each shown as
+// a ThemeMiniature reusing the same component the original Gallery
+// used. Click a tile to open the preview pane; hover to reveal Edit.
+export function VariantGallery({
+  family,
+  themesById,
+  mode,
+  onBack,
+  onPick,
+  onEdit,
+  onEditFamily,
+}: VariantGalleryProps) {
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex items-start justify-between gap-3 flex-wrap">
+        <div className="flex items-start gap-3">
+          <button onClick={onBack} className="studio-button text-xs mt-0.5">
+            <ArrowLeft className="w-3.5 h-3.5" />
+            Families
+          </button>
+          <div>
+            <h1 className="text-2xl font-extrabold">{family.name}</h1>
+            <p className="text-sm opacity-70 max-w-2xl">{family.description}</p>
+          </div>
+        </div>
+        <button onClick={onEditFamily} className="studio-button text-xs">
+          Edit family structure
+        </button>
+      </div>
+
+      <div className="studio-panel p-3 flex flex-wrap gap-3 text-xs">
+        <FamilyStat label="Radius" value={`${family.structure.radius}px`} />
+        <FamilyStat label="Blur" value={`${family.structure.blur}px`} />
+        <FamilyStat label="Shadow" value={family.structure.shadow} />
+        <FamilyStat label="Surface" value={family.structure.surface} />
+        <FamilyStat label="Iconography" value={family.structure.iconography} />
+        <FamilyStat label="Density" value={family.structure.density} />
+      </div>
+
+      <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        {family.variants.map((v) => {
+          const theme = themesById[v.themeId];
+          if (!theme) return null;
+          return (
+            <ThemeMiniature
+              key={v.themeId}
+              theme={theme}
+              mode={mode}
+              onClick={() => onPick(v.themeId)}
+              onEdit={() => onEdit(v.themeId)}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+function FamilyStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="px-2.5 py-1 rounded-lg bg-violet-500/8">
+      <span className="opacity-60 mr-1.5">{label}</span>
+      <span className="font-mono">{value}</span>
+    </div>
+  );
+}
