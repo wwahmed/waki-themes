@@ -14,7 +14,7 @@
  * Output: dist/themes.json
  */
 
-import { readFileSync, writeFileSync, readdirSync } from "node:fs";
+import { readFileSync, writeFileSync, readdirSync, mkdirSync } from "node:fs";
 import { execFileSync } from "node:child_process";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -137,6 +137,7 @@ const bundle = {
 };
 
 const out = resolve(repoRoot, "dist", "themes.json");
+mkdirSync(dirname(out), { recursive: true });
 writeFileSync(out, JSON.stringify(bundle, null, 2));
 console.log(
   `[ok] wrote ${out} (${Object.keys(themes).length} themes across ${Object.keys(families).length} families, ${(JSON.stringify(bundle).length / 1024).toFixed(1)} KB)`,
