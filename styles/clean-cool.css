@@ -12,8 +12,8 @@ body {
   color: #0c4a6e;
 }
 html.dark body {
-  background: #0c1424;
-  color: #e0f2fe;
+  background: #061823;
+  color: #cffafe;
 }
 
 .glass,
@@ -26,15 +26,15 @@ html.dark body {
 }
 html.dark .glass,
 html.dark .glass-elevated {
-  background: #1e293b;
-  border-color: #1e3a5f;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  background: #0c2733;
+  border-color: #145066;
+  box-shadow: 0 1px 2px rgba(3, 18, 28, 0.55);
 }
 .glass-elevated {
   box-shadow: 0 4px 12px rgba(12, 74, 110, 0.06);
 }
 html.dark .glass-elevated {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 12px rgba(3, 18, 28, 0.55);
 }
 .glass:hover,
 .glass-elevated:hover {
@@ -42,7 +42,7 @@ html.dark .glass-elevated {
 }
 html.dark .glass:hover,
 html.dark .glass-elevated:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 4px 16px rgba(3, 18, 28, 0.75);
 }
 
 .glass-bar {
@@ -50,8 +50,8 @@ html.dark .glass-elevated:hover {
   border-bottom: 1px solid #e0f2fe;
 }
 html.dark .glass-bar {
-  background: #0c1424;
-  border-bottom-color: #1e3a5f;
+  background: #061823;
+  border-bottom-color: #145066;
 }
 
 .chip {
@@ -64,16 +64,16 @@ html.dark .glass-bar {
   font-weight: 600;
 }
 html.dark .chip {
-  background: #1a2940;
-  border-color: #1e3a5f;
-  color: #38bdf8;
+  background: #0f3240;
+  border-color: #145066;
+  color: #22d3ee;
 }
 
 .divider-soft {
   border-color: #e0f2fe;
 }
 html.dark .divider-soft {
-  border-color: #1e3a5f;
+  border-color: #145066;
 }
 
 /* ----- Action buttons (SCHEMA.md required) ------------------------------ */
@@ -88,12 +88,12 @@ html.dark .divider-soft {
   filter: brightness(1.05);
 }
 html.dark .btn-primary {
-  background: linear-gradient(135deg, #38bdf8 0%, #38bdf8 100%);
+  background: linear-gradient(135deg, #22d3ee 0%, #22d3ee 100%);
   color: #0a0a0a;
-  box-shadow: 0 4px 14px #38bdf855;
+  box-shadow: 0 4px 14px #22d3ee55;
 }
 html.dark .btn-primary:hover {
-  background: linear-gradient(135deg, #38bdf8 0%, #38bdf8 100%);
+  background: linear-gradient(135deg, #22d3ee 0%, #22d3ee 100%);
   filter: brightness(1.1);
 }
 
@@ -107,9 +107,9 @@ html.dark .btn-primary:hover {
   filter: brightness(0.97);
 }
 html.dark .btn-secondary {
-  background: #1a2940;
-  color: #e0f2fe;
-  border-color: #2c4d75;
+  background: #0f3240;
+  color: #cffafe;
+  border-color: #1e7490;
 }
 html.dark .btn-secondary:hover {
   filter: brightness(1.15);
@@ -161,11 +161,11 @@ html.dark .btn-danger:hover {
   border-color: #e0f2fe;
 }
 html.dark .btn-ghost {
-  color: #e0f2fe;
+  color: #cffafe;
 }
 html.dark .btn-ghost:hover {
-  background: #1a2940;
-  border-color: #1e3a5f;
+  background: #0f3240;
+  border-color: #145066;
 }
 
 /* ----- Status + success button + input (SCHEMA.md recommended) --------- */
@@ -242,12 +242,12 @@ html.dark .status-info {
   box-shadow: 0 0 0 3px #0891b225;
 }
 html.dark .input {
-  background: #1a2940;
-  color: #e0f2fe;
-  border-color: #2c4d75;
+  background: #0f3240;
+  color: #cffafe;
+  border-color: #1e7490;
 }
 html.dark .input:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px #38bdf830;
+  border-color: #22d3ee;
+  box-shadow: 0 0 0 3px #22d3ee30;
 }
 

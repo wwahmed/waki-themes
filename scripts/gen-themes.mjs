@@ -569,7 +569,7 @@ ${buttonBlock({
 // ---------------------------------------------------------------------------
 
 function neonCss(spec) {
-  const { id, name, accent, secondary } = spec;
+  const { id, name, accent, secondary, dark } = spec;
   return `/* ============================================================================
  * Theme: ${id} (Neon family, ${name} variant)
  * ----------------------------------------------------------------------------
@@ -581,8 +581,11 @@ function neonCss(spec) {
  * ============================================================================ */
 
 body {
-  background: #0a0a0a;
-  color: #e5e5e5;
+  background:
+    radial-gradient(circle at 12% 0%, ${accent}20, transparent 34%),
+    radial-gradient(circle at 88% 100%, ${(secondary ?? accent)}18, transparent 36%),
+    ${dark.bg};
+  color: ${dark.text};
 }
 html.light body {
   background: #fafafa;
@@ -591,10 +594,10 @@ html.light body {
 
 .glass,
 .glass-elevated {
-  background: #111111;
-  border: 1px solid #262626;
+  background: ${dark.panel};
+  border: 1px solid ${dark.border};
   border-radius: 6px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 1px ${dark.shadow};
   transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
 }
 html.light .glass,
@@ -611,14 +614,15 @@ html.light .glass:hover {
   box-shadow: 0 0 0 1px ${accent}, 0 0 16px ${accent}40;
 }
 .glass-elevated {
-  border-color: #404040;
+  background: ${dark.panelElevated};
+  border-color: ${dark.borderStrong};
 }
 html.light .glass-elevated {
   border-color: #d4d4d4;
 }
 
 .glass-bar {
-  background: #0a0a0a;
+  background: ${dark.bar};
   border-bottom: 1px solid ${accent}30;
 }
 html.light .glass-bar {
@@ -644,7 +648,7 @@ html.light .chip {
 }
 
 .divider-soft {
-  border-color: #262626;
+  border-color: ${dark.border};
 }
 html.light .divider-soft {
   border-color: #e5e5e5;
@@ -674,9 +678,9 @@ ${secondary ? `/* secondary accent picks up where ${accent} leaves off, so two-t
 }
 
 .btn-secondary {
-  background: #1c1c1c;
-  color: #e5e5e5;
-  border: 1px solid #404040;
+  background: ${dark.secondary};
+  color: ${dark.text};
+  border: 1px solid ${dark.borderStrong};
   border-radius: 6px;
 }
 .btn-secondary:hover {
@@ -720,7 +724,7 @@ html.light .btn-secondary:hover {
 
 .btn-ghost {
   background: transparent;
-  color: #e5e5e5;
+  color: ${dark.text};
   border: 1px solid transparent;
   border-radius: 6px;
 }
@@ -810,9 +814,9 @@ html.light .status-info {
 }
 
 .input {
-  background: #0a0a0a;
-  color: #e5e5e5;
-  border: 1px solid #404040;
+  background: ${dark.input};
+  color: ${dark.text};
+  border: 1px solid ${dark.borderStrong};
   border-radius: 6px;
   padding: 0.5rem 0.75rem;
   font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;
@@ -972,16 +976,16 @@ const CLEAN_VARIANTS = [
       shadowHover: "rgba(15, 23, 42, 0.08)",
     },
     dark: {
-      bg: "#0a0a0a",
+      bg: "#050505",
       text: "#fafafa",
-      panel: "#141414",
-      bar: "#0a0a0a",
-      border: "#262626",
-      borderEmphasis: "#404040",
-      chipBg: "#1c1c1c",
-      shadow: "rgba(0, 0, 0, 0.3)",
-      shadowHover: "rgba(0, 0, 0, 0.5)",
-      accent: "#fafafa",
+      panel: "#111111",
+      bar: "#050505",
+      border: "#2a2a2a",
+      borderEmphasis: "#525252",
+      chipBg: "#191919",
+      shadow: "rgba(0, 0, 0, 0.36)",
+      shadowHover: "rgba(0, 0, 0, 0.58)",
+      accent: "#ffffff",
     },
   },
   {
@@ -1000,16 +1004,16 @@ const CLEAN_VARIANTS = [
       shadowHover: "rgba(30, 41, 59, 0.1)",
     },
     dark: {
-      bg: "#0f172a",
-      text: "#e2e8f0",
-      panel: "#1e293b",
-      bar: "#0f172a",
-      border: "#334155",
-      borderEmphasis: "#475569",
-      chipBg: "#1e293b",
-      shadow: "rgba(0, 0, 0, 0.4)",
-      shadowHover: "rgba(0, 0, 0, 0.6)",
-      accent: "#60a5fa",
+      bg: "#0a1020",
+      text: "#dbeafe",
+      panel: "#131c33",
+      bar: "#0a1020",
+      border: "#29395f",
+      borderEmphasis: "#405985",
+      chipBg: "#17223d",
+      shadow: "rgba(4, 10, 28, 0.55)",
+      shadowHover: "rgba(4, 10, 28, 0.75)",
+      accent: "#7dd3fc",
     },
   },
   {
@@ -1028,16 +1032,16 @@ const CLEAN_VARIANTS = [
       shadowHover: "rgba(41, 37, 36, 0.1)",
     },
     dark: {
-      bg: "#1c1917",
-      text: "#e7e5e4",
-      panel: "#292524",
-      bar: "#1c1917",
-      border: "#44403c",
-      borderEmphasis: "#57534e",
-      chipBg: "#292524",
-      shadow: "rgba(0, 0, 0, 0.4)",
-      shadowHover: "rgba(0, 0, 0, 0.6)",
-      accent: "#fbbf24",
+      bg: "#21130c",
+      text: "#f8dfc6",
+      panel: "#302016",
+      bar: "#21130c",
+      border: "#6b3f21",
+      borderEmphasis: "#9a5a2e",
+      chipBg: "#3a271c",
+      shadow: "rgba(22, 8, 3, 0.55)",
+      shadowHover: "rgba(22, 8, 3, 0.75)",
+      accent: "#f59e0b",
     },
   },
   {
@@ -1056,16 +1060,16 @@ const CLEAN_VARIANTS = [
       shadowHover: "rgba(12, 74, 110, 0.12)",
     },
     dark: {
-      bg: "#0c1424",
-      text: "#e0f2fe",
-      panel: "#1e293b",
-      bar: "#0c1424",
-      border: "#1e3a5f",
-      borderEmphasis: "#2c4d75",
-      chipBg: "#1a2940",
-      shadow: "rgba(0, 0, 0, 0.4)",
-      shadowHover: "rgba(0, 0, 0, 0.6)",
-      accent: "#38bdf8",
+      bg: "#061823",
+      text: "#cffafe",
+      panel: "#0c2733",
+      bar: "#061823",
+      border: "#145066",
+      borderEmphasis: "#1e7490",
+      chipBg: "#0f3240",
+      shadow: "rgba(3, 18, 28, 0.55)",
+      shadowHover: "rgba(3, 18, 28, 0.75)",
+      accent: "#22d3ee",
     },
   },
 ];
@@ -1084,12 +1088,12 @@ const EDITORIAL_VARIANTS = [
       borderEmphasis: "#a8a29e",
     },
     dark: {
-      bg: "#1c1917",
-      text: "#fafaf9",
-      panel: "#292524",
-      bar: "#1c1917",
-      border: "#44403c",
-      borderEmphasis: "#57534e",
+      bg: "#101624",
+      text: "#eef2ff",
+      panel: "#182033",
+      bar: "#101624",
+      border: "#3b4b6a",
+      borderEmphasis: "#60769f",
       accent: "#93c5fd",
     },
   },
@@ -1106,12 +1110,12 @@ const EDITORIAL_VARIANTS = [
       borderEmphasis: "#404040",
     },
     dark: {
-      bg: "#000000",
-      text: "#fafafa",
-      panel: "#0a0a0a",
-      bar: "#000000",
-      border: "#262626",
-      borderEmphasis: "#404040",
+      bg: "#050303",
+      text: "#fff1f2",
+      panel: "#12090a",
+      bar: "#050303",
+      border: "#3f171c",
+      borderEmphasis: "#7f1d1d",
       accent: "#fca5a5",
     },
   },
@@ -1128,12 +1132,12 @@ const EDITORIAL_VARIANTS = [
       borderEmphasis: "#fdba74",
     },
     dark: {
-      bg: "#1c1410",
-      text: "#fed7aa",
-      panel: "#292017",
-      bar: "#1c1410",
-      border: "#57340d",
-      borderEmphasis: "#7c4a13",
+      bg: "#241207",
+      text: "#ffedd5",
+      panel: "#321d0f",
+      bar: "#241207",
+      border: "#7c3f12",
+      borderEmphasis: "#b45309",
       accent: "#fdba74",
     },
   },
@@ -1150,22 +1154,90 @@ const EDITORIAL_VARIANTS = [
       borderEmphasis: "#94a3b8",
     },
     dark: {
-      bg: "#020617",
-      text: "#cbd5e1",
-      panel: "#0f172a",
-      bar: "#020617",
-      border: "#1e293b",
-      borderEmphasis: "#334155",
-      accent: "#94a3b8",
+      bg: "#06111f",
+      text: "#dbeafe",
+      panel: "#0b1b2f",
+      bar: "#06111f",
+      border: "#1d4a6d",
+      borderEmphasis: "#2f7ea5",
+      accent: "#67e8f9",
     },
   },
 ];
 
 const NEON_VARIANTS = [
-  { id: "neon-cyan", name: "Cyan", accent: "#06b6d4", secondary: "#a78bfa" },
-  { id: "neon-pink", name: "Pink", accent: "#ec4899", secondary: "#06b6d4" },
-  { id: "neon-lime", name: "Lime", accent: "#84cc16", secondary: "#06b6d4" },
-  { id: "neon-plasma", name: "Plasma", accent: "#f97316", secondary: "#ec4899" },
+  {
+    id: "neon-cyan",
+    name: "Cyan",
+    accent: "#06b6d4",
+    secondary: "#a78bfa",
+    dark: {
+      bg: "#041014",
+      text: "#dffaff",
+      panel: "#071820",
+      panelElevated: "#0b202b",
+      bar: "#041014",
+      border: "#124655",
+      borderStrong: "#1f7185",
+      shadow: "rgba(0, 0, 0, 0.5)",
+      secondary: "#0b202b",
+      input: "#06161d",
+    },
+  },
+  {
+    id: "neon-pink",
+    name: "Pink",
+    accent: "#ec4899",
+    secondary: "#06b6d4",
+    dark: {
+      bg: "#160812",
+      text: "#ffe4f1",
+      panel: "#210d1b",
+      panelElevated: "#2a1122",
+      bar: "#160812",
+      border: "#6d1d46",
+      borderStrong: "#9d2f68",
+      shadow: "rgba(0, 0, 0, 0.5)",
+      secondary: "#2a1122",
+      input: "#1d0a17",
+    },
+  },
+  {
+    id: "neon-lime",
+    name: "Lime",
+    accent: "#84cc16",
+    secondary: "#06b6d4",
+    dark: {
+      bg: "#0c1404",
+      text: "#ecfccb",
+      panel: "#121d08",
+      panelElevated: "#17260a",
+      bar: "#0c1404",
+      border: "#3f6212",
+      borderStrong: "#65a30d",
+      shadow: "rgba(0, 0, 0, 0.5)",
+      secondary: "#17260a",
+      input: "#101a07",
+    },
+  },
+  {
+    id: "neon-plasma",
+    name: "Plasma",
+    accent: "#f97316",
+    secondary: "#ec4899",
+    dark: {
+      bg: "#190b05",
+      text: "#ffedd5",
+      panel: "#241008",
+      panelElevated: "#30150a",
+      bar: "#190b05",
+      border: "#7c2d12",
+      borderStrong: "#c2410c",
+      shadow: "rgba(0, 0, 0, 0.5)",
+      secondary: "#30150a",
+      input: "#201008",
+    },
+  },
 ];
 
 // ---------------------------------------------------------------------------

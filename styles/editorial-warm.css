@@ -13,8 +13,8 @@ body {
   letter-spacing: -0.01em;
 }
 html.dark body {
-  background: #1c1410;
-  color: #fed7aa;
+  background: #241207;
+  color: #ffedd5;
 }
 
 .glass,
@@ -26,15 +26,15 @@ html.dark body {
 }
 html.dark .glass,
 html.dark .glass-elevated {
-  background: #292017;
-  border-color: #57340d;
+  background: #321d0f;
+  border-color: #7c3f12;
 }
 .glass-elevated {
   border-width: 1px;
   box-shadow: 0 1px 0 #fdba74;
 }
 html.dark .glass-elevated {
-  box-shadow: 0 1px 0 #7c4a13;
+  box-shadow: 0 1px 0 #b45309;
 }
 
 .glass-bar {
@@ -42,8 +42,8 @@ html.dark .glass-elevated {
   border-bottom: 1px solid #fed7aa;
 }
 html.dark .glass-bar {
-  background: #1c1410;
-  border-bottom-color: #57340d;
+  background: #241207;
+  border-bottom-color: #7c3f12;
 }
 
 .chip {
@@ -58,7 +58,7 @@ html.dark .glass-bar {
   text-transform: uppercase;
 }
 html.dark .chip {
-  border-color: #57340d;
+  border-color: #7c3f12;
   color: #fdba74;
 }
 
@@ -66,7 +66,7 @@ html.dark .chip {
   border-color: #fed7aa;
 }
 html.dark .divider-soft {
-  border-color: #57340d;
+  border-color: #7c3f12;
 }
 
 /* ----- Action buttons (SCHEMA.md required) ------------------------------ */
@@ -100,9 +100,9 @@ html.dark .btn-primary:hover {
   filter: brightness(0.97);
 }
 html.dark .btn-secondary {
-  background: #292017;
-  color: #fed7aa;
-  border-color: #57340d;
+  background: #321d0f;
+  color: #ffedd5;
+  border-color: #7c3f12;
 }
 html.dark .btn-secondary:hover {
   filter: brightness(1.15);
@@ -154,11 +154,11 @@ html.dark .btn-danger:hover {
   border-color: #fed7aa;
 }
 html.dark .btn-ghost {
-  color: #fed7aa;
+  color: #ffedd5;
 }
 html.dark .btn-ghost:hover {
   background: rgba(255, 255, 255, 0.04);
-  border-color: #57340d;
+  border-color: #7c3f12;
 }
 
 /* ----- Status + success button + input (SCHEMA.md recommended) --------- */
@@ -235,9 +235,9 @@ html.dark .status-info {
   box-shadow: 0 0 0 3px #b4530925;
 }
 html.dark .input {
-  background: #292017;
-  color: #fed7aa;
-  border-color: #57340d;
+  background: #321d0f;
+  color: #ffedd5;
+  border-color: #7c3f12;
 }
 html.dark .input:focus {
   border-color: #fdba74;

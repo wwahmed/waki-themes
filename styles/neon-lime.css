@@ -9,8 +9,11 @@
  * ============================================================================ */
 
 body {
-  background: #0a0a0a;
-  color: #e5e5e5;
+  background:
+    radial-gradient(circle at 12% 0%, #84cc1620, transparent 34%),
+    radial-gradient(circle at 88% 100%, #06b6d418, transparent 36%),
+    #0c1404;
+  color: #ecfccb;
 }
 html.light body {
   background: #fafafa;
@@ -19,10 +22,10 @@ html.light body {
 
 .glass,
 .glass-elevated {
-  background: #111111;
-  border: 1px solid #262626;
+  background: #121d08;
+  border: 1px solid #3f6212;
   border-radius: 6px;
-  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.5);
   transition: border-color 150ms ease-out, box-shadow 150ms ease-out;
 }
 html.light .glass,
@@ -39,14 +42,15 @@ html.light .glass:hover {
   box-shadow: 0 0 0 1px #84cc16, 0 0 16px #84cc1640;
 }
 .glass-elevated {
-  border-color: #404040;
+  background: #17260a;
+  border-color: #65a30d;
 }
 html.light .glass-elevated {
   border-color: #d4d4d4;
 }
 
 .glass-bar {
-  background: #0a0a0a;
+  background: #0c1404;
   border-bottom: 1px solid #84cc1630;
 }
 html.light .glass-bar {
@@ -72,7 +76,7 @@ html.light .chip {
 }
 
 .divider-soft {
-  border-color: #262626;
+  border-color: #3f6212;
 }
 html.light .divider-soft {
   border-color: #e5e5e5;
@@ -102,9 +106,9 @@ html.light .divider-soft {
 }
 
 .btn-secondary {
-  background: #1c1c1c;
-  color: #e5e5e5;
-  border: 1px solid #404040;
+  background: #17260a;
+  color: #ecfccb;
+  border: 1px solid #65a30d;
   border-radius: 6px;
 }
 .btn-secondary:hover {
@@ -148,7 +152,7 @@ html.light .btn-secondary:hover {
 
 .btn-ghost {
   background: transparent;
-  color: #e5e5e5;
+  color: #ecfccb;
   border: 1px solid transparent;
   border-radius: 6px;
 }
@@ -238,9 +242,9 @@ html.light .status-info {
 }
 
 .input {
-  background: #0a0a0a;
-  color: #e5e5e5;
-  border: 1px solid #404040;
+  background: #101a07;
+  color: #ecfccb;
+  border: 1px solid #65a30d;
   border-radius: 6px;
   padding: 0.5rem 0.75rem;
   font-family: ui-monospace, "SF Mono", Menlo, Monaco, Consolas, monospace;

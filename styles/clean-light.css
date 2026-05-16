@@ -12,7 +12,7 @@ body {
   color: #0f172a;
 }
 html.dark body {
-  background: #0a0a0a;
+  background: #050505;
   color: #fafafa;
 }
 
@@ -26,15 +26,15 @@ html.dark body {
 }
 html.dark .glass,
 html.dark .glass-elevated {
-  background: #141414;
-  border-color: #262626;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  background: #111111;
+  border-color: #2a2a2a;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.36);
 }
 .glass-elevated {
   box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
 }
 html.dark .glass-elevated {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.36);
 }
 .glass:hover,
 .glass-elevated:hover {
@@ -42,7 +42,7 @@ html.dark .glass-elevated {
 }
 html.dark .glass:hover,
 html.dark .glass-elevated:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.58);
 }
 
 .glass-bar {
@@ -50,8 +50,8 @@ html.dark .glass-elevated:hover {
   border-bottom: 1px solid #e5e7eb;
 }
 html.dark .glass-bar {
-  background: #0a0a0a;
-  border-bottom-color: #262626;
+  background: #050505;
+  border-bottom-color: #2a2a2a;
 }
 
 .chip {
@@ -64,16 +64,16 @@ html.dark .glass-bar {
   font-weight: 600;
 }
 html.dark .chip {
-  background: #1c1c1c;
-  border-color: #262626;
-  color: #fafafa;
+  background: #191919;
+  border-color: #2a2a2a;
+  color: #ffffff;
 }
 
 .divider-soft {
   border-color: #e5e7eb;
 }
 html.dark .divider-soft {
-  border-color: #262626;
+  border-color: #2a2a2a;
 }
 
 /* ----- Action buttons (SCHEMA.md required) ------------------------------ */
@@ -88,12 +88,12 @@ html.dark .divider-soft {
   filter: brightness(1.05);
 }
 html.dark .btn-primary {
-  background: linear-gradient(135deg, #fafafa 0%, #fafafa 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   color: #0a0a0a;
-  box-shadow: 0 4px 14px #fafafa55;
+  box-shadow: 0 4px 14px #ffffff55;
 }
 html.dark .btn-primary:hover {
-  background: linear-gradient(135deg, #fafafa 0%, #fafafa 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #ffffff 100%);
   filter: brightness(1.1);
 }
 
@@ -107,9 +107,9 @@ html.dark .btn-primary:hover {
   filter: brightness(0.97);
 }
 html.dark .btn-secondary {
-  background: #1c1c1c;
+  background: #191919;
   color: #fafafa;
-  border-color: #404040;
+  border-color: #525252;
 }
 html.dark .btn-secondary:hover {
   filter: brightness(1.15);
@@ -164,8 +164,8 @@ html.dark .btn-ghost {
   color: #fafafa;
 }
 html.dark .btn-ghost:hover {
-  background: #1c1c1c;
-  border-color: #262626;
+  background: #191919;
+  border-color: #2a2a2a;
 }
 
 /* ----- Status + success button + input (SCHEMA.md recommended) --------- */
@@ -242,12 +242,12 @@ html.dark .status-info {
   box-shadow: 0 0 0 3px #0f172a25;
 }
 html.dark .input {
-  background: #1c1c1c;
+  background: #191919;
   color: #fafafa;
-  border-color: #404040;
+  border-color: #525252;
 }
 html.dark .input:focus {
-  border-color: #fafafa;
-  box-shadow: 0 0 0 3px #fafafa30;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 3px #ffffff30;
 }
 

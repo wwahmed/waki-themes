@@ -24,6 +24,7 @@ on:
       - "scripts/**"
       - "app/**"
       - "package.json"
+      - "package-lock.json"
       - ".github/workflows/deploy-themes.yml"
       - ".github/scripts/append-changelog.mjs"
   workflow_dispatch: {}
@@ -62,6 +63,9 @@ jobs:
 
       - name: Build bundle (root, no deps; node-only)
         run: node scripts/build-bundle.mjs
+
+      - name: Shape Foundation CDN bundle
+        run: node scripts/build-cdn.mjs
 
       - name: Install studio deps
         working-directory: app

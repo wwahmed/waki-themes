@@ -155,7 +155,7 @@ export const FAMILIES = {
         description: "Pure white canvas, near-black ink",
         palette: {
           light: { bgFrom: "#ffffff", bgTo: "#ffffff", panel: "#ffffff", border: "#e5e7eb", text: "#0f172a", accent: "#0f172a" },
-          dark:  { bgFrom: "#0a0a0a", bgTo: "#0a0a0a", panel: "#141414", border: "#262626", text: "#fafafa", accent: "#fafafa" },
+          dark:  { bgFrom: "#050505", bgTo: "#050505", panel: "#111111", border: "#2a2a2a", text: "#fafafa", accent: "#ffffff" },
         },
       },
       {
@@ -165,7 +165,7 @@ export const FAMILIES = {
         description: "Slate canvas with blue accent",
         palette: {
           light: { bgFrom: "#f8fafc", bgTo: "#f8fafc", panel: "#ffffff", border: "#e2e8f0", text: "#1e293b", accent: "#3b82f6" },
-          dark:  { bgFrom: "#0f172a", bgTo: "#0f172a", panel: "#1e293b", border: "#334155", text: "#e2e8f0", accent: "#60a5fa" },
+          dark:  { bgFrom: "#0a1020", bgTo: "#0a1020", panel: "#131c33", border: "#29395f", text: "#dbeafe", accent: "#7dd3fc" },
         },
       },
       {
@@ -175,7 +175,7 @@ export const FAMILIES = {
         description: "Stone canvas, amber accent",
         palette: {
           light: { bgFrom: "#fafaf9", bgTo: "#fafaf9", panel: "#ffffff", border: "#e7e5e4", text: "#292524", accent: "#b45309" },
-          dark:  { bgFrom: "#1c1917", bgTo: "#1c1917", panel: "#292524", border: "#44403c", text: "#e7e5e4", accent: "#fbbf24" },
+          dark:  { bgFrom: "#21130c", bgTo: "#21130c", panel: "#302016", border: "#6b3f21", text: "#f8dfc6", accent: "#f59e0b" },
         },
       },
       {
@@ -185,7 +185,7 @@ export const FAMILIES = {
         description: "Sky canvas, cyan accent",
         palette: {
           light: { bgFrom: "#f0f9ff", bgTo: "#f0f9ff", panel: "#ffffff", border: "#e0f2fe", text: "#0c4a6e", accent: "#0891b2" },
-          dark:  { bgFrom: "#0c1424", bgTo: "#0c1424", panel: "#1e293b", border: "#1e3a5f", text: "#e0f2fe", accent: "#38bdf8" },
+          dark:  { bgFrom: "#061823", bgTo: "#061823", panel: "#0c2733", border: "#145066", text: "#cffafe", accent: "#22d3ee" },
         },
       },
     ],
@@ -210,7 +210,7 @@ export const FAMILIES = {
         description: "Stone-paper canvas, royal-blue ink",
         palette: {
           light: { bgFrom: "#fafaf9", bgTo: "#fafaf9", panel: "#ffffff", border: "#d6d3d1", text: "#1c1917", accent: "#1d4ed8" },
-          dark:  { bgFrom: "#1c1917", bgTo: "#1c1917", panel: "#292524", border: "#44403c", text: "#fafaf9", accent: "#93c5fd" },
+          dark:  { bgFrom: "#101624", bgTo: "#101624", panel: "#182033", border: "#3b4b6a", text: "#eef2ff", accent: "#93c5fd" },
         },
       },
       {
@@ -220,7 +220,7 @@ export const FAMILIES = {
         description: "High-contrast black-on-stone with crimson accent",
         palette: {
           light: { bgFrom: "#f5f5f4", bgTo: "#f5f5f4", panel: "#fafaf9", border: "#262626", text: "#0a0a0a", accent: "#dc2626" },
-          dark:  { bgFrom: "#000000", bgTo: "#000000", panel: "#0a0a0a", border: "#262626", text: "#fafafa", accent: "#fca5a5" },
+          dark:  { bgFrom: "#050303", bgTo: "#050303", panel: "#12090a", border: "#3f171c", text: "#fff1f2", accent: "#fca5a5" },
         },
       },
       {
@@ -230,7 +230,7 @@ export const FAMILIES = {
         description: "Cream paper, sienna ink",
         palette: {
           light: { bgFrom: "#fff7ed", bgTo: "#fff7ed", panel: "#ffffff", border: "#fed7aa", text: "#451a03", accent: "#b45309" },
-          dark:  { bgFrom: "#1c1410", bgTo: "#1c1410", panel: "#292017", border: "#57340d", text: "#fed7aa", accent: "#fdba74" },
+          dark:  { bgFrom: "#241207", bgTo: "#241207", panel: "#321d0f", border: "#7c3f12", text: "#ffedd5", accent: "#fdba74" },
         },
       },
       {
@@ -240,7 +240,7 @@ export const FAMILIES = {
         description: "Slate canvas with engineering-doc restraint",
         palette: {
           light: { bgFrom: "#f8fafc", bgTo: "#f8fafc", panel: "#ffffff", border: "#cbd5e1", text: "#0f172a", accent: "#475569" },
-          dark:  { bgFrom: "#020617", bgTo: "#020617", panel: "#0f172a", border: "#1e293b", text: "#cbd5e1", accent: "#94a3b8" },
+          dark:  { bgFrom: "#06111f", bgTo: "#06111f", panel: "#0b1b2f", border: "#1d4a6d", text: "#dbeafe", accent: "#67e8f9" },
         },
       },
     ],
@@ -265,7 +265,7 @@ export const FAMILIES = {
         description: "Cyber-cyan accent on charcoal",
         palette: {
           light: { bgFrom: "#fafafa", bgTo: "#fafafa", panel: "#ffffff", border: "#e5e5e5", text: "#0a0a0a", accent: "#06b6d4" },
-          dark:  { bgFrom: "#0a0a0a", bgTo: "#0a0a0a", panel: "#111111", border: "#262626", text: "#e5e5e5", accent: "#06b6d4" },
+          dark:  { bgFrom: "#041014", bgTo: "#041014", panel: "#071820", border: "#124655", text: "#dffaff", accent: "#06b6d4" },
         },
       },
       {
@@ -275,7 +275,7 @@ export const FAMILIES = {
         description: "Hot-pink accent on charcoal",
         palette: {
           light: { bgFrom: "#fafafa", bgTo: "#fafafa", panel: "#ffffff", border: "#e5e5e5", text: "#0a0a0a", accent: "#ec4899" },
-          dark:  { bgFrom: "#0a0a0a", bgTo: "#0a0a0a", panel: "#111111", border: "#262626", text: "#e5e5e5", accent: "#ec4899" },
+          dark:  { bgFrom: "#160812", bgTo: "#160812", panel: "#210d1b", border: "#6d1d46", text: "#ffe4f1", accent: "#ec4899" },
         },
       },
       {
@@ -285,7 +285,7 @@ export const FAMILIES = {
         description: "Lime-green accent on charcoal",
         palette: {
           light: { bgFrom: "#fafafa", bgTo: "#fafafa", panel: "#ffffff", border: "#e5e5e5", text: "#0a0a0a", accent: "#84cc16" },
-          dark:  { bgFrom: "#0a0a0a", bgTo: "#0a0a0a", panel: "#111111", border: "#262626", text: "#e5e5e5", accent: "#84cc16" },
+          dark:  { bgFrom: "#0c1404", bgTo: "#0c1404", panel: "#121d08", border: "#3f6212", text: "#ecfccb", accent: "#84cc16" },
         },
       },
       {
@@ -295,7 +295,7 @@ export const FAMILIES = {
         description: "Plasma-orange + magenta two-tone",
         palette: {
           light: { bgFrom: "#fafafa", bgTo: "#fafafa", panel: "#ffffff", border: "#e5e5e5", text: "#0a0a0a", accent: "#f97316" },
-          dark:  { bgFrom: "#0a0a0a", bgTo: "#0a0a0a", panel: "#111111", border: "#262626", text: "#e5e5e5", accent: "#f97316" },
+          dark:  { bgFrom: "#190b05", bgTo: "#190b05", panel: "#241008", border: "#7c2d12", text: "#ffedd5", accent: "#f97316" },
         },
       },
     ],

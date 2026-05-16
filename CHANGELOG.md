@@ -1,5 +1,17 @@
 # Changelog
 
+## v0.4.1 (2026-05-16)
+
+### Dark-mode palette differentiation
+
+Dark variants now carry stronger family and variant identity instead of collapsing into the same charcoal/slate baseline.
+
+- Clean dark modes now separate into neutral black (`clean-light`), midnight indigo (`clean-dim`), sepia umber (`clean-warm`), and cyan-blue (`clean-cool`).
+- Editorial dark modes now separate into academic blue-paper, crimson noir, warm print, and technical blueprint palettes.
+- Neon dark modes now tint the page, panels, borders, secondary controls, and inputs by variant, not just the accent color.
+
+Theme IDs and schema shape are unchanged. `pkgVersion` bumps so cache-aware consumers can invalidate older CSS while continuing to read the same `themes` and `families` fields.
+
 ## v0.4.0 (2026-04-30)
 
 ### Theme catalog rewritten: 5 families x 4 variants = 20 themes

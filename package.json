@@ -1,6 +1,6 @@
 {
   "name": "waki-themes",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "private": true,
   "description": "Twenty swappable web themes with a versioned JSON bundle for cross-app consumption (waki-brain, printer-dashboard, etc) via the dist/themes.json contract.",
   "license": "MIT",

@@ -13,8 +13,8 @@ body {
   letter-spacing: -0.01em;
 }
 html.dark body {
-  background: #020617;
-  color: #cbd5e1;
+  background: #06111f;
+  color: #dbeafe;
 }
 
 .glass,
@@ -26,15 +26,15 @@ html.dark body {
 }
 html.dark .glass,
 html.dark .glass-elevated {
-  background: #0f172a;
-  border-color: #1e293b;
+  background: #0b1b2f;
+  border-color: #1d4a6d;
 }
 .glass-elevated {
   border-width: 1px;
   box-shadow: 0 1px 0 #94a3b8;
 }
 html.dark .glass-elevated {
-  box-shadow: 0 1px 0 #334155;
+  box-shadow: 0 1px 0 #2f7ea5;
 }
 
 .glass-bar {
@@ -42,8 +42,8 @@ html.dark .glass-elevated {
   border-bottom: 1px solid #cbd5e1;
 }
 html.dark .glass-bar {
-  background: #020617;
-  border-bottom-color: #1e293b;
+  background: #06111f;
+  border-bottom-color: #1d4a6d;
 }
 
 .chip {
@@ -58,15 +58,15 @@ html.dark .glass-bar {
   text-transform: uppercase;
 }
 html.dark .chip {
-  border-color: #1e293b;
-  color: #94a3b8;
+  border-color: #1d4a6d;
+  color: #67e8f9;
 }
 
 .divider-soft {
   border-color: #cbd5e1;
 }
 html.dark .divider-soft {
-  border-color: #1e293b;
+  border-color: #1d4a6d;
 }
 
 /* ----- Action buttons (SCHEMA.md required) ------------------------------ */
@@ -81,12 +81,12 @@ html.dark .divider-soft {
   filter: brightness(1.05);
 }
 html.dark .btn-primary {
-  background: linear-gradient(135deg, #94a3b8 0%, #94a3b8 100%);
+  background: linear-gradient(135deg, #67e8f9 0%, #67e8f9 100%);
   color: #0a0a0a;
-  box-shadow: 0 4px 14px #94a3b855;
+  box-shadow: 0 4px 14px #67e8f955;
 }
 html.dark .btn-primary:hover {
-  background: linear-gradient(135deg, #94a3b8 0%, #94a3b8 100%);
+  background: linear-gradient(135deg, #67e8f9 0%, #67e8f9 100%);
   filter: brightness(1.1);
 }
 
@@ -100,9 +100,9 @@ html.dark .btn-primary:hover {
   filter: brightness(0.97);
 }
 html.dark .btn-secondary {
-  background: #0f172a;
-  color: #cbd5e1;
-  border-color: #1e293b;
+  background: #0b1b2f;
+  color: #dbeafe;
+  border-color: #1d4a6d;
 }
 html.dark .btn-secondary:hover {
   filter: brightness(1.15);
@@ -154,11 +154,11 @@ html.dark .btn-danger:hover {
   border-color: #cbd5e1;
 }
 html.dark .btn-ghost {
-  color: #cbd5e1;
+  color: #dbeafe;
 }
 html.dark .btn-ghost:hover {
   background: rgba(255, 255, 255, 0.04);
-  border-color: #1e293b;
+  border-color: #1d4a6d;
 }
 
 /* ----- Status + success button + input (SCHEMA.md recommended) --------- */
@@ -235,12 +235,12 @@ html.dark .status-info {
   box-shadow: 0 0 0 3px #47556925;
 }
 html.dark .input {
-  background: #0f172a;
-  color: #cbd5e1;
-  border-color: #1e293b;
+  background: #0b1b2f;
+  color: #dbeafe;
+  border-color: #1d4a6d;
 }
 html.dark .input:focus {
-  border-color: #94a3b8;
-  box-shadow: 0 0 0 3px #94a3b830;
+  border-color: #67e8f9;
+  box-shadow: 0 0 0 3px #67e8f930;
 }
 

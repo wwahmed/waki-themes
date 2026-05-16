@@ -2,7 +2,7 @@
 
 Shared theme tokens for Waqas's apps. Consuming apps remain private; this repo contains only design tokens, no business logic or secrets.
 
-Curated catalog of 20 themes organised under 5 structural families (Glass, Aurora, Clean, Editorial, Neon) since v0.4.0. Light + dark variants for every theme, with chroma preserved in dark mode. See [CURATION.md](CURATION.md) for the audit, [SCHEMA.md](SCHEMA.md) for the per-theme token contract, [CHANGELOG.md](CHANGELOG.md) for the migration history.
+Curated catalog of 20 themes organised under 5 structural families (Glass, Aurora, Clean, Editorial, Neon) since v0.4.0. Light + dark variants for every theme, with stronger dark-mode color identity refreshed in v0.4.1. See [CURATION.md](CURATION.md) for the audit, [SCHEMA.md](SCHEMA.md) for the per-theme token contract, [CHANGELOG.md](CHANGELOG.md) for the migration history.
 
 Originally extracted from the 3dByPixel printer-shop dashboard's themes; now the canonical source for waki-brain, printer-dashboard, and future apps.
 
@@ -73,7 +73,7 @@ Schema (since v0.3.0):
 }
 ```
 
-The `themes` flat map is the original contract; existing consumers (printer-dashboard, brain-v2, waki-shell) read it unchanged and pick by flat id (`glass-v2`, `flat`, ...). The new `families` map groups themes by structural family (Glass, Flat, Soft, Bold, Organic) and exposes `structure` (radius, blur, shadow, surface, iconography, density) per family. New consumers can adopt the grouped picker on their own timeline.
+The `themes` flat map is the original contract; existing consumers (printer-dashboard, brain-v2, waki-shell) read it unchanged and pick by flat id (`glass-v2`, `clean-cool`, ...). The new `families` map groups themes by structural family (Glass, Aurora, Clean, Editorial, Neon) and exposes `structure` (radius, blur, shadow, surface, iconography, density) per family. New consumers can adopt the grouped picker on their own timeline.
 
 GitHub Actions auto-rebuilds the bundle on every push to main (filtered to `styles/`, `scripts/`, `src/themes/`, `package.json`) so the embedded `gitSha` stays in sync with HEAD. Consumers fetch on boot, cache locally, refetch every ~6 hours, and apply the latest CSS at runtime without rebuilding.
 
