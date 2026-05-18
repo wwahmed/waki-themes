@@ -1,171 +1,97 @@
 # waki-themes
 
-Shared theme tokens for Waqas's apps. Consuming apps remain private; this repo contains only design tokens, no business logic or secrets.
+Shared theme catalog for Waki apps. The repo publishes a versioned bundle of CSS themes plus a private Theme Studio for browsing, previewing, and editing them.
 
-Curated catalog of 30 themes organised under 6 structural families (Glass, Aurora, Clean, Editorial, Neon, V2 Polished). The original theme IDs are retained for compatibility; the 10 new `v2-*` themes are additive and designed for opt-in adoption. See [CURATION.md](CURATION.md) for the audit, [SCHEMA.md](SCHEMA.md) for the per-theme token contract, [CHANGELOG.md](CHANGELOG.md) for the migration history.
+## Current Catalog
 
-Originally extracted from the 3dByPixel printer-shop dashboard's themes; now the canonical source for waki-brain, printer-dashboard, and future apps.
+The v1.0 catalog is organized by **material family** first and **hue variant** second. Variants inside a family share the same geometry, blur, density, typography, shadows, and hover behavior; the suffix tells you the colorway.
 
-## Two surfaces
+| Family | Variants |
+|---|---|
+| Waki Glass | Prism, Opal, Civic, Obsidian |
+| Waki Frost | Arctic, Rose, Mint, Violet |
+| Waki Academic | Ivory, Oxford, Slate, Sepia |
+| Waki Desktop | Graphite, Cobalt, Nova, Olive |
+| Waki Mobile | Orchid, Mint, Sunrise, Ocean |
+| Waki Command | Cyan, Lime, Magenta, Amber |
 
-The repo serves two surfaces with different access policies:
+Theme ids follow the same pattern: `waki-glass-prism`, `waki-academic-ivory`, `waki-command-cyan`, and so on.
+
+This is a breaking catalog cleanup. Older ids such as `glass-v2`, `frosted-glass`, `editorial-academic`, and `v2-*` are no longer in the published bundle; downstream apps should migrate to the new `waki-*` ids.
+
+## Surfaces
 
 | Surface | URL | Access | Purpose |
 |---|---|---|---|
-| **Theme Studio** (the editor / gallery) | `https://themes.wakilabs.dev` | Google-OAuth gated, family allowlist | Browse, edit, create themes |
-| **Foundation CDN** (the published artifact) | `https://cdn.wakilabs.dev/waki-themes/themes.json` | Anonymous read | Consumer apps fetch the bundle |
-
-The Studio is private because authoring belongs to a small allowlist; the CDN is public because every consumer app, public or private, needs the bundle to render. This is the canonical pattern for foundation-level resources at wakilabs.dev: gated authoring tools at `<thing>.wakilabs.dev`, public artifacts at `cdn.wakilabs.dev/<thing>/`. Future foundation projects (waki-shell, etc.) follow the same convention.
-
-Build pipeline + Cloudflare Pages setup for both surfaces lives in [docs/DEPLOY.md](docs/DEPLOY.md).
-
-## Deploy
-
-Production hostnames `themes.wakilabs.dev` (Studio) and `cdn.wakilabs.dev` (Foundation CDN) are served by Cloudflare Pages projects `waki-themes-studio` and `wakilabs-cdn`. Both are Direct Upload type, so deploys run from CI via [.github/workflows/deploy-themes.yml](.github/workflows/deploy-themes.yml) on every push to `main` that touches `src/themes/`, `styles/`, `scripts/`, `app/`, or the workflow itself. One run builds the bundle (`node scripts/build-bundle.mjs`), builds the studio (`npm run build` in `app/`), then ships both to their respective Pages projects in roughly a minute on warm cache.
-
-```sh
-# manual trigger:
-gh workflow run deploy-themes.yml --repo wwahmed/waki-themes
-
-# tail the latest run:
-gh run watch --repo wwahmed/waki-themes $(gh run list --repo wwahmed/waki-themes --workflow=deploy-themes.yml --limit 1 --json databaseId -q '.[0].databaseId')
-
-# local rebuild + deploy bypassing CI:
-node scripts/build-bundle.mjs
-cd app && npm ci && npm run sync-bundle && npm run build
-npx wrangler@4 pages deploy app/dist --project-name=waki-themes-studio --branch=main --commit-dirty=true
-cd .. && npx wrangler@4 pages deploy dist/cdn --project-name=wakilabs-cdn --branch=main --commit-dirty=true
-```
-
-Required GitHub secrets (already provisioned): `CLOUDFLARE_API_TOKEN` (Account > Cloudflare Pages > Edit), `CLOUDFLARE_ACCOUNT_ID`. The legacy `build-bundle.yml` workflow keeps auto-committing `dist/themes.json` (with `[skip ci]`) for non-CI consumers; it does not conflict with the deploy workflow.
+| Theme Studio | `https://themes.wakilabs.dev` | Google-OAuth gated, family allowlist | Browse, preview, edit, create themes |
+| Foundation CDN | `https://cdn.wakilabs.dev/waki-themes/themes.json` | Anonymous read | Consumer apps fetch the theme bundle |
 
 ## Theme Studio
 
-Studio source lives in [app/](app/).
+Studio source lives in [app/](app/). It demonstrates the themes against shell-like UI: navigation, toolbar chrome, nested panels, forms, status badges, action buttons, and mobile surfaces.
 
-- Two-step picker: pick a family (6 cards), then pick a variant.
-- Live preview pane with a shell-style sample app: sidebar, nested panels, toolbar, cards, forms, statuses, mobile surface, and action buttons. Both modes toggle.
-- Polished **Look** switcher in the preview pane with a compact theme miniature, theme picker, and light/dark toggle for reuse across Waki apps.
-- Editor: family-level tab edits radius / blur and propagates to all variants in the family. Variant-level tab edits per-tile palette.
-- WCAG AA contrast checker on each pair. Warns, never blocks.
-- Export as standalone CSS, token JSON, or copy CSS to clipboard. See [docs/CREATING-THEMES.md](docs/CREATING-THEMES.md) for the full create-a-theme flow.
+The picker is intentionally material-first:
 
-## Cross-app consumption
+1. Pick a family for the app personality.
+2. Pick a hue variant inside that family.
+3. Toggle light/dark mode and preview the full shell.
 
-Canonical bundle URL (post-v0.4.0):
+The preview includes the shared compact **Look** switcher pattern that Waki apps should reuse.
 
-```
+## Bundle Shape
+
+Canonical bundle URL:
+
+```text
 https://cdn.wakilabs.dev/waki-themes/themes.json
 ```
 
-Backward-compat fallback during the migration window:
+Schema:
 
-```
-https://raw.githubusercontent.com/wwahmed/waki-themes/main/dist/themes.json
-```
-
-Schema (since v0.3.0):
-
-```
+```json
 {
-  schemaVersion, pkgVersion, gitSha, builtAt, base,
-  themes:   { id: { name, description, vibe, css, family, variantSlot, ... } },  // flat, existing contract
-  families: { id: { name, description, structure, variants: [{ slot, themeId, palette, ... }] } }  // new, additive
+  "schemaVersion": 1,
+  "pkgVersion": "1.0.0",
+  "gitSha": "...",
+  "builtAt": "...",
+  "base": "...",
+  "themes": {
+    "waki-glass-prism": {
+      "name": "Waki Glass Prism",
+      "description": "...",
+      "vibe": "glass",
+      "css": "...",
+      "family": "glass",
+      "familyName": "Waki Glass",
+      "variantSlot": "prism",
+      "variantName": "Prism"
+    }
+  },
+  "families": {
+    "glass": {
+      "name": "Waki Glass",
+      "description": "...",
+      "structure": { "radius": 20, "blur": 26, "shadow": "...", "surface": "...", "iconography": "...", "density": "..." },
+      "variants": [{ "slot": "prism", "themeId": "waki-glass-prism", "palette": { "light": {}, "dark": {} } }]
+    }
+  }
 }
 ```
 
-The `themes` flat map is the original contract; existing consumers (printer-dashboard, brain-v2, waki-shell) read it unchanged and pick by flat id (`glass-v2`, `clean-cool`, ...). The new `families` map groups themes by structural family (Glass, Aurora, Clean, Editorial, Neon, V2 Polished) and exposes `structure` (radius, blur, shadow, surface, iconography, density) per family. New consumers can adopt the grouped picker on their own timeline. Apps that want the new visual language should opt into one of the `v2-*` IDs instead of repointing an existing theme.
-
-GitHub Actions auto-rebuilds the bundle on every push to main (filtered to `styles/`, `scripts/`, `src/themes/`, `package.json`) so the embedded `gitSha` stays in sync with HEAD. Consumers fetch on boot, cache locally, refetch every ~6 hours, and apply the latest CSS at runtime without rebuilding.
-
-Bump `package.json` version when the schema, CSS contract, or built-in catalog changes; consumers can read `pkgVersion` to decide whether to invalidate their local cache.
-
-## Quick start
-
-The demo is a static HTML page — no build step:
+## Local Commands
 
 ```bash
-# any static server works; here's the simplest one:
-cd waki-themes
-python3 -m http.server 5500
-# then open http://localhost:5500
+cd ~/workspaces/waki-themes
+npm run gen:v2       # generates src/themes/families.mjs + styles/waki-*.css
+npm run build        # validates and writes dist/themes.json
+npm run studio:build # builds bundle + Theme Studio
+cd app && npm run dev
 ```
 
-Or just double-click `index.html` to open it directly in a browser.
+## Deploy
 
-The floating pill in the top-right of the demo flips between the three themes (and between light / dark mode). Both choices are persisted in `localStorage` so a refresh keeps the look.
+Production hostnames `themes.wakilabs.dev` and `cdn.wakilabs.dev` are served by Cloudflare Pages. CI deploys on pushes to `main`; manual deploy details live in [docs/DEPLOY.md](docs/DEPLOY.md).
 
-## The three themes
+## Contract
 
-### `styles/flat.css` — Flat
-Solid colours, visible borders, real drop shadows. No `backdrop-filter`, no glints, no animation. Reads as a clean, functional dashboard / inbox / admin UI. Use this when:
-- the design needs to feel anchored and unambiguous
-- target browsers may not support `backdrop-filter`
-- glass would be too fancy for the brand
-
-### `styles/glass-v1.css` — Glass v1
-Frosted glass surfaces over a soft gradient page. Translucent backgrounds with `backdrop-filter` blur so layered cards compose visible depth. **No texture, no glints, no motion** — just clean frosted panels.
-
-Light mode: cool-grey gradient (`#e8eef5` → `#eef2f8`) under translucent white cards.
-Dark mode: deep navy gradient (`#0c1220` → `#0f1a2e`) under translucent white-on-dark cards.
-
-### `styles/glass-v2.css` — Glass v2
-Everything from v1, plus four polish layers:
-1. **SVG fractal-noise grain** overlay on the page bg so the blur has real texture to refract
-2. **`::after` light glint** on each glass card — top-left highlight that traces the card outline like a light source catching real glass
-3. **Hover treatment** — cards become slightly more opaque + deeper shadow on hover, with a 200 ms transition so the swap feels like glass brightening
-4. **Slow `gradientShift` animation** on `body` — 30 s oscillation of `background-position` so the gradient drifts under the glass surfaces. Disabled under `prefers-reduced-motion`.
-
-## Use in your own project
-
-All three themes share the same class contract — drop the theme stylesheet in and apply these classes to your own markup:
-
-| Class            | Where to use it                                                |
-|------------------|----------------------------------------------------------------|
-| `.glass`         | Cards, panels, sidebars, list items                            |
-| `.glass-elevated`| Detail panes / modals / surfaces that should sit above `.glass`|
-| `.glass-bar`     | Fixed top headers / bottom nav / breadcrumbs                   |
-| `.chip`          | Inline pills, tag chips, small action buttons                  |
-| `.divider-soft`  | Hairline dividers (use as `border-color`)                      |
-
-Plus the `dark` / `light` class on `<html>` toggles colour schemes — see `demo.js` and the inline `<script>` in `index.html` for the bootstrap pattern that picks the right class before first paint.
-
-```html
-<link rel="stylesheet" href="path/to/glass-v2.css" />
-…
-<header class="glass-bar fixed top-0 left-0 right-0 …">…</header>
-<aside class="glass …">…</aside>
-<article class="glass-elevated p-6">…</article>
-```
-
-The CSS files have **no dependencies**. No Tailwind, no preprocessor, no build. Tailwind is used only by the demo HTML for layout utilities — it's pulled from a CDN.
-
-## File map
-
-```
-waki-themes/
-├── index.html          single-page WakiMail demo
-├── demo.js             theme switcher + email-row interaction
-├── package.json        npm metadata + `start` script
-├── styles/
-│   ├── base.css        typography reset, switcher chrome (shared)
-│   ├── flat.css        flat theme (solid colours)
-│   ├── glass-v1.css    glass v1 (frosted, no texture)
-│   └── glass-v2.css    glass v2 (full polish: noise, glint, hover, drift)
-└── README.md           this file
-```
-
-## Browser support
-
-- `flat.css` — works everywhere
-- `glass-v1.css` / `glass-v2.css` — needs `backdrop-filter`; falls back gracefully on older browsers (you'll see the translucent rgba backgrounds without the blur, which still looks acceptable)
-- The fractal-noise SVG in `glass-v2.css` is inlined as a data URI — no separate asset to host
-- Motion in `glass-v2.css` honours `prefers-reduced-motion: reduce` and disables the gradient drift
-
-## License
-
-MIT. Use it however you like.
-
-## Credits
-
-The three themes were lifted out of the [3dByPixel](https://3dbypixel.com) printer-shop dashboard project. WakiMail demo content is fictional.
+Every theme must satisfy the selectors in [SCHEMA.md](SCHEMA.md): core glass surfaces, shell surfaces, action buttons, status badges, and inputs. The validator runs before every bundle build so incomplete themes cannot ship.

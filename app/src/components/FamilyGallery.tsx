@@ -1,12 +1,10 @@
 import { useMemo } from "react";
-import { Plus, Trash2 } from "lucide-react";
-import { PreviewFrame } from "./PreviewFrame";
-import { MINIATURE_HTML } from "../lib/sample";
+import type { ReactNode } from "react";
+import { ArrowRight, Layers3, Plus, Sparkles, Trash2 } from "lucide-react";
 import type { BundleFamily, StudioTheme } from "../lib/types";
 
 interface FamilyGalleryProps {
   families: Record<string, BundleFamily>;
-  themesById: Record<string, StudioTheme>;
   customThemes: StudioTheme[];
   mode: "light" | "dark";
   onPickFamily: (familyId: string) => void;
@@ -24,7 +22,6 @@ interface FamilyGalleryProps {
 // promoted by hand.
 export function FamilyGallery({
   families,
-  themesById,
   customThemes,
   mode,
   onPickFamily,
@@ -34,17 +31,66 @@ export function FamilyGallery({
 }: FamilyGalleryProps) {
   const familyEntries = useMemo(
     () =>
-      Object.entries(families).map(([id, family]) => {
-        const repTheme = themesById[family.variants[0]?.themeId];
-        return { id, family, repTheme };
-      }),
-    [families, themesById],
+      Object.entries(families).map(([id, family]) => ({ id, family })),
+    [families],
+  );
+  const signatureFamilies = familyEntries.filter(({ id }) =>
+    ["glass", "academic", "frost"].includes(id),
   );
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-7">
+      <section className="catalog-hero">
+        <div className="catalog-hero-copy">
+          <span className="studio-chip">Foundation catalog</span>
+          <h1>Pick the app personality, then inspect the details.</h1>
+          <p>
+            Waki themes are organized by material first and hue second. Choose
+            the surface language, then pick the colorway that fits the app.
+          </p>
+        </div>
+        <div className="catalog-hero-actions">
+          <button onClick={() => onPickFamily("glass")} className="studio-button studio-button-primary">
+            <Sparkles className="w-4 h-4" />
+            Explore glass
+          </button>
+          <button onClick={onNewTheme} className="studio-button">
+            <Plus className="w-4 h-4" />
+            New theme
+          </button>
+        </div>
+      </section>
+
+      {signatureFamilies.length > 0 && (
+        <section className="catalog-section">
+          <SectionHeader
+            eyebrow="Signature"
+            title="Material families"
+            description="Each family owns its shape, depth, density, blur, hover behavior, and typography. Variants inside the family are hue choices."
+          />
+          <div className="catalog-v2-strip">
+            {signatureFamilies.map(({ id, family }) => {
+              const variant = family.variants[0];
+              return variant ? (
+              <button
+                key={id}
+                onClick={() => onPickFamily(id)}
+                className="theme-decision-card"
+              >
+                <PaletteBand palette={variant.palette} mode={mode} />
+                <div className="theme-decision-copy">
+                  <h3>{family.name}</h3>
+                  <p>{family.description}</p>
+                </div>
+              </button>
+              ) : null;
+            })}
+          </div>
+        </section>
+      )}
+
       {customThemes.length > 0 && (
-        <section>
+        <section className="catalog-section">
           <div className="flex items-center justify-between mb-3">
             <div>
               <h2 className="text-base font-bold">Your custom themes</h2>
@@ -64,14 +110,7 @@ export function FamilyGallery({
                   onClick={() => onPickCustom(t.id)}
                   className="w-full rounded-2xl overflow-hidden ring-1 ring-violet-500/15 hover:ring-violet-500/40 transition-all text-left"
                 >
-                  <div className="aspect-[4/3] w-full relative">
-                    <PreviewFrame
-                      baseCss={t.baseCss}
-                      html={MINIATURE_HTML}
-                      mode={mode}
-                      scale={0.7}
-                      ariaLabel={t.name}
-                    />
+                  <div className="custom-theme-surface">
                     <span className="absolute top-2 left-2 studio-chip">custom</span>
                   </div>
                   <div className="studio-panel rounded-none border-x-0 border-b-0 px-3 py-2">
@@ -98,63 +137,91 @@ export function FamilyGallery({
         </section>
       )}
 
-      <section>
-        <div className="flex items-center justify-between mb-3">
-          <div>
-            <h2 className="text-base font-bold">Theme families</h2>
-            <p className="text-xs opacity-65">
-              Each family shares its structural identity. Pick one to see its colour variants.
-            </p>
-          </div>
-          {customThemes.length === 0 && (
-            <button onClick={onNewTheme} className="studio-button studio-button-primary">
-              <Plus className="w-4 h-4" />
-              New theme
-            </button>
-          )}
-        </div>
+      <section className="catalog-section">
+        <SectionHeader
+          eyebrow="All families"
+          title="Browse by structure"
+          description="Families group themes by behavior: glass treatment, density, shape language, and shadow system."
+        />
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {familyEntries.map(({ id, family, repTheme }) => (
+        <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
+          {familyEntries.map(({ id, family }) => (
             <button
               key={id}
               onClick={() => onPickFamily(id)}
-              className="group rounded-2xl overflow-hidden ring-1 ring-violet-500/15 hover:ring-violet-500/40 hover:-translate-y-0.5 transition-all text-left"
+              className="family-decision-card"
             >
-              <div className="aspect-[16/9] w-full relative">
-                {repTheme && (
-                  <PreviewFrame
-                    baseCss={repTheme.baseCss}
-                    html={MINIATURE_HTML}
-                    mode={mode}
-                    scale={0.7}
-                    ariaLabel={`Preview of ${family.name} family`}
-                  />
-                )}
-                <div className="absolute top-2 right-2 studio-chip">
-                  {family.variants.length} {family.variants.length === 1 ? "variant" : "variants"}
-                </div>
+              <div className="family-icon">
+                <Layers3 className="w-4 h-4" />
               </div>
-              <div className="studio-panel rounded-none border-x-0 border-b-0 px-4 py-3">
-                <div className="flex items-center gap-2 mb-1">
-                  <h3 className="font-bold text-base">{family.name}</h3>
-                  <span className="text-[10px] opacity-60 font-mono">
-                    r{family.structure.radius} · b{family.structure.blur}
-                  </span>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between gap-2">
+                  <h3>{family.name}</h3>
+                  <span>{family.variants.length} looks</span>
                 </div>
-                <p className="text-xs opacity-70 line-clamp-2">{family.description}</p>
-                <div className="flex flex-wrap gap-1 mt-2">
+                <p>{family.description}</p>
+                <div className="family-swatch-row">
                   {family.variants.slice(0, 6).map((v) => (
-                    <span key={v.slot} className="studio-chip text-[9px]">
-                      {v.name}
-                    </span>
+                    <i
+                      key={v.slot}
+                      style={{
+                        background: `linear-gradient(135deg, ${v.palette[mode].bgFrom}, ${v.palette[mode].accent}, ${v.palette[mode].bgTo})`,
+                      }}
+                      title={v.name}
+                    />
                   ))}
                 </div>
               </div>
+              <ArrowRight className="w-4 h-4 opacity-45" />
             </button>
           ))}
         </div>
       </section>
+    </div>
+  );
+}
+
+function SectionHeader({
+  eyebrow,
+  title,
+  description,
+  action,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+  action?: ReactNode;
+}) {
+  return (
+    <div className="catalog-section-header">
+      <div>
+        <div className="catalog-eyebrow">{eyebrow}</div>
+        <h2>{title}</h2>
+        <p>{description}</p>
+      </div>
+      {action}
+    </div>
+  );
+}
+
+function PaletteBand({
+  palette,
+  mode,
+}: {
+  palette: BundleFamily["variants"][number]["palette"];
+  mode: "light" | "dark";
+}) {
+  const p = palette[mode];
+  return (
+    <div
+      className="palette-band"
+      style={{
+        background: `linear-gradient(135deg, ${p.bgFrom}, ${p.panel}, ${p.accent}, ${p.bgTo})`,
+        borderColor: p.border,
+      }}
+    >
+      <span style={{ background: p.accent }} />
+      <span style={{ background: p.text }} />
     </div>
   );
 }

@@ -355,7 +355,6 @@ export function App() {
         {screen.kind === "families" && (
           <FamilyGallery
             families={families}
-            themesById={themesById}
             customThemes={sessionThemes}
             mode={mode}
             onPickFamily={(id) => setScreen({ kind: "variants", familyId: id })}

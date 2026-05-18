@@ -1,5 +1,33 @@
 # Changelog
 
+## v1.0.0 (2026-05-17)
+
+### Breaking catalog overhaul
+
+Replaces the legacy v1/v2 split with one coherent material-family catalog:
+
+| Family | Variants |
+|---|---|
+| Waki Glass | Prism, Opal, Civic, Obsidian |
+| Waki Frost | Arctic, Rose, Mint, Violet |
+| Waki Academic | Ivory, Oxford, Slate, Sepia |
+| Waki Desktop | Graphite, Cobalt, Nova, Olive |
+| Waki Mobile | Orchid, Mint, Sunrise, Ocean |
+| Waki Command | Cyan, Lime, Magenta, Amber |
+
+All published theme ids now use `waki-{family}-{hue}`. Old ids (`glass-v2`, `frosted-glass`, `editorial-academic`, `v2-*`, etc.) are removed from the bundle, so downstream apps should migrate deliberately.
+
+### Material families
+
+Variants inside a family now share the same shape, density, blur, typography, shadow, hover behavior, and shell treatment. Hue variants are clearly named as colorways, e.g. `Waki Glass - Prism` and `Waki Glass - Opal`.
+
+### Studio overhaul
+
+- Reworks the landing page around material families instead of nested previews.
+- Keeps glass and academic styles as first-class families.
+- Shows clearer family cards, hue swatches, and full shell previews.
+- Dark modes are distinct colorways per variant, not a shared charcoal repaint.
+
 ## v0.5.0 (2026-05-17)
 
 ### Additive V2 theme set
