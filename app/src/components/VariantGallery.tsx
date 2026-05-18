@@ -1,5 +1,4 @@
 import { ArrowLeft, Copy } from "lucide-react";
-import { ThemeMiniature } from "./ThemeMiniature";
 import type { BundleFamily, StudioTheme } from "../lib/types";
 
 interface VariantGalleryProps {
@@ -60,12 +59,36 @@ export function VariantGallery({
           if (!theme) return null;
           return (
             <div key={v.themeId} className="relative group">
-              <ThemeMiniature
-                theme={theme}
-                mode={mode}
+              <button
                 onClick={() => onPick(v.themeId)}
-                onEdit={() => onEdit(v.themeId)}
-              />
+                className="variant-decision-card"
+              >
+                <div
+                  className="variant-material-swatch"
+                  style={{
+                    background: `radial-gradient(circle at 12% 18%, ${v.palette[mode].panel}, transparent 30%), linear-gradient(135deg, ${v.palette[mode].bgFrom}, ${v.palette[mode].accent}, ${v.palette[mode].bgTo})`,
+                    borderColor: v.palette[mode].border,
+                  }}
+                >
+                  <span style={{ background: v.palette[mode].panel, borderColor: v.palette[mode].border }} />
+                  <span style={{ background: v.palette[mode].accent }} />
+                  <i style={{ background: v.palette[mode].text }} />
+                </div>
+                <div className="variant-decision-copy">
+                  <h3>{theme.name}</h3>
+                  <p>{theme.description}</p>
+                </div>
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onEdit(v.themeId);
+                }}
+                className="absolute top-2 left-2 studio-button text-[10px] px-1.5 py-1 opacity-0 group-hover:opacity-100 focus:opacity-100 transition-opacity"
+                title={`Edit ${v.name}`}
+              >
+                Edit
+              </button>
               <button
                 onClick={(e) => {
                   e.stopPropagation();

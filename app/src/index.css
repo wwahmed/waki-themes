@@ -408,6 +408,86 @@
     border-radius: 999px;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
   }
+  .variant-decision-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 212px;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid rgb(139 92 246 / 0.18);
+    border-radius: 18px;
+    background: rgb(255 255 255 / 0.48);
+    box-shadow: 0 14px 42px rgb(88 28 135 / 0.08);
+    transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+  }
+  html.dark .variant-decision-card {
+    background: rgb(19 13 51 / 0.68);
+    border-color: rgb(168 85 247 / 0.22);
+  }
+  .variant-decision-card:hover {
+    transform: translateY(-2px);
+    border-color: rgb(168 85 247 / 0.42);
+    box-shadow: 0 20px 58px rgb(88 28 135 / 0.16);
+  }
+  .variant-material-swatch {
+    position: relative;
+    min-height: 116px;
+    border: 1px solid;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.22), 0 12px 34px rgb(0 0 0 / 0.16);
+  }
+  .variant-material-swatch::before {
+    content: "";
+    position: absolute;
+    inset: 12px;
+    border-radius: 12px;
+    background: rgb(255 255 255 / 0.18);
+    border: 1px solid rgb(255 255 255 / 0.22);
+    backdrop-filter: blur(10px);
+  }
+  .variant-material-swatch span,
+  .variant-material-swatch i {
+    position: absolute;
+    display: block;
+    border-radius: 999px;
+    border: 1px solid rgb(255 255 255 / 0.24);
+  }
+  .variant-material-swatch span:first-child {
+    left: 22px;
+    right: 66px;
+    bottom: 24px;
+    height: 22px;
+  }
+  .variant-material-swatch span:nth-child(2) {
+    right: 22px;
+    top: 20px;
+    width: 44px;
+    height: 12px;
+    box-shadow: 0 10px 24px rgb(0 0 0 / 0.18);
+  }
+  .variant-material-swatch i {
+    left: 34px;
+    right: 96px;
+    bottom: 34px;
+    height: 4px;
+    opacity: 0.42;
+  }
+  .variant-decision-copy {
+    padding: 12px 2px 2px;
+  }
+  .variant-decision-copy h3 {
+    margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: 850;
+  }
+  .variant-decision-copy p {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.4;
+    opacity: 0.66;
+  }
   .custom-theme-surface {
     position: relative;
     aspect-ratio: 4 / 3;
