@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.1.0 (2026-05-18)
+
+### Professional catalog expansion
+
+Adds 12 modern professional themes across three new material families:
+
+| Family | Variants |
+|---|---|
+| Waki Professional | Boardroom, Meridian, Sterling, Capital |
+| Waki Corporate | Atlas, Ledger, Summit, Harbor |
+| Waki Frosted Pro | Platinum, Azure, Jade, Amethyst |
+
+`Waki Professional` is polished corporate SaaS: restrained radii, light blur, low-glare depth, and serious neutrals. `Waki Corporate` is the most conservative enterprise family: solid panels, crisp borders, efficient density, and minimal glass. `Waki Frosted Pro` adds the requested frosted-glass flourish while keeping it boardroom-safe instead of playful.
+
 ## v1.0.0 (2026-05-17)
 
 ### Breaking catalog overhaul

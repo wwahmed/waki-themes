@@ -446,6 +446,336 @@ export const FAMILIES = {
       }
     ]
   },
+  "professional": {
+    "name": "Waki Professional",
+    "description": "Contemporary corporate surfaces with crisp hierarchy, restrained depth, and executive-grade colorways.",
+    "structure": {
+      "radius": 12,
+      "blur": 8,
+      "shadow": "executive-subtle",
+      "surface": "crisp-translucent",
+      "iconography": "regular",
+      "density": "business"
+    },
+    "variants": [
+      {
+        "slot": "boardroom",
+        "themeId": "waki-professional-boardroom",
+        "name": "Boardroom",
+        "description": "Navy, steel, and white for executive dashboards.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f6f8fb",
+            "bgTo": "#edf2f7",
+            "panel": "rgba(255,255,255,.86)",
+            "border": "rgba(71,85,105,.2)",
+            "text": "#111827",
+            "accent": "#1d4ed8"
+          },
+          "dark": {
+            "bgFrom": "#0b1220",
+            "bgTo": "#111827",
+            "panel": "rgba(30,41,59,.78)",
+            "border": "rgba(96,165,250,.24)",
+            "text": "#f3f7fb",
+            "accent": "#93c5fd"
+          }
+        }
+      },
+      {
+        "slot": "meridian",
+        "themeId": "waki-professional-meridian",
+        "name": "Meridian",
+        "description": "Blue-gray corporate SaaS surfaces with a clean cyan signal.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f7fbff",
+            "bgTo": "#eef6fb",
+            "panel": "rgba(255,255,255,.86)",
+            "border": "rgba(14,116,144,.18)",
+            "text": "#0f2333",
+            "accent": "#0369a1"
+          },
+          "dark": {
+            "bgFrom": "#06131c",
+            "bgTo": "#0c2430",
+            "panel": "rgba(14,54,70,.78)",
+            "border": "rgba(56,189,248,.24)",
+            "text": "#e7f7ff",
+            "accent": "#38bdf8"
+          }
+        }
+      },
+      {
+        "slot": "sterling",
+        "themeId": "waki-professional-sterling",
+        "name": "Sterling",
+        "description": "Neutral graphite with a discreet violet accent for premium tools.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f8f8fa",
+            "bgTo": "#eff1f5",
+            "panel": "rgba(255,255,255,.86)",
+            "border": "rgba(82,82,91,.18)",
+            "text": "#18181b",
+            "accent": "#6d28d9"
+          },
+          "dark": {
+            "bgFrom": "#101014",
+            "bgTo": "#1b1c22",
+            "panel": "rgba(39,39,46,.78)",
+            "border": "rgba(167,139,250,.24)",
+            "text": "#f4f4f5",
+            "accent": "#a78bfa"
+          }
+        }
+      },
+      {
+        "slot": "capital",
+        "themeId": "waki-professional-capital",
+        "name": "Capital",
+        "description": "Slate and deep green for finance, ops, and business intelligence.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f7faf8",
+            "bgTo": "#edf5f0",
+            "panel": "rgba(255,255,255,.86)",
+            "border": "rgba(5,150,105,.2)",
+            "text": "#10231b",
+            "accent": "#047857"
+          },
+          "dark": {
+            "bgFrom": "#07150f",
+            "bgTo": "#10231a",
+            "panel": "rgba(13,54,37,.78)",
+            "border": "rgba(52,211,153,.24)",
+            "text": "#ecfdf5",
+            "accent": "#34d399"
+          }
+        }
+      }
+    ]
+  },
+  "corporate": {
+    "name": "Waki Corporate",
+    "description": "Enterprise-grade product surfaces: measured contrast, exact spacing, solid panels, and conservative executive polish.",
+    "structure": {
+      "radius": 8,
+      "blur": 0,
+      "shadow": "corporate-layer",
+      "surface": "solid-enterprise",
+      "iconography": "regular",
+      "density": "efficient"
+    },
+    "variants": [
+      {
+        "slot": "atlas",
+        "themeId": "waki-corporate-atlas",
+        "name": "Atlas",
+        "description": "Global enterprise blue-gray for serious SaaS products.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f8fafc",
+            "bgTo": "#eef2f6",
+            "panel": "#ffffff",
+            "border": "#cbd5e1",
+            "text": "#111827",
+            "accent": "#1d4ed8"
+          },
+          "dark": {
+            "bgFrom": "#0f172a",
+            "bgTo": "#172033",
+            "panel": "#1e293b",
+            "border": "#475569",
+            "text": "#f8fafc",
+            "accent": "#93c5fd"
+          }
+        }
+      },
+      {
+        "slot": "ledger",
+        "themeId": "waki-corporate-ledger",
+        "name": "Ledger",
+        "description": "Graphite and green for finance, accounting, and BI.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f8faf9",
+            "bgTo": "#eef4f1",
+            "panel": "#ffffff",
+            "border": "#cbd8d1",
+            "text": "#10231b",
+            "accent": "#047857"
+          },
+          "dark": {
+            "bgFrom": "#0b1511",
+            "bgTo": "#14231d",
+            "panel": "#1a2b24",
+            "border": "#3f5f50",
+            "text": "#ecfdf5",
+            "accent": "#34d399"
+          }
+        }
+      },
+      {
+        "slot": "summit",
+        "themeId": "waki-corporate-summit",
+        "name": "Summit",
+        "description": "Warm charcoal and restrained amber for leadership tools.",
+        "palette": {
+          "light": {
+            "bgFrom": "#faf9f7",
+            "bgTo": "#f0ede8",
+            "panel": "#ffffff",
+            "border": "#d6d3d1",
+            "text": "#1c1917",
+            "accent": "#b45309"
+          },
+          "dark": {
+            "bgFrom": "#171412",
+            "bgTo": "#28231f",
+            "panel": "#292524",
+            "border": "#57534e",
+            "text": "#fafaf9",
+            "accent": "#fbbf24"
+          }
+        }
+      },
+      {
+        "slot": "harbor",
+        "themeId": "waki-corporate-harbor",
+        "name": "Harbor",
+        "description": "Steel blue and slate for operational platforms.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f7fbfd",
+            "bgTo": "#edf5f8",
+            "panel": "#ffffff",
+            "border": "#c6d8de",
+            "text": "#102a33",
+            "accent": "#0f766e"
+          },
+          "dark": {
+            "bgFrom": "#07151a",
+            "bgTo": "#102630",
+            "panel": "#17313a",
+            "border": "#35616d",
+            "text": "#e7fbff",
+            "accent": "#5eead4"
+          }
+        }
+      }
+    ]
+  },
+  "frosted-pro": {
+    "name": "Waki Frosted Pro",
+    "description": "Professional frosted glass with restrained sheen, premium shadows, and a polished boardroom feel.",
+    "structure": {
+      "radius": 18,
+      "blur": 22,
+      "shadow": "professional-frost",
+      "surface": "frosted-executive",
+      "iconography": "regular",
+      "density": "business"
+    },
+    "variants": [
+      {
+        "slot": "platinum",
+        "themeId": "waki-frosted-pro-platinum",
+        "name": "Platinum",
+        "description": "Silver frost with blue executive accents.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f6f8fb",
+            "bgTo": "#eef3f8",
+            "panel": "rgba(255,255,255,.68)",
+            "border": "rgba(148,163,184,.24)",
+            "text": "#111827",
+            "accent": "#2563eb"
+          },
+          "dark": {
+            "bgFrom": "#0d121c",
+            "bgTo": "#1a2330",
+            "panel": "rgba(51,65,85,.66)",
+            "border": "rgba(147,197,253,.24)",
+            "text": "#f4f8fc",
+            "accent": "#93c5fd"
+          }
+        }
+      },
+      {
+        "slot": "azure",
+        "themeId": "waki-frosted-pro-azure",
+        "name": "Azure",
+        "description": "Crisp blue frosted glass for professional SaaS.",
+        "palette": {
+          "light": {
+            "bgFrom": "#eef7ff",
+            "bgTo": "#f7fbff",
+            "panel": "rgba(255,255,255,.68)",
+            "border": "rgba(14,165,233,.22)",
+            "text": "#0c2233",
+            "accent": "#0369a1"
+          },
+          "dark": {
+            "bgFrom": "#07131f",
+            "bgTo": "#10263a",
+            "panel": "rgba(14,55,82,.66)",
+            "border": "rgba(56,189,248,.24)",
+            "text": "#e7f7ff",
+            "accent": "#38bdf8"
+          }
+        }
+      },
+      {
+        "slot": "jade",
+        "themeId": "waki-frosted-pro-jade",
+        "name": "Jade",
+        "description": "Green-tinted executive frost for finance and ops.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f0fbf6",
+            "bgTo": "#f8fffb",
+            "panel": "rgba(255,255,255,.68)",
+            "border": "rgba(16,185,129,.22)",
+            "text": "#0d2b20",
+            "accent": "#059669"
+          },
+          "dark": {
+            "bgFrom": "#071711",
+            "bgTo": "#102a20",
+            "panel": "rgba(16,74,53,.66)",
+            "border": "rgba(52,211,153,.24)",
+            "text": "#ecfdf5",
+            "accent": "#34d399"
+          }
+        }
+      },
+      {
+        "slot": "amethyst",
+        "themeId": "waki-frosted-pro-amethyst",
+        "name": "Amethyst",
+        "description": "Subtle violet frost for premium internal tools.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f7f3ff",
+            "bgTo": "#fbfaff",
+            "panel": "rgba(255,255,255,.68)",
+            "border": "rgba(124,58,237,.2)",
+            "text": "#21163a",
+            "accent": "#7c3aed"
+          },
+          "dark": {
+            "bgFrom": "#120e1f",
+            "bgTo": "#221b35",
+            "panel": "rgba(55,48,82,.66)",
+            "border": "rgba(196,181,253,.24)",
+            "text": "#f5f3ff",
+            "accent": "#c4b5fd"
+          }
+        }
+      }
+    ]
+  },
   "mobile": {
     "name": "Waki Mobile",
     "description": "Large-radius touch surfaces, pill controls, and friendly depth for mobile-first apps.",

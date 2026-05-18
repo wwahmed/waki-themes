@@ -35,7 +35,7 @@ export function FamilyGallery({
     [families],
   );
   const signatureFamilies = familyEntries.filter(({ id }) =>
-    ["glass", "academic", "frost"].includes(id),
+    ["professional", "corporate", "frosted-pro", "glass", "academic", "frost"].includes(id),
   );
 
   return (

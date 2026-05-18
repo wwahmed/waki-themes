@@ -288,6 +288,224 @@ body {
     ],
   },
 
+  professional: {
+    id: "professional",
+    name: "Waki Professional",
+    description: "Contemporary corporate surfaces with crisp hierarchy, restrained depth, and executive-grade colorways.",
+    structure: {
+      radius: 12,
+      blur: 8,
+      shadow: "executive-subtle",
+      surface: "crisp-translucent",
+      iconography: "regular",
+      density: "business",
+    },
+    tokens: {
+      radius: 12,
+      blur: 8,
+      density: "0.52rem 0.8rem",
+      hover: "-1px",
+      elevatedHover: "-2px",
+      navShift: "0px",
+      borderWidth: "1px",
+      saturation: "118%",
+      elevatedSaturation: "126%",
+      sidebarBlend: "96%",
+      mainBlend: "84%",
+      mobileExtra: 0,
+      buttonRadius: "8px",
+      fontBody: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      fontDisplay: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      shadow: "0 10px 28px var(--waki-shadow)",
+      elevatedShadow: "0 20px 46px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.16)",
+      panelInset: "inset 0 1px 0 rgba(255,255,255,.14)",
+      bodyOverlay: "",
+      extraCss: `
+.glass,
+.glass-elevated,
+.shell-main,
+.mobile-card {
+  backdrop-filter: blur(calc(var(--waki-blur) * .72)) saturate(118%);
+  -webkit-backdrop-filter: blur(calc(var(--waki-blur) * .72)) saturate(118%);
+}
+.glass-bar,
+.glass-elevated {
+  border-top: 1px solid color-mix(in srgb, var(--waki-accent) 34%, var(--waki-border));
+}
+.chip {
+  border-radius: 7px;
+  font-weight: 800;
+}
+.nav-item.active {
+  box-shadow: inset 2px 0 0 var(--waki-accent);
+}
+`,
+    },
+    variants: [
+      colorway("boardroom", "Boardroom", "Navy, steel, and white for executive dashboards.", {
+        light: palette("#f6f8fb", "#edf2f7", "#ffffff", "#1d4ed8", "#334155", "#111827", "#5b6675", "rgba(255,255,255,.86)", "rgba(255,255,255,.95)", "rgba(243,247,252,.9)", "rgba(71,85,105,.2)", "rgba(29,78,216,.2)", "rgba(15,23,42,.11)", "rgba(29,78,216,.1)", "rgba(51,65,85,.08)", "rgba(148,163,184,.08)"),
+        dark: palette("#0b1220", "#111827", "#0f172a", "#93c5fd", "#cbd5e1", "#f3f7fb", "#bac6d4", "rgba(30,41,59,.78)", "rgba(15,23,42,.92)", "rgba(30,41,59,.84)", "rgba(96,165,250,.24)", "rgba(148,163,184,.2)", "rgba(0,0,0,.46)", "rgba(96,165,250,.18)", "rgba(148,163,184,.1)", "rgba(30,41,59,.16)"),
+      }),
+      colorway("meridian", "Meridian", "Blue-gray corporate SaaS surfaces with a clean cyan signal.", {
+        light: palette("#f7fbff", "#eef6fb", "#ffffff", "#0369a1", "#0f766e", "#0f2333", "#526977", "rgba(255,255,255,.86)", "rgba(255,255,255,.95)", "rgba(240,249,255,.9)", "rgba(14,116,144,.18)", "rgba(15,118,110,.2)", "rgba(8,47,73,.1)", "rgba(14,116,144,.12)", "rgba(15,118,110,.08)", "rgba(125,211,252,.08)"),
+        dark: palette("#06131c", "#0c2430", "#081c27", "#38bdf8", "#5eead4", "#e7f7ff", "#a9c8d6", "rgba(14,54,70,.78)", "rgba(8,35,50,.9)", "rgba(12,48,62,.84)", "rgba(56,189,248,.24)", "rgba(94,234,212,.18)", "rgba(0,0,0,.44)", "rgba(56,189,248,.2)", "rgba(94,234,212,.1)", "rgba(14,116,144,.14)"),
+      }),
+      colorway("sterling", "Sterling", "Neutral graphite with a discreet violet accent for premium tools.", {
+        light: palette("#f8f8fa", "#eff1f5", "#ffffff", "#6d28d9", "#475569", "#18181b", "#60636d", "rgba(255,255,255,.86)", "rgba(255,255,255,.95)", "rgba(244,244,245,.9)", "rgba(82,82,91,.18)", "rgba(109,40,217,.18)", "rgba(24,24,27,.1)", "rgba(109,40,217,.1)", "rgba(71,85,105,.08)", "rgba(168,85,247,.06)"),
+        dark: palette("#101014", "#1b1c22", "#15161c", "#a78bfa", "#cbd5e1", "#f4f4f5", "#c0c3cc", "rgba(39,39,46,.78)", "rgba(24,24,27,.9)", "rgba(47,47,56,.82)", "rgba(167,139,250,.24)", "rgba(148,163,184,.18)", "rgba(0,0,0,.44)", "rgba(167,139,250,.16)", "rgba(148,163,184,.1)", "rgba(71,85,105,.14)"),
+      }),
+      colorway("capital", "Capital", "Slate and deep green for finance, ops, and business intelligence.", {
+        light: palette("#f7faf8", "#edf5f0", "#ffffff", "#047857", "#0f766e", "#10231b", "#52675e", "rgba(255,255,255,.86)", "rgba(255,255,255,.95)", "rgba(240,253,244,.88)", "rgba(5,150,105,.2)", "rgba(15,118,110,.2)", "rgba(6,78,59,.11)", "rgba(5,150,105,.12)", "rgba(15,118,110,.08)", "rgba(34,197,94,.08)"),
+        dark: palette("#07150f", "#10231a", "#0b1b15", "#34d399", "#5eead4", "#ecfdf5", "#acd0bf", "rgba(13,54,37,.78)", "rgba(8,39,28,.9)", "rgba(16,67,47,.82)", "rgba(52,211,153,.24)", "rgba(94,234,212,.18)", "rgba(0,0,0,.44)", "rgba(52,211,153,.18)", "rgba(94,234,212,.1)", "rgba(16,185,129,.14)"),
+      }),
+    ],
+  },
+
+  corporate: {
+    id: "corporate",
+    name: "Waki Corporate",
+    description: "Enterprise-grade product surfaces: measured contrast, exact spacing, solid panels, and conservative executive polish.",
+    structure: {
+      radius: 8,
+      blur: 0,
+      shadow: "corporate-layer",
+      surface: "solid-enterprise",
+      iconography: "regular",
+      density: "efficient",
+    },
+    tokens: {
+      radius: 8,
+      blur: 0,
+      density: "0.48rem 0.74rem",
+      hover: "-1px",
+      elevatedHover: "-1px",
+      navShift: "0px",
+      borderWidth: "1px",
+      saturation: "100%",
+      elevatedSaturation: "100%",
+      sidebarBlend: "100%",
+      mainBlend: "94%",
+      mobileExtra: 0,
+      buttonRadius: "6px",
+      fontBody: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      fontDisplay: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      shadow: "0 6px 18px var(--waki-shadow)",
+      elevatedShadow: "0 14px 34px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.14)",
+      panelInset: "inset 0 1px 0 rgba(255,255,255,.1)",
+      bodyOverlay: "",
+      extraCss: `
+.glass,
+.glass-elevated,
+.glass-bar,
+.shell-main,
+.mobile-card {
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+.glass-bar {
+  border-bottom: 1px solid var(--waki-border);
+}
+.panel-nested {
+  box-shadow: none;
+}
+.chip {
+  border-radius: 6px;
+  font-weight: 750;
+}
+`,
+    },
+    variants: [
+      colorway("atlas", "Atlas", "Global enterprise blue-gray for serious SaaS products.", {
+        light: palette("#f8fafc", "#eef2f6", "#ffffff", "#1d4ed8", "#475569", "#111827", "#5f6b7a", "#ffffff", "#f8fafc", "#f1f5f9", "#cbd5e1", "#94a3b8", "rgba(15,23,42,.1)", "rgba(29,78,216,.08)", "rgba(71,85,105,.06)", "rgba(148,163,184,.05)"),
+        dark: palette("#0f172a", "#172033", "#111827", "#93c5fd", "#cbd5e1", "#f8fafc", "#b8c4d2", "#1e293b", "#111827", "#243044", "#475569", "#64748b", "rgba(0,0,0,.38)", "rgba(96,165,250,.14)", "rgba(148,163,184,.08)", "rgba(30,41,59,.1)"),
+      }),
+      colorway("ledger", "Ledger", "Graphite and green for finance, accounting, and BI.", {
+        light: palette("#f8faf9", "#eef4f1", "#ffffff", "#047857", "#334155", "#10231b", "#5c6b63", "#ffffff", "#f8faf9", "#f0f7f3", "#cbd8d1", "#94a3b8", "rgba(6,78,59,.1)", "rgba(5,150,105,.08)", "rgba(51,65,85,.06)", "rgba(34,197,94,.05)"),
+        dark: palette("#0b1511", "#14231d", "#101b17", "#34d399", "#cbd5e1", "#ecfdf5", "#b5cabe", "#1a2b24", "#0f1f1a", "#20372d", "#3f5f50", "#64748b", "rgba(0,0,0,.38)", "rgba(52,211,153,.14)", "rgba(148,163,184,.08)", "rgba(5,150,105,.12)"),
+      }),
+      colorway("summit", "Summit", "Warm charcoal and restrained amber for leadership tools.", {
+        light: palette("#faf9f7", "#f0ede8", "#ffffff", "#b45309", "#44403c", "#1c1917", "#6a625c", "#ffffff", "#fafaf9", "#f5f2ed", "#d6d3d1", "#a8a29e", "rgba(68,64,60,.1)", "rgba(180,83,9,.08)", "rgba(68,64,60,.06)", "rgba(245,158,11,.05)"),
+        dark: palette("#171412", "#28231f", "#1c1917", "#fbbf24", "#d6d3d1", "#fafaf9", "#c9c0b8", "#292524", "#1c1917", "#332d28", "#57534e", "#78716c", "rgba(0,0,0,.4)", "rgba(251,191,36,.14)", "rgba(214,211,209,.08)", "rgba(146,64,14,.12)"),
+      }),
+      colorway("harbor", "Harbor", "Steel blue and slate for operational platforms.", {
+        light: palette("#f7fbfd", "#edf5f8", "#ffffff", "#0f766e", "#0369a1", "#102a33", "#536b75", "#ffffff", "#f8fcfd", "#eef8fa", "#c6d8de", "#90b7c4", "rgba(8,47,73,.1)", "rgba(15,118,110,.08)", "rgba(3,105,161,.06)", "rgba(125,211,252,.05)"),
+        dark: palette("#07151a", "#102630", "#0b1c24", "#5eead4", "#7dd3fc", "#e7fbff", "#a8ccd3", "#17313a", "#0d222b", "#1b3b45", "#35616d", "#3b82a0", "rgba(0,0,0,.4)", "rgba(94,234,212,.14)", "rgba(125,211,252,.1)", "rgba(14,116,144,.12)"),
+      }),
+    ],
+  },
+
+  frostedPro: {
+    id: "frosted-pro",
+    name: "Waki Frosted Pro",
+    description: "Professional frosted glass with restrained sheen, premium shadows, and a polished boardroom feel.",
+    structure: {
+      radius: 18,
+      blur: 22,
+      shadow: "professional-frost",
+      surface: "frosted-executive",
+      iconography: "regular",
+      density: "business",
+    },
+    tokens: {
+      radius: 18,
+      blur: 22,
+      density: "0.56rem 0.84rem",
+      hover: "-2px",
+      elevatedHover: "-3px",
+      navShift: "1px",
+      borderWidth: "1px",
+      saturation: "165%",
+      elevatedSaturation: "185%",
+      sidebarBlend: "88%",
+      mainBlend: "68%",
+      mobileExtra: 4,
+      buttonRadius: "10px",
+      fontBody: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      fontDisplay: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      shadow: "0 18px 44px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.18)",
+      elevatedShadow: "0 30px 76px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.28), 0 0 32px color-mix(in srgb, var(--waki-accent) 10%, transparent)",
+      panelInset: "inset 0 1px 20px color-mix(in srgb, white 10%, transparent), 0 10px 24px rgba(0,0,0,.07)",
+      bodyOverlay: "linear-gradient(120deg, transparent 0 38%, color-mix(in srgb, var(--waki-accent) 5%, transparent) 48%, transparent 62%),",
+      extraCss: `
+.glass::before,
+.glass-elevated::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255,255,255,.22), transparent 44%, color-mix(in srgb, var(--waki-accent-2) 7%, transparent));
+  pointer-events: none;
+}
+.glass,
+.glass-elevated,
+.glass-bar {
+  border-color: color-mix(in srgb, var(--waki-border) 78%, white);
+}
+.chip {
+  border-radius: 999px;
+}
+`,
+    },
+    variants: [
+      colorway("platinum", "Platinum", "Silver frost with blue executive accents.", {
+        light: palette("#f6f8fb", "#eef3f8", "#ffffff", "#2563eb", "#64748b", "#111827", "#5d6878", "rgba(255,255,255,.68)", "rgba(255,255,255,.84)", "rgba(241,245,249,.78)", "rgba(148,163,184,.24)", "rgba(37,99,235,.2)", "rgba(15,23,42,.13)", "rgba(37,99,235,.12)", "rgba(148,163,184,.1)", "rgba(203,213,225,.08)"),
+        dark: palette("#0d121c", "#1a2330", "#101827", "#93c5fd", "#cbd5e1", "#f4f8fc", "#b9c5d4", "rgba(51,65,85,.66)", "rgba(24,34,49,.82)", "rgba(39,51,69,.78)", "rgba(147,197,253,.24)", "rgba(148,163,184,.2)", "rgba(0,0,0,.46)", "rgba(96,165,250,.18)", "rgba(148,163,184,.1)", "rgba(71,85,105,.14)"),
+      }),
+      colorway("azure", "Azure", "Crisp blue frosted glass for professional SaaS.", {
+        light: palette("#eef7ff", "#f7fbff", "#ffffff", "#0369a1", "#0ea5e9", "#0c2233", "#52687a", "rgba(255,255,255,.68)", "rgba(255,255,255,.84)", "rgba(239,246,255,.78)", "rgba(14,165,233,.22)", "rgba(3,105,161,.2)", "rgba(8,47,73,.13)", "rgba(14,165,233,.14)", "rgba(3,105,161,.1)", "rgba(125,211,252,.09)"),
+        dark: palette("#07131f", "#10263a", "#0a1b2d", "#38bdf8", "#60a5fa", "#e7f7ff", "#a8c5d8", "rgba(14,55,82,.66)", "rgba(11,36,61,.82)", "rgba(18,55,82,.78)", "rgba(56,189,248,.24)", "rgba(96,165,250,.2)", "rgba(0,0,0,.46)", "rgba(56,189,248,.2)", "rgba(96,165,250,.12)", "rgba(14,116,144,.14)"),
+      }),
+      colorway("jade", "Jade", "Green-tinted executive frost for finance and ops.", {
+        light: palette("#f0fbf6", "#f8fffb", "#ffffff", "#059669", "#0f766e", "#0d2b20", "#536b61", "rgba(255,255,255,.68)", "rgba(255,255,255,.84)", "rgba(236,253,245,.78)", "rgba(16,185,129,.22)", "rgba(15,118,110,.2)", "rgba(6,95,70,.13)", "rgba(16,185,129,.14)", "rgba(15,118,110,.1)", "rgba(94,234,212,.08)"),
+        dark: palette("#071711", "#102a20", "#0b2018", "#34d399", "#5eead4", "#ecfdf5", "#abcfc0", "rgba(16,74,53,.66)", "rgba(10,48,35,.82)", "rgba(18,76,54,.78)", "rgba(52,211,153,.24)", "rgba(94,234,212,.18)", "rgba(0,0,0,.46)", "rgba(52,211,153,.18)", "rgba(94,234,212,.1)", "rgba(16,185,129,.14)"),
+      }),
+      colorway("amethyst", "Amethyst", "Subtle violet frost for premium internal tools.", {
+        light: palette("#f7f3ff", "#fbfaff", "#ffffff", "#7c3aed", "#64748b", "#21163a", "#625b70", "rgba(255,255,255,.68)", "rgba(255,255,255,.84)", "rgba(245,243,255,.78)", "rgba(124,58,237,.2)", "rgba(148,163,184,.2)", "rgba(76,29,149,.12)", "rgba(124,58,237,.12)", "rgba(148,163,184,.08)", "rgba(196,181,253,.08)"),
+        dark: palette("#120e1f", "#221b35", "#171325", "#c4b5fd", "#cbd5e1", "#f5f3ff", "#c5bed5", "rgba(55,48,82,.66)", "rgba(32,27,51,.82)", "rgba(62,52,91,.76)", "rgba(196,181,253,.24)", "rgba(148,163,184,.18)", "rgba(0,0,0,.46)", "rgba(196,181,253,.16)", "rgba(148,163,184,.1)", "rgba(124,58,237,.12)"),
+      }),
+    ],
+  },
+
   mobile: {
     id: "mobile",
     name: "Waki Mobile",
