@@ -1,5 +1,30 @@
 # Changelog
 
+## v0.5.0 (2026-05-17)
+
+### Additive V2 theme set
+
+Adds 10 opt-in `v2-*` themes under the new **V2 Polished** family. Existing theme IDs and CSS files are left in place for compatibility.
+
+- `v2-frost-prism`
+- `v2-frost-opal`
+- `v2-glass-civic`
+- `v2-glass-obsidian`
+- `v2-desktop-graphite`
+- `v2-desktop-nova`
+- `v2-mobile-orchid`
+- `v2-mobile-mint`
+- `v2-web-signal`
+- `v2-web-ember`
+
+The V2 set treats dark mode as a separate colorway for each theme. Dark palettes differ materially by hue, panel tint, border language, accent pair, and background mass rather than sharing one charcoal baseline.
+
+### Theme Studio preview upgrade
+
+- Replaces the simple dashboard preview with a shell-style sample app covering sidebars, nested panels, toolbar chrome, cards, forms, statuses, mobile surfaces, and action buttons.
+- Adds a compact **Look** switcher with current-theme miniature, theme picker, and light/dark control.
+- Adds optional shell/demo primitives in `base.css` so the richer preview remains readable under older themes while V2 themes provide the polished overrides.
+
 ## v0.4.1 (2026-05-16)
 
 ### Dark-mode palette differentiation

@@ -300,6 +300,121 @@ export const FAMILIES = {
       },
     ],
   },
+
+  v2: {
+    name: "V2 Polished",
+    description: "Next-generation Waki themes: glass, frosted, web-app, desktop-app, and mobile-app personalities with distinct light and dark colorways.",
+    structure: {
+      radius: 18,
+      blur: 24,
+      shadow: "layered-depth",
+      surface: "tiered-frosted",
+      iconography: "regular",
+      density: "adaptive",
+    },
+    variants: [
+      {
+        slot: "frost-prism",
+        themeId: "v2-frost-prism",
+        name: "Frost Prism",
+        description: "Premium glass with violet, cyan, and pearl depth for polished web apps.",
+        palette: {
+          light: { bgFrom: "#edf7ff", bgTo: "#f8eefc", panel: "rgba(255, 255, 255, 0.62)", border: "rgba(125, 92, 255, 0.22)", text: "#102033", accent: "#6d5dfc" },
+          dark: { bgFrom: "#080b20", bgTo: "#1b0f32", panel: "rgba(119, 92, 255, 0.16)", border: "rgba(103, 232, 249, 0.28)", text: "#eef7ff", accent: "#8b7cff" },
+        },
+      },
+      {
+        slot: "frost-opal",
+        themeId: "v2-frost-opal",
+        name: "Frost Opal",
+        description: "Teal opal frost with quiet luxury, ideal for wellness, notes, and personal tools.",
+        palette: {
+          light: { bgFrom: "#e7fff8", bgTo: "#f5fbff", panel: "rgba(255, 255, 255, 0.66)", border: "rgba(20, 184, 166, 0.24)", text: "#07333a", accent: "#0f9f9a" },
+          dark: { bgFrom: "#03191d", bgTo: "#082c35", panel: "rgba(45, 212, 191, 0.13)", border: "rgba(153, 246, 228, 0.26)", text: "#dffcf8", accent: "#5eead4" },
+        },
+      },
+      {
+        slot: "glass-civic",
+        themeId: "v2-glass-civic",
+        name: "Glass Civic",
+        description: "Confident cobalt glass with amber signal accents for operational dashboards.",
+        palette: {
+          light: { bgFrom: "#eef4ff", bgTo: "#fff8ea", panel: "rgba(255, 255, 255, 0.68)", border: "rgba(37, 99, 235, 0.22)", text: "#12213d", accent: "#2563eb" },
+          dark: { bgFrom: "#061329", bgTo: "#24180a", panel: "rgba(37, 99, 235, 0.14)", border: "rgba(251, 191, 36, 0.26)", text: "#edf4ff", accent: "#60a5fa" },
+        },
+      },
+      {
+        slot: "glass-obsidian",
+        themeId: "v2-glass-obsidian",
+        name: "Glass Obsidian",
+        description: "High-contrast black glass with molten coral glow for media and creative tools.",
+        palette: {
+          light: { bgFrom: "#fff1ed", bgTo: "#f8fafc", panel: "rgba(255, 255, 255, 0.7)", border: "rgba(244, 63, 94, 0.24)", text: "#221316", accent: "#e11d48" },
+          dark: { bgFrom: "#050307", bgTo: "#24100c", panel: "rgba(255, 255, 255, 0.08)", border: "rgba(251, 113, 133, 0.3)", text: "#fff3f2", accent: "#fb7185" },
+        },
+      },
+      {
+        slot: "desktop-graphite",
+        themeId: "v2-desktop-graphite",
+        name: "Desktop Graphite",
+        description: "Dense desktop-app chrome with graphite panels and electric blue focus states.",
+        palette: {
+          light: { bgFrom: "#f4f6f8", bgTo: "#e8edf3", panel: "rgba(255, 255, 255, 0.82)", border: "rgba(71, 85, 105, 0.22)", text: "#111827", accent: "#2563eb" },
+          dark: { bgFrom: "#111419", bgTo: "#232a35", panel: "rgba(45, 52, 64, 0.74)", border: "rgba(125, 211, 252, 0.24)", text: "#f3f7fb", accent: "#38bdf8" },
+        },
+      },
+      {
+        slot: "desktop-nova",
+        themeId: "v2-desktop-nova",
+        name: "Desktop Nova",
+        description: "Command-center desktop theme with midnight violet structure and luminous magenta.",
+        palette: {
+          light: { bgFrom: "#f4f0ff", bgTo: "#fff4fb", panel: "rgba(255, 255, 255, 0.78)", border: "rgba(147, 51, 234, 0.24)", text: "#241239", accent: "#9333ea" },
+          dark: { bgFrom: "#10091f", bgTo: "#2c1235", panel: "rgba(147, 51, 234, 0.16)", border: "rgba(244, 114, 182, 0.28)", text: "#fbf1ff", accent: "#d946ef" },
+        },
+      },
+      {
+        slot: "mobile-orchid",
+        themeId: "v2-mobile-orchid",
+        name: "Mobile Orchid",
+        description: "Soft mobile-native glass, rounded surfaces, orchid gradients, and expressive taps.",
+        palette: {
+          light: { bgFrom: "#fff1fb", bgTo: "#f1f5ff", panel: "rgba(255, 255, 255, 0.72)", border: "rgba(217, 70, 239, 0.22)", text: "#35133c", accent: "#c026d3" },
+          dark: { bgFrom: "#21081f", bgTo: "#351249", panel: "rgba(217, 70, 239, 0.15)", border: "rgba(251, 207, 232, 0.26)", text: "#fff0fb", accent: "#f0abfc" },
+        },
+      },
+      {
+        slot: "mobile-mint",
+        themeId: "v2-mobile-mint",
+        name: "Mobile Mint",
+        description: "Friendly mobile-app theme with mint glass, green depth, and readable dark mode.",
+        palette: {
+          light: { bgFrom: "#effff4", bgTo: "#edfaff", panel: "rgba(255, 255, 255, 0.72)", border: "rgba(34, 197, 94, 0.22)", text: "#0b3224", accent: "#16a34a" },
+          dark: { bgFrom: "#03170d", bgTo: "#12301f", panel: "rgba(34, 197, 94, 0.13)", border: "rgba(134, 239, 172, 0.26)", text: "#e9fff2", accent: "#86efac" },
+        },
+      },
+      {
+        slot: "web-signal",
+        themeId: "v2-web-signal",
+        name: "Web Signal",
+        description: "Modern SaaS/web-app theme with crisp blue surfaces, deep nav, and active data states.",
+        palette: {
+          light: { bgFrom: "#f8fbff", bgTo: "#eef5ff", panel: "rgba(255, 255, 255, 0.84)", border: "rgba(59, 130, 246, 0.2)", text: "#0f1f3a", accent: "#0ea5e9" },
+          dark: { bgFrom: "#07111f", bgTo: "#092a3f", panel: "rgba(14, 165, 233, 0.12)", border: "rgba(56, 189, 248, 0.27)", text: "#e7f7ff", accent: "#38bdf8" },
+        },
+      },
+      {
+        slot: "web-ember",
+        themeId: "v2-web-ember",
+        name: "Web Ember",
+        description: "Warm product-app theme with editorial polish, amber energy, and rich dark surfaces.",
+        palette: {
+          light: { bgFrom: "#fff8ed", bgTo: "#fff1f2", panel: "rgba(255, 255, 255, 0.78)", border: "rgba(217, 119, 6, 0.22)", text: "#3a1d0b", accent: "#d97706" },
+          dark: { bgFrom: "#1b0b06", bgTo: "#32130f", panel: "rgba(251, 146, 60, 0.13)", border: "rgba(253, 186, 116, 0.26)", text: "#fff2df", accent: "#fb923c" },
+        },
+      },
+    ],
+  },
 };
 
 export const VARIANT_BY_THEME_ID = (() => {

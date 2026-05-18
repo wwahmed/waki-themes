@@ -84,6 +84,10 @@ export function App() {
     localStorage.setItem(FAMILY_OVERRIDES_KEY, JSON.stringify(familyOverrides));
   }, [familyOverrides]);
 
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0 });
+  }, [screen]);
+
   const builtInThemes = useMemo(
     () => (bundle ? bundleToStudioThemes(bundle) : []),
     [bundle],
@@ -413,11 +417,13 @@ export function App() {
               </button>
               <PreviewPane
                 theme={theme}
+                themes={allThemes}
                 mode={mode}
                 onEdit={() =>
                   setScreen({ kind: "edit", id: theme.id, isNew: false, tab: "variant" })
                 }
                 onModeChange={setMode}
+                onThemeChange={(id) => setScreen({ kind: "preview", id })}
               />
             </div>
           );

@@ -122,4 +122,75 @@
     border-color: rgba(168, 85, 247, 0.6);
     box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
   }
+
+  .look-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.25rem;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.62);
+    border: 1px solid rgba(168, 85, 247, 0.22);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.14);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+  }
+  html.dark .look-switch {
+    background: rgba(22, 18, 52, 0.72);
+    border-color: rgba(168, 85, 247, 0.28);
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+  }
+  .look-switch-preview {
+    width: 2.5rem;
+    height: 1.75rem;
+    overflow: hidden;
+    border-radius: 9999px;
+    border: 1px solid rgba(168, 85, 247, 0.28);
+    background: rgba(255, 255, 255, 0.45);
+  }
+  .look-switch-select {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding-left: 0.2rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+  }
+  .look-switch-select span {
+    opacity: 0.68;
+  }
+  .look-switch-select select {
+    max-width: 10.5rem;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    outline: none;
+    cursor: pointer;
+  }
+  .look-mode {
+    display: inline-flex;
+    gap: 0.15rem;
+    padding: 0.12rem;
+    border-radius: 9999px;
+    background: rgba(168, 85, 247, 0.08);
+  }
+  .look-mode button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
+    height: 1.7rem;
+    border: 0;
+    border-radius: 9999px;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+  }
+  .look-mode button.active {
+    color: #ffffff;
+    background: linear-gradient(135deg, #6366f1, #ec4899);
+    box-shadow: 0 6px 14px rgba(99, 102, 241, 0.3);
+  }
 }

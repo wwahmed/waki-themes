@@ -2,7 +2,7 @@
 
 Shared theme tokens for Waqas's apps. Consuming apps remain private; this repo contains only design tokens, no business logic or secrets.
 
-Curated catalog of 20 themes organised under 5 structural families (Glass, Aurora, Clean, Editorial, Neon) since v0.4.0. Light + dark variants for every theme, with stronger dark-mode color identity refreshed in v0.4.1. See [CURATION.md](CURATION.md) for the audit, [SCHEMA.md](SCHEMA.md) for the per-theme token contract, [CHANGELOG.md](CHANGELOG.md) for the migration history.
+Curated catalog of 30 themes organised under 6 structural families (Glass, Aurora, Clean, Editorial, Neon, V2 Polished). The original theme IDs are retained for compatibility; the 10 new `v2-*` themes are additive and designed for opt-in adoption. See [CURATION.md](CURATION.md) for the audit, [SCHEMA.md](SCHEMA.md) for the per-theme token contract, [CHANGELOG.md](CHANGELOG.md) for the migration history.
 
 Originally extracted from the 3dByPixel printer-shop dashboard's themes; now the canonical source for waki-brain, printer-dashboard, and future apps.
 
@@ -43,8 +43,9 @@ Required GitHub secrets (already provisioned): `CLOUDFLARE_API_TOKEN` (Account >
 
 Studio source lives in [app/](app/).
 
-- Two-step picker: pick a family (5 cards), then pick a variant (4 tiles per family).
-- Live preview pane with a sample dashboard (KPI cards, activity list, form, typography). Both modes toggle.
+- Two-step picker: pick a family (6 cards), then pick a variant.
+- Live preview pane with a shell-style sample app: sidebar, nested panels, toolbar, cards, forms, statuses, mobile surface, and action buttons. Both modes toggle.
+- Polished **Look** switcher in the preview pane with a compact theme miniature, theme picker, and light/dark toggle for reuse across Waki apps.
 - Editor: family-level tab edits radius / blur and propagates to all variants in the family. Variant-level tab edits per-tile palette.
 - WCAG AA contrast checker on each pair. Warns, never blocks.
 - Export as standalone CSS, token JSON, or copy CSS to clipboard. See [docs/CREATING-THEMES.md](docs/CREATING-THEMES.md) for the full create-a-theme flow.
@@ -73,11 +74,11 @@ Schema (since v0.3.0):
 }
 ```
 
-The `themes` flat map is the original contract; existing consumers (printer-dashboard, brain-v2, waki-shell) read it unchanged and pick by flat id (`glass-v2`, `clean-cool`, ...). The new `families` map groups themes by structural family (Glass, Aurora, Clean, Editorial, Neon) and exposes `structure` (radius, blur, shadow, surface, iconography, density) per family. New consumers can adopt the grouped picker on their own timeline.
+The `themes` flat map is the original contract; existing consumers (printer-dashboard, brain-v2, waki-shell) read it unchanged and pick by flat id (`glass-v2`, `clean-cool`, ...). The new `families` map groups themes by structural family (Glass, Aurora, Clean, Editorial, Neon, V2 Polished) and exposes `structure` (radius, blur, shadow, surface, iconography, density) per family. New consumers can adopt the grouped picker on their own timeline. Apps that want the new visual language should opt into one of the `v2-*` IDs instead of repointing an existing theme.
 
 GitHub Actions auto-rebuilds the bundle on every push to main (filtered to `styles/`, `scripts/`, `src/themes/`, `package.json`) so the embedded `gitSha` stays in sync with HEAD. Consumers fetch on boot, cache locally, refetch every ~6 hours, and apply the latest CSS at runtime without rebuilding.
 
-Bump `package.json` version when the schema or CSS contract changes; consumers can read `pkgVersion` to decide whether to invalidate their local cache.
+Bump `package.json` version when the schema, CSS contract, or built-in catalog changes; consumers can read `pkgVersion` to decide whether to invalidate their local cache.
 
 ## Quick start
 

@@ -1,16 +1,25 @@
 import { Edit3, Copy, Download, Moon, Sun } from "lucide-react";
-import { PREVIEW_HTML } from "../lib/sample";
+import { MINIATURE_HTML, PREVIEW_HTML } from "../lib/sample";
 import { PreviewFrame } from "./PreviewFrame";
 import type { StudioTheme } from "../lib/types";
 
 interface PreviewPaneProps {
   theme: StudioTheme;
+  themes: StudioTheme[];
   mode: "light" | "dark";
   onEdit: () => void;
   onModeChange: (m: "light" | "dark") => void;
+  onThemeChange: (id: string) => void;
 }
 
-export function PreviewPane({ theme, mode, onEdit, onModeChange }: PreviewPaneProps) {
+export function PreviewPane({
+  theme,
+  themes,
+  mode,
+  onEdit,
+  onModeChange,
+  onThemeChange,
+}: PreviewPaneProps) {
   const copyEmbed = async () => {
     const snippet = `<link rel="stylesheet" href="https://raw.githubusercontent.com/wwahmed/waki-themes/main/styles/base.css" />
 <link rel="stylesheet" href="https://raw.githubusercontent.com/wwahmed/waki-themes/main/styles/${theme.id}.css" />`;
@@ -39,20 +48,13 @@ export function PreviewPane({ theme, mode, onEdit, onModeChange }: PreviewPanePr
           <div className="text-xs opacity-65 truncate">{theme.description}</div>
         </div>
         <div className="flex items-center gap-1.5 flex-wrap">
-          <button
-            onClick={() => onModeChange("light")}
-            className={`studio-button text-xs ${mode === "light" ? "studio-button-primary" : ""}`}
-          >
-            <Sun className="w-3.5 h-3.5" />
-            Light
-          </button>
-          <button
-            onClick={() => onModeChange("dark")}
-            className={`studio-button text-xs ${mode === "dark" ? "studio-button-primary" : ""}`}
-          >
-            <Moon className="w-3.5 h-3.5" />
-            Dark
-          </button>
+          <LookSwitch
+            theme={theme}
+            themes={themes}
+            mode={mode}
+            onThemeChange={onThemeChange}
+            onModeChange={onModeChange}
+          />
           <span className="w-px h-5 bg-violet-500/20 mx-1" />
           <button onClick={copyEmbed} className="studio-button text-xs" title="Copy embed snippet">
             <Copy className="w-3.5 h-3.5" />
@@ -75,6 +77,62 @@ export function PreviewPane({ theme, mode, onEdit, onModeChange }: PreviewPanePr
           mode={mode}
           ariaLabel={`Live preview of ${theme.name}`}
         />
+      </div>
+    </div>
+  );
+}
+
+function LookSwitch({
+  theme,
+  themes,
+  mode,
+  onThemeChange,
+  onModeChange,
+}: {
+  theme: StudioTheme;
+  themes: StudioTheme[];
+  mode: "light" | "dark";
+  onThemeChange: (id: string) => void;
+  onModeChange: (m: "light" | "dark") => void;
+}) {
+  return (
+    <div className="look-switch">
+      <div className="look-switch-preview" aria-hidden="true">
+        <PreviewFrame
+          baseCss={theme.baseCss}
+          html={MINIATURE_HTML}
+          mode={mode}
+          scale={0.2}
+          ariaLabel={`${theme.name} miniature`}
+        />
+      </div>
+      <label className="look-switch-select">
+        <span>Look</span>
+        <select value={theme.id} onChange={(event) => onThemeChange(event.target.value)}>
+          {themes.map((candidate) => (
+            <option key={candidate.id} value={candidate.id}>
+              {candidate.name}
+            </option>
+          ))}
+        </select>
+      </label>
+      <div className="look-mode" aria-label="Color mode">
+        <button
+          onClick={() => onModeChange("light")}
+          className={mode === "light" ? "active" : ""}
+          aria-label="Use light mode"
+          title="Light"
+        >
+          <Sun className="w-3.5 h-3.5" />
+        </button>
+        <button
+          onClick={() => onModeChange("dark")}
+          className={mode === "dark" ? "active" : ""}
+          aria-label="Use dark mode"
+          title="Dark"
+        >
+          <Moon className="w-3.5 h-3.5" />
+        </button>
       </div>
     </div>
   );
