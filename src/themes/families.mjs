@@ -776,6 +776,68 @@ export const FAMILIES = {
       }
     ]
   },
+  "system": {
+    "name": "System",
+    "description": "Native-inspired desktop themes that echo current macOS and Windows app conventions.",
+    "structure": {
+      "radius": 10,
+      "blur": 14,
+      "shadow": "native-window",
+      "surface": "system-material",
+      "iconography": "regular",
+      "density": "desktop"
+    },
+    "variants": [
+      {
+        "slot": "mac",
+        "themeId": "waki-system-mac",
+        "name": "Mac",
+        "description": "macOS-style sidebar translucency, unified toolbar, system blue, and soft window depth.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f5f5f7",
+            "bgTo": "#eceef2",
+            "panel": "rgba(255,255,255,.66)",
+            "border": "rgba(60,60,67,.18)",
+            "text": "#1d1d1f",
+            "accent": "#007aff"
+          },
+          "dark": {
+            "bgFrom": "#1c1c1e",
+            "bgTo": "#2c2c2e",
+            "panel": "rgba(58,58,60,.62)",
+            "border": "rgba(99,99,102,.35)",
+            "text": "#f5f5f7",
+            "accent": "#0a84ff"
+          }
+        }
+      },
+      {
+        "slot": "windows",
+        "themeId": "waki-system-windows",
+        "name": "Windows",
+        "description": "Windows 11-style Mica/Acrylic feel with Segoe UI, rounded command surfaces, and Fluent blue.",
+        "palette": {
+          "light": {
+            "bgFrom": "#f3f6fb",
+            "bgTo": "#eef3f8",
+            "panel": "rgba(255,255,255,.78)",
+            "border": "rgba(120,120,120,.2)",
+            "text": "#1a1a1a",
+            "accent": "#0067c0"
+          },
+          "dark": {
+            "bgFrom": "#202020",
+            "bgTo": "#1b1b1b",
+            "panel": "rgba(45,45,45,.82)",
+            "border": "rgba(117,117,117,.28)",
+            "text": "#f3f3f3",
+            "accent": "#60cdff"
+          }
+        }
+      }
+    ]
+  },
   "mobile": {
     "name": "Waki Mobile",
     "description": "Large-radius touch surfaces, pill controls, and friendly depth for mobile-first apps.",

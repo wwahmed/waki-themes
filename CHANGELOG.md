@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.2.0 (2026-05-21)
+
+### System-native themes
+
+Adds a new `System` family with two native-inspired desktop themes:
+
+- `waki-system-mac` - macOS-style sidebar translucency, unified toolbar treatment, SF/system font stack, system blue accent, soft window depth, and traffic-light toolbar affordance.
+- `waki-system-windows` - Windows 11-style Fluent/Mica direction with Segoe UI, rounded command surfaces, restrained acrylic-like layering, and Fluent blue accent.
+
+Unlike most Waki families, these two variants intentionally differ structurally because the goal is to echo platform-native app conventions rather than create hue-only variants.
+
 ## v1.1.0 (2026-05-18)
 
 ### Professional catalog expansion

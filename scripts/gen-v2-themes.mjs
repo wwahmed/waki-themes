@@ -506,6 +506,129 @@ body {
     ],
   },
 
+  system: {
+    id: "system",
+    name: "System",
+    description: "Native-inspired desktop themes that echo current macOS and Windows app conventions.",
+    structure: {
+      radius: 10,
+      blur: 14,
+      shadow: "native-window",
+      surface: "system-material",
+      iconography: "regular",
+      density: "desktop",
+    },
+    tokens: {
+      radius: 10,
+      blur: 14,
+      density: "0.5rem 0.76rem",
+      hover: "-1px",
+      elevatedHover: "-2px",
+      navShift: "0px",
+      borderWidth: "1px",
+      saturation: "135%",
+      elevatedSaturation: "145%",
+      sidebarBlend: "92%",
+      mainBlend: "78%",
+      mobileExtra: 0,
+      buttonRadius: "8px",
+      fontBody: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      fontDisplay: "ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      shadow: "0 14px 36px var(--waki-shadow)",
+      elevatedShadow: "0 24px 58px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.18)",
+      panelInset: "inset 0 1px 0 rgba(255,255,255,.16)",
+      bodyOverlay: "",
+      extraCss: "",
+    },
+    variants: [
+      colorway("mac", "Mac", "macOS-style sidebar translucency, unified toolbar, system blue, and soft window depth.", {
+        light: palette("#f5f5f7", "#eceef2", "#ffffff", "#007aff", "#5e5ce6", "#1d1d1f", "#6e6e73", "rgba(255,255,255,.66)", "rgba(255,255,255,.82)", "rgba(246,246,248,.78)", "rgba(60,60,67,.18)", "rgba(0,122,255,.22)", "rgba(0,0,0,.14)", "rgba(0,122,255,.08)", "rgba(94,92,230,.06)", "rgba(142,142,147,.06)"),
+        dark: palette("#1c1c1e", "#2c2c2e", "#111113", "#0a84ff", "#bf5af2", "#f5f5f7", "#aeaeb2", "rgba(58,58,60,.62)", "rgba(44,44,46,.82)", "rgba(72,72,74,.72)", "rgba(99,99,102,.35)", "rgba(10,132,255,.28)", "rgba(0,0,0,.48)", "rgba(10,132,255,.14)", "rgba(191,90,242,.1)", "rgba(99,99,102,.12)"),
+      }, {
+        radius: 12,
+        blur: 20,
+        density: "0.5rem 0.78rem",
+        hover: "-1px",
+        elevatedHover: "-2px",
+        saturation: "170%",
+        elevatedSaturation: "190%",
+        sidebarBlend: "86%",
+        mainBlend: "70%",
+        buttonRadius: "9px",
+        fontBody: "-apple-system, BlinkMacSystemFont, \"SF Pro Text\", \"Helvetica Neue\", Arial, sans-serif",
+        fontDisplay: "-apple-system, BlinkMacSystemFont, \"SF Pro Display\", \"Helvetica Neue\", Arial, sans-serif",
+        shadow: "0 18px 46px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.16)",
+        elevatedShadow: "0 28px 70px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.28)",
+        panelInset: "inset 0 1px 18px color-mix(in srgb, white 8%, transparent), 0 8px 20px rgba(0,0,0,.05)",
+        extraCss: `
+.glass-bar {
+  min-height: 44px;
+  border-bottom: 1px solid color-mix(in srgb, var(--waki-border) 72%, transparent);
+}
+.glass-bar::before {
+  content: "";
+  position: absolute;
+  left: 13px;
+  top: 13px;
+  width: 38px;
+  height: 11px;
+  border-radius: 999px;
+  background:
+    radial-gradient(circle at 5px 5px, #ff5f57 0 5px, transparent 5.5px),
+    radial-gradient(circle at 19px 5px, #ffbd2e 0 5px, transparent 5.5px),
+    radial-gradient(circle at 33px 5px, #28c840 0 5px, transparent 5.5px);
+  pointer-events: none;
+}
+.shell-sidebar {
+  border-right: 1px solid color-mix(in srgb, var(--waki-border) 70%, transparent);
+}
+.btn-primary {
+  border-radius: 8px;
+}
+`,
+      }),
+      colorway("windows", "Windows", "Windows 11-style Mica/Acrylic feel with Segoe UI, rounded command surfaces, and Fluent blue.", {
+        light: palette("#f3f6fb", "#eef3f8", "#ffffff", "#0067c0", "#2563eb", "#1a1a1a", "#5f646b", "rgba(255,255,255,.78)", "rgba(255,255,255,.92)", "rgba(243,246,250,.86)", "rgba(120,120,120,.2)", "rgba(0,103,192,.24)", "rgba(0,0,0,.12)", "rgba(0,103,192,.1)", "rgba(37,99,235,.07)", "rgba(148,163,184,.08)"),
+        dark: palette("#202020", "#1b1b1b", "#111111", "#60cdff", "#0078d4", "#f3f3f3", "#c8c8c8", "rgba(45,45,45,.82)", "rgba(32,32,32,.92)", "rgba(51,51,51,.86)", "rgba(117,117,117,.28)", "rgba(96,205,255,.25)", "rgba(0,0,0,.46)", "rgba(96,205,255,.16)", "rgba(0,120,212,.1)", "rgba(117,117,117,.12)"),
+      }, {
+        radius: 8,
+        blur: 10,
+        density: "0.48rem 0.76rem",
+        hover: "-1px",
+        elevatedHover: "-1px",
+        saturation: "125%",
+        elevatedSaturation: "140%",
+        sidebarBlend: "94%",
+        mainBlend: "82%",
+        buttonRadius: "6px",
+        fontBody: "\"Segoe UI Variable Text\", \"Segoe UI\", ui-sans-serif, system-ui, sans-serif",
+        fontDisplay: "\"Segoe UI Variable Display\", \"Segoe UI\", ui-sans-serif, system-ui, sans-serif",
+        shadow: "0 8px 22px var(--waki-shadow)",
+        elevatedShadow: "0 18px 42px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.12)",
+        panelInset: "inset 0 1px 0 rgba(255,255,255,.1)",
+        bodyOverlay: "linear-gradient(135deg, color-mix(in srgb, var(--waki-accent) 4%, transparent), transparent 42%),",
+        extraCss: `
+.glass-bar {
+  border-bottom: 1px solid var(--waki-border);
+}
+.glass,
+.glass-elevated,
+.shell-main,
+.mobile-card {
+  backdrop-filter: blur(calc(var(--waki-blur) * .8)) saturate(125%);
+  -webkit-backdrop-filter: blur(calc(var(--waki-blur) * .8)) saturate(125%);
+}
+.nav-item.active {
+  box-shadow: inset 3px 0 0 var(--waki-accent);
+}
+.chip {
+  border-radius: 4px;
+}
+`,
+      }),
+    ],
+  },
+
   mobile: {
     id: "mobile",
     name: "Waki Mobile",
@@ -646,8 +769,8 @@ function palette(bg1, bg2, bg3, accent, accent2, text, muted, panel, panel2, pan
   return { bg1, bg2, bg3, accent, accent2, text, muted, panel, panel2, panel3, border, border2, shadow, blob1, blob2, blob3 };
 }
 
-function colorway(slot, name, description, modes) {
-  return { slot, name, description, modes };
+function colorway(slot, name, description, modes, tokens = {}) {
+  return { slot, name, description, modes, tokens };
 }
 
 function modeVars(mode, variant) {
@@ -678,7 +801,7 @@ function themeId(family, variant) {
 }
 
 function cssForTheme(family, variant) {
-  const t = family.tokens;
+  const t = { ...family.tokens, ...(variant.tokens ?? {}) };
   const id = themeId(family, variant);
   return `/* ============================================================================
  * Theme: ${id} (${family.name} - ${variant.name})
