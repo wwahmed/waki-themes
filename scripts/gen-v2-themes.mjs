@@ -24,7 +24,7 @@ const materials = {
     name: "Waki Glass",
     description: "Luminous translucent app chrome with crisp layered depth. Best for polished dashboards and creative tools.",
     structure: {
-      radius: 20,
+      radius: 14,
       blur: 30,
       shadow: "luminous-glass",
       surface: "translucent",
@@ -32,7 +32,7 @@ const materials = {
       density: "comfortable",
     },
     tokens: {
-      radius: 20,
+      radius: 14,
       blur: 30,
       density: "0.58rem 0.88rem",
       hover: "-4px",
@@ -43,8 +43,8 @@ const materials = {
       elevatedSaturation: "275%",
       sidebarBlend: "76%",
       mainBlend: "50%",
-      mobileExtra: 6,
-      buttonRadius: "calc(var(--waki-radius-sm) + 2px)",
+      mobileExtra: 2,
+      buttonRadius: "8px",
       fontBody: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       fontDisplay: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       shadow: "0 24px 70px var(--waki-shadow), 0 0 44px color-mix(in srgb, var(--waki-accent) 22%, transparent), inset 0 1px 0 rgba(255,255,255,.36), inset 0 -1px 0 rgba(255,255,255,.08)",
@@ -121,6 +121,31 @@ const materials = {
   border-color: color-mix(in srgb, var(--waki-border-2) 58%, white);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -12px 24px color-mix(in srgb, var(--waki-accent) 7%, transparent), 0 12px 28px color-mix(in srgb, var(--waki-shadow) 38%, transparent);
 }
+.chip,
+.status-success,
+.status-warning,
+.status-error,
+.status-info {
+  border-radius: 8px;
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  border-color: color-mix(in srgb, currentColor 22%, transparent);
+}
+.btn-primary {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--waki-accent) 84%, white), color-mix(in srgb, var(--waki-accent-2) 78%, #1f2937));
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--waki-accent) 24%, transparent);
+}
+.btn-warning {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  box-shadow: 0 10px 22px rgba(180, 83, 9, 0.2);
+}
+.btn-danger {
+  background: linear-gradient(135deg, #e11d48, #b91c1c);
+  box-shadow: 0 10px 22px rgba(185, 28, 28, 0.2);
+}
+.btn-success {
+  background: linear-gradient(135deg, #059669, #047857);
+  box-shadow: 0 10px 22px rgba(4, 120, 87, 0.18);
+}
 `,
     },
     variants: [
@@ -148,7 +173,7 @@ const materials = {
     name: "Waki Frost",
     description: "Soft high-blur frosted panes with misty depth and gentle hover shimmer.",
     structure: {
-      radius: 26,
+      radius: 16,
       blur: 42,
       shadow: "mist-depth",
       surface: "frosted",
@@ -156,7 +181,7 @@ const materials = {
       density: "comfortable",
     },
     tokens: {
-      radius: 26,
+      radius: 16,
       blur: 42,
       density: "0.64rem 0.95rem",
       hover: "-3px",
@@ -167,8 +192,8 @@ const materials = {
       elevatedSaturation: "285%",
       sidebarBlend: "70%",
       mainBlend: "48%",
-      mobileExtra: 10,
-      buttonRadius: "999px",
+      mobileExtra: 4,
+      buttonRadius: "10px",
       fontBody: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       fontDisplay: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       shadow: "0 22px 64px var(--waki-shadow), inset 0 0 42px color-mix(in srgb, white 10%, transparent), inset 0 1px 0 rgba(255,255,255,.42)",
@@ -241,6 +266,31 @@ const materials = {
   border-color: color-mix(in srgb, var(--waki-border-2) 62%, white);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 0 24px color-mix(in srgb, white 10%, transparent), 0 10px 24px color-mix(in srgb, var(--waki-shadow) 34%, transparent);
 }
+.chip,
+.status-success,
+.status-warning,
+.status-error,
+.status-info {
+  border-radius: 10px;
+  background: color-mix(in srgb, currentColor 9%, transparent);
+  border-color: color-mix(in srgb, currentColor 22%, transparent);
+}
+.btn-primary {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--waki-accent) 82%, white), color-mix(in srgb, var(--waki-accent-2) 76%, #1f2937));
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--waki-accent) 22%, transparent);
+}
+.btn-warning {
+  background: linear-gradient(135deg, #d97706, #b45309);
+  box-shadow: 0 10px 22px rgba(180, 83, 9, 0.18);
+}
+.btn-danger {
+  background: linear-gradient(135deg, #e11d48, #b91c1c);
+  box-shadow: 0 10px 22px rgba(185, 28, 28, 0.18);
+}
+.btn-success {
+  background: linear-gradient(135deg, #059669, #047857);
+  box-shadow: 0 10px 22px rgba(4, 120, 87, 0.16);
+}
 `,
     },
     variants: [
@@ -266,17 +316,17 @@ const materials = {
   academic: {
     id: "academic",
     name: "Waki Academic",
-    description: "Readable paper surfaces, restrained borders, and serif-inflected typography for research, writing, and documentation.",
+    description: "Clean research surfaces with restrained borders, modern typography, and calm knowledge-work color.",
     structure: {
-      radius: 6,
+      radius: 8,
       blur: 0,
-      shadow: "paper-hairline",
-      surface: "paper",
+      shadow: "research-hairline",
+      surface: "knowledge-panel",
       iconography: "thin",
       density: "spacious",
     },
     tokens: {
-      radius: 6,
+      radius: 8,
       blur: 0,
       density: "0.55rem 0.78rem",
       hover: "-1px",
@@ -288,17 +338,14 @@ const materials = {
       sidebarBlend: "96%",
       mainBlend: "90%",
       mobileExtra: 0,
-      buttonRadius: "4px",
-      fontBody: "ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
-      fontDisplay: "ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
+      buttonRadius: "6px",
+      fontBody: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
+      fontDisplay: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       shadow: "0 2px 10px var(--waki-shadow)",
       elevatedShadow: "0 8px 24px var(--waki-shadow)",
       panelInset: "inset 0 1px 0 rgba(255,255,255,.55)",
-      bodyOverlay: "linear-gradient(90deg, color-mix(in srgb, var(--waki-border) 20%, transparent) 1px, transparent 1px), linear-gradient(0deg, color-mix(in srgb, var(--waki-border) 18%, transparent) 1px, transparent 1px),",
+      bodyOverlay: "radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--waki-accent) 6%, transparent), transparent 28%), radial-gradient(circle at 86% 10%, color-mix(in srgb, var(--waki-accent-2) 5%, transparent), transparent 26%),",
       extraCss: `
-body {
-  background-size: auto, 24px 24px, 24px 24px, auto, auto, auto, auto;
-}
 .glass,
 .glass-elevated,
 .glass-bar,
@@ -307,18 +354,31 @@ body {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
+.glass {
+  background: var(--waki-panel);
+}
+.glass-elevated,
+.mobile-card {
+  background: linear-gradient(145deg, var(--waki-panel-2), var(--waki-panel-3));
+}
 .chip {
-  border-radius: 4px;
-  letter-spacing: .01em;
+  border-radius: 6px;
+  letter-spacing: 0;
+}
+.status-success,
+.status-warning,
+.status-error,
+.status-info {
+  border-radius: 6px;
 }
 `,
     },
     variants: [
-      colorway("ivory", "Ivory", "Warm ivory paper with ink-blue accents.", {
-        light: palette("#fbfaf4", "#f7f2e8", "#fffdf7", "#1d4ed8", "#92400e", "#1c1917", "#63584e", "#fffdf7", "#ffffff", "#f8f2e8", "#d8d0c2", "#b8a996", "rgba(92,64,35,.1)", "rgba(29,78,216,.08)", "rgba(146,64,14,.05)", "rgba(120,113,108,.04)"),
-        dark: palette("#101624", "#1a2030", "#121826", "#93c5fd", "#fbbf24", "#eef2ff", "#b7c2d9", "#182033", "#101827", "#20283a", "#3b4b6a", "#8a6d3d", "rgba(0,0,0,.34)", "rgba(147,197,253,.14)", "rgba(251,191,36,.1)", "rgba(148,163,184,.08)"),
+      colorway("ivory", "Ivory", "Clean ivory research surfaces with ink-blue accents.", {
+        light: palette("#f8fafc", "#f3f6fb", "#ffffff", "#2563eb", "#64748b", "#111827", "#5b6472", "#ffffff", "#fbfdff", "#f1f5f9", "#d3dce8", "#aab7c7", "rgba(15,23,42,.08)", "rgba(37,99,235,.07)", "rgba(100,116,139,.05)", "rgba(148,163,184,.04)"),
+        dark: palette("#0e1420", "#182234", "#101827", "#93c5fd", "#cbd5e1", "#f3f7fb", "#b9c4d2", "#172033", "#101827", "#202b3c", "#3b4b63", "#64748b", "rgba(0,0,0,.34)", "rgba(147,197,253,.13)", "rgba(148,163,184,.08)", "rgba(71,85,105,.08)"),
       }),
-      colorway("oxford", "Oxford", "Deep blue academic paper for serious research tools.", {
+      colorway("oxford", "Oxford", "Deep blue knowledge-work surfaces for serious research tools.", {
         light: palette("#f7fbff", "#edf4ff", "#ffffff", "#1e40af", "#0f766e", "#102033", "#516176", "#ffffff", "#f8fbff", "#eef4ff", "#bfcee5", "#8fb2d9", "rgba(30,64,175,.11)", "rgba(30,64,175,.08)", "rgba(15,118,110,.05)", "rgba(148,163,184,.05)"),
         dark: palette("#07111f", "#0d1b31", "#091524", "#93c5fd", "#5eead4", "#e7f0ff", "#a9bdd4", "#111d31", "#0b1728", "#17243a", "#315076", "#24706a", "rgba(0,0,0,.36)", "rgba(96,165,250,.16)", "rgba(94,234,212,.1)", "rgba(148,163,184,.08)"),
       }),
@@ -326,9 +386,9 @@ body {
         light: palette("#f8fafc", "#eef2f7", "#ffffff", "#475569", "#0ea5e9", "#111827", "#5b6573", "#ffffff", "#f8fafc", "#f1f5f9", "#cbd5e1", "#94a3b8", "rgba(15,23,42,.09)", "rgba(71,85,105,.08)", "rgba(14,165,233,.05)", "rgba(148,163,184,.05)"),
         dark: palette("#111419", "#232a35", "#161d27", "#cbd5e1", "#38bdf8", "#f3f7fb", "#b8c2cf", "#1d232d", "#151b24", "#262e3a", "#475569", "#12556f", "rgba(0,0,0,.4)", "rgba(148,163,184,.12)", "rgba(56,189,248,.1)", "rgba(71,85,105,.08)"),
       }),
-      colorway("sepia", "Sepia", "Sepia study mode with sienna accents.", {
-        light: palette("#fff7ed", "#f8ead8", "#fffaf3", "#b45309", "#dc2626", "#3b2111", "#71533f", "#fffaf3", "#ffffff", "#f7eadb", "#dfc6a7", "#c29a72", "rgba(146,64,14,.12)", "rgba(180,83,9,.08)", "rgba(220,38,38,.05)", "rgba(120,53,15,.05)"),
-        dark: palette("#1d1008", "#2b190d", "#23140b", "#fdba74", "#f87171", "#ffedd5", "#d7b89c", "#302016", "#24170d", "#3a2515", "#7c4a24", "#7f1d1d", "rgba(0,0,0,.38)", "rgba(251,146,60,.14)", "rgba(248,113,113,.1)", "rgba(120,53,15,.08)"),
+      colorway("sepia", "Sepia", "Warm neutral study mode with restrained amber accents.", {
+        light: palette("#faf8f5", "#f2eee8", "#ffffff", "#a16207", "#64748b", "#27231d", "#6a6258", "#ffffff", "#fbfaf8", "#f4f1ec", "#d8d0c6", "#b8aa9a", "rgba(39,35,29,.08)", "rgba(161,98,7,.06)", "rgba(100,116,139,.05)", "rgba(120,113,108,.04)"),
+        dark: palette("#141312", "#25221e", "#1a1815", "#fbbf24", "#cbd5e1", "#f8f4ee", "#c9c0b5", "#211f1c", "#191714", "#2c2924", "#5f574d", "#8b7d6d", "rgba(0,0,0,.36)", "rgba(251,191,36,.1)", "rgba(148,163,184,.08)", "rgba(120,113,108,.08)"),
       }),
     ],
   },
@@ -550,7 +610,7 @@ body {
     name: "Waki Frosted Pro",
     description: "Professional frosted glass with restrained sheen, premium shadows, and a polished boardroom feel.",
     structure: {
-      radius: 18,
+      radius: 12,
       blur: 28,
       shadow: "professional-frost",
       surface: "frosted-executive",
@@ -558,7 +618,7 @@ body {
       density: "business",
     },
     tokens: {
-      radius: 18,
+      radius: 12,
       blur: 28,
       density: "0.56rem 0.84rem",
       hover: "-2px",
@@ -569,8 +629,8 @@ body {
       elevatedSaturation: "230%",
       sidebarBlend: "80%",
       mainBlend: "58%",
-      mobileExtra: 4,
-      buttonRadius: "10px",
+      mobileExtra: 2,
+      buttonRadius: "8px",
       fontBody: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       fontDisplay: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       shadow: "0 22px 56px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -1px 0 rgba(255,255,255,.08)",
@@ -633,7 +693,31 @@ body {
   box-shadow: inset 0 1px 0 rgba(255,255,255,.26), inset 0 0 20px color-mix(in srgb, white 8%, transparent), 0 10px 24px color-mix(in srgb, var(--waki-shadow) 34%, transparent);
 }
 .chip {
-  border-radius: 999px;
+  border-radius: 7px;
+}
+.status-success,
+.status-warning,
+.status-error,
+.status-info {
+  border-radius: 7px;
+  background: color-mix(in srgb, currentColor 9%, transparent);
+  border-color: color-mix(in srgb, currentColor 20%, transparent);
+}
+.btn-primary {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--waki-accent) 80%, white), color-mix(in srgb, var(--waki-accent-2) 72%, #111827));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--waki-accent) 20%, transparent);
+}
+.btn-warning {
+  background: linear-gradient(135deg, #d97706, #92400e);
+  box-shadow: 0 8px 20px rgba(146, 64, 14, 0.16);
+}
+.btn-danger {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  box-shadow: 0 8px 20px rgba(153, 27, 27, 0.16);
+}
+.btn-success {
+  background: linear-gradient(135deg, #059669, #065f46);
+  box-shadow: 0 8px 20px rgba(6, 95, 70, 0.14);
 }
 `,
     },

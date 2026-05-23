@@ -7,9 +7,9 @@
  * ============================================================================ */
 
 :root {
-  --waki-radius: 6px;
+  --waki-radius: 8px;
   --waki-radius-sm: 4px;
-  --waki-radius-lg: 14px;
+  --waki-radius-lg: 16px;
   --waki-blur: 0px;
   --waki-density: 0.55rem 0.78rem;
   --waki-hover-y: -1px;
@@ -23,54 +23,54 @@
   --waki-sidebar-blend: 96%;
   --waki-main-blend: 90%;
   --waki-border-width: 1px;
-  --waki-button-radius: 4px;
+  --waki-button-radius: 6px;
   --waki-mobile-extra-radius: 0px;
-  --waki-font-body: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --waki-font-display: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --waki-bg-1: #fbfaf4;
-  --waki-bg-2: #f7f2e8;
-  --waki-bg-3: #fffdf7;
-  --waki-blob-1: rgba(29,78,216,.08);
-  --waki-blob-2: rgba(146,64,14,.05);
-  --waki-blob-3: rgba(120,113,108,.04);
-  --waki-panel: #fffdf7;
-  --waki-panel-2: #ffffff;
-  --waki-panel-3: #f8f2e8;
-  --waki-bar: #ffffff;
-  --waki-border: #d8d0c2;
-  --waki-border-2: #b8a996;
-  --waki-text: #1c1917;
-  --waki-muted: #63584e;
-  --waki-accent: #1d4ed8;
-  --waki-accent-2: #92400e;
-  --waki-focus: color-mix(in srgb, #1d4ed8 24%, transparent);
-  --waki-shadow: rgba(92,64,35,.1);
+  --waki-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --waki-font-display: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --waki-bg-1: #f8fafc;
+  --waki-bg-2: #f3f6fb;
+  --waki-bg-3: #ffffff;
+  --waki-blob-1: rgba(37,99,235,.07);
+  --waki-blob-2: rgba(100,116,139,.05);
+  --waki-blob-3: rgba(148,163,184,.04);
+  --waki-panel: #ffffff;
+  --waki-panel-2: #fbfdff;
+  --waki-panel-3: #f1f5f9;
+  --waki-bar: #fbfdff;
+  --waki-border: #d3dce8;
+  --waki-border-2: #aab7c7;
+  --waki-text: #111827;
+  --waki-muted: #5b6472;
+  --waki-accent: #2563eb;
+  --waki-accent-2: #64748b;
+  --waki-focus: color-mix(in srgb, #2563eb 24%, transparent);
+  --waki-shadow: rgba(15,23,42,.08);
 }
 html.dark {
 
-  --waki-bg-1: #101624;
-  --waki-bg-2: #1a2030;
-  --waki-bg-3: #121826;
-  --waki-blob-1: rgba(147,197,253,.14);
-  --waki-blob-2: rgba(251,191,36,.1);
-  --waki-blob-3: rgba(148,163,184,.08);
-  --waki-panel: #182033;
+  --waki-bg-1: #0e1420;
+  --waki-bg-2: #182234;
+  --waki-bg-3: #101827;
+  --waki-blob-1: rgba(147,197,253,.13);
+  --waki-blob-2: rgba(148,163,184,.08);
+  --waki-blob-3: rgba(71,85,105,.08);
+  --waki-panel: #172033;
   --waki-panel-2: #101827;
-  --waki-panel-3: #20283a;
+  --waki-panel-3: #202b3c;
   --waki-bar: #101827;
-  --waki-border: #3b4b6a;
-  --waki-border-2: #8a6d3d;
-  --waki-text: #eef2ff;
-  --waki-muted: #b7c2d9;
+  --waki-border: #3b4b63;
+  --waki-border-2: #64748b;
+  --waki-text: #f3f7fb;
+  --waki-muted: #b9c4d2;
   --waki-accent: #93c5fd;
-  --waki-accent-2: #fbbf24;
+  --waki-accent-2: #cbd5e1;
   --waki-focus: color-mix(in srgb, #93c5fd 24%, transparent);
   --waki-shadow: rgba(0,0,0,.34);
 }
 
 body {
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--waki-border) 20%, transparent) 1px, transparent 1px), linear-gradient(0deg, color-mix(in srgb, var(--waki-border) 18%, transparent) 1px, transparent 1px),
+    radial-gradient(circle at 14% 8%, color-mix(in srgb, var(--waki-accent) 6%, transparent), transparent 28%), radial-gradient(circle at 86% 10%, color-mix(in srgb, var(--waki-accent-2) 5%, transparent), transparent 26%),
     radial-gradient(circle at 8% 10%, var(--waki-blob-1), transparent 32%),
     radial-gradient(circle at 92% 4%, var(--waki-blob-2), transparent 30%),
     radial-gradient(circle at 50% 110%, var(--waki-blob-3), transparent 45%),
@@ -319,9 +319,6 @@ html.dark .status-error {
 }
 
 
-body {
-  background-size: auto, 24px 24px, 24px 24px, auto, auto, auto, auto;
-}
 .glass,
 .glass-elevated,
 .glass-bar,
@@ -330,9 +327,22 @@ body {
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
 }
+.glass {
+  background: var(--waki-panel);
+}
+.glass-elevated,
+.mobile-card {
+  background: linear-gradient(145deg, var(--waki-panel-2), var(--waki-panel-3));
+}
 .chip {
-  border-radius: 4px;
-  letter-spacing: .01em;
+  border-radius: 6px;
+  letter-spacing: 0;
+}
+.status-success,
+.status-warning,
+.status-error,
+.status-info {
+  border-radius: 6px;
 }
 
 

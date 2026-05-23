@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.2.2 (2026-05-23)
+
+### Shape and tone refinement
+
+Refines the glass-forward and academic families after visual review:
+
+- Reduces `Waki Glass`, `Waki Frost`, and `Waki Frosted Pro` radii so they feel tastefully rounded instead of bubbly.
+- Calms glass-family buttons, chips, and status labels with less candy-like color and less pill-shaped geometry.
+- Modernizes `Waki Academic` with system typography, cleaner research-app surfaces, and subtler backgrounds instead of antique paper styling.
+
 ## v1.2.1 (2026-05-23)
 
 ### Glass material polish

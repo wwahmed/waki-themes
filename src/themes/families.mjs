@@ -10,7 +10,7 @@ export const FAMILIES = {
     "name": "Waki Glass",
     "description": "Luminous translucent app chrome with crisp layered depth. Best for polished dashboards and creative tools.",
     "structure": {
-      "radius": 20,
+      "radius": 14,
       "blur": 30,
       "shadow": "luminous-glass",
       "surface": "translucent",
@@ -120,7 +120,7 @@ export const FAMILIES = {
     "name": "Waki Frost",
     "description": "Soft high-blur frosted panes with misty depth and gentle hover shimmer.",
     "structure": {
-      "radius": 26,
+      "radius": 16,
       "blur": 42,
       "shadow": "mist-depth",
       "surface": "frosted",
@@ -228,12 +228,12 @@ export const FAMILIES = {
   },
   "academic": {
     "name": "Waki Academic",
-    "description": "Readable paper surfaces, restrained borders, and serif-inflected typography for research, writing, and documentation.",
+    "description": "Clean research surfaces with restrained borders, modern typography, and calm knowledge-work color.",
     "structure": {
-      "radius": 6,
+      "radius": 8,
       "blur": 0,
-      "shadow": "paper-hairline",
-      "surface": "paper",
+      "shadow": "research-hairline",
+      "surface": "knowledge-panel",
       "iconography": "thin",
       "density": "spacious"
     },
@@ -242,22 +242,22 @@ export const FAMILIES = {
         "slot": "ivory",
         "themeId": "waki-academic-ivory",
         "name": "Ivory",
-        "description": "Warm ivory paper with ink-blue accents.",
+        "description": "Clean ivory research surfaces with ink-blue accents.",
         "palette": {
           "light": {
-            "bgFrom": "#fbfaf4",
-            "bgTo": "#f7f2e8",
-            "panel": "#fffdf7",
-            "border": "#d8d0c2",
-            "text": "#1c1917",
-            "accent": "#1d4ed8"
+            "bgFrom": "#f8fafc",
+            "bgTo": "#f3f6fb",
+            "panel": "#ffffff",
+            "border": "#d3dce8",
+            "text": "#111827",
+            "accent": "#2563eb"
           },
           "dark": {
-            "bgFrom": "#101624",
-            "bgTo": "#1a2030",
-            "panel": "#182033",
-            "border": "#3b4b6a",
-            "text": "#eef2ff",
+            "bgFrom": "#0e1420",
+            "bgTo": "#182234",
+            "panel": "#172033",
+            "border": "#3b4b63",
+            "text": "#f3f7fb",
             "accent": "#93c5fd"
           }
         }
@@ -266,7 +266,7 @@ export const FAMILIES = {
         "slot": "oxford",
         "themeId": "waki-academic-oxford",
         "name": "Oxford",
-        "description": "Deep blue academic paper for serious research tools.",
+        "description": "Deep blue knowledge-work surfaces for serious research tools.",
         "palette": {
           "light": {
             "bgFrom": "#f7fbff",
@@ -314,23 +314,23 @@ export const FAMILIES = {
         "slot": "sepia",
         "themeId": "waki-academic-sepia",
         "name": "Sepia",
-        "description": "Sepia study mode with sienna accents.",
+        "description": "Warm neutral study mode with restrained amber accents.",
         "palette": {
           "light": {
-            "bgFrom": "#fff7ed",
-            "bgTo": "#f8ead8",
-            "panel": "#fffaf3",
-            "border": "#dfc6a7",
-            "text": "#3b2111",
-            "accent": "#b45309"
+            "bgFrom": "#faf8f5",
+            "bgTo": "#f2eee8",
+            "panel": "#ffffff",
+            "border": "#d8d0c6",
+            "text": "#27231d",
+            "accent": "#a16207"
           },
           "dark": {
-            "bgFrom": "#1d1008",
-            "bgTo": "#2b190d",
-            "panel": "#302016",
-            "border": "#7c4a24",
-            "text": "#ffedd5",
-            "accent": "#fdba74"
+            "bgFrom": "#141312",
+            "bgTo": "#25221e",
+            "panel": "#211f1c",
+            "border": "#5f574d",
+            "text": "#f8f4ee",
+            "accent": "#fbbf24"
           }
         }
       }
@@ -670,7 +670,7 @@ export const FAMILIES = {
     "name": "Waki Frosted Pro",
     "description": "Professional frosted glass with restrained sheen, premium shadows, and a polished boardroom feel.",
     "structure": {
-      "radius": 18,
+      "radius": 12,
       "blur": 28,
       "shadow": "professional-frost",
       "surface": "frosted-executive",

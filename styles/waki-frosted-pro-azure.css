@@ -7,9 +7,9 @@
  * ============================================================================ */
 
 :root {
-  --waki-radius: 18px;
-  --waki-radius-sm: 10px;
-  --waki-radius-lg: 26px;
+  --waki-radius: 12px;
+  --waki-radius-sm: 4px;
+  --waki-radius-lg: 20px;
   --waki-blur: 28px;
   --waki-density: 0.56rem 0.84rem;
   --waki-hover-y: -2px;
@@ -23,8 +23,8 @@
   --waki-sidebar-blend: 80%;
   --waki-main-blend: 58%;
   --waki-border-width: 1px;
-  --waki-button-radius: 10px;
-  --waki-mobile-extra-radius: 4px;
+  --waki-button-radius: 8px;
+  --waki-mobile-extra-radius: 2px;
   --waki-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --waki-font-display: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --waki-bg-1: #eef7ff;
@@ -374,7 +374,31 @@ html.dark .status-error {
   box-shadow: inset 0 1px 0 rgba(255,255,255,.26), inset 0 0 20px color-mix(in srgb, white 8%, transparent), 0 10px 24px color-mix(in srgb, var(--waki-shadow) 34%, transparent);
 }
 .chip {
-  border-radius: 999px;
+  border-radius: 7px;
+}
+.status-success,
+.status-warning,
+.status-error,
+.status-info {
+  border-radius: 7px;
+  background: color-mix(in srgb, currentColor 9%, transparent);
+  border-color: color-mix(in srgb, currentColor 20%, transparent);
+}
+.btn-primary {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--waki-accent) 80%, white), color-mix(in srgb, var(--waki-accent-2) 72%, #111827));
+  box-shadow: 0 10px 24px color-mix(in srgb, var(--waki-accent) 20%, transparent);
+}
+.btn-warning {
+  background: linear-gradient(135deg, #d97706, #92400e);
+  box-shadow: 0 8px 20px rgba(146, 64, 14, 0.16);
+}
+.btn-danger {
+  background: linear-gradient(135deg, #dc2626, #991b1b);
+  box-shadow: 0 8px 20px rgba(153, 27, 27, 0.16);
+}
+.btn-success {
+  background: linear-gradient(135deg, #059669, #065f46);
+  box-shadow: 0 8px 20px rgba(6, 95, 70, 0.14);
 }
 
 
