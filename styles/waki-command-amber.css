@@ -27,24 +27,24 @@
   --waki-mobile-extra-radius: 0px;
   --waki-font-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --waki-font-display: "SF Mono", "Cascadia Code", "Roboto Mono", ui-monospace, monospace;
-  --waki-bg-1: #faf7f0;
-  --waki-bg-2: #f7f2ea;
-  --waki-bg-3: #ffffff;
-  --waki-blob-1: rgba(180,83,9,.08);
-  --waki-blob-2: rgba(71,85,105,.06);
-  --waki-blob-3: rgba(100,116,139,.06);
-  --waki-panel: rgba(255,255,255,.86);
-  --waki-panel-2: rgba(255,255,255,.94);
-  --waki-panel-3: rgba(250,245,237,.86);
-  --waki-bar: rgba(255,255,255,.94);
-  --waki-border: rgba(180,83,9,.18);
-  --waki-border-2: rgba(71,85,105,.16);
+  --waki-bg-1: color-mix(in srgb, #faf7f0 88%, #b45309);
+  --waki-bg-2: color-mix(in srgb, #f7f2ea 88%, #475569);
+  --waki-bg-3: color-mix(in srgb, #ffffff 76%, #faf7f0);
+  --waki-blob-1: color-mix(in srgb, rgba(180,83,9,.08) 82%, #b45309);
+  --waki-blob-2: color-mix(in srgb, rgba(71,85,105,.06) 82%, #475569);
+  --waki-blob-3: color-mix(in srgb, rgba(100,116,139,.06) 86%, #f7f2ea);
+  --waki-panel: color-mix(in srgb, rgba(255,255,255,.86) 70%, #faf7f0);
+  --waki-panel-2: color-mix(in srgb, rgba(255,255,255,.94) 76%, #f7f2ea);
+  --waki-panel-3: color-mix(in srgb, color-mix(in srgb, rgba(250,245,237,.86) 74%, #faf7f0) 92%, #b45309);
+  --waki-bar: color-mix(in srgb, rgba(255,255,255,.94) 76%, #f7f2ea);
+  --waki-border: color-mix(in srgb, rgba(180,83,9,.18) 82%, #b45309);
+  --waki-border-2: color-mix(in srgb, rgba(71,85,105,.16) 78%, #475569);
   --waki-text: #351c09;
   --waki-muted: #755c43;
   --waki-accent: #b45309;
   --waki-accent-2: #475569;
   --waki-focus: color-mix(in srgb, #b45309 24%, transparent);
-  --waki-shadow: rgba(146,64,14,.1);
+  --waki-shadow: color-mix(in srgb, rgba(146,64,14,.1) 84%, #b45309);
 }
 html.dark {
 

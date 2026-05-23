@@ -25,10 +25,10 @@ export const FAMILIES = {
         "description": "Indigo and teal glass for polished product dashboards.",
         "palette": {
           "light": {
-            "bgFrom": "#f3f7fb",
-            "bgTo": "#eef2f7",
-            "panel": "rgba(255,255,255,.66)",
-            "border": "rgba(79,70,229,.18)",
+            "bgFrom": "color-mix(in srgb, #f3f7fb 88%, #4f46e5)",
+            "bgTo": "color-mix(in srgb, #eef2f7 88%, #0f766e)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.66) 70%, #f3f7fb)",
+            "border": "color-mix(in srgb, rgba(79,70,229,.18) 82%, #4f46e5)",
             "text": "#102033",
             "accent": "#4f46e5"
           },
@@ -49,10 +49,10 @@ export const FAMILIES = {
         "description": "Teal and slate glass for calm operations tools.",
         "palette": {
           "light": {
-            "bgFrom": "#f0faf8",
-            "bgTo": "#f5f8fb",
-            "panel": "rgba(255,255,255,.68)",
-            "border": "rgba(15,118,110,.2)",
+            "bgFrom": "color-mix(in srgb, #f0faf8 88%, #0f766e)",
+            "bgTo": "color-mix(in srgb, #f5f8fb 88%, #0284c7)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.68) 70%, #f0faf8)",
+            "border": "color-mix(in srgb, rgba(15,118,110,.2) 82%, #0f766e)",
             "text": "#07333a",
             "accent": "#0f766e"
           },
@@ -73,10 +73,10 @@ export const FAMILIES = {
         "description": "Cobalt and amber glass for operational dashboards.",
         "palette": {
           "light": {
-            "bgFrom": "#eef4ff",
-            "bgTo": "#fff8ea",
-            "panel": "rgba(255,255,255,.68)",
-            "border": "rgba(37,99,235,.22)",
+            "bgFrom": "color-mix(in srgb, #eef4ff 88%, #2563eb)",
+            "bgTo": "color-mix(in srgb, #fff8ea 88%, #d97706)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.68) 70%, #eef4ff)",
+            "border": "color-mix(in srgb, rgba(37,99,235,.22) 82%, #2563eb)",
             "text": "#12213d",
             "accent": "#2563eb"
           },
@@ -97,10 +97,10 @@ export const FAMILIES = {
         "description": "Charcoal glass with restrained ruby and copper accents.",
         "palette": {
           "light": {
-            "bgFrom": "#f8f4f3",
-            "bgTo": "#f6f7f9",
-            "panel": "rgba(255,255,255,.72)",
-            "border": "rgba(190,18,60,.18)",
+            "bgFrom": "color-mix(in srgb, #f8f4f3 88%, #be123c)",
+            "bgTo": "color-mix(in srgb, #f6f7f9 88%, #b45309)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.72) 70%, #f8f4f3)",
+            "border": "color-mix(in srgb, rgba(190,18,60,.18) 82%, #be123c)",
             "text": "#221316",
             "accent": "#be123c"
           },
@@ -135,10 +135,10 @@ export const FAMILIES = {
         "description": "Blue-white frost for focused utility apps.",
         "palette": {
           "light": {
-            "bgFrom": "#eef8ff",
-            "bgTo": "#f8fcff",
-            "panel": "rgba(255,255,255,.68)",
-            "border": "rgba(14,165,233,.22)",
+            "bgFrom": "color-mix(in srgb, #eef8ff 88%, #0284c7)",
+            "bgTo": "color-mix(in srgb, #f8fcff 88%, #7dd3fc)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.68) 70%, #eef8ff)",
+            "border": "color-mix(in srgb, rgba(14,165,233,.22) 82%, #0284c7)",
             "text": "#082f49",
             "accent": "#0284c7"
           },
@@ -159,10 +159,10 @@ export const FAMILIES = {
         "description": "Muted rose frost for polished editorial workflows.",
         "palette": {
           "light": {
-            "bgFrom": "#fbf5f7",
-            "bgTo": "#f8f3ef",
-            "panel": "rgba(255,255,255,.72)",
-            "border": "rgba(190,18,60,.16)",
+            "bgFrom": "color-mix(in srgb, #fbf5f7 88%, #be123c)",
+            "bgTo": "color-mix(in srgb, #f8f3ef 88%, #9f6b76)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.72) 70%, #fbf5f7)",
+            "border": "color-mix(in srgb, rgba(190,18,60,.16) 82%, #be123c)",
             "text": "#3a1d27",
             "accent": "#be123c"
           },
@@ -183,10 +183,10 @@ export const FAMILIES = {
         "description": "Calm green frost for finance, wellness, and notes.",
         "palette": {
           "light": {
-            "bgFrom": "#f2faf5",
-            "bgTo": "#eef8f6",
-            "panel": "rgba(255,255,255,.72)",
-            "border": "rgba(15,118,110,.18)",
+            "bgFrom": "color-mix(in srgb, #f2faf5 88%, #0f766e)",
+            "bgTo": "color-mix(in srgb, #eef8f6 88%, #047857)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.72) 70%, #f2faf5)",
+            "border": "color-mix(in srgb, rgba(15,118,110,.18) 82%, #0f766e)",
             "text": "#0b3224",
             "accent": "#0f766e"
           },
@@ -207,10 +207,10 @@ export const FAMILIES = {
         "description": "Restrained violet frost for AI and knowledge work.",
         "palette": {
           "light": {
-            "bgFrom": "#f5f3fb",
-            "bgTo": "#f7f5fa",
-            "panel": "rgba(255,255,255,.7)",
-            "border": "rgba(109,40,217,.18)",
+            "bgFrom": "color-mix(in srgb, #f5f3fb 88%, #6d28d9)",
+            "bgTo": "color-mix(in srgb, #f7f5fa 88%, #64748b)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.7) 70%, #f5f3fb)",
+            "border": "color-mix(in srgb, rgba(109,40,217,.18) 82%, #6d28d9)",
             "text": "#25163a",
             "accent": "#6d28d9"
           },
@@ -245,10 +245,10 @@ export const FAMILIES = {
         "description": "Clean ivory research surfaces with ink-blue accents.",
         "palette": {
           "light": {
-            "bgFrom": "#f8fafc",
-            "bgTo": "#f3f6fb",
-            "panel": "#ffffff",
-            "border": "#d3dce8",
+            "bgFrom": "color-mix(in srgb, #f8fafc 88%, #2563eb)",
+            "bgTo": "color-mix(in srgb, #f3f6fb 88%, #64748b)",
+            "panel": "color-mix(in srgb, #ffffff 70%, #f8fafc)",
+            "border": "color-mix(in srgb, #d3dce8 82%, #2563eb)",
             "text": "#111827",
             "accent": "#2563eb"
           },
@@ -269,10 +269,10 @@ export const FAMILIES = {
         "description": "Deep blue knowledge-work surfaces for serious research tools.",
         "palette": {
           "light": {
-            "bgFrom": "#f7fbff",
-            "bgTo": "#edf4ff",
-            "panel": "#ffffff",
-            "border": "#bfcee5",
+            "bgFrom": "color-mix(in srgb, #f7fbff 88%, #1e40af)",
+            "bgTo": "color-mix(in srgb, #edf4ff 88%, #0f766e)",
+            "panel": "color-mix(in srgb, #ffffff 70%, #f7fbff)",
+            "border": "color-mix(in srgb, #bfcee5 82%, #1e40af)",
             "text": "#102033",
             "accent": "#1e40af"
           },
@@ -293,10 +293,10 @@ export const FAMILIES = {
         "description": "Cool gray reference surfaces for documentation and specs.",
         "palette": {
           "light": {
-            "bgFrom": "#f8fafc",
-            "bgTo": "#eef2f7",
-            "panel": "#ffffff",
-            "border": "#cbd5e1",
+            "bgFrom": "color-mix(in srgb, #f8fafc 88%, #475569)",
+            "bgTo": "color-mix(in srgb, #eef2f7 88%, #0ea5e9)",
+            "panel": "color-mix(in srgb, #ffffff 70%, #f8fafc)",
+            "border": "color-mix(in srgb, #cbd5e1 82%, #475569)",
             "text": "#111827",
             "accent": "#475569"
           },
@@ -317,10 +317,10 @@ export const FAMILIES = {
         "description": "Warm neutral study mode with restrained amber accents.",
         "palette": {
           "light": {
-            "bgFrom": "#faf8f5",
-            "bgTo": "#f2eee8",
-            "panel": "#ffffff",
-            "border": "#d8d0c6",
+            "bgFrom": "color-mix(in srgb, #faf8f5 88%, #a16207)",
+            "bgTo": "color-mix(in srgb, #f2eee8 88%, #64748b)",
+            "panel": "color-mix(in srgb, #ffffff 70%, #faf8f5)",
+            "border": "color-mix(in srgb, #d8d0c6 82%, #a16207)",
             "text": "#27231d",
             "accent": "#a16207"
           },
@@ -355,10 +355,10 @@ export const FAMILIES = {
         "description": "Graphite desktop chrome with electric blue focus.",
         "palette": {
           "light": {
-            "bgFrom": "#f4f6f8",
-            "bgTo": "#e8edf3",
-            "panel": "rgba(255,255,255,.82)",
-            "border": "rgba(71,85,105,.22)",
+            "bgFrom": "color-mix(in srgb, #f4f6f8 88%, #2563eb)",
+            "bgTo": "color-mix(in srgb, #e8edf3 88%, #0891b2)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.82) 70%, #f4f6f8)",
+            "border": "color-mix(in srgb, rgba(71,85,105,.22) 82%, #2563eb)",
             "text": "#111827",
             "accent": "#2563eb"
           },
@@ -379,10 +379,10 @@ export const FAMILIES = {
         "description": "Cobalt desktop shell for product and admin apps.",
         "palette": {
           "light": {
-            "bgFrom": "#eef5ff",
-            "bgTo": "#f8fbff",
-            "panel": "rgba(255,255,255,.84)",
-            "border": "rgba(59,130,246,.2)",
+            "bgFrom": "color-mix(in srgb, #eef5ff 88%, #1d4ed8)",
+            "bgTo": "color-mix(in srgb, #f8fbff 88%, #0ea5e9)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.84) 70%, #eef5ff)",
+            "border": "color-mix(in srgb, rgba(59,130,246,.2) 82%, #1d4ed8)",
             "text": "#10213f",
             "accent": "#1d4ed8"
           },
@@ -403,10 +403,10 @@ export const FAMILIES = {
         "description": "Violet command-center chrome with luminous accents.",
         "palette": {
           "light": {
-            "bgFrom": "#f4f0ff",
-            "bgTo": "#fff4fb",
-            "panel": "rgba(255,255,255,.78)",
-            "border": "rgba(147,51,234,.24)",
+            "bgFrom": "color-mix(in srgb, #f4f0ff 88%, #9333ea)",
+            "bgTo": "color-mix(in srgb, #fff4fb 88%, #db2777)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.78) 70%, #f4f0ff)",
+            "border": "color-mix(in srgb, rgba(147,51,234,.24) 82%, #9333ea)",
             "text": "#241239",
             "accent": "#9333ea"
           },
@@ -427,10 +427,10 @@ export const FAMILIES = {
         "description": "Muted green desktop shell for workbench and maker tools.",
         "palette": {
           "light": {
-            "bgFrom": "#f4f7ed",
-            "bgTo": "#eef5e8",
-            "panel": "rgba(255,255,255,.82)",
-            "border": "rgba(101,163,13,.22)",
+            "bgFrom": "color-mix(in srgb, #f4f7ed 88%, #4d7c0f)",
+            "bgTo": "color-mix(in srgb, #eef5e8 88%, #0f766e)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.82) 70%, #f4f7ed)",
+            "border": "color-mix(in srgb, rgba(101,163,13,.22) 82%, #4d7c0f)",
             "text": "#1f2a12",
             "accent": "#4d7c0f"
           },
@@ -465,10 +465,10 @@ export const FAMILIES = {
         "description": "Navy, steel, and white for executive dashboards.",
         "palette": {
           "light": {
-            "bgFrom": "#f6f8fb",
-            "bgTo": "#edf2f7",
-            "panel": "rgba(255,255,255,.86)",
-            "border": "rgba(71,85,105,.2)",
+            "bgFrom": "color-mix(in srgb, #f6f8fb 88%, #1d4ed8)",
+            "bgTo": "color-mix(in srgb, #edf2f7 88%, #334155)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.86) 70%, #f6f8fb)",
+            "border": "color-mix(in srgb, rgba(71,85,105,.2) 82%, #1d4ed8)",
             "text": "#111827",
             "accent": "#1d4ed8"
           },
@@ -489,10 +489,10 @@ export const FAMILIES = {
         "description": "Blue-gray corporate SaaS surfaces with a clean cyan signal.",
         "palette": {
           "light": {
-            "bgFrom": "#f7fbff",
-            "bgTo": "#eef6fb",
-            "panel": "rgba(255,255,255,.86)",
-            "border": "rgba(14,116,144,.18)",
+            "bgFrom": "color-mix(in srgb, #f7fbff 88%, #0369a1)",
+            "bgTo": "color-mix(in srgb, #eef6fb 88%, #0f766e)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.86) 70%, #f7fbff)",
+            "border": "color-mix(in srgb, rgba(14,116,144,.18) 82%, #0369a1)",
             "text": "#0f2333",
             "accent": "#0369a1"
           },
@@ -513,10 +513,10 @@ export const FAMILIES = {
         "description": "Neutral graphite with a discreet violet accent for premium tools.",
         "palette": {
           "light": {
-            "bgFrom": "#f8f8fa",
-            "bgTo": "#eff1f5",
-            "panel": "rgba(255,255,255,.86)",
-            "border": "rgba(82,82,91,.18)",
+            "bgFrom": "color-mix(in srgb, #f8f8fa 88%, #6d28d9)",
+            "bgTo": "color-mix(in srgb, #eff1f5 88%, #475569)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.86) 70%, #f8f8fa)",
+            "border": "color-mix(in srgb, rgba(82,82,91,.18) 82%, #6d28d9)",
             "text": "#18181b",
             "accent": "#6d28d9"
           },
@@ -537,10 +537,10 @@ export const FAMILIES = {
         "description": "Slate and deep green for finance, ops, and business intelligence.",
         "palette": {
           "light": {
-            "bgFrom": "#f7faf8",
-            "bgTo": "#edf5f0",
-            "panel": "rgba(255,255,255,.86)",
-            "border": "rgba(5,150,105,.2)",
+            "bgFrom": "color-mix(in srgb, #f7faf8 88%, #047857)",
+            "bgTo": "color-mix(in srgb, #edf5f0 88%, #0f766e)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.86) 70%, #f7faf8)",
+            "border": "color-mix(in srgb, rgba(5,150,105,.2) 82%, #047857)",
             "text": "#10231b",
             "accent": "#047857"
           },
@@ -575,10 +575,10 @@ export const FAMILIES = {
         "description": "Global enterprise blue-gray for serious SaaS products.",
         "palette": {
           "light": {
-            "bgFrom": "#f8fafc",
-            "bgTo": "#eef2f6",
-            "panel": "#ffffff",
-            "border": "#cbd5e1",
+            "bgFrom": "color-mix(in srgb, #f8fafc 88%, #1d4ed8)",
+            "bgTo": "color-mix(in srgb, #eef2f6 88%, #475569)",
+            "panel": "color-mix(in srgb, #ffffff 70%, #f8fafc)",
+            "border": "color-mix(in srgb, #cbd5e1 82%, #1d4ed8)",
             "text": "#111827",
             "accent": "#1d4ed8"
           },
@@ -599,10 +599,10 @@ export const FAMILIES = {
         "description": "Graphite and green for finance, accounting, and BI.",
         "palette": {
           "light": {
-            "bgFrom": "#f8faf9",
-            "bgTo": "#eef4f1",
-            "panel": "#ffffff",
-            "border": "#cbd8d1",
+            "bgFrom": "color-mix(in srgb, #f8faf9 88%, #047857)",
+            "bgTo": "color-mix(in srgb, #eef4f1 88%, #334155)",
+            "panel": "color-mix(in srgb, #ffffff 70%, #f8faf9)",
+            "border": "color-mix(in srgb, #cbd8d1 82%, #047857)",
             "text": "#10231b",
             "accent": "#047857"
           },
@@ -623,10 +623,10 @@ export const FAMILIES = {
         "description": "Warm charcoal and restrained amber for leadership tools.",
         "palette": {
           "light": {
-            "bgFrom": "#faf9f7",
-            "bgTo": "#f0ede8",
-            "panel": "#ffffff",
-            "border": "#d6d3d1",
+            "bgFrom": "color-mix(in srgb, #faf9f7 88%, #b45309)",
+            "bgTo": "color-mix(in srgb, #f0ede8 88%, #44403c)",
+            "panel": "color-mix(in srgb, #ffffff 70%, #faf9f7)",
+            "border": "color-mix(in srgb, #d6d3d1 82%, #b45309)",
             "text": "#1c1917",
             "accent": "#b45309"
           },
@@ -647,10 +647,10 @@ export const FAMILIES = {
         "description": "Steel blue and slate for operational platforms.",
         "palette": {
           "light": {
-            "bgFrom": "#f7fbfd",
-            "bgTo": "#edf5f8",
-            "panel": "#ffffff",
-            "border": "#c6d8de",
+            "bgFrom": "color-mix(in srgb, #f7fbfd 88%, #0f766e)",
+            "bgTo": "color-mix(in srgb, #edf5f8 88%, #0369a1)",
+            "panel": "color-mix(in srgb, #ffffff 70%, #f7fbfd)",
+            "border": "color-mix(in srgb, #c6d8de 82%, #0f766e)",
             "text": "#102a33",
             "accent": "#0f766e"
           },
@@ -685,10 +685,10 @@ export const FAMILIES = {
         "description": "Silver frost with blue executive accents.",
         "palette": {
           "light": {
-            "bgFrom": "#f6f8fb",
-            "bgTo": "#eef3f8",
-            "panel": "rgba(255,255,255,.68)",
-            "border": "rgba(148,163,184,.24)",
+            "bgFrom": "color-mix(in srgb, #f6f8fb 88%, #2563eb)",
+            "bgTo": "color-mix(in srgb, #eef3f8 88%, #64748b)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.68) 70%, #f6f8fb)",
+            "border": "color-mix(in srgb, rgba(148,163,184,.24) 82%, #2563eb)",
             "text": "#111827",
             "accent": "#2563eb"
           },
@@ -709,10 +709,10 @@ export const FAMILIES = {
         "description": "Crisp blue frosted glass for professional SaaS.",
         "palette": {
           "light": {
-            "bgFrom": "#f0f7fc",
-            "bgTo": "#f7fbff",
-            "panel": "rgba(255,255,255,.7)",
-            "border": "rgba(14,116,144,.18)",
+            "bgFrom": "color-mix(in srgb, #f0f7fc 88%, #0369a1)",
+            "bgTo": "color-mix(in srgb, #f7fbff 88%, #64748b)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.7) 70%, #f0f7fc)",
+            "border": "color-mix(in srgb, rgba(14,116,144,.18) 82%, #0369a1)",
             "text": "#0c2233",
             "accent": "#0369a1"
           },
@@ -733,10 +733,10 @@ export const FAMILIES = {
         "description": "Green-tinted executive frost for finance and ops.",
         "palette": {
           "light": {
-            "bgFrom": "#f0fbf6",
-            "bgTo": "#f8fffb",
-            "panel": "rgba(255,255,255,.68)",
-            "border": "rgba(16,185,129,.22)",
+            "bgFrom": "color-mix(in srgb, #f0fbf6 88%, #059669)",
+            "bgTo": "color-mix(in srgb, #f8fffb 88%, #0f766e)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.68) 70%, #f0fbf6)",
+            "border": "color-mix(in srgb, rgba(16,185,129,.22) 82%, #059669)",
             "text": "#0d2b20",
             "accent": "#059669"
           },
@@ -757,10 +757,10 @@ export const FAMILIES = {
         "description": "Subtle violet frost for premium internal tools.",
         "palette": {
           "light": {
-            "bgFrom": "#f6f4fb",
-            "bgTo": "#fbfaff",
-            "panel": "rgba(255,255,255,.7)",
-            "border": "rgba(109,40,217,.16)",
+            "bgFrom": "color-mix(in srgb, #f6f4fb 88%, #6d28d9)",
+            "bgTo": "color-mix(in srgb, #fbfaff 88%, #64748b)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.7) 70%, #f6f4fb)",
+            "border": "color-mix(in srgb, rgba(109,40,217,.16) 82%, #6d28d9)",
             "text": "#21163a",
             "accent": "#6d28d9"
           },
@@ -795,10 +795,10 @@ export const FAMILIES = {
         "description": "macOS-style sidebar translucency, unified toolbar, system blue, and soft window depth.",
         "palette": {
           "light": {
-            "bgFrom": "#f5f5f7",
-            "bgTo": "#eceef2",
-            "panel": "rgba(255,255,255,.66)",
-            "border": "rgba(60,60,67,.18)",
+            "bgFrom": "color-mix(in srgb, #f5f5f7 88%, #007aff)",
+            "bgTo": "color-mix(in srgb, #eceef2 88%, #5e5ce6)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.66) 70%, #f5f5f7)",
+            "border": "color-mix(in srgb, rgba(60,60,67,.18) 82%, #007aff)",
             "text": "#1d1d1f",
             "accent": "#007aff"
           },
@@ -819,10 +819,10 @@ export const FAMILIES = {
         "description": "Windows 11-style Mica/Acrylic feel with Segoe UI, rounded command surfaces, and Fluent blue.",
         "palette": {
           "light": {
-            "bgFrom": "#f3f6fb",
-            "bgTo": "#eef3f8",
-            "panel": "rgba(255,255,255,.78)",
-            "border": "rgba(120,120,120,.2)",
+            "bgFrom": "color-mix(in srgb, #f3f6fb 88%, #0067c0)",
+            "bgTo": "color-mix(in srgb, #eef3f8 88%, #2563eb)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.78) 70%, #f3f6fb)",
+            "border": "color-mix(in srgb, rgba(120,120,120,.2) 82%, #0067c0)",
             "text": "#1a1a1a",
             "accent": "#0067c0"
           },
@@ -857,10 +857,10 @@ export const FAMILIES = {
         "description": "Muted plum mobile surfaces for premium productivity apps.",
         "palette": {
           "light": {
-            "bgFrom": "#f7f6fa",
-            "bgTo": "#f2f4f8",
-            "panel": "rgba(255,255,255,.76)",
-            "border": "rgba(91,63,122,.16)",
+            "bgFrom": "color-mix(in srgb, #f7f6fa 88%, #5b3f7a)",
+            "bgTo": "color-mix(in srgb, #f2f4f8 88%, #475569)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.76) 70%, #f7f6fa)",
+            "border": "color-mix(in srgb, rgba(91,63,122,.16) 82%, #5b3f7a)",
             "text": "#2c2434",
             "accent": "#5b3f7a"
           },
@@ -881,10 +881,10 @@ export const FAMILIES = {
         "description": "Professional green mobile theme with readable dark mode.",
         "palette": {
           "light": {
-            "bgFrom": "#f2faf5",
-            "bgTo": "#eef8f6",
-            "panel": "rgba(255,255,255,.74)",
-            "border": "rgba(15,118,110,.18)",
+            "bgFrom": "color-mix(in srgb, #f2faf5 88%, #0f766e)",
+            "bgTo": "color-mix(in srgb, #eef8f6 88%, #047857)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.74) 70%, #f2faf5)",
+            "border": "color-mix(in srgb, rgba(15,118,110,.18) 82%, #0f766e)",
             "text": "#0b3224",
             "accent": "#0f766e"
           },
@@ -905,10 +905,10 @@ export const FAMILIES = {
         "description": "Warm neutral mobile surfaces for planning and service apps.",
         "palette": {
           "light": {
-            "bgFrom": "#faf7f2",
-            "bgTo": "#f8f3ef",
-            "panel": "rgba(255,255,255,.78)",
-            "border": "rgba(180,83,9,.18)",
+            "bgFrom": "color-mix(in srgb, #faf7f2 88%, #b45309)",
+            "bgTo": "color-mix(in srgb, #f8f3ef 88%, #64748b)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.78) 70%, #faf7f2)",
+            "border": "color-mix(in srgb, rgba(180,83,9,.18) 82%, #b45309)",
             "text": "#3a2515",
             "accent": "#b45309"
           },
@@ -929,10 +929,10 @@ export const FAMILIES = {
         "description": "Blue-green touch surfaces for field and logistics apps.",
         "palette": {
           "light": {
-            "bgFrom": "#f0f8fb",
-            "bgTo": "#eef8f6",
-            "panel": "rgba(255,255,255,.74)",
-            "border": "rgba(14,116,144,.18)",
+            "bgFrom": "color-mix(in srgb, #f0f8fb 88%, #0369a1)",
+            "bgTo": "color-mix(in srgb, #eef8f6 88%, #0f766e)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.74) 70%, #f0f8fb)",
+            "border": "color-mix(in srgb, rgba(14,116,144,.18) 82%, #0369a1)",
             "text": "#073349",
             "accent": "#0369a1"
           },
@@ -967,10 +967,10 @@ export const FAMILIES = {
         "description": "Blue command surfaces for developer tools.",
         "palette": {
           "light": {
-            "bgFrom": "#f8fbfd",
-            "bgTo": "#eef6fa",
-            "panel": "rgba(255,255,255,.86)",
-            "border": "rgba(14,116,144,.18)",
+            "bgFrom": "color-mix(in srgb, #f8fbfd 88%, #0e7490)",
+            "bgTo": "color-mix(in srgb, #eef6fa 88%, #2563eb)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.86) 70%, #f8fbfd)",
+            "border": "color-mix(in srgb, rgba(14,116,144,.18) 82%, #0e7490)",
             "text": "#0b2330",
             "accent": "#0e7490"
           },
@@ -991,10 +991,10 @@ export const FAMILIES = {
         "description": "Olive signal tools for monitoring and automation.",
         "palette": {
           "light": {
-            "bgFrom": "#fafcf7",
-            "bgTo": "#f3f7ed",
-            "panel": "rgba(255,255,255,.86)",
-            "border": "rgba(101,163,13,.18)",
+            "bgFrom": "color-mix(in srgb, #fafcf7 88%, #4d7c0f)",
+            "bgTo": "color-mix(in srgb, #f3f7ed 88%, #0f766e)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.86) 70%, #fafcf7)",
+            "border": "color-mix(in srgb, rgba(101,163,13,.18) 82%, #4d7c0f)",
             "text": "#1d2b0f",
             "accent": "#4d7c0f"
           },
@@ -1015,10 +1015,10 @@ export const FAMILIES = {
         "description": "Restrained burgundy command surfaces for technical creative apps.",
         "palette": {
           "light": {
-            "bgFrom": "#faf7f8",
-            "bgTo": "#f5f2f4",
-            "panel": "rgba(255,255,255,.86)",
-            "border": "rgba(127,29,29,.18)",
+            "bgFrom": "color-mix(in srgb, #faf7f8 88%, #7f1d1d)",
+            "bgTo": "color-mix(in srgb, #f5f2f4 88%, #475569)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.86) 70%, #faf7f8)",
+            "border": "color-mix(in srgb, rgba(127,29,29,.18) 82%, #7f1d1d)",
             "text": "#2f171a",
             "accent": "#7f1d1d"
           },
@@ -1039,10 +1039,10 @@ export const FAMILIES = {
         "description": "Restrained amber terminal warmth for ops tools.",
         "palette": {
           "light": {
-            "bgFrom": "#faf7f0",
-            "bgTo": "#f7f2ea",
-            "panel": "rgba(255,255,255,.86)",
-            "border": "rgba(180,83,9,.18)",
+            "bgFrom": "color-mix(in srgb, #faf7f0 88%, #b45309)",
+            "bgTo": "color-mix(in srgb, #f7f2ea 88%, #475569)",
+            "panel": "color-mix(in srgb, rgba(255,255,255,.86) 70%, #faf7f0)",
+            "border": "color-mix(in srgb, rgba(180,83,9,.18) 82%, #b45309)",
             "text": "#351c09",
             "accent": "#b45309"
           },

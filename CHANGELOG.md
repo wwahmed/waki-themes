@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.2.4 (2026-05-23)
+
+### Light mode surface tinting
+
+Improves light mode across the generated catalog so themes no longer read as mostly white surfaces with different accent colors:
+
+- Adds a shared non-white light-palette normalization pass that gently tints page backgrounds, panels, elevated panels, borders, shadows, and ambient blobs from each theme's own hue direction.
+- Preserves every existing theme id and family/variant structure while making light mode surface tiers easier to scan.
+- Keeps the treatment restrained for professional use: light themes gain tasteful color gradation and panel separation without becoming loud or decorative.
+
 ## v1.2.3 (2026-05-23)
 
 ### Professional color audit

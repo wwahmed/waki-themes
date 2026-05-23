@@ -999,7 +999,42 @@ function palette(bg1, bg2, bg3, accent, accent2, text, muted, panel, panel2, pan
 }
 
 function colorway(slot, name, description, modes, tokens = {}) {
-  return { slot, name, description, modes, tokens };
+  return {
+    slot,
+    name,
+    description,
+    modes: {
+      ...modes,
+      light: nonWhiteLightPalette(modes.light),
+    },
+    tokens,
+  };
+}
+
+function mix(primary, primaryPercent, secondary) {
+  return `color-mix(in srgb, ${primary} ${primaryPercent}%, ${secondary})`;
+}
+
+function nonWhiteLightPalette(p) {
+  const panel = mix(p.panel, 70, p.bg1);
+  const panel2 = mix(p.panel2, 76, p.bg2);
+  const panel3Base = mix(p.panel3, 74, p.bg1);
+
+  return {
+    ...p,
+    bg1: mix(p.bg1, 88, p.accent),
+    bg2: mix(p.bg2, 88, p.accent2),
+    bg3: mix(p.bg3, 76, p.bg1),
+    panel,
+    panel2,
+    panel3: mix(panel3Base, 92, p.accent),
+    border: mix(p.border, 82, p.accent),
+    border2: mix(p.border2, 78, p.accent2),
+    shadow: mix(p.shadow, 84, p.accent),
+    blob1: mix(p.blob1, 82, p.accent),
+    blob2: mix(p.blob2, 82, p.accent2),
+    blob3: mix(p.blob3, 86, p.bg2),
+  };
 }
 
 function modeVars(mode, variant) {

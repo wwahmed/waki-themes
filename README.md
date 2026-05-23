@@ -4,7 +4,7 @@ Shared theme catalog for Waki apps. The repo publishes a versioned bundle of CSS
 
 ## Current Catalog
 
-The v1.2.3 catalog is organized by **material family** first and **hue variant** second. Variants inside a family usually share the same geometry, blur, density, typography, shadows, and hover behavior; the suffix tells you the colorway. The `System` family intentionally lets Mac and Windows differ structurally to better echo native OS conventions.
+The v1.2.4 catalog is organized by **material family** first and **hue variant** second. Variants inside a family usually share the same geometry, blur, density, typography, shadows, and hover behavior; the suffix tells you the colorway. The `System` family intentionally lets Mac and Windows differ structurally to better echo native OS conventions.
 
 | Family | Variants |
 |---|---|
@@ -55,7 +55,7 @@ Schema:
 ```json
 {
   "schemaVersion": 1,
-  "pkgVersion": "1.2.3",
+  "pkgVersion": "1.2.4",
   "gitSha": "...",
   "builtAt": "...",
   "base": "...",

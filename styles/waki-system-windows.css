@@ -27,24 +27,24 @@
   --waki-mobile-extra-radius: 0px;
   --waki-font-body: "Segoe UI Variable Text", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
   --waki-font-display: "Segoe UI Variable Display", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
-  --waki-bg-1: #f3f6fb;
-  --waki-bg-2: #eef3f8;
-  --waki-bg-3: #ffffff;
-  --waki-blob-1: rgba(0,103,192,.1);
-  --waki-blob-2: rgba(37,99,235,.07);
-  --waki-blob-3: rgba(148,163,184,.08);
-  --waki-panel: rgba(255,255,255,.78);
-  --waki-panel-2: rgba(255,255,255,.92);
-  --waki-panel-3: rgba(243,246,250,.86);
-  --waki-bar: rgba(255,255,255,.92);
-  --waki-border: rgba(120,120,120,.2);
-  --waki-border-2: rgba(0,103,192,.24);
+  --waki-bg-1: color-mix(in srgb, #f3f6fb 88%, #0067c0);
+  --waki-bg-2: color-mix(in srgb, #eef3f8 88%, #2563eb);
+  --waki-bg-3: color-mix(in srgb, #ffffff 76%, #f3f6fb);
+  --waki-blob-1: color-mix(in srgb, rgba(0,103,192,.1) 82%, #0067c0);
+  --waki-blob-2: color-mix(in srgb, rgba(37,99,235,.07) 82%, #2563eb);
+  --waki-blob-3: color-mix(in srgb, rgba(148,163,184,.08) 86%, #eef3f8);
+  --waki-panel: color-mix(in srgb, rgba(255,255,255,.78) 70%, #f3f6fb);
+  --waki-panel-2: color-mix(in srgb, rgba(255,255,255,.92) 76%, #eef3f8);
+  --waki-panel-3: color-mix(in srgb, color-mix(in srgb, rgba(243,246,250,.86) 74%, #f3f6fb) 92%, #0067c0);
+  --waki-bar: color-mix(in srgb, rgba(255,255,255,.92) 76%, #eef3f8);
+  --waki-border: color-mix(in srgb, rgba(120,120,120,.2) 82%, #0067c0);
+  --waki-border-2: color-mix(in srgb, rgba(0,103,192,.24) 78%, #2563eb);
   --waki-text: #1a1a1a;
   --waki-muted: #5f646b;
   --waki-accent: #0067c0;
   --waki-accent-2: #2563eb;
   --waki-focus: color-mix(in srgb, #0067c0 24%, transparent);
-  --waki-shadow: rgba(0,0,0,.12);
+  --waki-shadow: color-mix(in srgb, rgba(0,0,0,.12) 84%, #0067c0);
 }
 html.dark {
 
