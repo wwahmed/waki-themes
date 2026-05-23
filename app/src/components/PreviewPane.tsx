@@ -1,4 +1,4 @@
-import { Edit3, Copy, Download, Moon, Sun } from "lucide-react";
+import { Copy, Download, Edit3, Eye, Info, Moon, SlidersHorizontal, Sun } from "lucide-react";
 import { MINIATURE_HTML, PREVIEW_HTML } from "../lib/sample";
 import { PreviewFrame } from "./PreviewFrame";
 import type { StudioTheme } from "../lib/types";
@@ -37,17 +37,31 @@ export function PreviewPane({
   };
 
   return (
-    <div className="studio-panel overflow-hidden flex flex-col h-[calc(100vh-92px)]">
-      <div className="flex items-center justify-between gap-3 px-4 py-3 border-b border-violet-500/15 flex-wrap">
-        <div className="min-w-0">
-          <div className="flex items-center gap-2">
-            <h2 className="font-bold text-base truncate">{theme.name}</h2>
+    <div className="theme-viewer">
+      <div className="theme-viewer-top">
+        <section className="viewer-meta-panel" aria-label="Theme metadata">
+          <div className="viewer-section-label">
+            <Info className="w-3.5 h-3.5" />
+            Theme metadata
+          </div>
+          <div className="viewer-title-row">
+            <h2>{theme.name}</h2>
             <span className="studio-chip">{theme.vibe}</span>
             {!theme.builtIn && <span className="studio-chip">custom</span>}
           </div>
-          <div className="text-xs opacity-65 truncate">{theme.description}</div>
-        </div>
-        <div className="flex items-center gap-1.5 flex-wrap">
+          <p className="viewer-description">{theme.description}</p>
+          <div className="viewer-meta-grid">
+            <MetaItem label="Family" value={theme.familyName ?? theme.vibe} />
+            <MetaItem label="Variant" value={theme.variantName ?? "Custom"} />
+            <MetaItem label="Theme ID" value={theme.id} />
+          </div>
+        </section>
+
+        <section className="viewer-control-panel" aria-label="Viewer controls">
+          <div className="viewer-section-label">
+            <SlidersHorizontal className="w-3.5 h-3.5" />
+            Viewer controls
+          </div>
           <LookSwitch
             theme={theme}
             themes={themes}
@@ -55,29 +69,55 @@ export function PreviewPane({
             onThemeChange={onThemeChange}
             onModeChange={onModeChange}
           />
-          <span className="w-px h-5 bg-violet-500/20 mx-1" />
-          <button onClick={copyEmbed} className="studio-button text-xs" title="Copy embed snippet">
-            <Copy className="w-3.5 h-3.5" />
-            Embed
-          </button>
-          <button onClick={downloadCss} className="studio-button text-xs" title="Download CSS">
-            <Download className="w-3.5 h-3.5" />
-            CSS
-          </button>
-          <button onClick={onEdit} className="studio-button studio-button-primary text-xs">
-            <Edit3 className="w-3.5 h-3.5" />
-            Edit
-          </button>
-        </div>
+          <div className="viewer-action-row">
+            <button onClick={copyEmbed} className="studio-button text-xs" title="Copy embed snippet">
+              <Copy className="w-3.5 h-3.5" />
+              Embed
+            </button>
+            <button
+              onClick={downloadCss}
+              className="studio-button text-xs"
+              title="Download theme CSS"
+            >
+              <Download className="w-3.5 h-3.5" />
+              CSS
+            </button>
+            <button onClick={onEdit} className="studio-button studio-button-primary text-xs">
+              <Edit3 className="w-3.5 h-3.5" />
+              Edit
+            </button>
+          </div>
+        </section>
       </div>
-      <div className="flex-1">
+
+      <section className="viewer-preview-panel" aria-label="Preview content">
+        <div className="viewer-preview-toolbar">
+          <div>
+            <div className="viewer-section-label">
+              <Eye className="w-3.5 h-3.5" />
+              Preview content
+            </div>
+            <p>{theme.name} rendered in the shared Waki sample app.</p>
+          </div>
+          <span className="viewer-mode-pill">{mode === "dark" ? "Dark" : "Light"} mode</span>
+        </div>
         <PreviewFrame
           baseCss={theme.baseCss}
           html={PREVIEW_HTML}
           mode={mode}
+          className="viewer-preview-frame"
           ariaLabel={`Live preview of ${theme.name}`}
         />
-      </div>
+      </section>
+    </div>
+  );
+}
+
+function MetaItem({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="viewer-meta-item">
+      <span>{label}</span>
+      <strong title={value}>{value}</strong>
     </div>
   );
 }
@@ -107,7 +147,7 @@ function LookSwitch({
         />
       </div>
       <label className="look-switch-select">
-        <span>Look</span>
+        <span>Theme</span>
         <select value={theme.id} onChange={(event) => onThemeChange(event.target.value)}>
           {themes.map((candidate) => (
             <option key={candidate.id} value={candidate.id}>
