@@ -25,7 +25,7 @@ const materials = {
     description: "Luminous translucent app chrome with crisp layered depth. Best for polished dashboards and creative tools.",
     structure: {
       radius: 20,
-      blur: 26,
+      blur: 30,
       shadow: "luminous-glass",
       surface: "translucent",
       iconography: "regular",
@@ -33,37 +33,93 @@ const materials = {
     },
     tokens: {
       radius: 20,
-      blur: 26,
+      blur: 30,
       density: "0.58rem 0.88rem",
       hover: "-4px",
       elevatedHover: "-5px",
       navShift: "2px",
       borderWidth: "1px",
-      saturation: "210%",
-      elevatedSaturation: "235%",
-      sidebarBlend: "84%",
-      mainBlend: "62%",
+      saturation: "245%",
+      elevatedSaturation: "275%",
+      sidebarBlend: "76%",
+      mainBlend: "50%",
       mobileExtra: 6,
       buttonRadius: "calc(var(--waki-radius-sm) + 2px)",
       fontBody: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       fontDisplay: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
-      shadow: "0 22px 58px var(--waki-shadow), 0 0 36px color-mix(in srgb, var(--waki-accent) 18%, transparent)",
-      elevatedShadow: "0 36px 96px var(--waki-shadow), 0 0 50px color-mix(in srgb, var(--waki-accent-2) 20%, transparent), inset 0 1px 0 rgba(255,255,255,.28)",
-      panelInset: "inset 0 1px 0 rgba(255,255,255,.24), 0 10px 28px rgba(0,0,0,.08)",
-      bodyOverlay: "radial-gradient(circle at 52% 18%, color-mix(in srgb, var(--waki-accent) 12%, transparent), transparent 30%),",
+      shadow: "0 24px 70px var(--waki-shadow), 0 0 44px color-mix(in srgb, var(--waki-accent) 22%, transparent), inset 0 1px 0 rgba(255,255,255,.36), inset 0 -1px 0 rgba(255,255,255,.08)",
+      elevatedShadow: "0 42px 120px var(--waki-shadow), 0 0 64px color-mix(in srgb, var(--waki-accent-2) 24%, transparent), inset 0 1px 0 rgba(255,255,255,.42), inset 0 -18px 38px color-mix(in srgb, var(--waki-accent) 8%, transparent)",
+      panelInset: "inset 0 1px 0 rgba(255,255,255,.34), inset 0 0 0 1px rgba(255,255,255,.08), 0 12px 34px rgba(0,0,0,.09)",
+      bodyOverlay: "radial-gradient(circle at 20% 16%, color-mix(in srgb, var(--waki-accent) 18%, transparent), transparent 28%), radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--waki-accent-2) 16%, transparent), transparent 30%), linear-gradient(118deg, transparent 0 27%, color-mix(in srgb, white 12%, transparent) 39%, transparent 53%), linear-gradient(145deg, transparent 0 58%, color-mix(in srgb, var(--waki-accent) 9%, transparent) 72%, transparent 88%),",
       extraCss: `
+.glass,
+.glass-elevated,
+.glass-bar,
+.shell-main,
+.mobile-card,
+.theme-switcher {
+  overflow: hidden;
+  isolation: isolate;
+}
+.glass > *,
+.glass-elevated > *,
+.glass-bar > *,
+.shell-main > *,
+.mobile-card > *,
+.theme-switcher > * {
+  position: relative;
+  z-index: 1;
+}
 .glass::before,
 .glass-elevated::before {
   content: "";
   position: absolute;
   inset: 0;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,255,255,.24), transparent 42%, color-mix(in srgb, var(--waki-accent-2) 12%, transparent));
+  z-index: 0;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.4), rgba(255,255,255,.08) 18%, transparent 44%),
+    linear-gradient(315deg, color-mix(in srgb, var(--waki-accent-2) 18%, transparent), transparent 46%);
+  opacity: .86;
   pointer-events: none;
+}
+.glass::after,
+.glass-elevated::after,
+.glass-bar::after {
+  content: "";
+  position: absolute;
+  inset: -40% -22%;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(ellipse at 26% 8%, rgba(255,255,255,.42), transparent 28%),
+    linear-gradient(106deg, transparent 22%, rgba(255,255,255,.24) 38%, transparent 48% 100%);
+  mix-blend-mode: screen;
+  opacity: .42;
+  transform: translateX(-12%) rotate(-4deg);
+  transition: opacity 180ms ease, transform 220ms ease;
+  pointer-events: none;
+}
+.glass:hover::after,
+.glass-elevated:hover::after {
+  opacity: .64;
+  transform: translateX(0) rotate(-4deg);
+}
+.glass,
+.glass-elevated,
+.glass-bar {
+  border-color: color-mix(in srgb, var(--waki-border) 62%, white);
 }
 .glass-bar,
 .glass-elevated {
-  border-top: 1px solid color-mix(in srgb, white 32%, var(--waki-border));
+  border-top: 1px solid color-mix(in srgb, white 58%, var(--waki-border));
+  box-shadow: var(--waki-elevated-shadow-stack), inset 0 1px 0 rgba(255,255,255,.34);
+}
+.panel-nested {
+  background:
+    linear-gradient(145deg, color-mix(in srgb, var(--waki-panel-2) 54%, transparent), color-mix(in srgb, var(--waki-panel-3) 42%, transparent));
+  border-color: color-mix(in srgb, var(--waki-border-2) 58%, white);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -12px 24px color-mix(in srgb, var(--waki-accent) 7%, transparent), 0 12px 28px color-mix(in srgb, var(--waki-shadow) 38%, transparent);
 }
 `,
     },
@@ -93,7 +149,7 @@ const materials = {
     description: "Soft high-blur frosted panes with misty depth and gentle hover shimmer.",
     structure: {
       radius: 26,
-      blur: 34,
+      blur: 42,
       shadow: "mist-depth",
       surface: "frosted",
       iconography: "regular",
@@ -101,34 +157,89 @@ const materials = {
     },
     tokens: {
       radius: 26,
-      blur: 34,
+      blur: 42,
       density: "0.64rem 0.95rem",
       hover: "-3px",
       elevatedHover: "-4px",
       navShift: "1px",
       borderWidth: "1px",
-      saturation: "230%",
-      elevatedSaturation: "255%",
-      sidebarBlend: "78%",
-      mainBlend: "56%",
+      saturation: "260%",
+      elevatedSaturation: "285%",
+      sidebarBlend: "70%",
+      mainBlend: "48%",
       mobileExtra: 10,
       buttonRadius: "999px",
       fontBody: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       fontDisplay: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
-      shadow: "0 18px 54px var(--waki-shadow), inset 0 0 34px color-mix(in srgb, var(--waki-accent) 9%, transparent)",
-      elevatedShadow: "0 30px 86px var(--waki-shadow), inset 0 0 42px color-mix(in srgb, var(--waki-accent-2) 10%, transparent), inset 0 1px 0 rgba(255,255,255,.3)",
-      panelInset: "inset 0 1px 22px color-mix(in srgb, var(--waki-accent) 11%, transparent), 0 8px 22px rgba(0,0,0,.07)",
-      bodyOverlay: "linear-gradient(115deg, transparent 0 33%, color-mix(in srgb, var(--waki-accent-2) 9%, transparent) 46%, transparent 60%),",
+      shadow: "0 22px 64px var(--waki-shadow), inset 0 0 42px color-mix(in srgb, white 10%, transparent), inset 0 1px 0 rgba(255,255,255,.42)",
+      elevatedShadow: "0 38px 104px var(--waki-shadow), inset 0 0 58px color-mix(in srgb, var(--waki-accent-2) 12%, transparent), inset 0 1px 0 rgba(255,255,255,.46), 0 0 38px color-mix(in srgb, var(--waki-accent) 14%, transparent)",
+      panelInset: "inset 0 1px 26px color-mix(in srgb, white 16%, transparent), inset 0 -18px 34px color-mix(in srgb, var(--waki-accent) 7%, transparent), 0 10px 28px rgba(0,0,0,.08)",
+      bodyOverlay: "radial-gradient(circle at 18% 10%, color-mix(in srgb, white 20%, transparent), transparent 22%), radial-gradient(circle at 72% 18%, color-mix(in srgb, var(--waki-accent-2) 16%, transparent), transparent 32%), linear-gradient(112deg, transparent 0 30%, color-mix(in srgb, white 16%, transparent) 42%, transparent 56%), linear-gradient(150deg, color-mix(in srgb, var(--waki-accent) 7%, transparent), transparent 36%),",
       extraCss: `
 .glass,
 .glass-elevated,
 .glass-bar,
+.shell-main,
+.mobile-card,
+.theme-switcher {
+  overflow: hidden;
+  isolation: isolate;
+}
+.glass > *,
+.glass-elevated > *,
+.glass-bar > *,
+.shell-main > *,
+.mobile-card > *,
+.theme-switcher > * {
+  position: relative;
+  z-index: 1;
+}
+.glass,
+.glass-elevated,
+.glass-bar,
 .mobile-card {
-  border-color: color-mix(in srgb, var(--waki-border) 72%, white);
+  background:
+    linear-gradient(145deg, color-mix(in srgb, white 15%, transparent), transparent 34%),
+    radial-gradient(circle at 18% 8%, color-mix(in srgb, white 26%, transparent), transparent 30%),
+    linear-gradient(145deg, color-mix(in srgb, var(--waki-panel-2) 58%, transparent), color-mix(in srgb, var(--waki-panel-3) 44%, transparent));
+  border-color: color-mix(in srgb, var(--waki-border) 54%, white);
+  box-shadow: var(--waki-shadow-stack), inset 0 1px 0 rgba(255,255,255,.42), inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.glass::before,
+.glass-elevated::before,
+.glass-bar::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  z-index: 0;
+  border-radius: inherit;
+  background:
+    radial-gradient(circle at 18% 0%, rgba(255,255,255,.38), transparent 26%),
+    linear-gradient(108deg, transparent 18%, rgba(255,255,255,.18) 38%, transparent 54%);
+  filter: blur(.2px);
+  opacity: .58;
+  pointer-events: none;
+}
+.glass::after,
+.glass-elevated::after,
+.glass-bar::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255,255,255,.22), transparent 32% 70%, rgba(255,255,255,.08));
+  opacity: .52;
+  pointer-events: none;
 }
 .glass-elevated {
-  outline: 1px solid color-mix(in srgb, white 18%, transparent);
-  outline-offset: -5px;
+  outline: 1px solid color-mix(in srgb, white 30%, transparent);
+  outline-offset: -6px;
+}
+.panel-nested {
+  background: color-mix(in srgb, var(--waki-panel-3) 44%, transparent);
+  border-color: color-mix(in srgb, var(--waki-border-2) 62%, white);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3), inset 0 0 24px color-mix(in srgb, white 10%, transparent), 0 10px 24px color-mix(in srgb, var(--waki-shadow) 34%, transparent);
 }
 `,
     },
@@ -440,7 +551,7 @@ body {
     description: "Professional frosted glass with restrained sheen, premium shadows, and a polished boardroom feel.",
     structure: {
       radius: 18,
-      blur: 22,
+      blur: 28,
       shadow: "professional-frost",
       surface: "frosted-executive",
       iconography: "regular",
@@ -448,38 +559,78 @@ body {
     },
     tokens: {
       radius: 18,
-      blur: 22,
+      blur: 28,
       density: "0.56rem 0.84rem",
       hover: "-2px",
       elevatedHover: "-3px",
       navShift: "1px",
       borderWidth: "1px",
-      saturation: "165%",
-      elevatedSaturation: "185%",
-      sidebarBlend: "88%",
-      mainBlend: "68%",
+      saturation: "205%",
+      elevatedSaturation: "230%",
+      sidebarBlend: "80%",
+      mainBlend: "58%",
       mobileExtra: 4,
       buttonRadius: "10px",
       fontBody: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
       fontDisplay: "Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", sans-serif",
-      shadow: "0 18px 44px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.18)",
-      elevatedShadow: "0 30px 76px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.28), 0 0 32px color-mix(in srgb, var(--waki-accent) 10%, transparent)",
-      panelInset: "inset 0 1px 20px color-mix(in srgb, white 10%, transparent), 0 10px 24px rgba(0,0,0,.07)",
-      bodyOverlay: "linear-gradient(120deg, transparent 0 38%, color-mix(in srgb, var(--waki-accent) 5%, transparent) 48%, transparent 62%),",
+      shadow: "0 22px 56px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -1px 0 rgba(255,255,255,.08)",
+      elevatedShadow: "0 36px 96px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.38), inset 0 -18px 34px color-mix(in srgb, var(--waki-accent) 6%, transparent), 0 0 40px color-mix(in srgb, var(--waki-accent) 14%, transparent)",
+      panelInset: "inset 0 1px 24px color-mix(in srgb, white 14%, transparent), inset 0 0 0 1px rgba(255,255,255,.08), 0 12px 30px rgba(0,0,0,.08)",
+      bodyOverlay: "radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--waki-accent) 10%, transparent), transparent 30%), radial-gradient(circle at 86% 10%, color-mix(in srgb, white 14%, transparent), transparent 24%), linear-gradient(118deg, transparent 0 36%, color-mix(in srgb, white 10%, transparent) 48%, transparent 62%),",
       extraCss: `
+.glass,
+.glass-elevated,
+.glass-bar,
+.shell-main,
+.mobile-card,
+.theme-switcher {
+  overflow: hidden;
+  isolation: isolate;
+}
+.glass > *,
+.glass-elevated > *,
+.glass-bar > *,
+.shell-main > *,
+.mobile-card > *,
+.theme-switcher > * {
+  position: relative;
+  z-index: 1;
+}
 .glass::before,
 .glass-elevated::before {
   content: "";
   position: absolute;
   inset: 1px;
   border-radius: inherit;
-  background: linear-gradient(135deg, rgba(255,255,255,.22), transparent 44%, color-mix(in srgb, var(--waki-accent-2) 7%, transparent));
+  z-index: 0;
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.32), rgba(255,255,255,.08) 24%, transparent 48%),
+    linear-gradient(315deg, color-mix(in srgb, var(--waki-accent-2) 10%, transparent), transparent 50%);
+  opacity: .78;
+  pointer-events: none;
+}
+.glass::after,
+.glass-elevated::after,
+.glass-bar::after {
+  content: "";
+  position: absolute;
+  inset: -28% -18%;
+  z-index: 0;
+  border-radius: inherit;
+  background: linear-gradient(108deg, transparent 24%, rgba(255,255,255,.16) 42%, transparent 56%);
+  mix-blend-mode: screen;
+  opacity: .34;
   pointer-events: none;
 }
 .glass,
 .glass-elevated,
 .glass-bar {
-  border-color: color-mix(in srgb, var(--waki-border) 78%, white);
+  border-color: color-mix(in srgb, var(--waki-border) 58%, white);
+}
+.panel-nested {
+  background: color-mix(in srgb, var(--waki-panel-3) 54%, transparent);
+  border-color: color-mix(in srgb, var(--waki-border-2) 68%, white);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.26), inset 0 0 20px color-mix(in srgb, white 8%, transparent), 0 10px 24px color-mix(in srgb, var(--waki-shadow) 34%, transparent);
 }
 .chip {
   border-radius: 999px;

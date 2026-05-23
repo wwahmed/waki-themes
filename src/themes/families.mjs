@@ -11,7 +11,7 @@ export const FAMILIES = {
     "description": "Luminous translucent app chrome with crisp layered depth. Best for polished dashboards and creative tools.",
     "structure": {
       "radius": 20,
-      "blur": 26,
+      "blur": 30,
       "shadow": "luminous-glass",
       "surface": "translucent",
       "iconography": "regular",
@@ -121,7 +121,7 @@ export const FAMILIES = {
     "description": "Soft high-blur frosted panes with misty depth and gentle hover shimmer.",
     "structure": {
       "radius": 26,
-      "blur": 34,
+      "blur": 42,
       "shadow": "mist-depth",
       "surface": "frosted",
       "iconography": "regular",
@@ -671,7 +671,7 @@ export const FAMILIES = {
     "description": "Professional frosted glass with restrained sheen, premium shadows, and a polished boardroom feel.",
     "structure": {
       "radius": 18,
-      "blur": 22,
+      "blur": 28,
       "shadow": "professional-frost",
       "surface": "frosted-executive",
       "iconography": "regular",

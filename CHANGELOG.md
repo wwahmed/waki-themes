@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.2.1 (2026-05-23)
+
+### Glass material polish
+
+Improves the glass-forward families without changing theme ids:
+
+- `Waki Glass` now has stronger refraction, brighter glass edges, more translucent app chrome, and light-leak hover highlights.
+- `Waki Frost` now reads more like frosted glass with deeper blur, milky layered surfaces, softer light passing through panels, and clearer inset-panel separation.
+- `Waki Frosted Pro` keeps its professional tone while gaining more premium frosted depth, sharper edges, and restrained sheen.
+
 ## v1.2.0 (2026-05-21)
 
 ### System-native themes
