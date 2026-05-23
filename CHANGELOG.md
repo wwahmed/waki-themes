@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.2.3 (2026-05-23)
+
+### Professional color audit
+
+Audits the full catalog for overly loud or playful color treatment:
+
+- Reduces glass, frost, frosted-pro, mobile, and command saturation/ambient glow so the themes read as professional app skins instead of decorative palettes.
+- Reworks louder colorways such as glass `Prism`/`Obsidian`, frost `Rose`/`Violet`, mobile `Plum`/`Sunrise`, and command `Burgundy` into restrained business variants.
+- Keeps family differentiation through material, contrast, and hue direction while making every variant suitable for product, operations, knowledge-work, or business scenarios.
+
 ## v1.2.2 (2026-05-23)
 
 ### Shape and tone refinement

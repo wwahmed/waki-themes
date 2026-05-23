@@ -15,11 +15,11 @@
   --waki-hover-y: -1px;
   --waki-elevated-hover-y: -2px;
   --waki-nav-shift: 2px;
-  --waki-shadow-stack: 0 16px 40px var(--waki-shadow), 0 0 24px color-mix(in srgb, var(--waki-accent) 18%, transparent);
-  --waki-elevated-shadow-stack: 0 26px 70px var(--waki-shadow), 0 0 38px color-mix(in srgb, var(--waki-accent-2) 18%, transparent);
-  --waki-inset-shadow: inset 0 1px 0 color-mix(in srgb, var(--waki-accent) 16%, transparent);
-  --waki-glass-saturation: 150%;
-  --waki-elevated-saturation: 165%;
+  --waki-shadow-stack: 0 14px 34px var(--waki-shadow), 0 0 16px color-mix(in srgb, var(--waki-accent) 8%, transparent);
+  --waki-elevated-shadow-stack: 0 22px 56px var(--waki-shadow), 0 0 22px color-mix(in srgb, var(--waki-accent-2) 8%, transparent);
+  --waki-inset-shadow: inset 0 1px 0 color-mix(in srgb, var(--waki-accent) 10%, transparent);
+  --waki-glass-saturation: 115%;
+  --waki-elevated-saturation: 125%;
   --waki-sidebar-blend: 92%;
   --waki-main-blend: 78%;
   --waki-border-width: 1px;
@@ -27,50 +27,50 @@
   --waki-mobile-extra-radius: 0px;
   --waki-font-body: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --waki-font-display: "SF Mono", "Cascadia Code", "Roboto Mono", ui-monospace, monospace;
-  --waki-bg-1: #f8fdff;
-  --waki-bg-2: #eefaff;
+  --waki-bg-1: #f8fbfd;
+  --waki-bg-2: #eef6fa;
   --waki-bg-3: #ffffff;
-  --waki-blob-1: rgba(14,165,233,.16);
-  --waki-blob-2: rgba(37,99,235,.1);
-  --waki-blob-3: rgba(45,212,191,.1);
-  --waki-panel: rgba(255,255,255,.84);
+  --waki-blob-1: rgba(14,116,144,.08);
+  --waki-blob-2: rgba(37,99,235,.06);
+  --waki-blob-3: rgba(100,116,139,.06);
+  --waki-panel: rgba(255,255,255,.86);
   --waki-panel-2: rgba(255,255,255,.94);
-  --waki-panel-3: rgba(239,250,255,.86);
+  --waki-panel-3: rgba(241,248,251,.86);
   --waki-bar: rgba(255,255,255,.94);
-  --waki-border: rgba(14,165,233,.24);
-  --waki-border-2: rgba(37,99,235,.2);
+  --waki-border: rgba(14,116,144,.18);
+  --waki-border-2: rgba(37,99,235,.16);
   --waki-text: #0b2330;
   --waki-muted: #526b77;
-  --waki-accent: #0891b2;
+  --waki-accent: #0e7490;
   --waki-accent-2: #2563eb;
-  --waki-focus: color-mix(in srgb, #0891b2 24%, transparent);
-  --waki-shadow: rgba(8,145,178,.13);
+  --waki-focus: color-mix(in srgb, #0e7490 24%, transparent);
+  --waki-shadow: rgba(8,145,178,.1);
 }
 html.dark {
 
   --waki-bg-1: #041014;
   --waki-bg-2: #071820;
-  --waki-bg-3: #05131d;
-  --waki-blob-1: rgba(6,182,212,.24);
-  --waki-blob-2: rgba(96,165,250,.16);
-  --waki-blob-3: rgba(45,212,191,.12);
-  --waki-panel: rgba(6,182,212,.12);
+  --waki-bg-3: #07131c;
+  --waki-blob-1: rgba(6,182,212,.1);
+  --waki-blob-2: rgba(96,165,250,.08);
+  --waki-blob-3: rgba(100,116,139,.08);
+  --waki-panel: rgba(6,182,212,.08);
   --waki-panel-2: rgba(7,24,32,.86);
   --waki-panel-3: rgba(9,31,45,.8);
   --waki-bar: rgba(7,24,32,.86);
-  --waki-border: #124655;
-  --waki-border-2: rgba(96,165,250,.2);
+  --waki-border: #164e63;
+  --waki-border-2: rgba(96,165,250,.16);
   --waki-text: #dffaff;
   --waki-muted: #a8d5df;
-  --waki-accent: #06b6d4;
-  --waki-accent-2: #60a5fa;
-  --waki-focus: color-mix(in srgb, #06b6d4 24%, transparent);
+  --waki-accent: #67e8f9;
+  --waki-accent-2: #93c5fd;
+  --waki-focus: color-mix(in srgb, #67e8f9 24%, transparent);
   --waki-shadow: rgba(0,0,0,.52);
 }
 
 body {
   background:
-    linear-gradient(90deg, color-mix(in srgb, var(--waki-accent) 8%, transparent) 1px, transparent 1px), linear-gradient(0deg, color-mix(in srgb, var(--waki-accent) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--waki-accent) 4%, transparent) 1px, transparent 1px), linear-gradient(0deg, color-mix(in srgb, var(--waki-accent) 3%, transparent) 1px, transparent 1px),
     radial-gradient(circle at 8% 10%, var(--waki-blob-1), transparent 32%),
     radial-gradient(circle at 92% 4%, var(--waki-blob-2), transparent 30%),
     radial-gradient(circle at 50% 110%, var(--waki-blob-3), transparent 45%),

@@ -16,50 +16,50 @@
   --waki-elevated-hover-y: -3px;
   --waki-nav-shift: 1px;
   --waki-shadow-stack: 0 22px 56px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.3), inset 0 -1px 0 rgba(255,255,255,.08);
-  --waki-elevated-shadow-stack: 0 36px 96px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.38), inset 0 -18px 34px color-mix(in srgb, var(--waki-accent) 6%, transparent), 0 0 40px color-mix(in srgb, var(--waki-accent) 14%, transparent);
+  --waki-elevated-shadow-stack: 0 32px 82px var(--waki-shadow), inset 0 1px 0 rgba(255,255,255,.34), inset 0 -16px 30px color-mix(in srgb, var(--waki-accent) 4%, transparent), 0 0 26px color-mix(in srgb, var(--waki-accent) 8%, transparent);
   --waki-inset-shadow: inset 0 1px 24px color-mix(in srgb, white 14%, transparent), inset 0 0 0 1px rgba(255,255,255,.08), 0 12px 30px rgba(0,0,0,.08);
-  --waki-glass-saturation: 205%;
-  --waki-elevated-saturation: 230%;
-  --waki-sidebar-blend: 80%;
-  --waki-main-blend: 58%;
+  --waki-glass-saturation: 165%;
+  --waki-elevated-saturation: 180%;
+  --waki-sidebar-blend: 84%;
+  --waki-main-blend: 64%;
   --waki-border-width: 1px;
   --waki-button-radius: 8px;
   --waki-mobile-extra-radius: 2px;
   --waki-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --waki-font-display: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --waki-bg-1: #f7f3ff;
+  --waki-bg-1: #f6f4fb;
   --waki-bg-2: #fbfaff;
   --waki-bg-3: #ffffff;
-  --waki-blob-1: rgba(124,58,237,.12);
+  --waki-blob-1: rgba(109,40,217,.08);
   --waki-blob-2: rgba(148,163,184,.08);
-  --waki-blob-3: rgba(196,181,253,.08);
-  --waki-panel: rgba(255,255,255,.68);
+  --waki-blob-3: rgba(196,181,253,.06);
+  --waki-panel: rgba(255,255,255,.7);
   --waki-panel-2: rgba(255,255,255,.84);
   --waki-panel-3: rgba(245,243,255,.78);
   --waki-bar: rgba(255,255,255,.84);
-  --waki-border: rgba(124,58,237,.2);
-  --waki-border-2: rgba(148,163,184,.2);
+  --waki-border: rgba(109,40,217,.16);
+  --waki-border-2: rgba(148,163,184,.18);
   --waki-text: #21163a;
   --waki-muted: #625b70;
-  --waki-accent: #7c3aed;
+  --waki-accent: #6d28d9;
   --waki-accent-2: #64748b;
-  --waki-focus: color-mix(in srgb, #7c3aed 24%, transparent);
-  --waki-shadow: rgba(76,29,149,.12);
+  --waki-focus: color-mix(in srgb, #6d28d9 24%, transparent);
+  --waki-shadow: rgba(76,29,149,.1);
 }
 html.dark {
 
   --waki-bg-1: #120e1f;
-  --waki-bg-2: #221b35;
+  --waki-bg-2: #211b31;
   --waki-bg-3: #171325;
-  --waki-blob-1: rgba(196,181,253,.16);
-  --waki-blob-2: rgba(148,163,184,.1);
-  --waki-blob-3: rgba(124,58,237,.12);
-  --waki-panel: rgba(55,48,82,.66);
+  --waki-blob-1: rgba(196,181,253,.1);
+  --waki-blob-2: rgba(148,163,184,.08);
+  --waki-blob-3: rgba(124,58,237,.08);
+  --waki-panel: rgba(55,48,82,.62);
   --waki-panel-2: rgba(32,27,51,.82);
-  --waki-panel-3: rgba(62,52,91,.76);
+  --waki-panel-3: rgba(55,48,76,.74);
   --waki-bar: rgba(32,27,51,.82);
-  --waki-border: rgba(196,181,253,.24);
-  --waki-border-2: rgba(148,163,184,.18);
+  --waki-border: rgba(196,181,253,.2);
+  --waki-border-2: rgba(148,163,184,.16);
   --waki-text: #f5f3ff;
   --waki-muted: #c5bed5;
   --waki-accent: #c4b5fd;
@@ -70,7 +70,7 @@ html.dark {
 
 body {
   background:
-    radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--waki-accent) 10%, transparent), transparent 30%), radial-gradient(circle at 86% 10%, color-mix(in srgb, white 14%, transparent), transparent 24%), linear-gradient(118deg, transparent 0 36%, color-mix(in srgb, white 10%, transparent) 48%, transparent 62%),
+    radial-gradient(circle at 18% 12%, color-mix(in srgb, var(--waki-accent) 5%, transparent), transparent 32%), radial-gradient(circle at 86% 10%, color-mix(in srgb, white 10%, transparent), transparent 26%), linear-gradient(118deg, transparent 0 38%, color-mix(in srgb, white 7%, transparent) 50%, transparent 64%),
     radial-gradient(circle at 8% 10%, var(--waki-blob-1), transparent 32%),
     radial-gradient(circle at 92% 4%, var(--waki-blob-2), transparent 30%),
     radial-gradient(circle at 50% 110%, var(--waki-blob-3), transparent 45%),
@@ -347,7 +347,7 @@ html.dark .status-error {
   background:
     linear-gradient(135deg, rgba(255,255,255,.32), rgba(255,255,255,.08) 24%, transparent 48%),
     linear-gradient(315deg, color-mix(in srgb, var(--waki-accent-2) 10%, transparent), transparent 50%);
-  opacity: .78;
+  opacity: .62;
   pointer-events: none;
 }
 .glass::after,
@@ -360,7 +360,7 @@ html.dark .status-error {
   border-radius: inherit;
   background: linear-gradient(108deg, transparent 24%, rgba(255,255,255,.16) 42%, transparent 56%);
   mix-blend-mode: screen;
-  opacity: .34;
+  opacity: .24;
   pointer-events: none;
 }
 .glass,

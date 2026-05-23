@@ -22,23 +22,23 @@ export const FAMILIES = {
         "slot": "prism",
         "themeId": "waki-glass-prism",
         "name": "Prism",
-        "description": "Violet, cyan, and pearl glass for premium web apps.",
+        "description": "Indigo and teal glass for polished product dashboards.",
         "palette": {
           "light": {
-            "bgFrom": "#edf7ff",
-            "bgTo": "#f8eefc",
-            "panel": "rgba(255,255,255,.62)",
-            "border": "rgba(125,92,255,.22)",
+            "bgFrom": "#f3f7fb",
+            "bgTo": "#eef2f7",
+            "panel": "rgba(255,255,255,.66)",
+            "border": "rgba(79,70,229,.18)",
             "text": "#102033",
-            "accent": "#6d5dfc"
+            "accent": "#4f46e5"
           },
           "dark": {
-            "bgFrom": "#080b20",
-            "bgTo": "#1b0f32",
-            "panel": "rgba(119,92,255,.16)",
-            "border": "rgba(103,232,249,.28)",
+            "bgFrom": "#080d1c",
+            "bgTo": "#111a2d",
+            "panel": "rgba(79,70,229,.12)",
+            "border": "rgba(94,234,212,.2)",
             "text": "#eef7ff",
-            "accent": "#8b7cff"
+            "accent": "#a5b4fc"
           }
         }
       },
@@ -46,21 +46,21 @@ export const FAMILIES = {
         "slot": "opal",
         "themeId": "waki-glass-opal",
         "name": "Opal",
-        "description": "Teal, sky, and soft green glass for calm personal tools.",
+        "description": "Teal and slate glass for calm operations tools.",
         "palette": {
           "light": {
-            "bgFrom": "#e7fff8",
-            "bgTo": "#f5fbff",
-            "panel": "rgba(255,255,255,.66)",
-            "border": "rgba(20,184,166,.24)",
+            "bgFrom": "#f0faf8",
+            "bgTo": "#f5f8fb",
+            "panel": "rgba(255,255,255,.68)",
+            "border": "rgba(15,118,110,.2)",
             "text": "#07333a",
-            "accent": "#0f9f9a"
+            "accent": "#0f766e"
           },
           "dark": {
             "bgFrom": "#03191d",
-            "bgTo": "#082c35",
-            "panel": "rgba(45,212,191,.13)",
-            "border": "rgba(153,246,228,.26)",
+            "bgTo": "#082832",
+            "panel": "rgba(45,212,191,.1)",
+            "border": "rgba(153,246,228,.2)",
             "text": "#dffcf8",
             "accent": "#5eead4"
           }
@@ -94,23 +94,23 @@ export const FAMILIES = {
         "slot": "obsidian",
         "themeId": "waki-glass-obsidian",
         "name": "Obsidian",
-        "description": "Black glass with coral glow for media and creative tools.",
+        "description": "Charcoal glass with restrained ruby and copper accents.",
         "palette": {
           "light": {
-            "bgFrom": "#fff1ed",
-            "bgTo": "#f8fafc",
-            "panel": "rgba(255,255,255,.7)",
-            "border": "rgba(244,63,94,.24)",
+            "bgFrom": "#f8f4f3",
+            "bgTo": "#f6f7f9",
+            "panel": "rgba(255,255,255,.72)",
+            "border": "rgba(190,18,60,.18)",
             "text": "#221316",
-            "accent": "#e11d48"
+            "accent": "#be123c"
           },
           "dark": {
-            "bgFrom": "#050307",
-            "bgTo": "#24100c",
-            "panel": "rgba(255,255,255,.08)",
-            "border": "rgba(251,113,133,.3)",
+            "bgFrom": "#050607",
+            "bgTo": "#1c1210",
+            "panel": "rgba(255,255,255,.07)",
+            "border": "rgba(251,113,133,.22)",
             "text": "#fff3f2",
-            "accent": "#fb7185"
+            "accent": "#fda4af"
           }
         }
       }
@@ -156,23 +156,23 @@ export const FAMILIES = {
         "slot": "rose",
         "themeId": "waki-frost-rose",
         "name": "Rose",
-        "description": "Blush frost for warm editorial and lifestyle tools.",
+        "description": "Muted rose frost for polished editorial workflows.",
         "palette": {
           "light": {
-            "bgFrom": "#fff1f5",
-            "bgTo": "#fff7ed",
-            "panel": "rgba(255,255,255,.7)",
-            "border": "rgba(244,63,94,.22)",
-            "text": "#451a2b",
-            "accent": "#e11d48"
+            "bgFrom": "#fbf5f7",
+            "bgTo": "#f8f3ef",
+            "panel": "rgba(255,255,255,.72)",
+            "border": "rgba(190,18,60,.16)",
+            "text": "#3a1d27",
+            "accent": "#be123c"
           },
           "dark": {
-            "bgFrom": "#220712",
-            "bgTo": "#3a1020",
-            "panel": "rgba(244,63,94,.14)",
-            "border": "rgba(251,113,133,.28)",
+            "bgFrom": "#1b0b12",
+            "bgTo": "#2a1620",
+            "panel": "rgba(244,63,94,.1)",
+            "border": "rgba(251,113,133,.2)",
             "text": "#fff1f5",
-            "accent": "#fb7185"
+            "accent": "#fda4af"
           }
         }
       },
@@ -180,21 +180,21 @@ export const FAMILIES = {
         "slot": "mint",
         "themeId": "waki-frost-mint",
         "name": "Mint",
-        "description": "Fresh mint frost for wellness, finance, and note apps.",
+        "description": "Calm green frost for finance, wellness, and notes.",
         "palette": {
           "light": {
-            "bgFrom": "#effff4",
-            "bgTo": "#edfffb",
-            "panel": "rgba(255,255,255,.7)",
-            "border": "rgba(34,197,94,.22)",
+            "bgFrom": "#f2faf5",
+            "bgTo": "#eef8f6",
+            "panel": "rgba(255,255,255,.72)",
+            "border": "rgba(15,118,110,.18)",
             "text": "#0b3224",
-            "accent": "#16a34a"
+            "accent": "#0f766e"
           },
           "dark": {
             "bgFrom": "#03170d",
-            "bgTo": "#12301f",
-            "panel": "rgba(34,197,94,.13)",
-            "border": "rgba(134,239,172,.26)",
+            "bgTo": "#10261f",
+            "panel": "rgba(34,197,94,.1)",
+            "border": "rgba(134,239,172,.2)",
             "text": "#e9fff2",
             "accent": "#86efac"
           }
@@ -204,23 +204,23 @@ export const FAMILIES = {
         "slot": "violet",
         "themeId": "waki-frost-violet",
         "name": "Violet",
-        "description": "Lavender frost for AI, design, and personal workspace apps.",
+        "description": "Restrained violet frost for AI and knowledge work.",
         "palette": {
           "light": {
-            "bgFrom": "#f5f0ff",
-            "bgTo": "#fff4fb",
-            "panel": "rgba(255,255,255,.69)",
-            "border": "rgba(139,92,246,.22)",
-            "text": "#271244",
-            "accent": "#8b5cf6"
+            "bgFrom": "#f5f3fb",
+            "bgTo": "#f7f5fa",
+            "panel": "rgba(255,255,255,.7)",
+            "border": "rgba(109,40,217,.18)",
+            "text": "#25163a",
+            "accent": "#6d28d9"
           },
           "dark": {
             "bgFrom": "#10091f",
-            "bgTo": "#2b1238",
-            "panel": "rgba(147,51,234,.15)",
-            "border": "rgba(216,180,254,.28)",
+            "bgTo": "#241832",
+            "panel": "rgba(109,40,217,.11)",
+            "border": "rgba(196,181,253,.2)",
             "text": "#fbf1ff",
-            "accent": "#c084fc"
+            "accent": "#c4b5fd"
           }
         }
       }
@@ -709,20 +709,20 @@ export const FAMILIES = {
         "description": "Crisp blue frosted glass for professional SaaS.",
         "palette": {
           "light": {
-            "bgFrom": "#eef7ff",
+            "bgFrom": "#f0f7fc",
             "bgTo": "#f7fbff",
-            "panel": "rgba(255,255,255,.68)",
-            "border": "rgba(14,165,233,.22)",
+            "panel": "rgba(255,255,255,.7)",
+            "border": "rgba(14,116,144,.18)",
             "text": "#0c2233",
             "accent": "#0369a1"
           },
           "dark": {
             "bgFrom": "#07131f",
-            "bgTo": "#10263a",
-            "panel": "rgba(14,55,82,.66)",
-            "border": "rgba(56,189,248,.24)",
+            "bgTo": "#102338",
+            "panel": "rgba(14,55,82,.62)",
+            "border": "rgba(125,211,252,.2)",
             "text": "#e7f7ff",
-            "accent": "#38bdf8"
+            "accent": "#7dd3fc"
           }
         }
       },
@@ -757,18 +757,18 @@ export const FAMILIES = {
         "description": "Subtle violet frost for premium internal tools.",
         "palette": {
           "light": {
-            "bgFrom": "#f7f3ff",
+            "bgFrom": "#f6f4fb",
             "bgTo": "#fbfaff",
-            "panel": "rgba(255,255,255,.68)",
-            "border": "rgba(124,58,237,.2)",
+            "panel": "rgba(255,255,255,.7)",
+            "border": "rgba(109,40,217,.16)",
             "text": "#21163a",
-            "accent": "#7c3aed"
+            "accent": "#6d28d9"
           },
           "dark": {
             "bgFrom": "#120e1f",
-            "bgTo": "#221b35",
-            "panel": "rgba(55,48,82,.66)",
-            "border": "rgba(196,181,253,.24)",
+            "bgTo": "#211b31",
+            "panel": "rgba(55,48,82,.62)",
+            "border": "rgba(196,181,253,.2)",
             "text": "#f5f3ff",
             "accent": "#c4b5fd"
           }
@@ -840,9 +840,9 @@ export const FAMILIES = {
   },
   "mobile": {
     "name": "Waki Mobile",
-    "description": "Large-radius touch surfaces, pill controls, and friendly depth for mobile-first apps.",
+    "description": "Polished touch surfaces with clear hierarchy for professional mobile apps.",
     "structure": {
-      "radius": 30,
+      "radius": 20,
       "blur": 24,
       "shadow": "soft-touch",
       "surface": "rounded-glass",
@@ -853,24 +853,24 @@ export const FAMILIES = {
       {
         "slot": "orchid",
         "themeId": "waki-mobile-orchid",
-        "name": "Orchid",
-        "description": "Soft orchid mobile glass for expressive apps.",
+        "name": "Plum",
+        "description": "Muted plum mobile surfaces for premium productivity apps.",
         "palette": {
           "light": {
-            "bgFrom": "#fff1fb",
-            "bgTo": "#f1f5ff",
-            "panel": "rgba(255,255,255,.72)",
-            "border": "rgba(217,70,239,.22)",
-            "text": "#35133c",
-            "accent": "#c026d3"
+            "bgFrom": "#f7f6fa",
+            "bgTo": "#f2f4f8",
+            "panel": "rgba(255,255,255,.76)",
+            "border": "rgba(91,63,122,.16)",
+            "text": "#2c2434",
+            "accent": "#5b3f7a"
           },
           "dark": {
-            "bgFrom": "#21081f",
-            "bgTo": "#351249",
-            "panel": "rgba(217,70,239,.15)",
-            "border": "rgba(251,207,232,.26)",
-            "text": "#fff0fb",
-            "accent": "#f0abfc"
+            "bgFrom": "#15121b",
+            "bgTo": "#221c2d",
+            "panel": "rgba(91,63,122,.12)",
+            "border": "rgba(185,167,210,.18)",
+            "text": "#f6f0ff",
+            "accent": "#b9a7d2"
           }
         }
       },
@@ -878,21 +878,21 @@ export const FAMILIES = {
         "slot": "mint",
         "themeId": "waki-mobile-mint",
         "name": "Mint",
-        "description": "Friendly mint mobile theme with readable dark mode.",
+        "description": "Professional green mobile theme with readable dark mode.",
         "palette": {
           "light": {
-            "bgFrom": "#effff4",
-            "bgTo": "#edfaff",
-            "panel": "rgba(255,255,255,.72)",
-            "border": "rgba(34,197,94,.22)",
+            "bgFrom": "#f2faf5",
+            "bgTo": "#eef8f6",
+            "panel": "rgba(255,255,255,.74)",
+            "border": "rgba(15,118,110,.18)",
             "text": "#0b3224",
-            "accent": "#16a34a"
+            "accent": "#0f766e"
           },
           "dark": {
             "bgFrom": "#03170d",
-            "bgTo": "#12301f",
-            "panel": "rgba(34,197,94,.13)",
-            "border": "rgba(134,239,172,.26)",
+            "bgTo": "#10261f",
+            "panel": "rgba(34,197,94,.1)",
+            "border": "rgba(134,239,172,.2)",
             "text": "#e9fff2",
             "accent": "#86efac"
           }
@@ -902,23 +902,23 @@ export const FAMILIES = {
         "slot": "sunrise",
         "themeId": "waki-mobile-sunrise",
         "name": "Sunrise",
-        "description": "Warm mobile surfaces for habit, food, and lifestyle apps.",
+        "description": "Warm neutral mobile surfaces for planning and service apps.",
         "palette": {
           "light": {
-            "bgFrom": "#fff8ed",
-            "bgTo": "#fff1f2",
+            "bgFrom": "#faf7f2",
+            "bgTo": "#f8f3ef",
             "panel": "rgba(255,255,255,.78)",
-            "border": "rgba(217,119,6,.22)",
-            "text": "#3a1d0b",
-            "accent": "#d97706"
+            "border": "rgba(180,83,9,.18)",
+            "text": "#3a2515",
+            "accent": "#b45309"
           },
           "dark": {
-            "bgFrom": "#1b0b06",
-            "bgTo": "#32130f",
-            "panel": "rgba(251,146,60,.13)",
-            "border": "rgba(253,186,116,.26)",
+            "bgFrom": "#17120e",
+            "bgTo": "#2a211b",
+            "panel": "rgba(251,146,60,.1)",
+            "border": "rgba(253,186,116,.2)",
             "text": "#fff2df",
-            "accent": "#fb923c"
+            "accent": "#fdba74"
           }
         }
       },
@@ -926,23 +926,23 @@ export const FAMILIES = {
         "slot": "ocean",
         "themeId": "waki-mobile-ocean",
         "name": "Ocean",
-        "description": "Blue-green touch surfaces for travel, media, and maps.",
+        "description": "Blue-green touch surfaces for field and logistics apps.",
         "palette": {
           "light": {
-            "bgFrom": "#edfaff",
-            "bgTo": "#e6fff9",
+            "bgFrom": "#f0f8fb",
+            "bgTo": "#eef8f6",
             "panel": "rgba(255,255,255,.74)",
-            "border": "rgba(14,165,233,.22)",
+            "border": "rgba(14,116,144,.18)",
             "text": "#073349",
-            "accent": "#0284c7"
+            "accent": "#0369a1"
           },
           "dark": {
             "bgFrom": "#031923",
-            "bgTo": "#063242",
-            "panel": "rgba(14,165,233,.13)",
-            "border": "rgba(103,232,249,.26)",
+            "bgTo": "#082d3a",
+            "panel": "rgba(14,165,233,.1)",
+            "border": "rgba(125,211,252,.2)",
             "text": "#e5fbff",
-            "accent": "#67e8f9"
+            "accent": "#7dd3fc"
           }
         }
       }
@@ -950,7 +950,7 @@ export const FAMILIES = {
   },
   "command": {
     "name": "Waki Command",
-    "description": "Sharp dark-tooling surfaces with bright signals, firm edges, and terminal-like focus.",
+    "description": "Sharp technical surfaces with restrained signal color and terminal-like focus.",
     "structure": {
       "radius": 8,
       "blur": 6,
@@ -964,23 +964,23 @@ export const FAMILIES = {
         "slot": "cyan",
         "themeId": "waki-command-cyan",
         "name": "Cyan",
-        "description": "Cyan command surfaces for developer tools.",
+        "description": "Blue command surfaces for developer tools.",
         "palette": {
           "light": {
-            "bgFrom": "#f8fdff",
-            "bgTo": "#eefaff",
-            "panel": "rgba(255,255,255,.84)",
-            "border": "rgba(14,165,233,.24)",
+            "bgFrom": "#f8fbfd",
+            "bgTo": "#eef6fa",
+            "panel": "rgba(255,255,255,.86)",
+            "border": "rgba(14,116,144,.18)",
             "text": "#0b2330",
-            "accent": "#0891b2"
+            "accent": "#0e7490"
           },
           "dark": {
             "bgFrom": "#041014",
             "bgTo": "#071820",
-            "panel": "rgba(6,182,212,.12)",
-            "border": "#124655",
+            "panel": "rgba(6,182,212,.08)",
+            "border": "#164e63",
             "text": "#dffaff",
-            "accent": "#06b6d4"
+            "accent": "#67e8f9"
           }
         }
       },
@@ -988,47 +988,47 @@ export const FAMILIES = {
         "slot": "lime",
         "themeId": "waki-command-lime",
         "name": "Lime",
-        "description": "Lime signal dark tools for monitoring and automation.",
+        "description": "Olive signal tools for monitoring and automation.",
         "palette": {
           "light": {
-            "bgFrom": "#fbfff4",
-            "bgTo": "#f4fce8",
-            "panel": "rgba(255,255,255,.84)",
-            "border": "rgba(132,204,22,.24)",
+            "bgFrom": "#fafcf7",
+            "bgTo": "#f3f7ed",
+            "panel": "rgba(255,255,255,.86)",
+            "border": "rgba(101,163,13,.18)",
             "text": "#1d2b0f",
-            "accent": "#65a30d"
+            "accent": "#4d7c0f"
           },
           "dark": {
             "bgFrom": "#0c1404",
             "bgTo": "#121d08",
-            "panel": "rgba(132,204,22,.12)",
+            "panel": "rgba(132,204,22,.08)",
             "border": "#3f6212",
             "text": "#ecfccb",
-            "accent": "#84cc16"
+            "accent": "#bef264"
           }
         }
       },
       {
         "slot": "magenta",
         "themeId": "waki-command-magenta",
-        "name": "Magenta",
-        "description": "Hot magenta command surfaces for creative technical apps.",
+        "name": "Burgundy",
+        "description": "Restrained burgundy command surfaces for technical creative apps.",
         "palette": {
           "light": {
-            "bgFrom": "#fff7fd",
-            "bgTo": "#fdf2ff",
-            "panel": "rgba(255,255,255,.84)",
-            "border": "rgba(219,39,119,.24)",
-            "text": "#321125",
-            "accent": "#db2777"
+            "bgFrom": "#faf7f8",
+            "bgTo": "#f5f2f4",
+            "panel": "rgba(255,255,255,.86)",
+            "border": "rgba(127,29,29,.18)",
+            "text": "#2f171a",
+            "accent": "#7f1d1d"
           },
           "dark": {
-            "bgFrom": "#160812",
-            "bgTo": "#210d1b",
-            "panel": "rgba(236,72,153,.12)",
-            "border": "#6d1d46",
-            "text": "#ffe4f1",
-            "accent": "#ec4899"
+            "bgFrom": "#150b0d",
+            "bgTo": "#211113",
+            "panel": "rgba(127,29,29,.1)",
+            "border": "#7f1d1d",
+            "text": "#fee2e2",
+            "accent": "#fca5a5"
           }
         }
       },
@@ -1036,23 +1036,23 @@ export const FAMILIES = {
         "slot": "amber",
         "themeId": "waki-command-amber",
         "name": "Amber",
-        "description": "Amber terminal warmth for ops and maker tools.",
+        "description": "Restrained amber terminal warmth for ops tools.",
         "palette": {
           "light": {
-            "bgFrom": "#fffaf0",
-            "bgTo": "#fff7ed",
-            "panel": "rgba(255,255,255,.84)",
-            "border": "rgba(217,119,6,.24)",
+            "bgFrom": "#faf7f0",
+            "bgTo": "#f7f2ea",
+            "panel": "rgba(255,255,255,.86)",
+            "border": "rgba(180,83,9,.18)",
             "text": "#351c09",
-            "accent": "#d97706"
+            "accent": "#b45309"
           },
           "dark": {
             "bgFrom": "#190b05",
-            "bgTo": "#241008",
-            "panel": "rgba(249,115,22,.12)",
+            "bgTo": "#24130a",
+            "panel": "rgba(249,115,22,.08)",
             "border": "#7c2d12",
             "text": "#ffedd5",
-            "accent": "#f97316"
+            "accent": "#fdba74"
           }
         }
       }

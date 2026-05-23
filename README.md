@@ -4,7 +4,7 @@ Shared theme catalog for Waki apps. The repo publishes a versioned bundle of CSS
 
 ## Current Catalog
 
-The v1.2.2 catalog is organized by **material family** first and **hue variant** second. Variants inside a family usually share the same geometry, blur, density, typography, shadows, and hover behavior; the suffix tells you the colorway. The `System` family intentionally lets Mac and Windows differ structurally to better echo native OS conventions.
+The v1.2.3 catalog is organized by **material family** first and **hue variant** second. Variants inside a family usually share the same geometry, blur, density, typography, shadows, and hover behavior; the suffix tells you the colorway. The `System` family intentionally lets Mac and Windows differ structurally to better echo native OS conventions.
 
 | Family | Variants |
 |---|---|
@@ -16,8 +16,8 @@ The v1.2.2 catalog is organized by **material family** first and **hue variant**
 | Waki Corporate | Atlas, Ledger, Summit, Harbor |
 | Waki Frosted Pro | Platinum, Azure, Jade, Amethyst |
 | System | Mac, Windows |
-| Waki Mobile | Orchid, Mint, Sunrise, Ocean |
-| Waki Command | Cyan, Lime, Magenta, Amber |
+| Waki Mobile | Plum, Mint, Sunrise, Ocean |
+| Waki Command | Cyan, Lime, Burgundy, Amber |
 
 Theme ids follow the same pattern: `waki-glass-prism`, `waki-academic-ivory`, `waki-command-cyan`, and so on.
 
@@ -55,7 +55,7 @@ Schema:
 ```json
 {
   "schemaVersion": 1,
-  "pkgVersion": "1.2.2",
+  "pkgVersion": "1.2.3",
   "gitSha": "...",
   "builtAt": "...",
   "base": "...",

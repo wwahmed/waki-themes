@@ -15,62 +15,62 @@
   --waki-hover-y: -4px;
   --waki-elevated-hover-y: -5px;
   --waki-nav-shift: 2px;
-  --waki-shadow-stack: 0 24px 70px var(--waki-shadow), 0 0 44px color-mix(in srgb, var(--waki-accent) 22%, transparent), inset 0 1px 0 rgba(255,255,255,.36), inset 0 -1px 0 rgba(255,255,255,.08);
-  --waki-elevated-shadow-stack: 0 42px 120px var(--waki-shadow), 0 0 64px color-mix(in srgb, var(--waki-accent-2) 24%, transparent), inset 0 1px 0 rgba(255,255,255,.42), inset 0 -18px 38px color-mix(in srgb, var(--waki-accent) 8%, transparent);
+  --waki-shadow-stack: 0 22px 62px var(--waki-shadow), 0 0 28px color-mix(in srgb, var(--waki-accent) 12%, transparent), inset 0 1px 0 rgba(255,255,255,.32), inset 0 -1px 0 rgba(255,255,255,.06);
+  --waki-elevated-shadow-stack: 0 36px 96px var(--waki-shadow), 0 0 38px color-mix(in srgb, var(--waki-accent-2) 12%, transparent), inset 0 1px 0 rgba(255,255,255,.36), inset 0 -16px 30px color-mix(in srgb, var(--waki-accent) 5%, transparent);
   --waki-inset-shadow: inset 0 1px 0 rgba(255,255,255,.34), inset 0 0 0 1px rgba(255,255,255,.08), 0 12px 34px rgba(0,0,0,.09);
-  --waki-glass-saturation: 245%;
-  --waki-elevated-saturation: 275%;
-  --waki-sidebar-blend: 76%;
-  --waki-main-blend: 50%;
+  --waki-glass-saturation: 175%;
+  --waki-elevated-saturation: 195%;
+  --waki-sidebar-blend: 82%;
+  --waki-main-blend: 58%;
   --waki-border-width: 1px;
   --waki-button-radius: 8px;
   --waki-mobile-extra-radius: 2px;
   --waki-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --waki-font-display: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --waki-bg-1: #edf7ff;
-  --waki-bg-2: #f8eefc;
-  --waki-bg-3: #f7fbff;
-  --waki-blob-1: rgba(109,93,252,.24);
-  --waki-blob-2: rgba(45,212,191,.18);
-  --waki-blob-3: rgba(236,72,153,.14);
-  --waki-panel: rgba(255,255,255,.62);
-  --waki-panel-2: rgba(255,255,255,.78);
-  --waki-panel-3: rgba(241,245,255,.76);
-  --waki-bar: rgba(255,255,255,.78);
-  --waki-border: rgba(125,92,255,.22);
-  --waki-border-2: rgba(45,212,191,.24);
+  --waki-bg-1: #f3f7fb;
+  --waki-bg-2: #eef2f7;
+  --waki-bg-3: #ffffff;
+  --waki-blob-1: rgba(79,70,229,.12);
+  --waki-blob-2: rgba(15,118,110,.1);
+  --waki-blob-3: rgba(100,116,139,.08);
+  --waki-panel: rgba(255,255,255,.66);
+  --waki-panel-2: rgba(255,255,255,.82);
+  --waki-panel-3: rgba(242,246,252,.78);
+  --waki-bar: rgba(255,255,255,.82);
+  --waki-border: rgba(79,70,229,.18);
+  --waki-border-2: rgba(15,118,110,.18);
   --waki-text: #102033;
   --waki-muted: #52657d;
-  --waki-accent: #6d5dfc;
-  --waki-accent-2: #14b8a6;
-  --waki-focus: color-mix(in srgb, #6d5dfc 24%, transparent);
-  --waki-shadow: rgba(67,56,202,.18);
+  --waki-accent: #4f46e5;
+  --waki-accent-2: #0f766e;
+  --waki-focus: color-mix(in srgb, #4f46e5 24%, transparent);
+  --waki-shadow: rgba(67,56,202,.13);
 }
 html.dark {
 
-  --waki-bg-1: #080b20;
-  --waki-bg-2: #1b0f32;
-  --waki-bg-3: #071b28;
-  --waki-blob-1: rgba(139,124,255,.28);
-  --waki-blob-2: rgba(103,232,249,.2);
-  --waki-blob-3: rgba(244,114,182,.18);
-  --waki-panel: rgba(119,92,255,.16);
-  --waki-panel-2: rgba(14,24,58,.72);
-  --waki-panel-3: rgba(10,30,49,.72);
-  --waki-bar: rgba(14,24,58,.72);
-  --waki-border: rgba(103,232,249,.28);
-  --waki-border-2: rgba(196,181,253,.25);
+  --waki-bg-1: #080d1c;
+  --waki-bg-2: #111a2d;
+  --waki-bg-3: #071923;
+  --waki-blob-1: rgba(129,140,248,.14);
+  --waki-blob-2: rgba(94,234,212,.1);
+  --waki-blob-3: rgba(100,116,139,.1);
+  --waki-panel: rgba(79,70,229,.12);
+  --waki-panel-2: rgba(14,24,58,.76);
+  --waki-panel-3: rgba(10,30,49,.74);
+  --waki-bar: rgba(14,24,58,.76);
+  --waki-border: rgba(94,234,212,.2);
+  --waki-border-2: rgba(165,180,252,.18);
   --waki-text: #eef7ff;
   --waki-muted: #a9bad1;
-  --waki-accent: #8b7cff;
-  --waki-accent-2: #67e8f9;
-  --waki-focus: color-mix(in srgb, #8b7cff 24%, transparent);
+  --waki-accent: #a5b4fc;
+  --waki-accent-2: #5eead4;
+  --waki-focus: color-mix(in srgb, #a5b4fc 24%, transparent);
   --waki-shadow: rgba(0,0,0,.45);
 }
 
 body {
   background:
-    radial-gradient(circle at 20% 16%, color-mix(in srgb, var(--waki-accent) 18%, transparent), transparent 28%), radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--waki-accent-2) 16%, transparent), transparent 30%), linear-gradient(118deg, transparent 0 27%, color-mix(in srgb, white 12%, transparent) 39%, transparent 53%), linear-gradient(145deg, transparent 0 58%, color-mix(in srgb, var(--waki-accent) 9%, transparent) 72%, transparent 88%),
+    radial-gradient(circle at 20% 16%, color-mix(in srgb, var(--waki-accent) 9%, transparent), transparent 30%), radial-gradient(circle at 80% 20%, color-mix(in srgb, var(--waki-accent-2) 7%, transparent), transparent 32%), linear-gradient(118deg, transparent 0 30%, color-mix(in srgb, white 8%, transparent) 42%, transparent 56%),
     radial-gradient(circle at 8% 10%, var(--waki-blob-1), transparent 32%),
     radial-gradient(circle at 92% 4%, var(--waki-blob-2), transparent 30%),
     radial-gradient(circle at 50% 110%, var(--waki-blob-3), transparent 45%),
@@ -346,8 +346,8 @@ html.dark .status-error {
   z-index: 0;
   background:
     linear-gradient(135deg, rgba(255,255,255,.4), rgba(255,255,255,.08) 18%, transparent 44%),
-    linear-gradient(315deg, color-mix(in srgb, var(--waki-accent-2) 18%, transparent), transparent 46%);
-  opacity: .86;
+    linear-gradient(315deg, color-mix(in srgb, var(--waki-accent-2) 10%, transparent), transparent 46%);
+  opacity: .72;
   pointer-events: none;
 }
 .glass::after,
@@ -362,14 +362,14 @@ html.dark .status-error {
     radial-gradient(ellipse at 26% 8%, rgba(255,255,255,.42), transparent 28%),
     linear-gradient(106deg, transparent 22%, rgba(255,255,255,.24) 38%, transparent 48% 100%);
   mix-blend-mode: screen;
-  opacity: .42;
+  opacity: .28;
   transform: translateX(-12%) rotate(-4deg);
   transition: opacity 180ms ease, transform 220ms ease;
   pointer-events: none;
 }
 .glass:hover::after,
 .glass-elevated:hover::after {
-  opacity: .64;
+  opacity: .44;
   transform: translateX(0) rotate(-4deg);
 }
 .glass,
@@ -386,7 +386,7 @@ html.dark .status-error {
   background:
     linear-gradient(145deg, color-mix(in srgb, var(--waki-panel-2) 54%, transparent), color-mix(in srgb, var(--waki-panel-3) 42%, transparent));
   border-color: color-mix(in srgb, var(--waki-border-2) 58%, white);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,.28), inset 0 -12px 24px color-mix(in srgb, var(--waki-accent) 7%, transparent), 0 12px 28px color-mix(in srgb, var(--waki-shadow) 38%, transparent);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.24), inset 0 -12px 24px color-mix(in srgb, var(--waki-accent) 4%, transparent), 0 12px 28px color-mix(in srgb, var(--waki-shadow) 34%, transparent);
 }
 .chip,
 .status-success,
