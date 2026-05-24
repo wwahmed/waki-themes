@@ -44,13 +44,16 @@ html.dark .glass-bar {
 :where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
 :where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
   background:
-    linear-gradient(145deg, rgba(255,255,255,.18), transparent 34%),
-    linear-gradient(145deg, color-mix(in srgb, ${o.panelLight} 76%, rgba(255,255,255,.94)), color-mix(in srgb, ${o.panelLight} 68%, rgba(255,255,255,.98))) !important;
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, ${o.accent} 14%, transparent), transparent 38%),
+    radial-gradient(circle at 94% 12%, color-mix(in srgb, ${o.accent} 9%, transparent), transparent 42%),
+    linear-gradient(145deg, rgba(255,255,255,.16), transparent 36%),
+    linear-gradient(145deg, color-mix(in srgb, ${o.panelLight} 86%, rgba(255,255,255,.86)), color-mix(in srgb, ${o.panelLight} 80%, rgba(255,255,255,.92))) !important;
+  background-clip: padding-box !important;
   border-color: color-mix(in srgb, ${o.borderLight} 62%, rgba(15,23,42,.16)) !important;
   color: ${o.textLight} !important;
   box-shadow: 0 28px 76px rgba(15,23,42,.22), inset 0 1px 0 rgba(255,255,255,.28) !important;
-  backdrop-filter: blur(${o.blurPx + 10}px) saturate(190%) contrast(1.06) !important;
-  -webkit-backdrop-filter: blur(${o.blurPx + 10}px) saturate(190%) contrast(1.06) !important;
+  backdrop-filter: blur(${o.blurPx + 18}px) saturate(215%) contrast(1.08) brightness(1.02) !important;
+  -webkit-backdrop-filter: blur(${o.blurPx + 18}px) saturate(215%) contrast(1.08) brightness(1.02) !important;
 }
 html.dark .waki-dialog-surface,
 html.dark .waki-popover-surface,
@@ -58,8 +61,10 @@ html.dark .waki-overlay-surface,
 html.dark :where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
 html.dark :where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
   background:
-    linear-gradient(145deg, rgba(255,255,255,.12), transparent 34%),
-    linear-gradient(145deg, color-mix(in srgb, ${o.panelDark} 78%, rgba(2,6,23,.92)), color-mix(in srgb, ${o.panelDark} 70%, rgba(15,23,42,.96))) !important;
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, ${o.accent} 16%, transparent), transparent 38%),
+    radial-gradient(circle at 94% 12%, color-mix(in srgb, ${o.textDark} 8%, transparent), transparent 42%),
+    linear-gradient(145deg, rgba(255,255,255,.1), transparent 36%),
+    linear-gradient(145deg, color-mix(in srgb, ${o.panelDark} 86%, rgba(2,6,23,.74)), color-mix(in srgb, ${o.panelDark} 80%, rgba(15,23,42,.84))) !important;
   border-color: color-mix(in srgb, ${o.borderDark} 64%, rgba(255,255,255,.28)) !important;
   color: ${o.textDark} !important;
   box-shadow: 0 34px 90px rgba(0,0,0,.62), inset 0 1px 0 rgba(255,255,255,.16) !important;
@@ -194,13 +199,16 @@ html.dark .glass-elevated {
 :where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
 :where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
   background:
-    linear-gradient(145deg, rgba(255,255,255,.18), transparent 34%),
-    linear-gradient(145deg, color-mix(in srgb, ${o.panelLight} 76%, rgba(255,255,255,.94)), color-mix(in srgb, ${o.panelLight} 68%, rgba(255,255,255,.98)));
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, ${o.accent} 14%, transparent), transparent 38%),
+    radial-gradient(circle at 94% 12%, color-mix(in srgb, ${o.accent} 9%, transparent), transparent 42%),
+    linear-gradient(145deg, rgba(255,255,255,.16), transparent 36%),
+    linear-gradient(145deg, color-mix(in srgb, ${o.panelLight} 86%, rgba(255,255,255,.86)), color-mix(in srgb, ${o.panelLight} 80%, rgba(255,255,255,.92)));
+  background-clip: padding-box;
   border: 1px solid color-mix(in srgb, ${o.borderLight} 62%, rgba(15,23,42,.16));
   color: ${o.textLight};
   box-shadow: 0 28px 76px rgba(15,23,42,.22), inset 0 1px 0 rgba(255,255,255,.28);
-  backdrop-filter: blur(${o.blurPx + 10}px) saturate(190%) contrast(1.06);
-  -webkit-backdrop-filter: blur(${o.blurPx + 10}px) saturate(190%) contrast(1.06);
+  backdrop-filter: blur(${o.blurPx + 18}px) saturate(215%) contrast(1.08) brightness(1.02);
+  -webkit-backdrop-filter: blur(${o.blurPx + 18}px) saturate(215%) contrast(1.08) brightness(1.02);
 }
 html.dark .waki-dialog-surface,
 html.dark .waki-popover-surface,
@@ -208,8 +216,10 @@ html.dark .waki-overlay-surface,
 html.dark :where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
 html.dark :where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
   background:
-    linear-gradient(145deg, rgba(255,255,255,.12), transparent 34%),
-    linear-gradient(145deg, color-mix(in srgb, ${o.panelDark} 78%, rgba(2,6,23,.92)), color-mix(in srgb, ${o.panelDark} 70%, rgba(15,23,42,.96)));
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, ${o.accent} 16%, transparent), transparent 38%),
+    radial-gradient(circle at 94% 12%, color-mix(in srgb, ${o.textDark} 8%, transparent), transparent 42%),
+    linear-gradient(145deg, rgba(255,255,255,.1), transparent 36%),
+    linear-gradient(145deg, color-mix(in srgb, ${o.panelDark} 86%, rgba(2,6,23,.74)), color-mix(in srgb, ${o.panelDark} 80%, rgba(15,23,42,.84)));
   border-color: color-mix(in srgb, ${o.borderDark} 64%, rgba(255,255,255,.28));
   color: ${o.textDark};
   box-shadow: 0 34px 90px rgba(0,0,0,.62), inset 0 1px 0 rgba(255,255,255,.16);
