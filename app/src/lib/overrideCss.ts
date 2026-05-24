@@ -38,6 +38,41 @@ html.dark .glass-bar {
   border-color: ${o.borderDark} !important;
 }
 
+.waki-dialog-surface,
+.waki-popover-surface,
+.waki-overlay-surface,
+:where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
+:where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.18), transparent 34%),
+    linear-gradient(145deg, color-mix(in srgb, ${o.panelLight} 76%, rgba(255,255,255,.94)), color-mix(in srgb, ${o.panelLight} 68%, rgba(255,255,255,.98))) !important;
+  border-color: color-mix(in srgb, ${o.borderLight} 62%, rgba(15,23,42,.16)) !important;
+  color: ${o.textLight} !important;
+  box-shadow: 0 28px 76px rgba(15,23,42,.22), inset 0 1px 0 rgba(255,255,255,.28) !important;
+  backdrop-filter: blur(${o.blurPx + 10}px) saturate(190%) contrast(1.06) !important;
+  -webkit-backdrop-filter: blur(${o.blurPx + 10}px) saturate(190%) contrast(1.06) !important;
+}
+html.dark .waki-dialog-surface,
+html.dark .waki-popover-surface,
+html.dark .waki-overlay-surface,
+html.dark :where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
+html.dark :where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.12), transparent 34%),
+    linear-gradient(145deg, color-mix(in srgb, ${o.panelDark} 78%, rgba(2,6,23,.92)), color-mix(in srgb, ${o.panelDark} 70%, rgba(15,23,42,.96))) !important;
+  border-color: color-mix(in srgb, ${o.borderDark} 64%, rgba(255,255,255,.28)) !important;
+  color: ${o.textDark} !important;
+  box-shadow: 0 34px 90px rgba(0,0,0,.62), inset 0 1px 0 rgba(255,255,255,.16) !important;
+}
+.waki-overlay-backdrop {
+  background: rgba(15,23,42,.34) !important;
+  backdrop-filter: blur(${Math.max(8, Math.round(o.blurPx * 0.7))}px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(${Math.max(8, Math.round(o.blurPx * 0.7))}px) saturate(150%) !important;
+}
+html.dark .waki-overlay-backdrop {
+  background: rgba(2,6,23,.58) !important;
+}
+
 .chip {
   background: ${withAlpha(o.accent, 0.12)} !important;
   border-color: ${withAlpha(o.accent, 0.32)} !important;
@@ -151,6 +186,41 @@ html.dark .glass-elevated {
   background: ${o.panelDark};
   border-color: ${o.borderDark};
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.36);
+}
+
+.waki-dialog-surface,
+.waki-popover-surface,
+.waki-overlay-surface,
+:where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
+:where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.18), transparent 34%),
+    linear-gradient(145deg, color-mix(in srgb, ${o.panelLight} 76%, rgba(255,255,255,.94)), color-mix(in srgb, ${o.panelLight} 68%, rgba(255,255,255,.98)));
+  border: 1px solid color-mix(in srgb, ${o.borderLight} 62%, rgba(15,23,42,.16));
+  color: ${o.textLight};
+  box-shadow: 0 28px 76px rgba(15,23,42,.22), inset 0 1px 0 rgba(255,255,255,.28);
+  backdrop-filter: blur(${o.blurPx + 10}px) saturate(190%) contrast(1.06);
+  -webkit-backdrop-filter: blur(${o.blurPx + 10}px) saturate(190%) contrast(1.06);
+}
+html.dark .waki-dialog-surface,
+html.dark .waki-popover-surface,
+html.dark .waki-overlay-surface,
+html.dark :where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
+html.dark :where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.12), transparent 34%),
+    linear-gradient(145deg, color-mix(in srgb, ${o.panelDark} 78%, rgba(2,6,23,.92)), color-mix(in srgb, ${o.panelDark} 70%, rgba(15,23,42,.96)));
+  border-color: color-mix(in srgb, ${o.borderDark} 64%, rgba(255,255,255,.28));
+  color: ${o.textDark};
+  box-shadow: 0 34px 90px rgba(0,0,0,.62), inset 0 1px 0 rgba(255,255,255,.16);
+}
+.waki-overlay-backdrop {
+  background: rgba(15,23,42,.34);
+  backdrop-filter: blur(${Math.max(8, Math.round(o.blurPx * 0.7))}px) saturate(150%);
+  -webkit-backdrop-filter: blur(${Math.max(8, Math.round(o.blurPx * 0.7))}px) saturate(150%);
+}
+html.dark .waki-overlay-backdrop {
+  background: rgba(2,6,23,.58);
 }
 
 .glass-bar {

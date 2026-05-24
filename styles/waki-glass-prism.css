@@ -45,6 +45,11 @@
   --waki-accent-2: #0f766e;
   --waki-focus: color-mix(in srgb, #4f46e5 24%, transparent);
   --waki-shadow: color-mix(in srgb, rgba(67,56,202,.13) 84%, #4f46e5);
+  --waki-overlay-panel: color-mix(in srgb, color-mix(in srgb, rgba(255,255,255,.82) 76%, #eef2f7) 78%, rgba(255,255,255,.94));
+  --waki-overlay-panel-strong: color-mix(in srgb, color-mix(in srgb, color-mix(in srgb, rgba(242,246,252,.78) 74%, #f3f7fb) 92%, #4f46e5) 72%, rgba(255,255,255,.98));
+  --waki-overlay-border: color-mix(in srgb, color-mix(in srgb, rgba(15,118,110,.18) 78%, #0f766e) 64%, rgba(15,23,42,.16));
+  --waki-overlay-backdrop: rgba(15,23,42,.34);
+  --waki-overlay-shadow: 0 28px 76px rgba(15,23,42,.22), 0 0 0 1px rgba(255,255,255,.4);
 }
 html.dark {
 
@@ -66,6 +71,11 @@ html.dark {
   --waki-accent-2: #5eead4;
   --waki-focus: color-mix(in srgb, #a5b4fc 24%, transparent);
   --waki-shadow: rgba(0,0,0,.45);
+  --waki-overlay-panel: color-mix(in srgb, rgba(14,24,58,.76) 78%, rgba(2,6,23,.92));
+  --waki-overlay-panel-strong: color-mix(in srgb, rgba(10,30,49,.74) 72%, rgba(15,23,42,.96));
+  --waki-overlay-border: color-mix(in srgb, rgba(165,180,252,.18) 64%, rgba(255,255,255,.28));
+  --waki-overlay-backdrop: rgba(2,6,23,.58);
+  --waki-overlay-shadow: 0 34px 90px rgba(0,0,0,.62), 0 0 0 1px rgba(255,255,255,.04);
 }
 
 body {
@@ -316,6 +326,33 @@ html.dark .status-error {
 .theme-switcher .active {
   background: linear-gradient(135deg, var(--waki-accent), var(--waki-accent-2));
   color: #ffffff;
+}
+
+.waki-dialog-surface,
+.waki-popover-surface,
+.waki-overlay-surface,
+:where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
+:where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
+  background:
+    linear-gradient(145deg, color-mix(in srgb, white 18%, transparent), transparent 34%),
+    linear-gradient(145deg, var(--waki-overlay-panel), var(--waki-overlay-panel-strong)) !important;
+  border: var(--waki-border-width) solid var(--waki-overlay-border) !important;
+  color: var(--waki-text);
+  box-shadow: var(--waki-overlay-shadow), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -1px 0 rgba(255,255,255,.08) !important;
+  backdrop-filter: blur(calc(var(--waki-blur) + 10px)) saturate(var(--waki-elevated-saturation)) contrast(1.06) !important;
+  -webkit-backdrop-filter: blur(calc(var(--waki-blur) + 10px)) saturate(var(--waki-elevated-saturation)) contrast(1.06) !important;
+}
+html.dark .waki-dialog-surface,
+html.dark .waki-popover-surface,
+html.dark .waki-overlay-surface,
+html.dark :where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
+html.dark :where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
+  box-shadow: var(--waki-overlay-shadow), inset 0 1px 0 rgba(255,255,255,.16), inset 0 -1px 0 rgba(255,255,255,.04) !important;
+}
+.waki-overlay-backdrop {
+  background: var(--waki-overlay-backdrop) !important;
+  backdrop-filter: blur(calc(var(--waki-blur) * .7)) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(calc(var(--waki-blur) * .7)) saturate(150%) !important;
 }
 
 

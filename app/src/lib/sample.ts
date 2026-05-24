@@ -135,6 +135,37 @@ export const PREVIEW_HTML = `
           <button class="btn-success" style="width:100%;">Approve</button>
         </div>
       </section>
+
+      <section class="glass-elevated" style="padding:16px;display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.55fr);gap:14px;align-items:stretch;">
+        <div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:12px;">
+            <h2 style="font-size:16px;margin:0;font-weight:950;">Overlay readability</h2>
+            <span class="chip">dialog + menu</span>
+          </div>
+          <div style="position:relative;min-height:210px;border-radius:18px;overflow:hidden;padding:18px;background:
+            radial-gradient(circle at 18% 16%, var(--waki-accent), transparent 30%),
+            radial-gradient(circle at 82% 20%, var(--waki-accent-2), transparent 32%),
+            repeating-linear-gradient(135deg, color-mix(in srgb, var(--waki-text) 12%, transparent) 0 8px, transparent 8px 18px),
+            linear-gradient(135deg, var(--waki-bg-1), var(--waki-bg-2), var(--waki-bg-3));">
+            <div class="surface-1 waki-dialog-surface" role="dialog" aria-modal="true" style="max-width:360px;padding:16px;border-radius:16px;">
+              <div style="font-size:15px;font-weight:950;margin-bottom:4px;">Confirm publish</div>
+              <p style="font-size:12px;line-height:1.45;margin:0 0 12px;opacity:.78;">This panel should keep the lighting from behind, but text and controls must stay crisp.</p>
+              <div style="display:flex;gap:8px;justify-content:flex-end;">
+                <button class="btn-secondary" style="padding:7px 10px;font-size:12px;">Cancel</button>
+                <button class="btn-primary" style="padding:7px 10px;font-size:12px;">Publish</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="waki-popover-surface" role="menu" style="align-self:center;padding:10px;border-radius:14px;">
+          <div style="font-size:11px;font-weight:850;opacity:.66;text-transform:uppercase;padding:6px 8px;">Quick actions</div>
+          <div class="nav-item active" style="padding:10px 9px;font-weight:800;">Open settings</div>
+          <div class="nav-item" style="padding:10px 9px;font-weight:800;">Duplicate theme</div>
+          <div class="nav-item" style="padding:10px 9px;font-weight:800;">Export tokens</div>
+          <div style="height:1px;background:var(--waki-border);margin:6px 2px;"></div>
+          <div style="padding:9px;color:#dc2626;font-weight:850;">Archive</div>
+        </div>
+      </section>
     </section>
   </main>
 </div>
@@ -145,6 +176,7 @@ export const PREVIEW_HTML = `
   aside { flex-direction: row !important; overflow-x: auto; }
   section[style*="grid-template-columns:repeat(4"] { grid-template-columns: repeat(2, minmax(130px, 1fr)) !important; }
   section[style*="290px"] { grid-template-columns: 1fr !important; }
+  section[style*="260px"] { grid-template-columns: 1fr !important; }
 }
 @media (max-width: 560px) {
   header { align-items:flex-start !important; flex-direction:column !important; }
