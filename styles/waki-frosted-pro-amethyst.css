@@ -45,8 +45,8 @@
   --waki-accent-2: #64748b;
   --waki-focus: color-mix(in srgb, #6d28d9 24%, transparent);
   --waki-shadow: color-mix(in srgb, rgba(76,29,149,.1) 84%, #6d28d9);
-  --waki-overlay-panel: color-mix(in srgb, color-mix(in srgb, rgba(255,255,255,.84) 76%, #fbfaff) 86%, rgba(255,255,255,.86));
-  --waki-overlay-panel-strong: color-mix(in srgb, color-mix(in srgb, color-mix(in srgb, rgba(245,243,255,.78) 74%, #f6f4fb) 92%, #6d28d9) 80%, rgba(255,255,255,.92));
+  --waki-overlay-panel: color-mix(in srgb, color-mix(in srgb, rgba(255,255,255,.84) 76%, #fbfaff) 38%, rgba(255,255,255,.96));
+  --waki-overlay-panel-strong: color-mix(in srgb, color-mix(in srgb, color-mix(in srgb, rgba(245,243,255,.78) 74%, #f6f4fb) 92%, #6d28d9) 30%, rgba(255,255,255,.985));
   --waki-overlay-border: color-mix(in srgb, color-mix(in srgb, rgba(148,163,184,.18) 78%, #64748b) 64%, rgba(15,23,42,.16));
   --waki-overlay-backdrop: rgba(15,23,42,.34);
   --waki-overlay-shadow: 0 28px 76px rgba(15,23,42,.22), 0 0 0 1px rgba(255,255,255,.4);
@@ -71,8 +71,8 @@ html.dark {
   --waki-accent-2: #cbd5e1;
   --waki-focus: color-mix(in srgb, #c4b5fd 24%, transparent);
   --waki-shadow: rgba(0,0,0,.46);
-  --waki-overlay-panel: color-mix(in srgb, rgba(32,27,51,.82) 86%, rgba(2,6,23,.74));
-  --waki-overlay-panel-strong: color-mix(in srgb, rgba(55,48,76,.74) 80%, rgba(15,23,42,.84));
+  --waki-overlay-panel: color-mix(in srgb, rgba(32,27,51,.82) 38%, rgba(8,13,28,.93));
+  --waki-overlay-panel-strong: color-mix(in srgb, rgba(55,48,76,.74) 30%, rgba(15,23,42,.97));
   --waki-overlay-border: color-mix(in srgb, rgba(148,163,184,.16) 64%, rgba(255,255,255,.28));
   --waki-overlay-backdrop: rgba(2,6,23,.58);
   --waki-overlay-shadow: 0 34px 90px rgba(0,0,0,.62), 0 0 0 1px rgba(255,255,255,.04);
@@ -334,16 +334,16 @@ html.dark .status-error {
 :where([role="dialog"].surface-1, [role="menu"], [role="listbox"], [role="tooltip"], .popover, .dropdown-menu, .menu-panel),
 :where([role="dialog"]) > :where(.glass, .glass-bar, .glass-elevated) {
   background:
-    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--waki-accent) 14%, transparent), transparent 38%),
-    radial-gradient(circle at 94% 12%, color-mix(in srgb, var(--waki-accent-2) 12%, transparent), transparent 42%),
-    linear-gradient(145deg, color-mix(in srgb, white 16%, transparent), transparent 36%),
+    radial-gradient(circle at 18% 0%, color-mix(in srgb, var(--waki-accent) 5%, transparent), transparent 36%),
+    radial-gradient(circle at 94% 12%, color-mix(in srgb, var(--waki-accent-2) 4%, transparent), transparent 40%),
+    linear-gradient(145deg, color-mix(in srgb, white 10%, transparent), transparent 34%),
     linear-gradient(145deg, var(--waki-overlay-panel), var(--waki-overlay-panel-strong)) !important;
   background-clip: padding-box;
   border: var(--waki-border-width) solid var(--waki-overlay-border) !important;
   color: var(--waki-text);
   box-shadow: var(--waki-overlay-shadow), inset 0 1px 0 rgba(255,255,255,.28), inset 0 -1px 0 rgba(255,255,255,.08) !important;
-  backdrop-filter: blur(calc(var(--waki-blur) + 18px)) saturate(215%) contrast(1.08) brightness(1.02) !important;
-  -webkit-backdrop-filter: blur(calc(var(--waki-blur) + 18px)) saturate(215%) contrast(1.08) brightness(1.02) !important;
+  backdrop-filter: blur(calc(var(--waki-blur) + 8px)) saturate(150%) contrast(1.03) !important;
+  -webkit-backdrop-filter: blur(calc(var(--waki-blur) + 8px)) saturate(150%) contrast(1.03) !important;
 }
 html.dark .waki-dialog-surface,
 html.dark .waki-popover-surface,
